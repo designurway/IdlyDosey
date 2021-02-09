@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home_page.fragments.OrderHistoryFragment">
+
+
+    <ImageView
+        android:id="@+id/img_sad_face"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="@drawable/sad_face"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        android:backgroundTint="@color/grey"/>
+
+    <RelativeLayout
+        android:id="@+id/count_rl"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/cart_total_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/reg_et_size"
+            android:layout_marginRight="5dp"
+            android:text="0"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/reg_et_size" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_toRightOf="@id/cart_total_tv"
+            android:text="@string/items"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/reg_et_size" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="2dp"
+            android:layout_below="@id/cart_total_tv"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/colorPrimary" />
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/order_history_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/count_rl"/>
+
+</RelativeLayout>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.home_page.fragments.ChangeAddressFragment"
+    app:layout_constraintCircleRadius="@dimen/reg_et_size">
+
+    <TextView
+        android:id="@+id/new_address_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADD NEW ADDRESS"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:textSize="@dimen/sub_header_size"
+        android:textColor="@color/colorPrimaryDark"
+        android:fontFamily="@font/averia_sans_libre"/>
+
+    <RelativeLayout
+        android:id="@+id/address_entry_rl"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_below="@+id/new_address_tv"
+        android:background="@color/light_grey"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+        <TextView
+            android:id="@+id/location_display_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter Your Location"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:textSize="@dimen/sub_header_size"
+            android:textColor="@color/colorPrimaryDark"
+            android:fontFamily="@font/averia_sans_libre"/>
+
+        <LinearLayout
+            android:id="@+id/address_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/location_display_tv"
+            android:weightSum="2">
+            <TextView
+                android:id="@+id/address_display_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.4"
+                android:text="Address"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:textSize="@dimen/sub_header_size"
+                android:textColor="@color/colorPrimaryDark"
+                android:fontFamily="@font/averia_sans_libre"/>
+
+            <Button
+                android:id="@+id/change_btn"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="0.6"
+                android:text="@string/change"
+                android:textColor="@color/colorAccent"
+                android:background="@color/colorPrimaryDark"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:textSize="@dimen/reg_et_size"
+                android:fontFamily="@font/averia_sans_libre"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/flat_no_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/address_ll"
+            android:text="@string/falt_no"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:textSize="@dimen/normal_text_size"
+            android:textColor="@color/colorPrimaryDark"
+            android:fontFamily="@font/averia_sans_libre"/>
+
+        <EditText
+            android:id="@+id/flat_no_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/flat_no_tv"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:background="@color/colorAccent"
+            android:maxLines="1"
+            android:inputType="number"
+            android:imeOptions="actionNext"/>
+        <TextView
+            android:id="@+id/locality_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/flat_no_et"
+            android:text="@string/location"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:textSize="@dimen/normal_text_size"
+            android:textColor="@color/colorPrimaryDark"
+            android:fontFamily="@font/averia_sans_libre"/>
+
+        <EditText
+            android:id="@+id/locality_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/locality_tv"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:background="@color/colorAccent"
+            android:maxLines="1"
+            android:imeOptions="actionNext"/>
+
+        <RadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/locality_et"
+            android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/home_rbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/locality_et"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:text="home"
+            android:textSize="@dimen/normal_text_size"
+            android:textColor="@color/colorPrimaryDark"
+            android:fontFamily="@font/averia_sans_libre"/>
+        <RadioButton
+            android:id="@+id/others_rbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/locality_et"
+            android:layout_toRightOf="@+id/home_rbtn"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:text="office"
+            android:textSize="@dimen/normal_text_size"
+            android:textColor="@color/colorPrimaryDark"
+            android:fontFamily="@font/averia_sans_libre"/>
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/save_n_continue_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/radio_group"
+            android:layout_centerHorizontal="true"
+            android:text="@string/save_n_continue"
+            android:textColor="@color/colorAccent"
+            android:background="@color/colorPrimaryDark"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textSize="@dimen/reg_et_size"
+            android:fontFamily="@font/averia_sans_libre"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"/>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

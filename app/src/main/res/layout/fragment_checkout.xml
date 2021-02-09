@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home_page.fragments.CheckoutFragment">
+
+ <RelativeLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content">
+
+     <LinearLayout
+         android:id="@+id/order_id_ly"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:weightSum="4">
+
+         <TextView
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="2"
+             android:text="@string/order_id"
+             android:textColor="@color/colorPrimary"
+             android:textSize="@dimen/sub_header_size"
+             android:layout_marginTop="10dp"
+             android:textStyle="bold"
+             android:layout_marginLeft="10dp"
+             android:textAllCaps="true"/>
+
+
+
+         <TextView
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="2"
+             android:text="ASDD230"
+             android:textStyle="bold"
+             android:textColor="@color/colorPrimary"
+             android:textSize="@dimen/reg_et_size"
+             android:layout_marginTop="10dp"
+             android:textAllCaps="true"/>
+
+     </LinearLayout>
+
+
+
+     <LinearLayout
+         android:id="@+id/order_subtotal_ly"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:weightSum="4"
+         android:layout_below="@+id/order_id_ly">
+
+         <TextView
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="2"
+             android:text="@string/subtotal"
+             android:textColor="@color/colorPrimary"
+             android:textSize="@dimen/reg_et_size"
+             android:layout_marginTop="10dp"
+             android:layout_marginLeft="10dp"
+             android:textAllCaps="true"/>
+
+
+         <TextView
+             android:id="@+id/rupees_tv"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/rupees"
+             android:textColor="@color/colorPrimary"
+             android:textSize="@dimen/reg_et_size"
+             android:layout_marginTop="10dp"
+             android:layout_marginLeft="10dp"
+             android:textAllCaps="true"/>
+         <TextView
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="2"
+             android:text="200"
+             android:textColor="@color/colorPrimary"
+             android:textSize="@dimen/reg_et_size"
+             android:layout_marginTop="10dp"
+             android:layout_marginLeft="10dp"
+             android:textAllCaps="true"/>
+
+     </LinearLayout>
+
+     <LinearLayout
+         android:id="@+id/order_delivery_ly"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_below="@id/order_subtotal_ly"
+         android:weightSum="4">
+
+         <TextView
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="2"
+             android:text="@string/delivery"
+             android:textColor="@color/colorPrimary"
+             android:textSize="@dimen/reg_et_size"
+             android:layout_marginTop="10dp"
+             android:layout_marginLeft="10dp"
+             android:textAllCaps="true"/>
+
+
+         <TextView
+             android:id="@+id/rupee_tv"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/rupees"
+             android:textColor="@color/colorPrimary"
+             android:textSize="@dimen/reg_et_size"
+             android:layout_marginTop="10dp"
+             android:layout_marginLeft="10dp"
+             android:textAllCaps="true"/>
+         <TextView
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="2"
+             android:text="20"
+             android:textColor="@color/colorPrimary"
+             android:textSize="@dimen/reg_et_size"
+             android:layout_marginTop="10dp"
+             android:layout_marginLeft="10dp"
+             android:textAllCaps="true"/>
+
+     </LinearLayout>
+
+
+     <LinearLayout
+         android:id="@+id/order_tax_ly"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_below="@id/order_delivery_ly"
+         android:weightSum="4">
+
+         <TextView
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="2"
+             android:text="@string/tax"
+             android:textColor="@color/colorPrimary"
+             android:textSize="@dimen/reg_et_size"
+             android:layout_marginTop="10dp"
+             android:layout_marginLeft="10dp"
+             android:textAllCaps="true"/>
+
+
+         <TextView
+             android:id="@+id/rupe_tv"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/rupees"
+             android:textColor="@color/colorPrimary"
+             android:textSize="@dimen/reg_et_size"
+             android:layout_marginTop="10dp"
+             android:layout_marginLeft="10dp"
+             android:textAllCaps="true"/>
+         <TextView
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="2"
+             android:text="10"
+             android:textColor="@color/colorPrimary"
+             android:textSize="@dimen/reg_et_size"
+             android:layout_marginTop="10dp"
+             android:layout_marginLeft="10dp"
+             android:textAllCaps="true"/>
+
+     </LinearLayout>
+
+
+     <LinearLayout
+         android:id="@+id/order_total_ly"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_below="@id/order_tax_ly"
+         android:weightSum="4">
+
+         <TextView
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="2"
+             android:text="@string/grand_total"
+             android:textColor="@color/colorPrimary"
+             android:textSize="@dimen/sub_header_size"
+             android:layout_marginTop="10dp"
+             android:textStyle="bold"
+             android:layout_marginLeft="10dp"
+             android:textAllCaps="true"/>
+
+
+         <TextView
+             android:id="@+id/rup_tv"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/rupees"
+             android:textColor="@color/colorPrimary"
+             android:textSize="@dimen/reg_et_size"
+             android:layout_marginTop="10dp"
+             android:layout_marginLeft="10dp"
+             android:textAllCaps="true"/>
+         <TextView
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="2"
+             android:text="230"
+             android:textStyle="bold"
+
+             android:textColor="@color/colorPrimary"
+             android:textSize="@dimen/reg_et_size"
+             android:layout_marginTop="10dp"
+             android:layout_marginLeft="10dp"
+             android:textAllCaps="true"/>
+
+     </LinearLayout>
+
+
+     <androidx.cardview.widget.CardView
+         android:id="@+id/delivery_address_cv"
+         android:layout_width="match_parent"
+         android:layout_height="150dp"
+         android:layout_margin="10dp"
+         android:layout_marginTop="20dp"
+         android:layout_below="@+id/order_total_ly">
+
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:layout_gravity="center"
+             android:background="@color/grey"
+             android:gravity="center"
+             android:orientation="horizontal">
+
+             <ImageView
+                 android:layout_width="80dp"
+                 android:layout_height="80dp"
+                 android:src="@drawable/location" />
+
+             <LinearLayout
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_margin="10dp"
+                 android:orientation="vertical">
+
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="@string/home"
+                     android:textColor="@color/colorBlack"
+                     android:textSize="22sp"
+                     android:textStyle="bold" />
+
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginTop="5dp"
+                     android:text="@string/address_name"
+                     android:textColor="@color/colorPrimary"
+                     android:textSize="15sp"
+                     android:textStyle="bold" />
+
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginTop="5dp"
+                     android:text="@string/home_address"
+                     android:textColor="@color/colorPrimary"
+                     android:textSize="15sp" />
+
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginTop="5dp"
+                     android:text="@string/phone_number"
+                     android:textColor="@color/colorPrimary"
+                     android:textSize="15sp" />
+             </LinearLayout>
+
+         </LinearLayout>
+     </androidx.cardview.widget.CardView>
+
+
+             <Button
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:text="@string/place_order"
+                 android:textAllCaps="false"
+                 android:background="@color/colorPrimary"
+                 android:textColor="@color/colorAccent"
+                 android:textStyle="bold"
+                 android:layout_alignParentBottom="true"
+                 android:layout_marginBottom="20dp"
+                 android:textSize="@dimen/reg_et_size"
+                 />
+
+ </RelativeLayout>
+
+</RelativeLayout>

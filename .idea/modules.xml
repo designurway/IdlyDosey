@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Idli_Dosa.iml" filepath="$PROJECT_DIR$/.idea/modules/Idli_Dosa.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Idli_Dosa.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Idli_Dosa.app.iml" />
+    </modules>
+  </component>
+</project>

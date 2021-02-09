@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.home_page.fragments.EmergencyFragment">
+
+    <RelativeLayout
+        android:id="@+id/upload_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/upload_img_cv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/curved_edge">
+
+            <RelativeLayout
+                android:id="@+id/upload_img_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/curved_edge">
+
+
+                <TextView
+                    android:id="@+id/upload_image_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/averia_sans_libre"
+                    android:text="upload"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/sub_header_size"></TextView>
+
+                <ImageView
+                    android:id="@+id/upload_imgv"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_below="@+id/upload_image_tv"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/upload"></ImageView>
+
+                <TextView
+                    android:id="@+id/or_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/upload_imgv"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/averia_sans_libre"
+                    android:text="OR"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/sub_header_size" />
+
+
+                <EditText
+                    android:id="@+id/add_prescription_et"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/or_tv"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/curved_edge"
+                    android:hint="Prescription"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:textAlignment="center"
+                    android:textColorHint="@color/colorPrimary" />
+
+                <EditText
+                    android:id="@+id/prescription_qtn_et"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/or_tv"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_toRightOf="@+id/add_prescription_et"
+                    android:background="@drawable/curved_edge"
+                    android:hint="Quantity"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:textAlignment="center"
+                    android:textColorHint="@color/colorPrimary" />
+
+                <Button
+                    android:id="@+id/addMoreItem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/upload_imgv"
+                    android:layout_alignTop="@+id/prescription_qtn_et"
+                    android:layout_alignBottom="@+id/prescription_qtn_et"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/prescription_qtn_et"
+                    android:src="@drawable/add"
+                    android:text="Add"
+                    android:textAllCaps="false"/>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/add_items_rl"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@+id/upload_rl"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/upload_rl"
+        app:layout_constraintBottom_toTopOf="@id/send_m_order">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/add_itms_rv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/send_m_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_items_rl"
+        android:gravity="center"
+        android:paddingStart="50dp"
+        android:paddingEnd="50dp"
+        android:paddingTop="@dimen/dimen_20dp"
+        android:paddingBottom="@dimen/dimen_20dp"
+        android:layout_centerInParent="true"
+        android:text="Send"
+        android:textAllCaps="false"
+        android:layout_marginBottom="@dimen/dimen_20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

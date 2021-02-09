@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth_nav_graph"
+    app:startDestination="@id/mobileVerificationFragment2">
+    <fragment
+        android:id="@+id/mobileVerificationFragment2"
+        android:name="com.designurway.idlidosa.ui.auth.fragment.MobileVerificationFragment"
+        android:label="fragment_mobile_verification"
+        tools:layout="@layout/fragment_mobile_verification" >
+        <action
+            android:id="@+id/action_mobileVerificationFragment2_to_otpVerficationFragment"
+            app:destination="@id/otpVerficationFragment" />
+        <action
+            android:id="@+id/action_mobileVerificationFragment2_to_referalCodeFragment"
+            app:destination="@id/referalCodeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/otpVerficationFragment"
+        android:name="com.designurway.idlidosa.ui.auth.fragment.OtpVerficationFragment"
+        android:label="fragment_otp_verfication"
+        tools:layout="@layout/fragment_otp_verfication" >
+        <argument
+            android:name="phone"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/referalCodeFragment"
+        android:name="com.designurway.idlidosa.ui.auth.fragment.ReferalCodeFragment"
+        android:label="fragment_referal_code"
+        tools:layout="@layout/fragment_referal_code" >
+        <action
+            android:id="@+id/action_referalCodeFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <argument
+            android:name="phone"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.designurway.idlidosa.ui.auth.fragment.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <argument android:name="phone"
+            app:argType="string" />
+        <argument
+            android:name="referralCode"
+            app:argType="string"
+           />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.designurway.idlidosa.ui.auth.fragment.ProfileFragment"
+        android:label="fragment_profile2"
+        tools:layout="@layout/fragment_profile2" />
+</navigation>

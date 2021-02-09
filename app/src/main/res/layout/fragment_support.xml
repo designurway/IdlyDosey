@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.home_page.fragments.SupportFragment">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/support_details_cv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        app:cardBackgroundColor="@color/colorAccent">
+
+        <RelativeLayout
+            android:id="@+id/support_details_rl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+        <LinearLayout
+            android:id="@+id/app_name_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3">
+
+            <ImageView
+                android:id="@+id/app_logo"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:src="@drawable/logo_here"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1">
+            </ImageView>
+
+            <TextView
+                android:id="@+id/app_name_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/app_name"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/header_text_size"
+                android:fontFamily="@font/averia_sans_libre"
+                android:layout_marginTop="20dp"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/version_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/app_name_ll"
+            android:weightSum="3">
+
+            <ImageView
+                android:id="@+id/version_logo"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:src="@drawable/version"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1">
+            </ImageView>
+
+            <TextView
+                android:id="@+id/version_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/version"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/reg_et_size"
+                android:fontFamily="@font/averia_sans_libre"
+                android:layout_marginTop="20dp"/>
+        </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/licence_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/version_ll"
+                android:layout_marginBottom="10dp"
+                android:weightSum="3">
+
+                <ImageView
+                    android:id="@+id/licence_logo"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/licence"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1">
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/licence_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/licence"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/reg_et_size"
+                    android:fontFamily="@font/averia_sans_libre"
+                    android:layout_marginTop="20dp"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/company_details_cv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/support_details_cv"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <RelativeLayout
+            android:id="@+id/company_details_rl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:id="@+id/company_tv"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                android:text="@string/company"
+                android:textSize="@dimen/header_text_size"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp">
+            </TextView>
+
+            <LinearLayout
+                android:id="@+id/company_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/company_tv"
+                android:layout_marginBottom="10dp"
+                android:weightSum="3">
+
+                <ImageView
+                    android:id="@+id/company_logo"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/company"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1">
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/company_name_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/cmp_name"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/reg_et_size"
+                    android:fontFamily="@font/averia_sans_libre"
+                    android:layout_marginTop="20dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/company_location_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/company_ll"
+                android:layout_marginBottom="10dp"
+                android:weightSum="3">
+
+                <ImageView
+                    android:id="@+id/company_location_logo"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/location_img"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1">
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/company_location_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/cmp_address"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/reg_et_size"
+                    android:fontFamily="@font/averia_sans_libre"
+                    android:layout_marginTop="20dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/company_phone_num_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/company_location_ll"
+                android:layout_marginBottom="10dp"
+                android:weightSum="3">
+
+                <ImageView
+                    android:id="@+id/phone_logo"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/phone"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1">
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/company_ph_num_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/phone_number"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/reg_et_size"
+                    android:fontFamily="@font/averia_sans_libre"
+                    android:layout_marginTop="20dp"/>
+            </LinearLayout>
+
+
+
+
+
+
+        </RelativeLayout>
+
+
+
+
+
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+</RelativeLayout>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".a.activity.OTPVerificationActivity"
+    >
+
+    <ImageView
+        android:id="@+id/curve_bg"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:src="@drawable/login_bg"/>
+
+
+    <ImageView
+        android:id="@+id/app_logo_here"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/sign_in_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/curve_bg"
+        android:text="@string/forgot_password"
+        android:textSize="@dimen/large_et_size"
+        android:fontFamily="@font/averia_sans_libre"
+        android:textStyle="bold"
+        android:elevation="2dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/colorPrimary"/>
+
+    <EditText
+        android:id="@+id/new_pwd_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sign_in_tv"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:elevation="2dp"
+        android:padding="10dp"
+        android:drawableLeft="@drawable/password_img"
+        android:hint="@string/password"
+        android:drawableTint="@color/colorPrimary"
+        android:maxLines="1"
+        android:fontFamily="@font/averia_sans_libre"
+        android:textSize="@dimen/reg_et_size"
+        android:inputType="textPassword"
+        android:singleLine="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/curved_edge"/>
+
+    <EditText
+        android:id="@+id/conf_password_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:padding="10dp"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:elevation="2dp"
+        android:layout_below="@+id/new_pwd_et"
+        android:hint="@string/confirm_pwd"
+        android:drawableLeft="@drawable/password_img"
+        android:drawableTint="@color/colorPrimary"
+        android:fontFamily="@font/averia_sans_libre"
+        android:textSize="@dimen/reg_et_size"
+        android:inputType="textPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/curved_edge"/>
+
+
+
+
+
+    <Button
+        android:id="@+id/change_pwd_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:text="@string/change_password"
+        android:textStyle="bold"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textColor="@color/colorAccent"
+        android:layout_below="@+id/conf_password_et"
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:fontFamily="@font/averia_sans_libre"
+        android:textSize="@dimen/sub_header_size"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/blue_curve_bg"/>
+
+
+
+
+
+
+
+
+
+
+
+
+</RelativeLayout>

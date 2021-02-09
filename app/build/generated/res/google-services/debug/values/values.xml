@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">338611944716-u498mqehlhhaa2nb6c8vpcj1nu6khflk.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">338611944716</string>
+    <string name="google_api_key" translatable="false">AIzaSyCEUxXxLE7mKJ1fCX4obUAwUHRCT3IKsO0</string>
+    <string name="google_app_id" translatable="false">1:338611944716:android:89f36f5f3f3b7c7c149d29</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCEUxXxLE7mKJ1fCX4obUAwUHRCT3IKsO0</string>
+    <string name="google_storage_bucket" translatable="false">idli-dosa.appspot.com</string>
+    <string name="project_id" translatable="false">idli-dosa</string>
+</resources>

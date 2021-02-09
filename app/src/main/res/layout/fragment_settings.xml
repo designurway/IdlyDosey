@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.home_page.fragments.SettingsFragment">
+
+
+    <LinearLayout
+
+        android:id="@+id/order_history_ly"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="4">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="2"
+            android:text="@string/order_history"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/header_text_size" />
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="2"
+            android:src="@drawable/right_arrow" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/address_book_ly"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/order_history_ly"
+        android:weightSum="4">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="2"
+            android:text="@string/address_book"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/header_text_size" />
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="2"
+            android:src="@drawable/right_arrow" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/track_orders_ly"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/address_book_ly"
+        android:weightSum="4">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="2"
+            android:text="@string/track_orders"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/header_text_size" />
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="2"
+            android:src="@drawable/right_arrow" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/reward_ly"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/track_orders_ly"
+        android:weightSum="4">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="2"
+            android:text="@string/pick_reward"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/header_text_size" />
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="2"
+            android:src="@drawable/right_arrow" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/refer_friend_ly"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/reward_ly"
+        android:weightSum="4">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="2"
+            android:text="@string/refer_friend"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/header_text_size" />
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="2"
+            android:src="@drawable/right_arrow" />
+
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:id="@+id/support_ly"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/refer_friend_ly"
+        android:weightSum="4">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="2"
+            android:text="@string/support"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/header_text_size" />
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="2"
+            android:src="@drawable/right_arrow" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/logout_ly"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/support_ly"
+        android:weightSum="4">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="2"
+            android:text="@string/logout"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/header_text_size" />
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="2"
+            android:src="@drawable/right_arrow" />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/version_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logout_ly"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:text="Version 1.1.0"
+        android:textSize="@dimen/sub_header_size"
+        android:textStyle="bold" />
+
+</RelativeLayout>

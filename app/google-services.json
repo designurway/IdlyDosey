@@ -1,0 +1,92 @@
+{
+  "project_info": {
+    "project_number": "338611944716",
+    "project_id": "idli-dosa",
+    "storage_bucket": "idli-dosa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:338611944716:android:89f36f5f3f3b7c7c149d29",
+        "android_client_info": {
+          "package_name": "com.designurway.idlidosa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "338611944716-lc3oai5olc9jjvo14a78l5oj0jd5bina.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.designurway.idlidosa",
+            "certificate_hash": "ce51545528786e721f62250f8ee8bceded57474f"
+          }
+        },
+        {
+          "client_id": "338611944716-u498mqehlhhaa2nb6c8vpcj1nu6khflk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEUxXxLE7mKJ1fCX4obUAwUHRCT3IKsO0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "338611944716-u498mqehlhhaa2nb6c8vpcj1nu6khflk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:338611944716:android:8074bf638ea0584d149d29",
+        "android_client_info": {
+          "package_name": "com.designurway.idlidosa.merchant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "338611944716-pbllvaivf97n1ht87a3kd114t2rd0one.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.designurway.idlidosa.merchant",
+            "certificate_hash": "d96f9d412e3ae31bb48159bccb44e1da0c6d0d36"
+          }
+        },
+        {
+          "client_id": "338611944716-qcqs2ojakvsm0s8svm8gsgftcvgtdh9m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.designurway.idlidosa.merchant",
+            "certificate_hash": "8946fdc62dff42c9abce8ae7874ef6c31b86a956"
+          }
+        },
+        {
+          "client_id": "338611944716-u498mqehlhhaa2nb6c8vpcj1nu6khflk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEUxXxLE7mKJ1fCX4obUAwUHRCT3IKsO0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "338611944716-u498mqehlhhaa2nb6c8vpcj1nu6khflk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

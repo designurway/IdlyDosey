@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".a.activity.ProfileActivity">
+
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/layout_toolbar" />
+
+    <RelativeLayout
+        android:id="@+id/profile_pic_rl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tool_bar"
+        android:layout_marginTop="30dp">
+
+        <FrameLayout
+            android:id="@+id/picture_fl"
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+
+
+            <RelativeLayout
+                android:layout_width="120dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center">
+
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_camera"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:elevation="10dp"
+                    android:padding="5dp"
+                    android:src="@drawable/camera"/>
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/person_pic_imgv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="120dp"
+                    android:src="@drawable/blue_person"
+                    android:layout_gravity="center_horizontal"/>
+            </RelativeLayout>
+        </FrameLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+
+        android:id="@+id/profile_details_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profile_pic_rl"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/name_field_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/name"
+            android:textColorHint="@color/colorPrimary">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/name_field_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/averia_sans_libre"
+                android:textSize="@dimen/reg_et_size"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/email_field_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/email"
+            android:layout_below="@+id/name_field_tv"
+            android:layout_marginTop="10dp"
+            android:textColorHint="@color/colorPrimary">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email_field_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:imeOptions="actionNext"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/averia_sans_libre"
+                android:textSize="@dimen/reg_et_size"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/phone_num_field_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/phone"
+            android:layout_below="@+id/email_field_tv"
+            android:layout_marginTop="10dp"
+            android:textColorHint="@color/colorPrimary">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phone_num_field_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLines="1"
+                android:imeOptions="actionNext"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/averia_sans_libre"
+                android:textSize="@dimen/reg_et_size"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/address_field_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/address"
+            android:layout_below="@+id/phone_num_field_tv"
+            android:layout_marginTop="10dp"
+            android:textColorHint="@color/colorPrimary">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/address_field_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:maxLines="5"
+                android:imeOptions="actionDone"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/averia_sans_libre"
+                android:textSize="@dimen/reg_et_size"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/save_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/save"
+        android:textColor="@color/colorAccent"
+        android:background="@color/colorPrimary"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:textSize="@dimen/header_text_size"
+        android:fontFamily="@font/averia_sans_libre"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
+    </Button>
+
+
+
+</RelativeLayout>
