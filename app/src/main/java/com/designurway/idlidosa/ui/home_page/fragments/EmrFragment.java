@@ -14,7 +14,7 @@ import android.widget.Button;
 
 import com.designurway.idlidosa.R;
 
-public class EmrFragment extends Fragment {
+public class  EmrFragment extends Fragment {
 Button a;
     final int IMAGE_PICK_REQUEST_CODE=101;
 

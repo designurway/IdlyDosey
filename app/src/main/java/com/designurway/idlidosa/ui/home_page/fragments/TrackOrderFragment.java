@@ -101,11 +101,12 @@ public class TrackOrderFragment extends Fragment implements OnMapReadyCallback {
     public SettingsClient msettingsClient;
     JSONObject jsonObject;
     String latLong;
-    String pickupLat,pickupLong,customerLat,customerLang;
+    String pickupLat, pickupLong, customerLat, customerLang;
 
     TrackOrderFragmentArgs args;
 
     String orderId, amount, image;
+    TextView txt_recived,text_cmpt,txt_dispatch,txt_on_ur_way,txt_preparing,text_delivered;
 
 
     @Override
@@ -117,14 +118,21 @@ public class TrackOrderFragment extends Fragment implements OnMapReadyCallback {
         View view = inflater.inflate(R.layout.fragment_track_order, container, false);
         ButterKnife.bind(this, view);
 
+        txt_dispatch=view.findViewById(R.id.txt_dispatch);
+        text_cmpt=view.findViewById(R.id.text_cmpt);
+        txt_on_ur_way=view.findViewById(R.id.txt_on_ur_way);
+        txt_preparing=view.findViewById(R.id.txt_preparing);
+        text_delivered=view.findViewById(R.id.text_delivered);
+        txt_recived=view.findViewById(R.id.txt_recived);
+
         args = TrackOrderFragmentArgs.fromBundle(getArguments());
         orderId = args.getOrderId();
         amount = args.getAmount();
 
         getTrackingLocation();
 
-        LatLng latlang = getLocationFromAddress(getContext(), "#4642,near gnesh temple,n r mohalla,mysore,pin 57007");
-        Toast.makeText(getContext(), latlang.toString(), Toast.LENGTH_SHORT).show();
+       // LatLng latlang = getLocationFromAddress(getContext(), "#4642,near gnesh temple,n r mohalla,mysore,pin 57007");
+//        Toast.makeText(getContext(), latlang.toString(), Toast.LENGTH_SHORT).show();
         GetOrderStatus();
 
         return view;
@@ -140,18 +148,10 @@ public class TrackOrderFragment extends Fragment implements OnMapReadyCallback {
         mapFragment.getMapAsync(this);
 
 
-
-
         mapFragment.getMapAsync(this);
 
         // here we are calling this method to initalize the FusedLocation Apis to get Updated Current Location
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
-
-
-
-
-
-
 
 
     }
@@ -233,7 +233,11 @@ public class TrackOrderFragment extends Fragment implements OnMapReadyCallback {
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(CustomerLocation, 16));
+        if (CustomerLocation != null) {
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(CustomerLocation, 16));
+        } else {
+            Toast.makeText(getContext(), "Customer location is null", Toast.LENGTH_SHORT).show();
+        }
     }
 
 
@@ -288,16 +292,24 @@ public class TrackOrderFragment extends Fragment implements OnMapReadyCallback {
                 if (response.isSuccessful() && trackOrderModel.getStatus().equals("1")) {
 
                     color = trackOrderModel.getOrder_status();
-
                     if (color.equals("received")) {
+                        txt_recived.setTextColor(getResources().getColor(R.color.darkGreen));
+                        txt_preparing.setTextColor(getResources().getColor(R.color.darkGreen));
+                        txt_preparing.setVisibility(View.VISIBLE);
 
 
                     } else if (color.equals("dispatched")) {
 
-                    } else if (color.equals("completed")) {
+                        txt_dispatch.setTextColor(getResources().getColor(R.color.darkGreen));
+                        txt_on_ur_way.setTextColor(getResources().getColor(R.color.darkGreen));
+                        txt_on_ur_way.setVisibility(View.VISIBLE);
 
+                    } else if (color.equals("completed")) {
+                        text_cmpt.setTextColor(getResources().getColor(R.color.darkGreen));
+                        text_delivered.setVisibility(View.VISIBLE);
+                        text_delivered.setTextColor(getResources().getColor(R.color.darkGreen));
                     } else {
-//                        Toast.makeText(getContext(), "Place an order", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Place an order", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Toast.makeText(getContext(), "fail", Toast.LENGTH_SHORT).show();
@@ -466,7 +478,7 @@ public class TrackOrderFragment extends Fragment implements OnMapReadyCallback {
         return data;
     }
 
-    public LatLng getLocationFromAddress(Context context, String strAddress) {
+   /* public LatLng getLocationFromAddress(Context context, String strAddress) {
 
         Geocoder coder = new Geocoder(context);
         List<Address> address;
@@ -492,9 +504,10 @@ public class TrackOrderFragment extends Fragment implements OnMapReadyCallback {
 
 
         return p1;
-    }
+    }*/
 
     public void getTrackingLocation() {
+
         RetrofitApi api = BaseClient.getClient().create(RetrofitApi.class);
         Call<TrackingModel> call = api.GetTrackingLocation(orderId); //OAU27
         call.enqueue(new Callback<TrackingModel>() {
@@ -509,9 +522,11 @@ public class TrackOrderFragment extends Fragment implements OnMapReadyCallback {
                     customerLang = model.getLang();
 
 
-                    if (pickupLat!= null && customerLat!=null){
-                        PickupLocation = new LatLng(Double.parseDouble(pickupLat),Double.parseDouble(pickupLong));
-                        CustomerLocation = new LatLng(Double.parseDouble(customerLat),Double.parseDouble(customerLang));
+                    if (pickupLat != null && pickupLong!=null && customerLat != null && customerLang!=null) {
+                        Toast.makeText(getContext(), "Data Coming", Toast.LENGTH_SHORT).show();
+                        PickupLocation = new LatLng(Double.parseDouble(pickupLat), Double.parseDouble(pickupLong));
+                        CustomerLocation = new LatLng(Double.parseDouble(customerLat), Double.parseDouble(customerLang));
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(CustomerLocation, 16));
 
                         String url = getDirectionsUrl(CustomerLocation, PickupLocation);
 
@@ -519,9 +534,12 @@ public class TrackOrderFragment extends Fragment implements OnMapReadyCallback {
 
                         // Start downloading json data from Google Directions API
                         downloadTask.execute(url);
+                    }else {
+                        Toast.makeText(getContext(), "Data Null", Toast.LENGTH_SHORT).show();
                     }
 
                 } else {
+
                     Toast.makeText(getActivity(), "fail", Toast.LENGTH_SHORT).show();
                 }
             }

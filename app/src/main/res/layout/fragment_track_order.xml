@@ -116,7 +116,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="10dp"
                                     android:layout_marginTop="10dp"
-                                    android:text="Recieved"
+                                    android:text="(Preparing...)"
                                     android:textColor="@color/colorPrimary"
                                     android:textSize="18sp"
                                     android:textStyle="bold"
@@ -211,7 +211,7 @@
                                     android:layout_height="31dp"
                                     android:layout_marginLeft="10dp"
                                     android:layout_marginTop="10dp"
-                                    android:text="@string/dispatched"
+                                    android:text="(On your way..)"
                                     android:textColor="@color/colorPrimary"
                                     android:textSize="18sp"
                                     android:visibility="gone" />
@@ -306,7 +306,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="10dp"
                                     android:layout_marginTop="10dp"
-                                    android:text="@string/completed"
+                                    android:text="(completed..)"
                                     android:textColor="@color/colorPrimary"
                                     android:textSize="18sp"
                                     android:visibility="gone" />

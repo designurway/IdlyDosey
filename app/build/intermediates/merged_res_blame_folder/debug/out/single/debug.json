@@ -40,12 +40,12 @@
         "source": "E:\\AndroidProject\\Pankaj\\IdlyDosey\\app\\src\\main\\res\\layout\\notification_item_list.xml"
     },
     {
-        "merged": "E:\\AndroidProject\\Pankaj\\IdlyDosey\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
-        "source": "E:\\AndroidProject\\Pankaj\\IdlyDosey\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
-    },
-    {
         "merged": "E:\\AndroidProject\\Pankaj\\IdlyDosey\\app\\build\\intermediates\\res\\merged\\debug\\navigation_auth_nav_graph.xml.flat",
         "source": "E:\\AndroidProject\\Pankaj\\IdlyDosey\\app\\src\\main\\res\\navigation\\auth_nav_graph.xml"
+    },
+    {
+        "merged": "E:\\AndroidProject\\Pankaj\\IdlyDosey\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "E:\\AndroidProject\\Pankaj\\IdlyDosey\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     },
     {
         "merged": "E:\\AndroidProject\\Pankaj\\IdlyDosey\\app\\build\\intermediates\\res\\merged\\debug\\drawable_email.png.flat",

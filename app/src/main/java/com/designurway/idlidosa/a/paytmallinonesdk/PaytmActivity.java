@@ -311,7 +311,7 @@ public class PaytmActivity extends AppCompatActivity {
         RetrofitApi api = BaseClient.getClient().create(RetrofitApi.class);
 
         Call<OrderStatusModel>
-                call = api.postOrderDetails(PreferenceManager.getCustomerId(), order_id, amount, address,String.valueOf(lat) , String.valueOf(lat.latitude), String.valueOf(lat.latitude));
+                call = api.postOrderDetails(PreferenceManager.getCustomerId(), order_id, amount, address,String.valueOf(lat) , String.valueOf(lat.latitude), String.valueOf(lat.longitude));
         Toast.makeText(PaytmActivity.this, PreferenceManager.getCustomerId(), Toast.LENGTH_SHORT).show();
         call.enqueue(new Callback<OrderStatusModel>() {
 

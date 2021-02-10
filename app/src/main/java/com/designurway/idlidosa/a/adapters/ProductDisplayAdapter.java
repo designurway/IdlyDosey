@@ -126,7 +126,7 @@ public class ProductDisplayAdapter extends RecyclerView.Adapter<ProductDisplayAd
                 }else{
                     amount = Integer.valueOf(menudtailsmodel.get(position).getPrice());
                     holder.linear_button.setVisibility(View.VISIBLE);
-                    AddToCart(String.valueOf(amount), String.valueOf(1), menudtailsmodel.get(position).getProduct_id(), holder.btn_addTocart);
+                    AddToCart(String.valueOf(amount), String.valueOf(holder.item_qty_tv.getText()), menudtailsmodel.get(position).getProduct_id(), holder.btn_addTocart);
                     holder.btn_addTocart.setVisibility(View.GONE);
                     setFragmentTransaction.sendView(position,holder.itemView);
                 }
