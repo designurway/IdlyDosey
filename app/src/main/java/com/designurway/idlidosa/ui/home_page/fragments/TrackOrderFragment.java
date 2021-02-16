@@ -191,37 +191,41 @@ public class TrackOrderFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onEvent(PusherEvent event) {
 
+                if (getActivity() != null) {
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                jsonObject = new JSONObject(event.toString());
+                                String abc = event.toString();
 
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            jsonObject = new JSONObject(event.toString());
-                            String abc = event.toString();
-
-                            String str = event.toString();
-                            String[] arrOfStr = str.split("data=", 2);
-                            String[] a = arrOfStr[1].split(", channel=my-channel", 2);
+                                String str = event.toString();
+                                String[] arrOfStr = str.split("data=", 2);
+                                String[] a = arrOfStr[1].split(", channel=my-channel", 2);
 
 //                             latLong = jsonObject.getString("delivery_boy_lat_lang");
 //                            setDriverLocationMarker();
-                            Log.d("events", event.toString());
-                            JSONObject jsonObject = new JSONObject(a[0]);
-                            String deliveryLat = jsonObject.getString("delivery_latitude");
-                            String deliveryLong = jsonObject.getString("delivery_longitude");
-                            LiveLocation = new LatLng(Double.parseDouble(deliveryLat), Double.parseDouble(deliveryLong));
-                            Log.d("abc", abc);
-                            setDriverLocationMarker();
+                                Log.d("events", event.toString());
+                                JSONObject jsonObject = new JSONObject(a[0]);
+                                String deliveryLat = jsonObject.getString("delivery_latitude");
+                                String deliveryLong = jsonObject.getString("delivery_longitude");
+                                LiveLocation = new LatLng(Double.parseDouble(deliveryLat), Double.parseDouble(deliveryLong));
+                                Log.d("abc", deliveryLat + " " + deliveryLong);
 
+                                if (LiveLocation != null) {
+                                    setDriverLocationMarker();
+                                } else {
+                                    Toast.makeText(getContext(), "Live Location is null", Toast.LENGTH_SHORT).show();
+                                }
 
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            Toast.makeText(getContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
                         }
-                    }
-                });
-                Log.i("Pusher", "Received event with data: " + event.toString());
+                    });
+                    Log.i("Pusher", "Received event with data: " + event.toString());
 
+                }
             }
         });
 
@@ -242,7 +246,7 @@ public class TrackOrderFragment extends Fragment implements OnMapReadyCallback {
 
 
     private void setDriverLocationMarker() {
-        Toast.makeText(getContext(), "dfafad", Toast.LENGTH_SHORT).show();
+
 //        mMap.addMarker(new MarkerOptions().position(CurrentLatLng));
 
 
@@ -523,7 +527,6 @@ public class TrackOrderFragment extends Fragment implements OnMapReadyCallback {
 
 
                     if (pickupLat != null && pickupLong!=null && customerLat != null && customerLang!=null) {
-                        Toast.makeText(getContext(), "Data Coming", Toast.LENGTH_SHORT).show();
                         PickupLocation = new LatLng(Double.parseDouble(pickupLat), Double.parseDouble(pickupLong));
                         CustomerLocation = new LatLng(Double.parseDouble(customerLat), Double.parseDouble(customerLang));
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(CustomerLocation, 16));
@@ -534,6 +537,8 @@ public class TrackOrderFragment extends Fragment implements OnMapReadyCallback {
 
                         // Start downloading json data from Google Directions API
                         downloadTask.execute(url);
+
+//                        setDriverLocationMarker();
                     }else {
                         Toast.makeText(getContext(), "Data Null", Toast.LENGTH_SHORT).show();
                     }

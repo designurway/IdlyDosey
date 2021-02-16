@@ -1,7 +1,10 @@
 package com.designurway.idlidosa.ui.home_page.fragments;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -35,6 +38,7 @@ import com.designurway.idlidosa.a.utils.AndroidUtils;
 import com.designurway.idlidosa.a.utils.PreferenceManager;
 import com.designurway.idlidosa.databinding.FragmentPaymentBinding;
 import com.designurway.idlidosa.model.CustomerAddress;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.paytm.pgsdk.PaytmOrder;
 import com.paytm.pgsdk.PaytmPaymentTransactionCallback;
@@ -45,8 +49,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.parceler.Parcels;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Random;
 
 import retrofit2.Call;
@@ -73,6 +79,7 @@ public class PaymentFragment extends Fragment {
     JSONObject jsonObject;
     String comboId, productId, OrderID;
     BottomSheetDialog bottomSheetDialog;
+    LatLng lat;
 
     public PaymentFragment() {
         // Required empty public constructor
@@ -83,6 +90,7 @@ public class PaymentFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentPaymentBinding.inflate(inflater, container, false);
+
         return binding.getRoot();
     }
 
@@ -117,7 +125,7 @@ public class PaymentFragment extends Fragment {
             orderId.setText(OrderID);
         }
         */
-        if (amount.equals("0")){
+        if (amount.equals("0")) {
             btnPayment.setText("Place Order");
 
             textAddress.setText(address);
@@ -136,7 +144,7 @@ public class PaymentFragment extends Fragment {
             orderId.setText(generateOrderId);
 
         }
-
+        lat = getLocationFromAddress(getActivity(), address);
 
         Calendar c = Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("ddMMyyyy");
@@ -189,7 +197,7 @@ public class PaymentFragment extends Fragment {
                     ImageView google_pay_img, paytm_img;
                     Button cancel_btn;
 
-                     bottomSheetDialog = new BottomSheetDialog(getContext());
+                    bottomSheetDialog = new BottomSheetDialog(getContext());
                     bottomSheetDialog.setContentView(R.layout.bottom_sheet);
                     bottomSheetDialog.setCanceledOnTouchOutside(false);
 
@@ -201,7 +209,7 @@ public class PaymentFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
                             String OrderId = AndroidUtils.randomName(5);
-                            action = PaymentFragmentDirections.actionPaymentFragmentToGooglePayFragment(OrderId, amount);
+                            action = PaymentFragmentDirections.actionPaymentFragmentToGooglePayFragment(OrderId, amount,address);
                             Navigation.findNavController(getView()).navigate(action);
                             bottomSheetDialog.dismiss();
 
@@ -214,8 +222,8 @@ public class PaymentFragment extends Fragment {
 
                             Bundle bundle = new Bundle();
                             Intent intent = new Intent(getActivity(), PaytmActivity.class);
-                            bundle.putString("amount",amount);
-                            bundle.putString("address",address);
+                            bundle.putString("amount", amount);
+                            bundle.putString("address", address);
                             intent.putExtras(bundle);
                             startActivity(intent);
                         }
@@ -289,55 +297,55 @@ public class PaymentFragment extends Fragment {
                 + ", Amount: " + txnAmountString;
         //Log.e(TAG, "order details "+ orderDetails);
 
-        String callBackUrl = host + "theia/paytmCallback?ORDER_ID="+orderIdString;
+        String callBackUrl = host + "theia/paytmCallback?ORDER_ID=" + orderIdString;
         PaytmOrder paytmOrder = new PaytmOrder(orderIdString, midString, txnTokenString, txnAmountString, callBackUrl);
-        TransactionManager transactionManager = new TransactionManager(paytmOrder, new PaytmPaymentTransactionCallback(){
+        TransactionManager transactionManager = new TransactionManager(paytmOrder, new PaytmPaymentTransactionCallback() {
             @Override
             public void onTransactionResponse(Bundle bundle) {
-                Toast.makeText(getContext(), "onTransactionResponse : "+bundle.toString(), Toast.LENGTH_SHORT).show();
-                Log.d(TAG,"onTransactionResponse : "+bundle.toString());
+                Toast.makeText(getContext(), "onTransactionResponse : " + bundle.toString(), Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "onTransactionResponse : " + bundle.toString());
             }
 
             @Override
             public void networkNotAvailable() {
                 Toast.makeText(getContext(), "networkNotAvailable : ", Toast.LENGTH_SHORT).show();
-                Log.d(TAG,"networkNotAvailable : ");
+                Log.d(TAG, "networkNotAvailable : ");
             }
 
             @Override
             public void onErrorProceed(String s) {
-                Toast.makeText(getContext(), "onErrorProceed : "+s, Toast.LENGTH_SHORT).show();
-                Log.d(TAG,"onErrorProceed : "+s);
+                Toast.makeText(getContext(), "onErrorProceed : " + s, Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "onErrorProceed : " + s);
             }
 
             @Override
             public void clientAuthenticationFailed(String s) {
-                Toast.makeText(getContext(), "clientAuthenticationFailed : "+s, Toast.LENGTH_SHORT).show();
-                Log.d(TAG,"clientAuthenticationFailed : "+s);
+                Toast.makeText(getContext(), "clientAuthenticationFailed : " + s, Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "clientAuthenticationFailed : " + s);
             }
 
             @Override
             public void someUIErrorOccurred(String s) {
-                Toast.makeText(getContext(), "someUIErrorOccurred : "+s, Toast.LENGTH_SHORT).show();
-                Log.d(TAG,"someUIErrorOccurred : "+s);
+                Toast.makeText(getContext(), "someUIErrorOccurred : " + s, Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "someUIErrorOccurred : " + s);
             }
 
             @Override
             public void onErrorLoadingWebPage(int i, String s, String s1) {
-                Toast.makeText(getContext(), "onErrorLoadingWebPage : "+" s "+s +" S1 : "+s1, Toast.LENGTH_SHORT).show();
-                Log.d(TAG,"onErrorLoadingWebPage : "+" s "+s +" S1 : "+s1);
+                Toast.makeText(getContext(), "onErrorLoadingWebPage : " + " s " + s + " S1 : " + s1, Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "onErrorLoadingWebPage : " + " s " + s + " S1 : " + s1);
             }
 
             @Override
             public void onBackPressedCancelTransaction() {
                 Toast.makeText(getContext(), "onBackPressedCancelTransaction : ", Toast.LENGTH_SHORT).show();
-                Log.d(TAG,"onBackPressedCancelTransaction : ");
+                Log.d(TAG, "onBackPressedCancelTransaction : ");
             }
 
             @Override
             public void onTransactionCancel(String s, Bundle bundle) {
-                Toast.makeText(getContext(), "onTransactionCancel : "+" s "+s +" Bundle : "+bundle.toString(), Toast.LENGTH_SHORT).show();
-                Log.d(TAG,"onTransactionCancel : "+s +" Bundle : "+bundle.toString());
+                Toast.makeText(getContext(), "onTransactionCancel : " + " s " + s + " Bundle : " + bundle.toString(), Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "onTransactionCancel : " + s + " Bundle : " + bundle.toString());
             }
         });
 
@@ -354,6 +362,7 @@ public class PaymentFragment extends Fragment {
             Toast.makeText(getActivity(), data.getStringExtra("nativeSdkForMerchantMessage") + data.getStringExtra("response"), Toast.LENGTH_SHORT).show();
         }
     }
+
     public void getNotification(String order_id) {
         Log.d("confirmorder", "Nmethod");
         RetrofitApi api = BaseClient.getClient().create(RetrofitApi.class);
@@ -443,7 +452,7 @@ public class PaymentFragment extends Fragment {
         RetrofitApi api = BaseClient.getClient().create(RetrofitApi.class);
 
         Call<OrderStatusModel>
-                call = api.postOrderDetails(PreferenceManager.getCustomerId(), order_id, amount, address, "1111", "1111", "1111");
+                call = api.postOrderDetails(PreferenceManager.getCustomerId(), order_id, amount, address, lat.toString(), String.valueOf(lat.latitude), String.valueOf(lat.longitude));
         Toast.makeText(getContext(), PreferenceManager.getCustomerId(), Toast.LENGTH_SHORT).show();
         call.enqueue(new Callback<OrderStatusModel>() {
 
@@ -470,5 +479,32 @@ public class PaymentFragment extends Fragment {
 
             }
         });
+    }
+
+    public LatLng getLocationFromAddress(Context context, String strAddress) {
+
+        Geocoder coder = new Geocoder(context);
+        List<Address> address;
+        LatLng p1 = null;
+
+        try {
+            // May throw an IOException
+            address = coder.getFromLocationName(strAddress, 5);
+            if (address == null) {
+                return null;
+            }
+
+            Address location = address.get(0);
+            p1 = new LatLng(location.getLatitude(), location.getLongitude());
+
+        } catch (IOException ex) {
+
+            ex.printStackTrace();
+        }
+
+        // Toast.makeText(context, "this is"+p1.toString(), Toast.LENGTH_SHORT).show();
+        Log.d("LATLANG", "this is" + p1.toString());
+
+        return p1;
     }
 }

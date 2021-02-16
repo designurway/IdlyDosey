@@ -10,7 +10,7 @@ public class RegisterFragmentDirections {
   }
 
   @NonNull
-  public static NavDirections actionRegisterFragmentToProfileFragment() {
-    return new ActionOnlyNavDirections(R.id.action_registerFragment_to_profileFragment);
+  public static NavDirections actionRegisterFragmentToSelectLocationFragment() {
+    return new ActionOnlyNavDirections(R.id.action_registerFragment_to_selectLocationFragment);
   }
 }

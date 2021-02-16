@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
@@ -19,6 +20,8 @@ public class HomePageActivity extends AppCompatActivity {
     BottomNavigationView bottomView;
     Toolbar homeToolBar;
     NavController navController;
+    NavigationUI navigationUI;
+    AppBarConfiguration appBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +34,18 @@ public class HomePageActivity extends AppCompatActivity {
         homeToolBar = binding.homeToolBar;
         setSupportActionBar(homeToolBar);
 
-        navController = Navigation.findNavController(this,R.id.homeNavHostFragment);
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.homeNavHostFragment);
+        navController = navHostFragment.getNavController();
 
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
+
+//        navController = Navigation.findNavController(this,R.id.homeNavHostFragment);
+
+         appBarConfiguration = new AppBarConfiguration.Builder(
             R.id.homeFragment,R.id.viewCartItemsFragment,R.id.settingsFragment,R.id.profileFragment4
         ).build();
 
-        NavigationUI.setupActionBarWithNavController(this,navController,appBarConfiguration);
+        //Setting toolbar
+        navigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
         //Bottom navigation
         NavigationUI.setupWithNavController(bottomView,navController);
@@ -45,4 +53,14 @@ public class HomePageActivity extends AppCompatActivity {
 
 
     }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        // for navDrawer
+        NavController navController = Navigation.findNavController(this, R.id.homeNavHostFragment);
+        return NavigationUI.navigateUp(navController, appBarConfiguration) || super.onSupportNavigateUp();
+        //for bottom navigation only
+//        return navController.navigateUp() || super.onSupportNavigateUp();
+    }
+
 }

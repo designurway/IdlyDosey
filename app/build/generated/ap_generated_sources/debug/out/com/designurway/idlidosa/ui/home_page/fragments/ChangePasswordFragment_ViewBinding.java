@@ -15,7 +15,7 @@ import java.lang.Override;
 public class ChangePasswordFragment_ViewBinding implements Unbinder {
   private ChangePasswordFragment target;
 
-  private View view7f0a02c2;
+  private View view7f0a02f4;
 
   @UiThread
   public ChangePasswordFragment_ViewBinding(final ChangePasswordFragment target, View source) {
@@ -26,7 +26,7 @@ public class ChangePasswordFragment_ViewBinding implements Unbinder {
     target.newPwdEt = Utils.findRequiredViewAsType(source, R.id.new_pwd_et, "field 'newPwdEt'", EditText.class);
     target.confirmPwdEt = Utils.findRequiredViewAsType(source, R.id.confirm_pwd_et, "field 'confirmPwdEt'", EditText.class);
     view = Utils.findRequiredView(source, R.id.submit_btn, "method 'submitData'");
-    view7f0a02c2 = view;
+    view7f0a02f4 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -46,7 +46,7 @@ public class ChangePasswordFragment_ViewBinding implements Unbinder {
     target.newPwdEt = null;
     target.confirmPwdEt = null;
 
-    view7f0a02c2.setOnClickListener(null);
-    view7f0a02c2 = null;
+    view7f0a02f4.setOnClickListener(null);
+    view7f0a02f4 = null;
   }
 }

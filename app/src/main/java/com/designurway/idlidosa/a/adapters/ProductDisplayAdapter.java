@@ -62,7 +62,8 @@ public class ProductDisplayAdapter extends RecyclerView.Adapter<ProductDisplayAd
     public void onBindViewHolder(@NonNull Vholder holder, int position) {
 
         holder.title_txt.setText(menudtailsmodel.get(position).getProduct_name());
-        holder.txt_rupees.setText(menudtailsmodel.get(position).getPrice());
+        holder.txt_rupees.setText(String.valueOf(menudtailsmodel.get(position).getPrice()));
+
         holder.item_qty_tv.setText(String.valueOf(menudtailsmodel.get(position).getOrder_qty()));
 //        holder.btn_addTocart.setText(menudtailsmodel.get(position).);
         qnty = Integer.valueOf(menudtailsmodel.get(position).getOrder_qty());
@@ -119,6 +120,8 @@ public class ProductDisplayAdapter extends RecyclerView.Adapter<ProductDisplayAd
         holder.btn_addTocart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                holder.txt_rupees.setText(String.valueOf(Integer.valueOf(menudtailsmodel.get(position).getPrice()) * Integer.valueOf(menudtailsmodel.get(position).getOrder_qty())));
+
                 if (menudtailsmodel.get(position).getProduct_present().contains("yes")) {
                     holder.btn_addTocart.setText("Already In Cart");
                     holder.linear_button.setVisibility(View.GONE);
@@ -126,9 +129,10 @@ public class ProductDisplayAdapter extends RecyclerView.Adapter<ProductDisplayAd
                 }else{
                     amount = Integer.valueOf(menudtailsmodel.get(position).getPrice());
                     holder.linear_button.setVisibility(View.VISIBLE);
-                    AddToCart(String.valueOf(amount), String.valueOf(holder.item_qty_tv.getText()), menudtailsmodel.get(position).getProduct_id(), holder.btn_addTocart);
+                    AddToCart(String.valueOf(amount *Integer.valueOf(holder.item_qty_tv.getText().toString())), String.valueOf(holder.item_qty_tv.getText()), menudtailsmodel.get(position).getProduct_id(), holder.btn_addTocart);
                     holder.btn_addTocart.setVisibility(View.GONE);
                     setFragmentTransaction.sendView(position,holder.itemView);
+
                 }
             }
         });

@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 
 import android.provider.MediaStore;
 import android.util.Log;
@@ -31,6 +32,7 @@ import com.designurway.idlidosa.a.utils.AndroidUtils;
 import com.designurway.idlidosa.a.utils.PreferenceManager;
 import com.designurway.idlidosa.databinding.FragmentProfileBinding;
 import com.designurway.idlidosa.ui.home_page.HomePageActivity;
+import com.google.android.libraries.places.api.Places;
 import com.google.android.material.textfield.TextInputEditText;
 import com.itextpdf.text.pdf.codec.Base64;
 import com.squareup.picasso.Picasso;
@@ -60,7 +62,8 @@ public class ProfileFragment extends Fragment {
     String path;
     Uri imageUri;
     Bitmap bitmap;
-    String phone;
+    String phone,address;
+    ProfileFragmentArgs args;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -86,6 +89,10 @@ public class ProfileFragment extends Fragment {
         saveBtn = binding.saveBtn;
         iv_camera = binding.ivCamera;
         profileImageCiv = binding.personPicImgv;
+
+        args = ProfileFragmentArgs.fromBundle(getArguments());
+        address = args.getAddress();
+        addressEt.setText(address);
 
         setProfileDetails();
 
@@ -119,8 +126,7 @@ public class ProfileFragment extends Fragment {
                     emailEt.setText(email);
                     String phoneNum = model.getPhone();
                     phoneEt.setText(phoneNum);
-                    String address = model.getHomeAddress();
-                    addressEt.setText(address);
+
                     String name = model.getName();
                     userNameTv.setText(name);
                     if (model.getProfileImage().isEmpty()) {
@@ -188,6 +194,7 @@ public class ProfileFragment extends Fragment {
                     Intent intent = new Intent(getContext(), HomePageActivity.class);
                     startActivity(intent);
                     getActivity().finish();
+
                 } else {
 
                     Log.d(TAG, "no Data");

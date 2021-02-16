@@ -49,7 +49,7 @@ public class PaymentSucessfulFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = FragmentPaymentSucessfulBinding.inflate(inflater,container,false);
+        binding = FragmentPaymentSucessfulBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
@@ -63,15 +63,17 @@ public class PaymentSucessfulFragment extends Fragment {
         transactionID = binding.transactionID;
         paymentSucessBtn = binding.paymentSucessBtn;
 
+        Toast.makeText(getContext(), jsonString, Toast.LENGTH_SHORT).show();
 
-            paymentSucessBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(getContext(), "Button Clicked", Toast.LENGTH_SHORT).show();
-                    action = PaymentSucessfulFragmentDirections.actionPaymentSucessfulFragmentToHomeFragment();
-                    Navigation.findNavController(getView()).navigate(action);
-                }
-            });
+        paymentSucessBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                action = PaymentSucessfulFragmentDirections.actionPaymentSucessfulFragmentToHomeFragment();
+                Navigation.findNavController(getView()).navigate(action);
+            }
+        });
 
 
     }

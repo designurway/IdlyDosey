@@ -53,8 +53,8 @@
     <fragment
         android:id="@+id/displayProductFragment"
         android:name="com.designurway.idlidosa.ui.home_page.fragments.DisplayProductFragment"
-        android:label="fragment_display_product"
-        tools:layout="@layout/fragment_display_product" >
+        android:label="Products"
+        tools:layout="@layout/fragment_display_product">
         <argument
             android:name="ItemType"
             app:argType="string" />
@@ -65,8 +65,8 @@
     <fragment
         android:id="@+id/productDetailfragment"
         android:name="com.designurway.idlidosa.ui.home_page.fragments.ProductDetailfragment"
-        android:label="fragment_product_detailfragment"
-        tools:layout="@layout/fragment_product_detailfragment" >
+        android:label="Product Details"
+        tools:layout="@layout/fragment_product_detailfragment">
         <argument
             android:name="productId"
             app:argType="string" />
@@ -77,8 +77,8 @@
     <fragment
         android:id="@+id/addressBookFragment"
         android:name="com.designurway.idlidosa.ui.home_page.fragments.AddressBookFragment"
-        android:label="fragment_address_book"
-        tools:layout="@layout/fragment_address_book" >
+        android:label="Address Book"
+        tools:layout="@layout/fragment_address_book">
         <action
             android:id="@+id/action_addressBookFragment_to_paymentFragment"
             app:destination="@id/paymentFragment" />
@@ -101,8 +101,8 @@
     <fragment
         android:id="@+id/paymentFragment"
         android:name="com.designurway.idlidosa.ui.home_page.fragments.PaymentFragment"
-        android:label="fragment_payment"
-        tools:layout="@layout/fragment_payment" >
+        android:label="Proceed To Pay"
+        tools:layout="@layout/fragment_payment">
         <action
             android:id="@+id/action_paymentFragment_to_paymentSucessfulFragment"
             app:destination="@id/paymentSucessfulFragment" />
@@ -121,11 +121,13 @@
         <argument
             android:name="comboId"
             app:argType="string" />
-        <argument android:name="productId"
+        <argument
+            android:name="productId"
             app:argType="string" />
         <action
             android:id="@+id/action_paymentFragment_to_googlePayFragment"
-            app:destination="@id/googlePayFragment" />
+            app:destination="@id/googlePayFragment"
+            app:launchSingleTop="true" />
         <argument
             android:name="orderId"
             app:argType="string" />
@@ -133,8 +135,8 @@
     <fragment
         android:id="@+id/paymentSucessfulFragment"
         android:name="com.designurway.idlidosa.ui.home_page.fragments.PaymentSucessfulFragment"
-        android:label="fragment_payment_sucessful"
-        tools:layout="@layout/fragment_payment_sucessful" >
+        android:label="Payment Successful"
+        tools:layout="@layout/fragment_payment_sucessful">
         <action
             android:id="@+id/action_paymentSucessfulFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
@@ -145,13 +147,13 @@
     <fragment
         android:id="@+id/orderHistoryFragment"
         android:name="com.designurway.idlidosa.ui.home_page.fragments.OrderHistoryFragment"
-        android:label="fragment_order_history"
+        android:label="History"
         tools:layout="@layout/fragment_order_history" />
     <fragment
         android:id="@+id/trackOrderFragment"
         android:name="com.designurway.idlidosa.ui.home_page.fragments.TrackOrderFragment"
-        android:label="fragment_track_order"
-        tools:layout="@layout/fragment_track_order" >
+        android:label="Track Order"
+        tools:layout="@layout/fragment_track_order">
         <argument
             android:name="orderId"
             app:argType="string" />
@@ -162,8 +164,8 @@
     <fragment
         android:id="@+id/receiveComboFragment"
         android:name="com.designurway.idlidosa.ui.home_page.fragments.ReceiveComboFragment"
-        android:label="fragment_receive_combo"
-        tools:layout="@layout/fragment_receive_combo" >
+        android:label="Free Combo"
+        tools:layout="@layout/fragment_receive_combo">
         <action
             android:id="@+id/action_receiveComboFragment_to_reciveComboAddressFragment"
             app:destination="@id/reciveComboAddressFragment" />
@@ -171,18 +173,18 @@
     <fragment
         android:id="@+id/referFriendFragment"
         android:name="com.designurway.idlidosa.ui.home_page.fragments.ReferFriendFragment"
-        android:label="fragment_refer_friend"
+        android:label="Refer Friends"
         tools:layout="@layout/fragment_refer_friend" />
     <fragment
         android:id="@+id/supportFragment"
         android:name="com.designurway.idlidosa.ui.home_page.fragments.SupportFragment"
-        android:label="fragment_support"
+        android:label="Support"
         tools:layout="@layout/fragment_support" />
     <fragment
         android:id="@+id/changeAddressFragment"
         android:name="com.designurway.idlidosa.ui.home_page.fragments.ChangeAddressFragment"
-        android:label="fragment_change_address"
-        tools:layout="@layout/fragment_change_address" >
+        android:label="Edit Address"
+        tools:layout="@layout/fragment_change_address">
         <argument
             android:name="Address"
             app:argType="string" />
@@ -193,8 +195,8 @@
     <fragment
         android:id="@+id/profileFragment4"
         android:name="com.designurway.idlidosa.ui.home_page.fragments.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" >
+        android:label="Edit Profile"
+        tools:layout="@layout/fragment_profile">
         <action
             android:id="@+id/action_profileFragment4_to_homeFragment"
             app:destination="@id/homeFragment" />
@@ -202,12 +204,13 @@
     <fragment
         android:id="@+id/reciveComboAddressFragment"
         android:name="com.designurway.idlidosa.ui.home_page.fragments.ReciveComboAddressFragment"
-        android:label="fragment_recive_combo_address"
-        tools:layout="@layout/fragment_recive_combo_address" >
+        android:label="Address"
+        tools:layout="@layout/fragment_recive_combo_address">
         <argument
             android:name="comboId"
             app:argType="string" />
-        <argument android:name="productId"
+        <argument
+            android:name="productId"
             app:argType="string" />
         <action
             android:id="@+id/action_reciveComboAddressFragment_to_paymentFragment"
@@ -227,12 +230,18 @@
         <argument
             android:name="amount"
             app:argType="string" />
+        <argument
+            android:name="Address"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_googlePayFragment_to_paymentSucessfulFragment"
+            app:destination="@id/paymentSucessfulFragment" />
     </fragment>
     <fragment
         android:id="@+id/trackOrderListFragment"
         android:name="com.designurway.idlidosa.ui.home_page.fragments.TrackOrderListFragment"
-        android:label="fragment_track_order_list"
-        tools:layout="@layout/fragment_track_order_list" >
+        android:label="Your Orders"
+        tools:layout="@layout/fragment_track_order_list">
         <action
             android:id="@+id/action_trackOrderListFragment_to_trackOrderFragment"
             app:destination="@id/trackOrderFragment" />
@@ -265,8 +274,8 @@
     <fragment
         android:id="@+id/emergencyFragment"
         android:name="com.designurway.idlidosa.ui.home_page.fragments.EmergencyFragment"
-        android:label="fragment_emergency"
-        tools:layout="@layout/fragment_emergency" >
+        android:label="Emergency "
+        tools:layout="@layout/fragment_emergency">
         <action
             android:id="@+id/action_emergencyFragment_to_viewCartItemsFragment2"
             app:destination="@id/viewCartItemsFragment" />

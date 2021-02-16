@@ -1,9 +1,13 @@
 package com.designurway.idlidosa.ui.auth.fragment;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -73,7 +77,7 @@ public class RegisterFragment extends Fragment {
         signUpBtn =binding.signUpBtn;
 
         phoneEt.setText(referredFrom);
-
+        permission();
         return view;
     }
 
@@ -152,7 +156,7 @@ public class RegisterFragment extends Fragment {
                     Log.d(TAG, "referredname" + name);
                     PreferenceManager.saveCustomerReferred(referredFrom);
 
-                    action = RegisterFragmentDirections.actionRegisterFragmentToProfileFragment();
+                    action = RegisterFragmentDirections.actionRegisterFragmentToSelectLocationFragment();
                     Navigation.findNavController(getView()).navigate(action);
 
 
@@ -212,6 +216,61 @@ public class RegisterFragment extends Fragment {
 
             }
         });
+    }
+
+    public void permission(){
+        if (ContextCompat.checkSelfPermission(getActivity()
+                , Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(getActivity()
+                        , Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(getActivity()
+                        , Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(getActivity()
+                        , Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
+        } else {
+            // if the permission is not granted yet. we want to request this permission
+            requestContactPermission();
+        }
+    }
+    private void requestContactPermission() {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) &&
+                ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.CAMERA) &&
+                ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.READ_PHONE_STATE) &&
+                ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            // This method will show user a dialog which explain why we need this permission
+            //this happen when user already denied the permission before and tries to acess it again
+
+//            new AlertDialog.Builder(getActivity())
+//                    .setTitle("IdlyDosey needed")
+//                    .setMessage("Grant Permission to Continue")
+//                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+            ActivityCompat.requestPermissions(getActivity(),
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
+                            Manifest.permission.CAMERA
+                            ,Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                            Manifest.permission.READ_EXTERNAL_STORAGE,
+                            Manifest.permission.READ_PHONE_STATE}, 2);
+
+//                        }
+//                    })
+//                    .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            //when this cancle butoon is clicke we need to dismiss the dialog
+//                            dialog.dismiss();
+//                        }
+//                    }).create().show();
+        } else {
+            //Request permission
+            ActivityCompat.requestPermissions(getActivity(),
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.CAMERA,
+                            Manifest.permission.READ_EXTERNAL_STORAGE
+                            ,Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                            Manifest.permission.READ_PHONE_STATE}, 2);
+
+        }
     }
 
 }

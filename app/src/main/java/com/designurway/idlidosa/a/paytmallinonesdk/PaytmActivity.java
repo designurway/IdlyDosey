@@ -63,6 +63,8 @@ public class PaytmActivity extends AppCompatActivity {
     TextView paymtAmount;
     Button paytmPay;
     LatLng lat;
+    String orderId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +74,7 @@ public class PaytmActivity extends AppCompatActivity {
         paymtAmount = findViewById(R.id.paymtAmount);
 
         Bundle bundle = getIntent().getExtras();
+
         amount = bundle.getString("amount");
         address = bundle.getString("address");
 
@@ -91,10 +94,13 @@ public class PaytmActivity extends AppCompatActivity {
         int randomNum = rand.nextInt((max - min) + 1) + min;
         orderIdString = date + randomNum;
 
+        orderId =  AndroidUtils.randomName(5);
+
         paytmPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getToken();
+//                ConfromOrder();
 
 
             }
@@ -307,37 +313,46 @@ public class PaytmActivity extends AppCompatActivity {
         Toast.makeText(this, "LatLangg : "+lat, Toast.LENGTH_SHORT).show();
 
         Log.d("confirmorder", "method");
-        String order_id = AndroidUtils.randomName(5);
+
         RetrofitApi api = BaseClient.getClient().create(RetrofitApi.class);
+        Log.d("OrderId",orderId);
+        Log.d("OrderId",address);
+        Log.d("OrderId",lat.toString());
 
-        Call<OrderStatusModel>
-                call = api.postOrderDetails(PreferenceManager.getCustomerId(), order_id, amount, address,String.valueOf(lat) , String.valueOf(lat.latitude), String.valueOf(lat.longitude));
-        Toast.makeText(PaytmActivity.this, PreferenceManager.getCustomerId(), Toast.LENGTH_SHORT).show();
-        call.enqueue(new Callback<OrderStatusModel>() {
+        if (!address.equals("")) {
+            Call<OrderStatusModel>
+                    call = api.postOrderDetails(PreferenceManager.getCustomerId(), orderId, amount, address, String.valueOf(lat), String.valueOf(lat.latitude), String.valueOf(lat.longitude));
 
-            @Override
-            public void onResponse(Call<OrderStatusModel> call, Response<OrderStatusModel> response) {
-                Log.d("confirmorder", "success");
-                if (response.isSuccessful()) {
+            Toast.makeText(PaytmActivity.this, PreferenceManager.getCustomerId(), Toast.LENGTH_SHORT).show();
+            call.enqueue(new Callback<OrderStatusModel>() {
+
+                @Override
+                public void onResponse(Call<OrderStatusModel> call, Response<OrderStatusModel> response) {
                     Log.d("confirmorder", "success");
-                    OrderStatusModel orderStatusModel = response.body();
+                    if (response.isSuccessful()) {
+                        Log.d("confirmorder", "success");
+                        OrderStatusModel orderStatusModel = response.body();
 
-                    getNotification(order_id);
+                        getNotification(orderId);
 
-                    Toast.makeText(PaytmActivity.this, orderStatusModel.getMessage(), Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(PaytmActivity.this, response.message(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(PaytmActivity.this, orderStatusModel.getMessage(), Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(PaytmActivity.this, response.message(), Toast.LENGTH_SHORT).show();
+
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<OrderStatusModel> call, Throwable t) {
+                    Log.d(TAG, "onFailure" + t.getMessage());
+
 
                 }
-            }
+            });
 
-            @Override
-            public void onFailure(Call<OrderStatusModel> call, Throwable t) {
-                Log.d(TAG, "onFailure" + t.getMessage());
-
-
-            }
-        });
+        }else {
+            Toast.makeText(this, "Address is Empty", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void getNotification(String order_id) {

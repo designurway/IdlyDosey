@@ -5,11 +5,11 @@ INJECTED from E:\AndroidProject\Pankaj\IdlyDosey\app\src\main\AndroidManifest.xm
 INJECTED from E:\AndroidProject\Pankaj\IdlyDosey\app\src\main\AndroidManifest.xml:2:1-78:12
 INJECTED from E:\AndroidProject\Pankaj\IdlyDosey\app\src\main\AndroidManifest.xml:2:1-78:12
 MERGED from [androidx.databinding:viewbinding:4.1.2] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\8d3d689a4cbe28ca1151dd34007ecf4a\jetified-viewbinding-4.1.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-ui:2.3.3] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\09c4e6f85ff40527948fe87dba4d12b5\navigation-ui-2.3.3\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.material:material:1.3.0] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\1e7fc4b120d4267d4218ac912580716f\material-1.3.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.paytm.appinvokesdk:appinvokesdk:1.2] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\3e593fe6b63bdc2922286b4311881920\jetified-appinvokesdk-1.2\AndroidManifest.xml:2:1-35:12
 MERGED from [com.paytm.easypay:easypay:8.7.3-appinvoke] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\c0dd4df6f90d765a8fc1cb3e0d5dca20\jetified-easypay-8.7.3-appinvoke\AndroidManifest.xml:2:1-27:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\65b7959e5c8736c05ee9a434714a2220\constraintlayout-2.0.4\AndroidManifest.xml:2:1-11:12
-MERGED from [androidx.navigation:navigation-ui:2.3.3] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\09c4e6f85ff40527948fe87dba4d12b5\navigation-ui-2.3.3\AndroidManifest.xml:17:1-24:12
-MERGED from [com.google.android.material:material:1.2.1] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\3ffb6a5274c47f3c2b41fd4cbd7066ee\material-1.2.1\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.libraries.places:places:2.4.0] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\49d9a80a33d1b3ce831b140985fadc31\jetified-places-2.4.0\AndroidManifest.xml:2:1-23:12
 MERGED from [com.airbnb.android:lottie:3.3.0] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\8690d4ddc3165a9fd32ea0a8b22b8449\jetified-lottie-3.3.0\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat:1.2.0] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\ac8dc240a74d2e7e3021f545ef5568a7\appcompat-1.2.0\AndroidManifest.xml:17:1-24:12
@@ -29,6 +29,7 @@ MERGED from [androidx.appcompat:appcompat-resources:1.2.0] C:\Users\SR00161\.gra
 MERGED from [androidx.media:media:1.0.0] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\290547551059ec4c9099b40087cf33d3\media-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-iid:21.0.1] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\f3c724cf86af9c64f86515954ffa6dda\jetified-firebase-iid-21.0.1\AndroidManifest.xml:17:1-47:12
 MERGED from [com.google.android.gms:play-services-stats:17.0.0] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\f84d486791bd3341d6448e316ec386f0\jetified-play-services-stats-17.0.0\AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\d5fbf6c8736b744bfae4cf4aa960bd80\dynamicanimation-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\f630345b2f69d436d8c221b49dab4db0\legacy-support-core-utils-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.jakewharton:butterknife-runtime:10.0.0] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\effaca2df01287baab3a89dcf80b45ee\jetified-butterknife-runtime-10.0.0\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\0cfa84145beeb754de2c3ac7acca9d15\coordinatorlayout-1.1.0\AndroidManifest.xml:17:1-24:12
@@ -178,14 +179,14 @@ MERGED from [com.paytm.easypay:easypay:8.7.3-appinvoke] C:\Users\SR00161\.gradle
 		ADDED from E:\AndroidProject\Pankaj\IdlyDosey\app\src\main\AndroidManifest.xml:17:22-72
 application
 ADDED from E:\AndroidProject\Pankaj\IdlyDosey\app\src\main\AndroidManifest.xml:19:5-76:19
+MERGED from [com.google.android.material:material:1.3.0] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\1e7fc4b120d4267d4218ac912580716f\material-1.3.0\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.3.0] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\1e7fc4b120d4267d4218ac912580716f\material-1.3.0\AndroidManifest.xml:22:5-20
 MERGED from [com.paytm.appinvokesdk:appinvokesdk:1.2] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\3e593fe6b63bdc2922286b4311881920\jetified-appinvokesdk-1.2\AndroidManifest.xml:13:5-33:19
 MERGED from [com.paytm.appinvokesdk:appinvokesdk:1.2] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\3e593fe6b63bdc2922286b4311881920\jetified-appinvokesdk-1.2\AndroidManifest.xml:13:5-33:19
 MERGED from [com.paytm.easypay:easypay:8.7.3-appinvoke] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\c0dd4df6f90d765a8fc1cb3e0d5dca20\jetified-easypay-8.7.3-appinvoke\AndroidManifest.xml:13:5-25:19
 MERGED from [com.paytm.easypay:easypay:8.7.3-appinvoke] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\c0dd4df6f90d765a8fc1cb3e0d5dca20\jetified-easypay-8.7.3-appinvoke\AndroidManifest.xml:13:5-25:19
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\65b7959e5c8736c05ee9a434714a2220\constraintlayout-2.0.4\AndroidManifest.xml:9:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\65b7959e5c8736c05ee9a434714a2220\constraintlayout-2.0.4\AndroidManifest.xml:9:5-20
-MERGED from [com.google.android.material:material:1.2.1] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\3ffb6a5274c47f3c2b41fd4cbd7066ee\material-1.2.1\AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.material:material:1.2.1] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\3ffb6a5274c47f3c2b41fd4cbd7066ee\material-1.2.1\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.libraries.places:places:2.4.0] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\49d9a80a33d1b3ce831b140985fadc31\jetified-places-2.4.0\AndroidManifest.xml:13:5-21:19
 MERGED from [com.google.android.libraries.places:places:2.4.0] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\49d9a80a33d1b3ce831b140985fadc31\jetified-places-2.4.0\AndroidManifest.xml:13:5-21:19
 MERGED from [com.airbnb.android:lottie:3.3.0] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\8690d4ddc3165a9fd32ea0a8b22b8449\jetified-lottie-3.3.0\AndroidManifest.xml:9:5-20
@@ -356,16 +357,16 @@ INJECTED from E:\AndroidProject\Pankaj\IdlyDosey\app\src\main\AndroidManifest.xm
 INJECTED from E:\AndroidProject\Pankaj\IdlyDosey\app\src\main\AndroidManifest.xml
 MERGED from [androidx.databinding:viewbinding:4.1.2] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\8d3d689a4cbe28ca1151dd34007ecf4a\jetified-viewbinding-4.1.2\AndroidManifest.xml:20:5-44
 MERGED from [androidx.databinding:viewbinding:4.1.2] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\8d3d689a4cbe28ca1151dd34007ecf4a\jetified-viewbinding-4.1.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-ui:2.3.3] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\09c4e6f85ff40527948fe87dba4d12b5\navigation-ui-2.3.3\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-ui:2.3.3] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\09c4e6f85ff40527948fe87dba4d12b5\navigation-ui-2.3.3\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.material:material:1.3.0] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\1e7fc4b120d4267d4218ac912580716f\material-1.3.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.3.0] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\1e7fc4b120d4267d4218ac912580716f\material-1.3.0\AndroidManifest.xml:20:5-44
 MERGED from [com.paytm.appinvokesdk:appinvokesdk:1.2] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\3e593fe6b63bdc2922286b4311881920\jetified-appinvokesdk-1.2\AndroidManifest.xml:7:5-44
 MERGED from [com.paytm.appinvokesdk:appinvokesdk:1.2] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\3e593fe6b63bdc2922286b4311881920\jetified-appinvokesdk-1.2\AndroidManifest.xml:7:5-44
 MERGED from [com.paytm.easypay:easypay:8.7.3-appinvoke] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\c0dd4df6f90d765a8fc1cb3e0d5dca20\jetified-easypay-8.7.3-appinvoke\AndroidManifest.xml:5:5-7:41
 MERGED from [com.paytm.easypay:easypay:8.7.3-appinvoke] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\c0dd4df6f90d765a8fc1cb3e0d5dca20\jetified-easypay-8.7.3-appinvoke\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\65b7959e5c8736c05ee9a434714a2220\constraintlayout-2.0.4\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\65b7959e5c8736c05ee9a434714a2220\constraintlayout-2.0.4\AndroidManifest.xml:5:5-7:41
-MERGED from [androidx.navigation:navigation-ui:2.3.3] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\09c4e6f85ff40527948fe87dba4d12b5\navigation-ui-2.3.3\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.navigation:navigation-ui:2.3.3] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\09c4e6f85ff40527948fe87dba4d12b5\navigation-ui-2.3.3\AndroidManifest.xml:20:5-22:41
-MERGED from [com.google.android.material:material:1.2.1] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\3ffb6a5274c47f3c2b41fd4cbd7066ee\material-1.2.1\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.material:material:1.2.1] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\3ffb6a5274c47f3c2b41fd4cbd7066ee\material-1.2.1\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.libraries.places:places:2.4.0] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\49d9a80a33d1b3ce831b140985fadc31\jetified-places-2.4.0\AndroidManifest.xml:7:5-44
 MERGED from [com.google.android.libraries.places:places:2.4.0] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\49d9a80a33d1b3ce831b140985fadc31\jetified-places-2.4.0\AndroidManifest.xml:7:5-44
 MERGED from [com.airbnb.android:lottie:3.3.0] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\8690d4ddc3165a9fd32ea0a8b22b8449\jetified-lottie-3.3.0\AndroidManifest.xml:5:5-7:41
@@ -404,6 +405,8 @@ MERGED from [com.google.firebase:firebase-iid:21.0.1] C:\Users\SR00161\.gradle\c
 MERGED from [com.google.firebase:firebase-iid:21.0.1] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\f3c724cf86af9c64f86515954ffa6dda\jetified-firebase-iid-21.0.1\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-stats:17.0.0] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\f84d486791bd3341d6448e316ec386f0\jetified-play-services-stats-17.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-stats:17.0.0] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\f84d486791bd3341d6448e316ec386f0\jetified-play-services-stats-17.0.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\d5fbf6c8736b744bfae4cf4aa960bd80\dynamicanimation-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\d5fbf6c8736b744bfae4cf4aa960bd80\dynamicanimation-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\f630345b2f69d436d8c221b49dab4db0\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\f630345b2f69d436d8c221b49dab4db0\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.jakewharton:butterknife-runtime:10.0.0] C:\Users\SR00161\.gradle\caches\transforms-2\files-2.1\effaca2df01287baab3a89dcf80b45ee\jetified-butterknife-runtime-10.0.0\AndroidManifest.xml:5:5-44

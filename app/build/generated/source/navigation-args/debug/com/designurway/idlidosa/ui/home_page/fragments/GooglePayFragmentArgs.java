@@ -45,6 +45,16 @@ public class GooglePayFragmentArgs implements NavArgs {
     } else {
       throw new IllegalArgumentException("Required argument \"amount\" is missing and does not have an android:defaultValue");
     }
+    if (bundle.containsKey("Address")) {
+      String Address;
+      Address = bundle.getString("Address");
+      if (Address == null) {
+        throw new IllegalArgumentException("Argument \"Address\" is marked as non-null but was passed a null value.");
+      }
+      __result.arguments.put("Address", Address);
+    } else {
+      throw new IllegalArgumentException("Required argument \"Address\" is missing and does not have an android:defaultValue");
+    }
     return __result;
   }
 
@@ -62,6 +72,12 @@ public class GooglePayFragmentArgs implements NavArgs {
 
   @SuppressWarnings("unchecked")
   @NonNull
+  public String getAddress() {
+    return (String) arguments.get("Address");
+  }
+
+  @SuppressWarnings("unchecked")
+  @NonNull
   public Bundle toBundle() {
     Bundle __result = new Bundle();
     if (arguments.containsKey("orderId")) {
@@ -71,6 +87,10 @@ public class GooglePayFragmentArgs implements NavArgs {
     if (arguments.containsKey("amount")) {
       String amount = (String) arguments.get("amount");
       __result.putString("amount", amount);
+    }
+    if (arguments.containsKey("Address")) {
+      String Address = (String) arguments.get("Address");
+      __result.putString("Address", Address);
     }
     return __result;
   }
@@ -96,6 +116,12 @@ public class GooglePayFragmentArgs implements NavArgs {
     if (getAmount() != null ? !getAmount().equals(that.getAmount()) : that.getAmount() != null) {
       return false;
     }
+    if (arguments.containsKey("Address") != that.arguments.containsKey("Address")) {
+      return false;
+    }
+    if (getAddress() != null ? !getAddress().equals(that.getAddress()) : that.getAddress() != null) {
+      return false;
+    }
     return true;
   }
 
@@ -104,6 +130,7 @@ public class GooglePayFragmentArgs implements NavArgs {
     int result = 1;
     result = 31 * result + (getOrderId() != null ? getOrderId().hashCode() : 0);
     result = 31 * result + (getAmount() != null ? getAmount().hashCode() : 0);
+    result = 31 * result + (getAddress() != null ? getAddress().hashCode() : 0);
     return result;
   }
 
@@ -112,6 +139,7 @@ public class GooglePayFragmentArgs implements NavArgs {
     return "GooglePayFragmentArgs{"
         + "orderId=" + getOrderId()
         + ", amount=" + getAmount()
+        + ", Address=" + getAddress()
         + "}";
   }
 
@@ -122,7 +150,7 @@ public class GooglePayFragmentArgs implements NavArgs {
       this.arguments.putAll(original.arguments);
     }
 
-    public Builder(@NonNull String orderId, @NonNull String amount) {
+    public Builder(@NonNull String orderId, @NonNull String amount, @NonNull String Address) {
       if (orderId == null) {
         throw new IllegalArgumentException("Argument \"orderId\" is marked as non-null but was passed a null value.");
       }
@@ -131,6 +159,10 @@ public class GooglePayFragmentArgs implements NavArgs {
         throw new IllegalArgumentException("Argument \"amount\" is marked as non-null but was passed a null value.");
       }
       this.arguments.put("amount", amount);
+      if (Address == null) {
+        throw new IllegalArgumentException("Argument \"Address\" is marked as non-null but was passed a null value.");
+      }
+      this.arguments.put("Address", Address);
     }
 
     @NonNull
@@ -157,6 +189,15 @@ public class GooglePayFragmentArgs implements NavArgs {
       return this;
     }
 
+    @NonNull
+    public Builder setAddress(@NonNull String Address) {
+      if (Address == null) {
+        throw new IllegalArgumentException("Argument \"Address\" is marked as non-null but was passed a null value.");
+      }
+      this.arguments.put("Address", Address);
+      return this;
+    }
+
     @SuppressWarnings("unchecked")
     @NonNull
     public String getOrderId() {
@@ -167,6 +208,12 @@ public class GooglePayFragmentArgs implements NavArgs {
     @NonNull
     public String getAmount() {
       return (String) arguments.get("amount");
+    }
+
+    @SuppressWarnings("unchecked")
+    @NonNull
+    public String getAddress() {
+      return (String) arguments.get("Address");
     }
   }
 }

@@ -1,6 +1,7 @@
 package com.designurway.idlidosa.ui.home_page.fragments;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -69,7 +70,7 @@ public class ProfileFragment extends Fragment {
     TextInputEditText addressFieldEt;
     NavDirections action;
     CircleImageView personPicImgv, ivCamera;
-
+    Context context;
     File file;
     String path;
     Uri imageUri;
@@ -81,6 +82,7 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentProfileBinding.inflate(inflater, container, false);
+        context = binding.addressFieldEt.getContext();
         return binding.getRoot();
     }
 
@@ -215,19 +217,20 @@ public class ProfileFragment extends Fragment {
                 @Override
                 public void onResponse(Call<ErrorMessageModel> call, Response<ErrorMessageModel> response) {
                     if (response.isSuccessful()) {
+
                         action = ProfileFragmentDirections.actionProfileFragment4ToHomeFragment();
                         Navigation.findNavController(getView()).navigate(action);
-                        Toast.makeText(getContext(), "Profile updated succesfully", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Profile updated succesfully", Toast.LENGTH_SHORT).show();
 
                     } else {
-                        Toast.makeText(getContext(), "fail", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "fail", Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 @Override
                 public void onFailure(Call<ErrorMessageModel> call, Throwable t) {
 
-                    Toast.makeText(getContext(), "On Failure "+t.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "On Failure "+t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         }

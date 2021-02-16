@@ -61,7 +61,7 @@
     <string name="home">Home</string>
     <string name="address_name">Lathesh</string>
     <string name="home_address">jp nagar,mysore</string>
-    <string name="phone_number">+919999999999</string>
+    <string name="phone_number">+919108471793</string>
     <string name="office">Office</string>
     <string name="date">2020-12-09</string>
     <string name="date_string">Date:</string>
@@ -112,4 +112,18 @@
     <string name="enter_amount"> Amount</string>
     <string name="rupess">\u20B9</string>
     <string name="title_activity_maps">Map</string>
+
+    <!--    Allow Location Activity String-->
+
+    <string name="allowLocationH2"> Set your location to start exploring \n world around you</string>
+
+    <string name="allowLocationH1"> Hi, nice to meet you!</string>
+
+    <string name="manualLocation">Search Location</string>
+
+    <string name="GpsTxt">Select Current Location</string>
+
+    <string name="ContactSubmitBtn">Submit</string>
+
+    <string name="allowTxt">We only access location while you are using the app to improve your order experience.</string>
 </resources>

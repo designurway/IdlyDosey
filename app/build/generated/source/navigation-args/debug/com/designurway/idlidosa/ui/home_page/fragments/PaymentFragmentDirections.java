@@ -23,8 +23,8 @@ public class PaymentFragmentDirections {
 
   @NonNull
   public static ActionPaymentFragmentToGooglePayFragment actionPaymentFragmentToGooglePayFragment(
-      @NonNull String orderId, @NonNull String amount) {
-    return new ActionPaymentFragmentToGooglePayFragment(orderId, amount);
+      @NonNull String orderId, @NonNull String amount, @NonNull String Address) {
+    return new ActionPaymentFragmentToGooglePayFragment(orderId, amount, Address);
   }
 
   public static class ActionPaymentFragmentToPaymentSucessfulFragment implements NavDirections {
@@ -111,7 +111,7 @@ public class PaymentFragmentDirections {
     private final HashMap arguments = new HashMap();
 
     private ActionPaymentFragmentToGooglePayFragment(@NonNull String orderId,
-        @NonNull String amount) {
+        @NonNull String amount, @NonNull String Address) {
       if (orderId == null) {
         throw new IllegalArgumentException("Argument \"orderId\" is marked as non-null but was passed a null value.");
       }
@@ -120,6 +120,10 @@ public class PaymentFragmentDirections {
         throw new IllegalArgumentException("Argument \"amount\" is marked as non-null but was passed a null value.");
       }
       this.arguments.put("amount", amount);
+      if (Address == null) {
+        throw new IllegalArgumentException("Argument \"Address\" is marked as non-null but was passed a null value.");
+      }
+      this.arguments.put("Address", Address);
     }
 
     @NonNull
@@ -140,6 +144,15 @@ public class PaymentFragmentDirections {
       return this;
     }
 
+    @NonNull
+    public ActionPaymentFragmentToGooglePayFragment setAddress(@NonNull String Address) {
+      if (Address == null) {
+        throw new IllegalArgumentException("Argument \"Address\" is marked as non-null but was passed a null value.");
+      }
+      this.arguments.put("Address", Address);
+      return this;
+    }
+
     @Override
     @SuppressWarnings("unchecked")
     @NonNull
@@ -152,6 +165,10 @@ public class PaymentFragmentDirections {
       if (arguments.containsKey("amount")) {
         String amount = (String) arguments.get("amount");
         __result.putString("amount", amount);
+      }
+      if (arguments.containsKey("Address")) {
+        String Address = (String) arguments.get("Address");
+        __result.putString("Address", Address);
       }
       return __result;
     }
@@ -171,6 +188,12 @@ public class PaymentFragmentDirections {
     @NonNull
     public String getAmount() {
       return (String) arguments.get("amount");
+    }
+
+    @SuppressWarnings("unchecked")
+    @NonNull
+    public String getAddress() {
+      return (String) arguments.get("Address");
     }
 
     @Override
@@ -194,6 +217,12 @@ public class PaymentFragmentDirections {
       if (getAmount() != null ? !getAmount().equals(that.getAmount()) : that.getAmount() != null) {
         return false;
       }
+      if (arguments.containsKey("Address") != that.arguments.containsKey("Address")) {
+        return false;
+      }
+      if (getAddress() != null ? !getAddress().equals(that.getAddress()) : that.getAddress() != null) {
+        return false;
+      }
       if (getActionId() != that.getActionId()) {
         return false;
       }
@@ -205,6 +234,7 @@ public class PaymentFragmentDirections {
       int result = 1;
       result = 31 * result + (getOrderId() != null ? getOrderId().hashCode() : 0);
       result = 31 * result + (getAmount() != null ? getAmount().hashCode() : 0);
+      result = 31 * result + (getAddress() != null ? getAddress().hashCode() : 0);
       result = 31 * result + getActionId();
       return result;
     }
@@ -214,6 +244,7 @@ public class PaymentFragmentDirections {
       return "ActionPaymentFragmentToGooglePayFragment(actionId=" + getActionId() + "){"
           + "orderId=" + getOrderId()
           + ", amount=" + getAmount()
+          + ", Address=" + getAddress()
           + "}";
     }
   }
