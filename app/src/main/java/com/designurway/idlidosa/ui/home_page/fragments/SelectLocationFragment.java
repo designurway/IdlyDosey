@@ -29,6 +29,7 @@ import com.designurway.idlidosa.ui.home_page.HomePageActivity;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.libraries.places.api.Places;
@@ -82,10 +83,10 @@ public class SelectLocationFragment extends Fragment {
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
 
-        SkipTxt.setOnClickListener(new View.OnClickListener() {
+        manualLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                List<Place.Field> fields = Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.ADDRESS, Place.Field.ADDRESS_COMPONENTS);
+                List<Place.Field> fields = Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.ADDRESS, Place.Field.ADDRESS_COMPONENTS, Place.Field.LAT_LNG);
 
                 // Start the autocomplete intent.
                 Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.FULLSCREEN, fields)
@@ -109,17 +110,35 @@ public class SelectLocationFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @org.jetbrains.annotations.Nullable Intent data) {
         if (requestCode == AUTOCOMPLETE_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
+
                 Place place = Autocomplete.getPlaceFromIntent(data);
 
-                Log.i(TAG, "Place: " + place.getName() + ", " + place.getId());
-                Toast.makeText(getContext(), "Place : " + place.getAddress(), Toast.LENGTH_SHORT).show();
+              LatLng latLng= place.getLatLng();
 
 
+                try {
+                    Geocoder geocoder = new Geocoder ( getActivity(), Locale.getDefault ( ) );
+                    List<Address> addresses = geocoder.getFromLocation ( place.getLatLng().latitude, place.getLatLng().longitude, 1 );
+
+                    if ( addresses != null && addresses.size ( ) > 0 ) {
+                        String Pincode = addresses.get ( 0 ).getPostalCode ( );
+                        Log.d("pincode",Pincode);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                if (place.getAddress().contains("570002")){
+                    Toast.makeText(getActivity(), "present", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getActivity(), " Not present", Toast.LENGTH_SHORT).show();
+                }
                 action = SelectLocationFragmentDirections.actionSelectLocationFragmentToProfileFragment(place.getAddress());
                 Navigation.findNavController(getView()).navigate(action);
             } else if (resultCode == AutocompleteActivity.RESULT_ERROR) {
                 // TODO: Handle the error.
                 Status status = Autocomplete.getStatusFromIntent(data);
+
                 Log.i(TAG, status.getStatusMessage());
             } else if (resultCode == RESULT_CANCELED) {
                 // The user canceled the operation.

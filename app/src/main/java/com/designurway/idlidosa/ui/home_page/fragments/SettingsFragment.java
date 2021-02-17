@@ -21,6 +21,7 @@ import com.designurway.idlidosa.R;
 import com.designurway.idlidosa.a.activity.MobileVerificationActivity;
 import com.designurway.idlidosa.a.utils.PreferenceManager;
 import com.designurway.idlidosa.databinding.FragmentSettingsBinding;
+import com.designurway.idlidosa.ui.auth.AuthActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -136,7 +137,7 @@ public class SettingsFragment extends Fragment {
 
         PreferenceManager.checkUserLoggedIn(false);
         PreferenceManager.clearCustomer();
-        Intent intent=new Intent(getContext(), MobileVerificationActivity.class);
+        Intent intent=new Intent(getContext(), AuthActivity.class);
         startActivity(intent);
         getActivity().finish();
 

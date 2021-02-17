@@ -83,10 +83,12 @@ public class OtpVerficationFragment extends Fragment {
 
     public void goToHomeActivity() {
 
+
         String custEmail = emailEt.getText().toString().trim();
         String custOtp = passwordEt.getText().toString().trim();
         String custPhone = emailEt.getText().toString().trim();
         String custPwd = passwordEt.getText().toString().trim();
+
         if (!AndroidUtils.isNetworkAvailable(getContext())) {
             Toast.makeText(getContext().getApplicationContext(),
                     this.getText(R.string.no_internet),
@@ -100,12 +102,12 @@ public class OtpVerficationFragment extends Fragment {
         } else {
 
             loginApp(custPhone, custOtp, custEmail, custPwd);
-
-
         }
     }
 
     public void loginApp(String phone, String otp, String email, String pwd) {
+
+
 
         RetrofitApi retrofitApi = BaseClient.getClient().create(RetrofitApi.class);
         Call<LoginModel> call = retrofitApi.verifyPhoneAndOTP(phone, otp, email, pwd);
@@ -127,8 +129,8 @@ public class OtpVerficationFragment extends Fragment {
                     if (response.body().getMessage().contains("enter correct otp and number")) {
                         Toast.makeText(getContext(), getString(R.string.invalid_credentials), Toast.LENGTH_SHORT).show();
                     } else if (response.body().getMessage().contains("success")) {
-                        if (rememberMeCbx.isChecked()) {
 
+                        if (rememberMeCbx.isChecked()) {
                             PreferenceManager.saveCustomerLogin(prefId, prefEmail, prefPassword, prefName,
                                     prefPhone, prefCode, true);
                             PreferenceManager.checkUserLoggedIn(true);
@@ -145,6 +147,8 @@ public class OtpVerficationFragment extends Fragment {
                         getActivity().finish();
                     }
 
+                }else {
+                    Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -152,6 +156,7 @@ public class OtpVerficationFragment extends Fragment {
             @Override
             public void onFailure(Call<LoginModel> call, Throwable t) {
                 Log.d(TAG, "failure" + t.getMessage());
+                Toast.makeText(getContext(), "On Failure "+t.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });

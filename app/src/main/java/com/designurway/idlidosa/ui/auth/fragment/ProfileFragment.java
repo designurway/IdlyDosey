@@ -234,7 +234,7 @@ public class ProfileFragment extends Fragment {
                         getActivity().finish();
 
                     } else {
-                        Toast.makeText(getContext(), "fail", Toast.LENGTH_SHORT).show();
+
                     }
                 }
 

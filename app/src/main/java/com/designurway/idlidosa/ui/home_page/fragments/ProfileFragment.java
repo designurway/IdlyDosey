@@ -129,7 +129,6 @@ public class ProfileFragment extends Fragment {
                     phoneNum = phoneNumFieldEt.getText().toString().trim();
 
                     updateProfile(name,email,phoneNum,address);
-                    Toast.makeText(getContext(), address, Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -220,7 +219,6 @@ public class ProfileFragment extends Fragment {
 
                         action = ProfileFragmentDirections.actionProfileFragment4ToHomeFragment();
                         Navigation.findNavController(getView()).navigate(action);
-                        Toast.makeText(context, "Profile updated succesfully", Toast.LENGTH_SHORT).show();
 
                     } else {
                         Toast.makeText(context, "fail", Toast.LENGTH_SHORT).show();
@@ -258,7 +256,6 @@ public class ProfileFragment extends Fragment {
                     action = ProfileFragmentDirections.actionProfileFragment4ToHomeFragment();
                     Navigation.findNavController(getView()).navigate(action);
 
-                    Toast.makeText(getContext(), "Profile Updated", Toast.LENGTH_SHORT).show();
                 } else {
 
                     Log.d(TAG, "no Data");

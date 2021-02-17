@@ -526,7 +526,7 @@ public class TrackOrderFragment extends Fragment implements OnMapReadyCallback {
                     customerLang = model.getLang();
 
 
-                    if (pickupLat != null && pickupLong!=null && customerLat != null && customerLang!=null) {
+                    if (pickupLat != null && !pickupLat.isEmpty() && pickupLong!=null && customerLat != null && customerLang!=null) {
                         PickupLocation = new LatLng(Double.parseDouble(pickupLat), Double.parseDouble(pickupLong));
                         CustomerLocation = new LatLng(Double.parseDouble(customerLat), Double.parseDouble(customerLang));
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(CustomerLocation, 16));

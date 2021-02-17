@@ -134,7 +134,6 @@ public class RegisterFragment extends Fragment {
                     RegisterDataModel dataModel = response.body();
                     if (dataModel.getStatus().equals("1")){
 
-                        Toast.makeText(getContext(), "Sucess", Toast.LENGTH_SHORT).show();
 
                     insertRefCode();
 
@@ -148,10 +147,9 @@ public class RegisterFragment extends Fragment {
                     String referralCode = dataModel.getReferral_code();
                     String referFrom = referredFrom;
 
-                    Toast.makeText(getContext(), "Sucesssssssssssssss", Toast.LENGTH_SHORT).show();
 
                     PreferenceManager.saveCustomerLogin(id,email,password,name,phoneNum,referralCode,true);
-//                    Toast.makeText(RegisterActivity.this, PreferenceManager.getCustomerId(), Toast.LENGTH_SHORT).show();
+
                     Log.d(TAG, "referredid" + PreferenceManager.getCustomerId());
                     Log.d(TAG, "referredname" + name);
                     PreferenceManager.saveCustomerReferred(referredFrom);
