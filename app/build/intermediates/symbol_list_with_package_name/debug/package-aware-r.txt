@@ -2244,6 +2244,7 @@ drawable button_brown
 drawable button_brown_disabled
 drawable button_grey
 drawable camera
+drawable catering
 drawable checked
 drawable checkmark_selected
 drawable clock
@@ -2384,6 +2385,7 @@ drawable pen
 drawable phone
 drawable phone_call
 drawable phone_img
+drawable placeholder
 drawable places_autocomplete_toolbar_shadow
 drawable places_powered_by_google_dark
 drawable places_powered_by_google_light
@@ -2477,6 +2479,7 @@ id action0
 id action_addressBookFragment_to_changeAddressFragment
 id action_addressBookFragment_to_paymentFragment
 id action_addressBookFragment_to_paytmActivity
+id action_addressBookFragment_to_serviceNotAvailableFragment
 id action_bar
 id action_bar_activity_content
 id action_bar_container
@@ -2511,6 +2514,7 @@ id action_reciveComboAddressFragment_to_paytmActivity
 id action_referalCodeFragment_to_registerFragment
 id action_registerFragment_to_selectLocationFragment
 id action_selectLocationFragment_to_profileFragment
+id action_serviceNotAvailableFragment_to_homeFragment
 id action_settingsFragment_to_addressBookFragment
 id action_settingsFragment_to_orderHistoryFragment
 id action_settingsFragment_to_receiveComboFragment
@@ -2592,6 +2596,7 @@ id cache_measures
 id cancel_action
 id cancel_btn
 id cancel_button
+id cardViw
 id card_detail
 id card_home_address
 id card_ofc_address
@@ -2744,6 +2749,7 @@ id gone
 id googleMap
 id googlePayFragment
 id google_pay_img
+id gotToHome
 id graph
 id graph_wrap
 id group_divider
@@ -2788,6 +2794,7 @@ id img_edit_home
 id img_edit_office
 id img_hide_assist
 id img_iv
+id img_location
 id img_paytm_assist_banner
 id img_pwd_show
 id img_rating
@@ -3131,6 +3138,7 @@ id select_dialog_listview
 id selected
 id selection_type
 id send_m_order
+id serviceNotAvailableFragment
 id settingsFragment
 id shake
 id share_tv
@@ -3276,6 +3284,9 @@ id tv_tap_to_pause
 id tv_user_id_one
 id tv_user_id_three
 id tv_user_id_two
+id txtAdd
+id txtDescription
+id txtOpps
 id txt_description
 id txt_detail_header
 id txt_dispatch
@@ -3453,6 +3464,7 @@ layout fragment_refer_friend
 layout fragment_referal_code
 layout fragment_register
 layout fragment_select_location
+layout fragment_service_not_available
 layout fragment_settings
 layout fragment_support
 layout fragment_track_order

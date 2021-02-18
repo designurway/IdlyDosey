@@ -8,6 +8,8 @@ public class AddressModel {
     private String name;
 
     private String phone;
+    private String pin_code;
+    private String office_pin_code;
 
     @SerializedName("home_address")
     private String homeAddress;
@@ -15,12 +17,15 @@ public class AddressModel {
     @SerializedName("other_address")
     private String otherAddress;
 
-    public AddressModel(String status, String name, String homeAddress, String otherAddress,String phone) {
+
+    public AddressModel(String status, String name, String phone, String pin_code, String office_pin_code, String homeAddress, String otherAddress) {
         this.status = status;
         this.name = name;
+        this.phone = phone;
+        this.pin_code = pin_code;
+        this.office_pin_code = office_pin_code;
         this.homeAddress = homeAddress;
         this.otherAddress = otherAddress;
-        this.phone = phone;
     }
 
     public String getStatus() {
@@ -39,6 +44,30 @@ public class AddressModel {
         this.name = name;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getPin_code() {
+        return pin_code;
+    }
+
+    public void setPin_code(String pin_code) {
+        this.pin_code = pin_code;
+    }
+
+    public String getOffice_pin_code() {
+        return office_pin_code;
+    }
+
+    public void setOffice_pin_code(String office_pin_code) {
+        this.office_pin_code = office_pin_code;
+    }
+
     public String getHomeAddress() {
         return homeAddress;
     }
@@ -53,13 +82,5 @@ public class AddressModel {
 
     public void setOtherAddress(String otherAddress) {
         this.otherAddress = otherAddress;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
     }
 }

@@ -204,6 +204,10 @@
         "source": "E:\\AndroidProject\\Pankaj\\IdlyDosey\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
+        "merged": "E:\\AndroidProject\\Pankaj\\IdlyDosey\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_service_not_available.xml",
+        "source": "E:\\AndroidProject\\Pankaj\\IdlyDosey\\app\\src\\main\\res\\layout\\fragment_service_not_available.xml"
+    },
+    {
         "merged": "E:\\AndroidProject\\Pankaj\\IdlyDosey\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_payment_sucessful.xml",
         "source": "E:\\AndroidProject\\Pankaj\\IdlyDosey\\app\\src\\main\\res\\layout\\fragment_payment_sucessful.xml"
     },

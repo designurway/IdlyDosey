@@ -75,7 +75,7 @@ public class ProfileFragment extends Fragment {
     String path;
     Uri imageUri;
     Bitmap bitmap;
-    String email,phoneNum,address,name;
+    String email,phoneNum,address,name,pincode;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -154,6 +154,8 @@ public class ProfileFragment extends Fragment {
                     addressFieldEt.setText(address);
                      name = model.getName();
                     nameFieldEt.setText(name);
+
+                    pincode = model.getPin_code();
                     if (model.getProfileImage().isEmpty()) {
 //                        Picasso.with(getContext()).load("http://192.168.4.168/API/idli_dosa/profile/user_profile.png").into(profileImageCiv);
                     } else {
@@ -236,7 +238,7 @@ public class ProfileFragment extends Fragment {
 
     private void updateProfile(String name, String email, String phone, String address) {
         RetrofitApi retrofitApi = BaseClient.getClient().create(RetrofitApi.class);
-        Call<ProfileModel> call = retrofitApi.postProfile(name, email, phone, address);
+        Call<ProfileModel> call = retrofitApi.postProfile(name, email, phone, address,pincode);
         call.enqueue(new Callback<ProfileModel>() {
             @Override
             public void onResponse(Call<ProfileModel> call, Response<ProfileModel> response) {

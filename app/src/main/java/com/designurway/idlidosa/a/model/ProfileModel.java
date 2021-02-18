@@ -24,8 +24,10 @@ public class ProfileModel {
 
     @SerializedName("profile_image")
     private String profileImage;
+    private String pin_code;
 
-    public ProfileModel(String name, String email, String phone, String password, String id, String referralCode, String referredFrom, String homeAddress, String profileImage) {
+
+    public ProfileModel(String name, String email, String phone, String password, String id, String referralCode, String referredFrom, String homeAddress, String profileImage, String pin_code) {
         this.name = name;
         this.email = email;
         this.phone = phone;
@@ -35,6 +37,7 @@ public class ProfileModel {
         this.referredFrom = referredFrom;
         this.homeAddress = homeAddress;
         this.profileImage = profileImage;
+        this.pin_code = pin_code;
     }
 
     public String getName() {
@@ -107,5 +110,13 @@ public class ProfileModel {
 
     public void setProfileImage(String profileImage) {
         this.profileImage = profileImage;
+    }
+
+    public String getPin_code() {
+        return pin_code;
+    }
+
+    public void setPin_code(String pin_code) {
+        this.pin_code = pin_code;
     }
 }

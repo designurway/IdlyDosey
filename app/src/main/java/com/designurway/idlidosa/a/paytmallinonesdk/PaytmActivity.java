@@ -392,6 +392,7 @@ public class PaytmActivity extends AppCompatActivity {
             }
 
             Address location = address.get(0);
+
             p1 = new LatLng(location.getLatitude(), location.getLongitude() );
 
         } catch (IOException ex) {

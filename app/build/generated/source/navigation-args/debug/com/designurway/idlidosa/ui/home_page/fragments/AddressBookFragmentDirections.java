@@ -35,6 +35,12 @@ public class AddressBookFragmentDirections {
     return new ActionAddressBookFragmentToPaytmActivity(name, address, amount, phone, comboId, productId, orderId);
   }
 
+  @NonNull
+  public static ActionAddressBookFragmentToServiceNotAvailableFragment actionAddressBookFragmentToServiceNotAvailableFragment(
+      @NonNull String address) {
+    return new ActionAddressBookFragmentToServiceNotAvailableFragment(address);
+  }
+
   public static class ActionAddressBookFragmentToPaymentFragment implements NavDirections {
     private final HashMap arguments = new HashMap();
 
@@ -644,6 +650,86 @@ public class AddressBookFragmentDirections {
           + ", comboId=" + getComboId()
           + ", productId=" + getProductId()
           + ", orderId=" + getOrderId()
+          + "}";
+    }
+  }
+
+  public static class ActionAddressBookFragmentToServiceNotAvailableFragment implements NavDirections {
+    private final HashMap arguments = new HashMap();
+
+    private ActionAddressBookFragmentToServiceNotAvailableFragment(@NonNull String address) {
+      if (address == null) {
+        throw new IllegalArgumentException("Argument \"address\" is marked as non-null but was passed a null value.");
+      }
+      this.arguments.put("address", address);
+    }
+
+    @NonNull
+    public ActionAddressBookFragmentToServiceNotAvailableFragment setAddress(
+        @NonNull String address) {
+      if (address == null) {
+        throw new IllegalArgumentException("Argument \"address\" is marked as non-null but was passed a null value.");
+      }
+      this.arguments.put("address", address);
+      return this;
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    @NonNull
+    public Bundle getArguments() {
+      Bundle __result = new Bundle();
+      if (arguments.containsKey("address")) {
+        String address = (String) arguments.get("address");
+        __result.putString("address", address);
+      }
+      return __result;
+    }
+
+    @Override
+    public int getActionId() {
+      return R.id.action_addressBookFragment_to_serviceNotAvailableFragment;
+    }
+
+    @SuppressWarnings("unchecked")
+    @NonNull
+    public String getAddress() {
+      return (String) arguments.get("address");
+    }
+
+    @Override
+    public boolean equals(Object object) {
+      if (this == object) {
+          return true;
+      }
+      if (object == null || getClass() != object.getClass()) {
+          return false;
+      }
+      ActionAddressBookFragmentToServiceNotAvailableFragment that = (ActionAddressBookFragmentToServiceNotAvailableFragment) object;
+      if (arguments.containsKey("address") != that.arguments.containsKey("address")) {
+        return false;
+      }
+      if (getAddress() != null ? !getAddress().equals(that.getAddress()) : that.getAddress() != null) {
+        return false;
+      }
+      if (getActionId() != that.getActionId()) {
+        return false;
+      }
+      return true;
+    }
+
+    @Override
+    public int hashCode() {
+      int result = 1;
+      result = 31 * result + (getAddress() != null ? getAddress().hashCode() : 0);
+      result = 31 * result + getActionId();
+      return result;
+    }
+
+    @Override
+    public String toString() {
+      return "ActionAddressBookFragmentToServiceNotAvailableFragment(actionId=" + getActionId() + "){"
+          + "address=" + getAddress()
           + "}";
     }
   }

@@ -102,6 +102,8 @@ com/designurway/idlidosa/ui/home_page/fragments/DisplayProductFragmentDirections
  com.designurway.idlidosa.ui.home_page.fragments.DisplayProductFragmentDirections
  com.designurway.idlidosa.ui.home_page.fragments.DisplayProductFragmentDirections$1
  com.designurway.idlidosa.ui.home_page.fragments.DisplayProductFragmentDirections$ActionDisplayProductFragmentToProductDetailfragment
+com/designurway/idlidosa/a/model/CheckServiceModel.java
+ com.designurway.idlidosa.a.model.CheckServiceModel
 com/designurway/idlidosa/ui/home_page/fragments/TrackOrderFragmentArgs.java
  com.designurway.idlidosa.ui.home_page.fragments.TrackOrderFragmentArgs
  com.designurway.idlidosa.ui.home_page.fragments.TrackOrderFragmentArgs$1
@@ -192,6 +194,7 @@ com/designurway/idlidosa/ui/home_page/fragments/AddressBookFragment.java
  com.designurway.idlidosa.ui.home_page.fragments.AddressBookFragment$3
  com.designurway.idlidosa.ui.home_page.fragments.AddressBookFragment$4
  com.designurway.idlidosa.ui.home_page.fragments.AddressBookFragment$5
+ com.designurway.idlidosa.ui.home_page.fragments.AddressBookFragment$6
 com/designurway/idlidosa/ui/auth/fragment/ReferalCodeFragment.java
  com.designurway.idlidosa.ui.auth.fragment.ReferalCodeFragment
  com.designurway.idlidosa.ui.auth.fragment.ReferalCodeFragment$1
@@ -227,6 +230,8 @@ com/designurway/idlidosa/ui/home_page/fragments/SupportFragment.java
  com.designurway.idlidosa.ui.home_page.fragments.SupportFragment
 com/designurway/idlidosa/a/utils/SharedPrefManager.java
  com.designurway.idlidosa.a.utils.SharedPrefManager
+com/designurway/idlidosa/ui/home_page/fragments/ServiceNotAvailableFragmentDirections.java
+ com.designurway.idlidosa.ui.home_page.fragments.ServiceNotAvailableFragmentDirections
 com/designurway/idlidosa/databinding/FragmentGooglePayBinding.java
  com.designurway.idlidosa.databinding.FragmentGooglePayBinding
 com/designurway/idlidosa/model/ViewCartModelResponse.java
@@ -237,6 +242,7 @@ com/designurway/idlidosa/ui/home_page/fragments/AddressBookFragmentDirections.ja
  com.designurway.idlidosa.ui.home_page.fragments.AddressBookFragmentDirections$ActionAddressBookFragmentToChangeAddressFragment
  com.designurway.idlidosa.ui.home_page.fragments.AddressBookFragmentDirections$ActionAddressBookFragmentToPaymentFragment
  com.designurway.idlidosa.ui.home_page.fragments.AddressBookFragmentDirections$ActionAddressBookFragmentToPaytmActivity
+ com.designurway.idlidosa.ui.home_page.fragments.AddressBookFragmentDirections$ActionAddressBookFragmentToServiceNotAvailableFragment
 com/designurway/idlidosa/a/adapters/HomeTabAdapter.java
  com.designurway.idlidosa.a.adapters.HomeTabAdapter
 com/designurway/idlidosa/ui/home_page/fragments/TrackOrderFragment.java
@@ -299,6 +305,10 @@ com/designurway/idlidosa/databinding/FragmentFeaturedBinding.java
  com.designurway.idlidosa.databinding.FragmentFeaturedBinding
 com/designurway/idlidosa/databinding/FragmentEmergencyBinding.java
  com.designurway.idlidosa.databinding.FragmentEmergencyBinding
+com/designurway/idlidosa/ui/home_page/fragments/ServiceNotAvailableFragmentArgs.java
+ com.designurway.idlidosa.ui.home_page.fragments.ServiceNotAvailableFragmentArgs
+ com.designurway.idlidosa.ui.home_page.fragments.ServiceNotAvailableFragmentArgs$1
+ com.designurway.idlidosa.ui.home_page.fragments.ServiceNotAvailableFragmentArgs$Builder
 com/designurway/idlidosa/databinding/FragmentProfile2Binding.java
  com.designurway.idlidosa.databinding.FragmentProfile2Binding
 com/designurway/idlidosa/databinding/BottomSheetBinding.java
@@ -321,6 +331,9 @@ com/designurway/idlidosa/ui/home_page/fragments/PaymentFragmentDirections.java
 com/designurway/idlidosa/a/adapters/PrescriptionAdapter.java
  com.designurway.idlidosa.a.adapters.PrescriptionAdapter
  com.designurway.idlidosa.a.adapters.PrescriptionAdapter$vholder
+com/designurway/idlidosa/ui/home_page/fragments/ServiceNotAvailableFragment.java
+ com.designurway.idlidosa.ui.home_page.fragments.ServiceNotAvailableFragment
+ com.designurway.idlidosa.ui.home_page.fragments.ServiceNotAvailableFragment$1
 com/designurway/idlidosa/databinding/ActivityReferralCodeBinding.java
  com.designurway.idlidosa.databinding.ActivityReferralCodeBinding
 com/designurway/idlidosa/databinding/ActivityMobileVerificationBinding.java
@@ -365,6 +378,8 @@ com/designurway/idlidosa/ui/home_page/fragments/EditAddressFragment.java
  com.designurway.idlidosa.ui.home_page.fragments.EditAddressFragment
  com.designurway.idlidosa.ui.home_page.fragments.EditAddressFragment$1
  com.designurway.idlidosa.ui.home_page.fragments.EditAddressFragment$2
+com/designurway/idlidosa/databinding/FragmentServiceNotAvailableBinding.java
+ com.designurway.idlidosa.databinding.FragmentServiceNotAvailableBinding
 com/designurway/idlidosa/a/model/PrescriptionModel.java
  com.designurway.idlidosa.a.model.PrescriptionModel
 com/designurway/idlidosa/a/model/RegisterDataModel.java

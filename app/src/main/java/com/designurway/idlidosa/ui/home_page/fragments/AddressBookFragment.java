@@ -1,6 +1,9 @@
 package com.designurway.idlidosa.ui.home_page.fragments;
 
+import android.content.Context;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
@@ -20,13 +23,18 @@ import android.widget.Toast;
 
 import com.designurway.idlidosa.R;
 import com.designurway.idlidosa.a.model.AddressModel;
+import com.designurway.idlidosa.a.model.CheckServiceModel;
 import com.designurway.idlidosa.a.model.CustomerAddress;
 import com.designurway.idlidosa.a.retrofit.BaseClient;
 import com.designurway.idlidosa.a.retrofit.RetrofitApi;
 import com.designurway.idlidosa.a.utils.PreferenceManager;
 import com.designurway.idlidosa.databinding.FragmentAddressBookBinding;
+import com.google.android.gms.maps.model.LatLng;
 
 import org.parceler.Parcels;
+
+import java.io.IOException;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -56,6 +64,7 @@ public class AddressBookFragment extends Fragment {
     LinearLayout LinearOffice;
     ImageView officeChk;
     TextView officeNameTv, officeAddressTv, ofc_phone_tv;
+    String homePincode,officePincode;
 
 
     @Override
@@ -94,6 +103,17 @@ public class AddressBookFragment extends Fragment {
         checkAddressEmpty();
         Bundle bundle = getArguments();
 
+        Geocoder coder = new Geocoder(getActivity());
+        List<Address> Homeaddress=null;
+
+        try {
+            Homeaddress = coder.getFromLocationName(addressTv.getText().toString(), 5);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Toast.makeText(getActivity(), Homeaddress.get(0).getPostalCode(), Toast.LENGTH_SHORT).show();
+
         if (FromSetting.equals("viewCart")) {
 
             if (FromSetting.equals("viewCart")) {
@@ -101,6 +121,9 @@ public class AddressBookFragment extends Fragment {
                 linearHome.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
+
+
                         if (addressTv.getText().toString().isEmpty()){
                             Toast.makeText(getContext(), "add missing address", Toast.LENGTH_SHORT).show();
                             return;
@@ -109,9 +132,14 @@ public class AddressBookFragment extends Fragment {
                             name = officeNameTv.getText().toString();
                             address = addressTv.getText().toString();
                             phone = ofc_phone_tv.getText().toString();
+
+                            checkService(homePincode);
+                            /*
                             action = AddressBookFragmentDirections.actionAddressBookFragmentToPaymentFragment(name,address,amount,phone,"none","none",orderId);
-                            Navigation.findNavController(getView()).navigate(action);
+                            Navigation.findNavController(getView()).navigate(action);*/
                         }
+
+                        Toast.makeText(getContext(), "Home Pincode : "+homePincode, Toast.LENGTH_SHORT).show();
 
 
                     }
@@ -121,6 +149,8 @@ public class AddressBookFragment extends Fragment {
                     @Override
                     public void onClick(View v) {
 
+
+
                        if ( officeAddressTv.getText().toString().isEmpty()){
                            Toast.makeText(getContext(), "add missing address", Toast.LENGTH_SHORT).show();
                            return;
@@ -129,10 +159,13 @@ public class AddressBookFragment extends Fragment {
                            name = nameTv.getText().toString();
                            address = officeAddressTv.getText().toString();
                            phone = homePhoneTv.getText().toString();
-                           action = AddressBookFragmentDirections.actionAddressBookFragmentToPaymentFragment(name,address,amount,phone,"none","none",orderId);
-                           Navigation.findNavController(getView()).navigate(action);
+
+                           checkService(officePincode);
+
+
                        }
 
+                        Toast.makeText(getContext(), "Office Pincode : "+officePincode, Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -178,6 +211,9 @@ public class AddressBookFragment extends Fragment {
                     addressTv.setText(response.body().getHomeAddress());
                     homePhoneTv.setText(response.body().getPhone());
 
+                    homePincode = response.body().getPin_code();
+                    officePincode = response.body().getOffice_pin_code();
+
                     ofcNameTv.setText(response.body().getName());
                     ofcAddressTv.setText(response.body().getOtherAddress());
                     ofcPhoneTv.setText(response.body().getPhone());
@@ -197,6 +233,36 @@ public class AddressBookFragment extends Fragment {
             }
         });
     }
+
+
+    public void checkService( String pinCode){
+
+        RetrofitApi retrofitApi = BaseClient.getClient().create(RetrofitApi.class);
+        Call<CheckServiceModel> call = retrofitApi.checkService(pinCode);
+        call.enqueue(new Callback<CheckServiceModel>() {
+            @Override
+            public void onResponse(Call<CheckServiceModel> call, Response<CheckServiceModel> response) {
+                if(response.isSuccessful() && response.body().getMessage().equals("available")){
+                    Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+
+                    action = AddressBookFragmentDirections.actionAddressBookFragmentToPaymentFragment(name,address,amount,phone,"none","none",orderId);
+                    Navigation.findNavController(getView()).navigate(action);
+
+                }else{
+                    Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    action = AddressBookFragmentDirections.actionAddressBookFragmentToServiceNotAvailableFragment(address);
+                    Navigation.findNavController(getView()).navigate(action);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CheckServiceModel> call, Throwable t) {
+                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
+
 
     public void checkAddressEmpty(){
 

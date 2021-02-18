@@ -62,7 +62,7 @@ public class ProfileFragment extends Fragment {
     String path;
     Uri imageUri;
     Bitmap bitmap;
-    String phone,address;
+    String phone,address,pincode;
     ProfileFragmentArgs args;
 
     public ProfileFragment() {
@@ -92,6 +92,7 @@ public class ProfileFragment extends Fragment {
 
         args = ProfileFragmentArgs.fromBundle(getArguments());
         address = args.getAddress();
+        pincode = args.getPincode();
         addressEt.setText(address);
 
         setProfileDetails();
@@ -100,6 +101,8 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 saveProfileDetails();
+
+//                Toast.makeText(getContext(), "Pincode : "+pincode, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -175,7 +178,7 @@ public class ProfileFragment extends Fragment {
 
     private void updateProfile(String name, String email, String phone, String address) {
         RetrofitApi retrofitApi = BaseClient.getClient().create(RetrofitApi.class);
-        Call<ProfileModel> call = retrofitApi.postProfile(name, email, phone, address);
+        Call<ProfileModel> call = retrofitApi.postProfile(name, email, phone, address,pincode);
         call.enqueue(new Callback<ProfileModel>() {
             @Override
             public void onResponse(Call<ProfileModel> call, Response<ProfileModel> response) {

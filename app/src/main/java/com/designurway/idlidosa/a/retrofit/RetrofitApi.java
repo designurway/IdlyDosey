@@ -3,6 +3,7 @@ package com.designurway.idlidosa.a.retrofit;
 
 
 import com.designurway.idlidosa.a.model.AddressModel;
+import com.designurway.idlidosa.a.model.CheckServiceModel;
 import com.designurway.idlidosa.a.model.DashComboDataModel;
 import com.designurway.idlidosa.a.model.ErrorMessageModel;
 import com.designurway.idlidosa.a.model.GetNotificationResponse;
@@ -116,7 +117,8 @@ public interface RetrofitApi {
             @Field("name") String name,
             @Field("email") String email,
             @Field("phone") String phone,
-            @Field("home_address") String address
+            @Field("home_address") String address,
+            @Field("pin_code") String pincode
     );
 
     @FormUrlEncoded
@@ -322,5 +324,10 @@ public interface RetrofitApi {
             @Field("order_id") String order_id,
             @Field("product_id") int product_id,
             @Field("customer_id") String customer_id
+    );
+
+    @GET("check_service.php")
+    Call<CheckServiceModel> checkService(
+        @Query("pin_code") String pinCode
     );
 }

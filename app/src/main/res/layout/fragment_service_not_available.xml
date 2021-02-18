@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.home_page.fragments.ServiceNotAvailableFragment">
+
+  <ImageView
+      android:id="@+id/imageView"
+      android:layout_width="150dp"
+      android:layout_height="150dp"
+        android:src="@drawable/catering"
+      android:layout_marginBottom="30dp"
+      app:layout_constraintBottom_toTopOf="@id/txtOpps"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      android:scaleType="fitXY"/>
+<TextView
+    android:id="@+id/txtOpps"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:text="Ooops!"
+    android:layout_marginTop="@dimen/dimen_50dp"
+    android:textSize="@dimen/dimen_20dp"
+    android:textStyle="bold"/>
+  <TextView
+      android:id="@+id/txtDescription"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="Currently delivery service is \n not available in your area"
+      android:textSize="@dimen/dimen_15sp"
+      app:layout_constraintTop_toBottomOf="@+id/txtOpps"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintEnd_toStartOf="parent"
+      android:layout_marginTop="@dimen/dimen_10dp"
+      android:textAlignment="center"/>
+  <Button
+      android:id="@+id/gotToHome"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Back to menu"
+      app:layout_constraintTop_toBottomOf="@+id/txtDescription"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintBottom_toBottomOf="@+id/cardViw"
+      android:background="@color/green"
+      android:padding="@dimen/dimen_10dp"
+       />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViw"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+       >
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintStart_toStartOf="parent">
+
+  <ImageView
+      android:id="@+id/img_location"
+      android:layout_width="@dimen/dimen_20dp"
+      android:layout_height="@dimen/dimen_20dp"
+      android:background="@drawable/placeholder"
+     app:layout_constraintTop_toTopOf="parent"
+      android:layout_marginBottom="@dimen/dimen_10dp"
+      android:layout_marginLeft="20dp"
+      android:backgroundTint="@color/green"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      />
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="@+id/img_location"
+      app:layout_constraintEnd_toEndOf="@+id/txtAdd"
+      android:text="your are in:"
+      android:layout_marginBottom="@dimen/dimen_10dp"/>
+        <TextView
+            android:id="@+id/txtAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="address"
+            android:layout_marginBottom="@dimen/dimen_10dp"/>
+      </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

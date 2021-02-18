@@ -176,7 +176,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void updateProfile(String name, String email, String phone, String address) {
         RetrofitApi retrofitApi = BaseClient.getClient().create(RetrofitApi.class);
-        Call<ProfileModel> call = retrofitApi.postProfile(name, email, phone, address);
+        Call<ProfileModel> call = retrofitApi.postProfile(name, email, phone, address,"");
         call.enqueue(new Callback<ProfileModel>() {
             @Override
             public void onResponse(Call<ProfileModel> call, Response<ProfileModel> response) {

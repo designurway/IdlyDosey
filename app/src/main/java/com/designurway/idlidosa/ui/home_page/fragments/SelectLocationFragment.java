@@ -57,6 +57,7 @@ public class SelectLocationFragment extends Fragment {
     String address;
     FusedLocationProviderClient fusedLocationProviderClient;
     TextView SkipTxt;
+    String pincode;
 
     public SelectLocationFragment() {
         // Required empty public constructor
@@ -121,19 +122,14 @@ public class SelectLocationFragment extends Fragment {
                     List<Address> addresses = geocoder.getFromLocation ( place.getLatLng().latitude, place.getLatLng().longitude, 1 );
 
                     if ( addresses != null && addresses.size ( ) > 0 ) {
-                        String Pincode = addresses.get ( 0 ).getPostalCode ( );
-                        Log.d("pincode",Pincode);
+                       pincode = addresses.get ( 0 ).getPostalCode ( );
+                        Log.d("pincode",pincode);
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
 
-                if (place.getAddress().contains("570002")){
-                    Toast.makeText(getActivity(), "present", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(getActivity(), " Not present", Toast.LENGTH_SHORT).show();
-                }
-                action = SelectLocationFragmentDirections.actionSelectLocationFragmentToProfileFragment(place.getAddress());
+                action = SelectLocationFragmentDirections.actionSelectLocationFragmentToProfileFragment(place.getAddress(),pincode);
                 Navigation.findNavController(getView()).navigate(action);
             } else if (resultCode == AutocompleteActivity.RESULT_ERROR) {
                 // TODO: Handle the error.
@@ -173,7 +169,7 @@ public class SelectLocationFragment extends Fragment {
 //                        txt_3.setText(Html.fromHtml("<font color='#6200EE'><b>Country name:</b></br></font>"+addresses.get(0).getCountryName()));
 //                        txt_4.setText(Html.fromHtml("<font color='#6200EE'><b>Locality :</b></br></font>"+addresses.get(0).getLocality()));
 //                        txt_5.setText(Html.fromHtml("<font color='#6200EE'><b>Address :</b></br></font>"+addresses.get(0).getAddressLine(0)));
-                        action = SelectLocationFragmentDirections.actionSelectLocationFragmentToProfileFragment(addresses.get(0).getAddressLine(0));
+                        action = SelectLocationFragmentDirections.actionSelectLocationFragmentToProfileFragment(addresses.get(0).getAddressLine(0),pincode);
                         Navigation.findNavController(getView()).navigate(action);
                         Toast.makeText(getActivity(), String.valueOf(addresses), Toast.LENGTH_SHORT).show();
 

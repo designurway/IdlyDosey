@@ -35,6 +35,16 @@ public class ProfileFragmentArgs implements NavArgs {
     } else {
       throw new IllegalArgumentException("Required argument \"Address\" is missing and does not have an android:defaultValue");
     }
+    if (bundle.containsKey("pincode")) {
+      String pincode;
+      pincode = bundle.getString("pincode");
+      if (pincode == null) {
+        throw new IllegalArgumentException("Argument \"pincode\" is marked as non-null but was passed a null value.");
+      }
+      __result.arguments.put("pincode", pincode);
+    } else {
+      throw new IllegalArgumentException("Required argument \"pincode\" is missing and does not have an android:defaultValue");
+    }
     return __result;
   }
 
@@ -46,11 +56,21 @@ public class ProfileFragmentArgs implements NavArgs {
 
   @SuppressWarnings("unchecked")
   @NonNull
+  public String getPincode() {
+    return (String) arguments.get("pincode");
+  }
+
+  @SuppressWarnings("unchecked")
+  @NonNull
   public Bundle toBundle() {
     Bundle __result = new Bundle();
     if (arguments.containsKey("Address")) {
       String Address = (String) arguments.get("Address");
       __result.putString("Address", Address);
+    }
+    if (arguments.containsKey("pincode")) {
+      String pincode = (String) arguments.get("pincode");
+      __result.putString("pincode", pincode);
     }
     return __result;
   }
@@ -70,6 +90,12 @@ public class ProfileFragmentArgs implements NavArgs {
     if (getAddress() != null ? !getAddress().equals(that.getAddress()) : that.getAddress() != null) {
       return false;
     }
+    if (arguments.containsKey("pincode") != that.arguments.containsKey("pincode")) {
+      return false;
+    }
+    if (getPincode() != null ? !getPincode().equals(that.getPincode()) : that.getPincode() != null) {
+      return false;
+    }
     return true;
   }
 
@@ -77,6 +103,7 @@ public class ProfileFragmentArgs implements NavArgs {
   public int hashCode() {
     int result = 1;
     result = 31 * result + (getAddress() != null ? getAddress().hashCode() : 0);
+    result = 31 * result + (getPincode() != null ? getPincode().hashCode() : 0);
     return result;
   }
 
@@ -84,6 +111,7 @@ public class ProfileFragmentArgs implements NavArgs {
   public String toString() {
     return "ProfileFragmentArgs{"
         + "Address=" + getAddress()
+        + ", pincode=" + getPincode()
         + "}";
   }
 
@@ -94,11 +122,15 @@ public class ProfileFragmentArgs implements NavArgs {
       this.arguments.putAll(original.arguments);
     }
 
-    public Builder(@NonNull String Address) {
+    public Builder(@NonNull String Address, @NonNull String pincode) {
       if (Address == null) {
         throw new IllegalArgumentException("Argument \"Address\" is marked as non-null but was passed a null value.");
       }
       this.arguments.put("Address", Address);
+      if (pincode == null) {
+        throw new IllegalArgumentException("Argument \"pincode\" is marked as non-null but was passed a null value.");
+      }
+      this.arguments.put("pincode", pincode);
     }
 
     @NonNull
@@ -116,10 +148,25 @@ public class ProfileFragmentArgs implements NavArgs {
       return this;
     }
 
+    @NonNull
+    public Builder setPincode(@NonNull String pincode) {
+      if (pincode == null) {
+        throw new IllegalArgumentException("Argument \"pincode\" is marked as non-null but was passed a null value.");
+      }
+      this.arguments.put("pincode", pincode);
+      return this;
+    }
+
     @SuppressWarnings("unchecked")
     @NonNull
     public String getAddress() {
       return (String) arguments.get("Address");
+    }
+
+    @SuppressWarnings("unchecked")
+    @NonNull
+    public String getPincode() {
+      return (String) arguments.get("pincode");
     }
   }
 }

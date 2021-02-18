@@ -60,6 +60,9 @@
         <argument
             android:name="Address"
             app:argType="string" />
+        <argument
+            android:name="pincode"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/selectLocationFragment"

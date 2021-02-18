@@ -136,8 +136,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="678" />
-                            <option name="y" value="72" />
+                            <option name="x" value="610" />
+                            <option name="y" value="68" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -153,6 +153,11 @@
                               </value>
                             </entry>
                             <entry key="action_addressBookFragment_to_paytmActivity">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_addressBookFragment_to_serviceNotAvailableFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -234,6 +239,15 @@
                             <option name="y" value="768" />
                           </Point>
                         </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_googlePayFragment_to_paymentSucessfulFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
                       </LayoutPositions>
                     </value>
                   </entry>
@@ -280,8 +294,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="936" />
-                            <option name="y" value="94" />
+                            <option name="x" value="964" />
+                            <option name="y" value="46" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -327,8 +341,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="807" />
-                            <option name="y" value="456" />
+                            <option name="x" value="963" />
+                            <option name="y" value="488" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -421,6 +435,18 @@
                           <Point>
                             <option name="x" value="500" />
                             <option name="y" value="1148" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="serviceNotAvailableFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="1133" />
+                            <option name="y" value="-374" />
                           </Point>
                         </option>
                       </LayoutPositions>

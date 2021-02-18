@@ -17,18 +17,23 @@ public class SelectLocationFragmentDirections {
 
   @NonNull
   public static ActionSelectLocationFragmentToProfileFragment actionSelectLocationFragmentToProfileFragment(
-      @NonNull String Address) {
-    return new ActionSelectLocationFragmentToProfileFragment(Address);
+      @NonNull String Address, @NonNull String pincode) {
+    return new ActionSelectLocationFragmentToProfileFragment(Address, pincode);
   }
 
   public static class ActionSelectLocationFragmentToProfileFragment implements NavDirections {
     private final HashMap arguments = new HashMap();
 
-    private ActionSelectLocationFragmentToProfileFragment(@NonNull String Address) {
+    private ActionSelectLocationFragmentToProfileFragment(@NonNull String Address,
+        @NonNull String pincode) {
       if (Address == null) {
         throw new IllegalArgumentException("Argument \"Address\" is marked as non-null but was passed a null value.");
       }
       this.arguments.put("Address", Address);
+      if (pincode == null) {
+        throw new IllegalArgumentException("Argument \"pincode\" is marked as non-null but was passed a null value.");
+      }
+      this.arguments.put("pincode", pincode);
     }
 
     @NonNull
@@ -40,6 +45,15 @@ public class SelectLocationFragmentDirections {
       return this;
     }
 
+    @NonNull
+    public ActionSelectLocationFragmentToProfileFragment setPincode(@NonNull String pincode) {
+      if (pincode == null) {
+        throw new IllegalArgumentException("Argument \"pincode\" is marked as non-null but was passed a null value.");
+      }
+      this.arguments.put("pincode", pincode);
+      return this;
+    }
+
     @Override
     @SuppressWarnings("unchecked")
     @NonNull
@@ -48,6 +62,10 @@ public class SelectLocationFragmentDirections {
       if (arguments.containsKey("Address")) {
         String Address = (String) arguments.get("Address");
         __result.putString("Address", Address);
+      }
+      if (arguments.containsKey("pincode")) {
+        String pincode = (String) arguments.get("pincode");
+        __result.putString("pincode", pincode);
       }
       return __result;
     }
@@ -61,6 +79,12 @@ public class SelectLocationFragmentDirections {
     @NonNull
     public String getAddress() {
       return (String) arguments.get("Address");
+    }
+
+    @SuppressWarnings("unchecked")
+    @NonNull
+    public String getPincode() {
+      return (String) arguments.get("pincode");
     }
 
     @Override
@@ -78,6 +102,12 @@ public class SelectLocationFragmentDirections {
       if (getAddress() != null ? !getAddress().equals(that.getAddress()) : that.getAddress() != null) {
         return false;
       }
+      if (arguments.containsKey("pincode") != that.arguments.containsKey("pincode")) {
+        return false;
+      }
+      if (getPincode() != null ? !getPincode().equals(that.getPincode()) : that.getPincode() != null) {
+        return false;
+      }
       if (getActionId() != that.getActionId()) {
         return false;
       }
@@ -88,6 +118,7 @@ public class SelectLocationFragmentDirections {
     public int hashCode() {
       int result = 1;
       result = 31 * result + (getAddress() != null ? getAddress().hashCode() : 0);
+      result = 31 * result + (getPincode() != null ? getPincode().hashCode() : 0);
       result = 31 * result + getActionId();
       return result;
     }
@@ -96,6 +127,7 @@ public class SelectLocationFragmentDirections {
     public String toString() {
       return "ActionSelectLocationFragmentToProfileFragment(actionId=" + getActionId() + "){"
           + "Address=" + getAddress()
+          + ", pincode=" + getPincode()
           + "}";
     }
   }
