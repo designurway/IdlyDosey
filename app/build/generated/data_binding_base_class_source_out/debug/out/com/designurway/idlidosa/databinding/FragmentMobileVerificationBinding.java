@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import com.designurway.idlidosa.R;
+import de.hdodenhof.circleimageview.CircleImageView;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -22,7 +23,7 @@ public final class FragmentMobileVerificationBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final ImageView appLogoHere;
+  public final CircleImageView appLogoHere;
 
   @NonNull
   public final ImageView curveBg;
@@ -37,7 +38,7 @@ public final class FragmentMobileVerificationBinding implements ViewBinding {
   public final TextView signInTv;
 
   private FragmentMobileVerificationBinding(@NonNull ConstraintLayout rootView,
-      @NonNull ImageView appLogoHere, @NonNull ImageView curveBg, @NonNull Button getOtpBtn,
+      @NonNull CircleImageView appLogoHere, @NonNull ImageView curveBg, @NonNull Button getOtpBtn,
       @NonNull EditText phoneEt, @NonNull TextView signInTv) {
     this.rootView = rootView;
     this.appLogoHere = appLogoHere;
@@ -75,7 +76,7 @@ public final class FragmentMobileVerificationBinding implements ViewBinding {
     int id;
     missingId: {
       id = R.id.app_logo_here;
-      ImageView appLogoHere = rootView.findViewById(id);
+      CircleImageView appLogoHere = rootView.findViewById(id);
       if (appLogoHere == null) {
         break missingId;
       }

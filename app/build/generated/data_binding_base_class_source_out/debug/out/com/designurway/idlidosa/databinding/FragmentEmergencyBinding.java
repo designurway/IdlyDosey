@@ -46,9 +46,6 @@ public final class FragmentEmergencyBinding implements ViewBinding {
   public final Button sendMOrder;
 
   @NonNull
-  public final TextView uploadImageTv;
-
-  @NonNull
   public final CardView uploadImgCv;
 
   @NonNull
@@ -64,9 +61,8 @@ public final class FragmentEmergencyBinding implements ViewBinding {
       @NonNull RelativeLayout addItemsRl, @NonNull RecyclerView addItmsRv,
       @NonNull Button addMoreItem, @NonNull EditText addPrescriptionEt, @NonNull TextView orTv,
       @NonNull EditText prescriptionQtnEt, @NonNull Button sendMOrder,
-      @NonNull TextView uploadImageTv, @NonNull CardView uploadImgCv,
-      @NonNull RelativeLayout uploadImgRl, @NonNull ImageView uploadImgv,
-      @NonNull RelativeLayout uploadRl) {
+      @NonNull CardView uploadImgCv, @NonNull RelativeLayout uploadImgRl,
+      @NonNull ImageView uploadImgv, @NonNull RelativeLayout uploadRl) {
     this.rootView = rootView;
     this.addItemsRl = addItemsRl;
     this.addItmsRv = addItmsRv;
@@ -75,7 +71,6 @@ public final class FragmentEmergencyBinding implements ViewBinding {
     this.orTv = orTv;
     this.prescriptionQtnEt = prescriptionQtnEt;
     this.sendMOrder = sendMOrder;
-    this.uploadImageTv = uploadImageTv;
     this.uploadImgCv = uploadImgCv;
     this.uploadImgRl = uploadImgRl;
     this.uploadImgv = uploadImgv;
@@ -151,12 +146,6 @@ public final class FragmentEmergencyBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.upload_image_tv;
-      TextView uploadImageTv = rootView.findViewById(id);
-      if (uploadImageTv == null) {
-        break missingId;
-      }
-
       id = R.id.upload_img_cv;
       CardView uploadImgCv = rootView.findViewById(id);
       if (uploadImgCv == null) {
@@ -182,8 +171,8 @@ public final class FragmentEmergencyBinding implements ViewBinding {
       }
 
       return new FragmentEmergencyBinding((ConstraintLayout) rootView, addItemsRl, addItmsRv,
-          addMoreItem, addPrescriptionEt, orTv, prescriptionQtnEt, sendMOrder, uploadImageTv,
-          uploadImgCv, uploadImgRl, uploadImgv, uploadRl);
+          addMoreItem, addPrescriptionEt, orTv, prescriptionQtnEt, sendMOrder, uploadImgCv,
+          uploadImgRl, uploadImgv, uploadRl);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

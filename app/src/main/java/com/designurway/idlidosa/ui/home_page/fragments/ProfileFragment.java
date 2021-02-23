@@ -26,6 +26,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.designurway.idlidosa.R;
@@ -44,6 +46,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 
+import com.itextpdf.text.Image;
 import com.itextpdf.text.pdf.codec.Base64;
 import com.squareup.picasso.Picasso;
 
@@ -62,14 +65,10 @@ public class ProfileFragment extends Fragment {
 
     FragmentProfileBinding binding;
     private static final String TAG = "ProfileFragment";
-    TextInputEditText nameFieldEt;
-
-    TextInputEditText emailFieldEt;
-    TextInputEditText phoneNumFieldEt;
+    EditText emailFieldEt,phoneNumFieldEt,nameFieldEt,addressFieldEt;
     Button saveBtn;
-    TextInputEditText addressFieldEt;
     NavDirections action;
-    CircleImageView personPicImgv, ivCamera;
+    CircleImageView ivCamera,personPicImgv;
     Context context;
     File file;
     String path;
@@ -77,12 +76,13 @@ public class ProfileFragment extends Fragment {
     Bitmap bitmap;
     String email,phoneNum,address,name,pincode;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentProfileBinding.inflate(inflater, container, false);
-        context = binding.addressFieldEt.getContext();
+        context = binding.profileAddressEt.getContext();
         return binding.getRoot();
     }
 
@@ -91,13 +91,13 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        nameFieldEt = binding.nameFieldEt;
-        emailFieldEt = binding.emailFieldEt;
-        phoneNumFieldEt = binding.phoneNumFieldEt;
-        addressFieldEt = binding.addressFieldEt;
-        personPicImgv = binding.personPicImgv;
-        ivCamera = binding.ivCamera;
-        saveBtn = binding.saveBtn;
+        nameFieldEt = binding.profileNameEt;
+        emailFieldEt = binding.profileEmailEt;
+        phoneNumFieldEt = binding.profilePhoneEt;
+        addressFieldEt = binding.profileAddressEt;
+        personPicImgv = binding.profileImg;
+        ivCamera = binding.otpImg;
+        saveBtn = binding.saveProfileBtn;
 
         phoneNumFieldEt.setText(PreferenceManager.getCustomerPhone());
 
@@ -238,7 +238,7 @@ public class ProfileFragment extends Fragment {
 
     private void updateProfile(String name, String email, String phone, String address) {
         RetrofitApi retrofitApi = BaseClient.getClient().create(RetrofitApi.class);
-        Call<ProfileModel> call = retrofitApi.postProfile(name, email, phone, address,pincode);
+        Call<ProfileModel> call = retrofitApi.postProfile(name, email, phone, address,"","");
         call.enqueue(new Callback<ProfileModel>() {
             @Override
             public void onResponse(Call<ProfileModel> call, Response<ProfileModel> response) {

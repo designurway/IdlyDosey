@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -12,8 +13,6 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import com.designurway.idlidosa.R;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -23,16 +22,16 @@ public final class FragmentReferalCodeBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final ImageView appLogoHere;
+  public final ImageView otpImg;
 
   @NonNull
-  public final ImageView curveBg;
+  public final TextView otpNumTxt;
 
   @NonNull
-  public final TextInputEditText referralCodeEt;
+  public final TextView referaalTxt;
 
   @NonNull
-  public final TextInputLayout referralCodeTv;
+  public final EditText referralCodeEt;
 
   @NonNull
   public final TextView skipTv;
@@ -40,17 +39,20 @@ public final class FragmentReferalCodeBinding implements ViewBinding {
   @NonNull
   public final Button submitReferralCodeBtn;
 
-  private FragmentReferalCodeBinding(@NonNull ConstraintLayout rootView,
-      @NonNull ImageView appLogoHere, @NonNull ImageView curveBg,
-      @NonNull TextInputEditText referralCodeEt, @NonNull TextInputLayout referralCodeTv,
-      @NonNull TextView skipTv, @NonNull Button submitReferralCodeBtn) {
+  @NonNull
+  public final TextView txt1;
+
+  private FragmentReferalCodeBinding(@NonNull ConstraintLayout rootView, @NonNull ImageView otpImg,
+      @NonNull TextView otpNumTxt, @NonNull TextView referaalTxt, @NonNull EditText referralCodeEt,
+      @NonNull TextView skipTv, @NonNull Button submitReferralCodeBtn, @NonNull TextView txt1) {
     this.rootView = rootView;
-    this.appLogoHere = appLogoHere;
-    this.curveBg = curveBg;
+    this.otpImg = otpImg;
+    this.otpNumTxt = otpNumTxt;
+    this.referaalTxt = referaalTxt;
     this.referralCodeEt = referralCodeEt;
-    this.referralCodeTv = referralCodeTv;
     this.skipTv = skipTv;
     this.submitReferralCodeBtn = submitReferralCodeBtn;
+    this.txt1 = txt1;
   }
 
   @Override
@@ -80,27 +82,27 @@ public final class FragmentReferalCodeBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.app_logo_here;
-      ImageView appLogoHere = rootView.findViewById(id);
-      if (appLogoHere == null) {
+      id = R.id.otp_img;
+      ImageView otpImg = rootView.findViewById(id);
+      if (otpImg == null) {
         break missingId;
       }
 
-      id = R.id.curve_bg;
-      ImageView curveBg = rootView.findViewById(id);
-      if (curveBg == null) {
+      id = R.id.otpNumTxt;
+      TextView otpNumTxt = rootView.findViewById(id);
+      if (otpNumTxt == null) {
+        break missingId;
+      }
+
+      id = R.id.referaal_txt;
+      TextView referaalTxt = rootView.findViewById(id);
+      if (referaalTxt == null) {
         break missingId;
       }
 
       id = R.id.referral_code_et;
-      TextInputEditText referralCodeEt = rootView.findViewById(id);
+      EditText referralCodeEt = rootView.findViewById(id);
       if (referralCodeEt == null) {
-        break missingId;
-      }
-
-      id = R.id.referral_code_tv;
-      TextInputLayout referralCodeTv = rootView.findViewById(id);
-      if (referralCodeTv == null) {
         break missingId;
       }
 
@@ -116,8 +118,14 @@ public final class FragmentReferalCodeBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentReferalCodeBinding((ConstraintLayout) rootView, appLogoHere, curveBg,
-          referralCodeEt, referralCodeTv, skipTv, submitReferralCodeBtn);
+      id = R.id.txt1;
+      TextView txt1 = rootView.findViewById(id);
+      if (txt1 == null) {
+        break missingId;
+      }
+
+      return new FragmentReferalCodeBinding((ConstraintLayout) rootView, otpImg, otpNumTxt,
+          referaalTxt, referralCodeEt, skipTv, submitReferralCodeBtn, txt1);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

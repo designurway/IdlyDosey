@@ -5,13 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import com.designurway.idlidosa.R;
@@ -30,7 +30,7 @@ public final class FragmentHomeBinding implements ViewBinding {
   public final Button btnEmergency;
 
   @NonNull
-  public final CardView cardTopImage;
+  public final ImageView img1;
 
   @NonNull
   public final LinearLayout linearOffer;
@@ -48,7 +48,7 @@ public final class FragmentHomeBinding implements ViewBinding {
   public final RecyclerView recyclerViewFeatured;
 
   @NonNull
-  public final ScrollView scrollViewDashboard;
+  public final NestedScrollView scrollViewDashboard;
 
   @NonNull
   public final TextView textBulk;
@@ -60,15 +60,15 @@ public final class FragmentHomeBinding implements ViewBinding {
   public final TextView textFeatured;
 
   private FragmentHomeBinding(@NonNull ConstraintLayout rootView, @NonNull TextView addressLayout,
-      @NonNull Button btnEmergency, @NonNull CardView cardTopImage,
-      @NonNull LinearLayout linearOffer, @NonNull LinearLayout linearSos,
-      @NonNull RecyclerView recyclerViewBulk, @NonNull RecyclerView recyclerViewCombo,
-      @NonNull RecyclerView recyclerViewFeatured, @NonNull ScrollView scrollViewDashboard,
-      @NonNull TextView textBulk, @NonNull TextView textCombo, @NonNull TextView textFeatured) {
+      @NonNull Button btnEmergency, @NonNull ImageView img1, @NonNull LinearLayout linearOffer,
+      @NonNull LinearLayout linearSos, @NonNull RecyclerView recyclerViewBulk,
+      @NonNull RecyclerView recyclerViewCombo, @NonNull RecyclerView recyclerViewFeatured,
+      @NonNull NestedScrollView scrollViewDashboard, @NonNull TextView textBulk,
+      @NonNull TextView textCombo, @NonNull TextView textFeatured) {
     this.rootView = rootView;
     this.addressLayout = addressLayout;
     this.btnEmergency = btnEmergency;
-    this.cardTopImage = cardTopImage;
+    this.img1 = img1;
     this.linearOffer = linearOffer;
     this.linearSos = linearSos;
     this.recyclerViewBulk = recyclerViewBulk;
@@ -119,9 +119,9 @@ public final class FragmentHomeBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.card_top_image;
-      CardView cardTopImage = rootView.findViewById(id);
-      if (cardTopImage == null) {
+      id = R.id.img1;
+      ImageView img1 = rootView.findViewById(id);
+      if (img1 == null) {
         break missingId;
       }
 
@@ -156,7 +156,7 @@ public final class FragmentHomeBinding implements ViewBinding {
       }
 
       id = R.id.scroll_view_dashboard;
-      ScrollView scrollViewDashboard = rootView.findViewById(id);
+      NestedScrollView scrollViewDashboard = rootView.findViewById(id);
       if (scrollViewDashboard == null) {
         break missingId;
       }
@@ -179,9 +179,9 @@ public final class FragmentHomeBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentHomeBinding((ConstraintLayout) rootView, addressLayout, btnEmergency,
-          cardTopImage, linearOffer, linearSos, recyclerViewBulk, recyclerViewCombo,
-          recyclerViewFeatured, scrollViewDashboard, textBulk, textCombo, textFeatured);
+      return new FragmentHomeBinding((ConstraintLayout) rootView, addressLayout, btnEmergency, img1,
+          linearOffer, linearSos, recyclerViewBulk, recyclerViewCombo, recyclerViewFeatured,
+          scrollViewDashboard, textBulk, textCombo, textFeatured);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

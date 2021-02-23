@@ -1,146 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.auth.fragment.OtpVerficationFragment">
 
-    <ImageView
-        android:id="@+id/curve_bg"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:src="@drawable/login_bg"/>
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/vrfy_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="Verify Phone Number"
+            android:textColor="@color/black"
+            android:fontFamily="@font/ubuntu_mono"
+            android:textSize="@dimen/dimen_20dp"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView
+            android:id="@+id/otp_img"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:src="@drawable/otp_icon"
+            android:layout_marginTop="@dimen/dimen_60dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/vrfy_txt"/>
+
+        <TextView
+            android:id="@+id/txt1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Please enter the 4 digit code send"
+            android:gravity="center"
+            android:textSize="@dimen/dimen_17sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/otp_img"/>
+
+        <TextView
+            android:id="@+id/otpNumTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="to +918755420120"
+            android:gravity="center"
+            android:layout_marginTop="4dp"
+            android:textSize="@dimen/dimen_17sp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt1"/>
 
 
-    <ImageView
-        android:id="@+id/app_logo_here"
-        android:layout_width="200dp"
-        android:layout_height="150dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:src="@drawable/logo" />
+        <EditText
+            android:id="@+id/otpEt1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:maxLength="1"
+            android:gravity="center"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:textAlignment="center"
+            android:layout_marginStart="@dimen/dimen_50dp"
+            android:background="@drawable/curved_edge"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/otpEt2"
+            app:layout_constraintTop_toBottomOf="@id/otpNumTxt"
+            android:layout_marginTop="@dimen/dimen_50dp"/>
 
-    <TextView
-        android:id="@+id/sign_in_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/curve_bg"
-        android:text="@string/otp_verification"
-        android:textSize="@dimen/large_et_size"
-        android:fontFamily="@font/averia_sans_libre"
-        android:textStyle="bold"
-        android:elevation="2dp"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/colorPrimary"/>
+        <EditText
+            android:id="@+id/otpEt2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:background="@drawable/curved_edge"
+            app:layout_constraintStart_toEndOf="@id/otpEt1"
+            app:layout_constraintEnd_toStartOf="@id/otpEt3"
+            app:layout_constraintTop_toTopOf="@id/otpEt1"
+            android:maxLines="1"
+            android:maxLength="1"
+            app:layout_constraintBottom_toBottomOf="@id/otpEt1" />
 
-    <EditText
-        android:id="@+id/email_et"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/sign_in_tv"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:elevation="2dp"
-        android:padding="10dp"
-        android:drawableLeft="@drawable/email_img"
-        android:hint="@string/email_phone"
-        android:drawableTint="@color/colorPrimary"
-        android:maxLines="1"
-        android:fontFamily="@font/averia_sans_libre"
-        android:textSize="@dimen/reg_et_size"
-        android:inputType="textEmailAddress"
-        android:singleLine="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/curved_edge"/>
+        <EditText
+            android:id="@+id/otpEt3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:background="@drawable/curved_edge"
+            app:layout_constraintEnd_toStartOf="@id/otpEt4"
+            android:maxLines="1"
+            android:maxLength="1"
+            app:layout_constraintStart_toEndOf="@id/otpEt2"
+            app:layout_constraintTop_toTopOf="@id/otpEt2"
+            app:layout_constraintBottom_toBottomOf="@id/otpEt2" />
 
-    <EditText
-        android:id="@+id/password_et"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:padding="10dp"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:elevation="2dp"
-        android:layout_below="@+id/email_et"
-        android:hint="@string/password_otp"
-        android:drawableLeft="@drawable/password_img"
-        android:drawableTint="@color/colorPrimary"
-        android:fontFamily="@font/averia_sans_libre"
-        android:textSize="@dimen/reg_et_size"
-        android:inputType="textPassword"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/curved_edge"/>
-    <CheckBox
-        android:id="@+id/remember_me_cbx"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="14dp"
-        android:text="@string/remember_me"
-        android:fontFamily="@font/averia_sans_libre"
-        android:textSize="@dimen/reg_et_size"
-        android:buttonTint="@color/colorPrimary"
-        android:textColor="@color/colorPrimary"
-        android:checked="true"
-        android:layout_below="@+id/password_et"/>
+        <EditText
+            android:id="@+id/otpEt4"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:layout_marginEnd="@dimen/dimen_50dp"
+            android:background="@drawable/curved_edge"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/otpEt3"
+            app:layout_constraintTop_toTopOf="@id/otpEt3"
+            android:maxLines="1"
+            android:maxLength="1"
+            app:layout_constraintBottom_toBottomOf="@id/otpEt3" />
+
+        <TextView
+            android:id="@+id/rTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="I didn't receive the code"
+            android:gravity="center"
+            android:textSize="@dimen/dimen_17sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/otpEt4"/>
+
+        <TextView
+            android:id="@+id/rensend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RESEND CODE"
+            android:fontFamily="@font/lato_bold"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:textSize="@dimen/dimen_17sp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rTxt"/>
 
 
-    <TextView
-        android:id="@+id/forgot_pwd_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/forgot_pwd"
-        android:layout_below="@+id/password_et"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/averia_sans_libre"
-        android:textSize="@dimen/reg_et_size"
-        android:visibility="gone"
-        android:layout_alignParentRight="true"
-        android:textColor="@color/colorPrimary"
-        android:layout_marginRight="10dp"
-        android:padding="10dp"/>
-
-    <Button
-        android:id="@+id/sign_in_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp"
-        android:text="@string/verify_otp"
-        android:textStyle="bold"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:textColor="@color/colorAccent"
-        android:layout_below="@+id/remember_me_cbx"
-        android:layout_centerHorizontal="true"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:fontFamily="@font/averia_sans_libre"
-        android:textSize="@dimen/sub_header_size"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/blue_curve_bg"/>
-
-    <!--  <TextView
-          android:id="@+id/dont_have_account_tv"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="@string/dont_have_account"
-          android:layout_alignParentBottom="true"
-          android:layout_marginLeft="20dp"
-          android:textColor="@color/colorPrimary"
-          android:fontFamily="@font/averia_sans_libre"
-          android:textSize="@dimen/reg_et_size"
-          android:layout_centerHorizontal="true"
-          android:layout_marginBottom="20dp"/>-->
+        <Button
+            android:id="@+id/verifyOtpBtn"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/phone_et"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="50dp"
+            android:background="@drawable/blue_curve_bg"
+            android:fontFamily="@font/ubuntu_mono"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Verify"
+            android:textAllCaps="true"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/sub_header_size"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rensend" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
 
 
-</RelativeLayout>
+</ScrollView>

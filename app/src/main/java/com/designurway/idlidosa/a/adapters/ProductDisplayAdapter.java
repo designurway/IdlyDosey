@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.designurway.idlidosa.R;
@@ -62,7 +63,7 @@ public class ProductDisplayAdapter extends RecyclerView.Adapter<ProductDisplayAd
     public void onBindViewHolder(@NonNull Vholder holder, int position) {
 
         holder.title_txt.setText(menudtailsmodel.get(position).getProduct_name());
-        holder.txt_rupees.setText(String.valueOf(menudtailsmodel.get(position).getPrice()));
+        holder.txt_rupees.setText("\u20B9 "+String.valueOf(menudtailsmodel.get(position).getPrice()));
 
         holder.item_qty_tv.setText(String.valueOf(menudtailsmodel.get(position).getOrder_qty()));
 //        holder.btn_addTocart.setText(menudtailsmodel.get(position).);
@@ -77,7 +78,7 @@ public class ProductDisplayAdapter extends RecyclerView.Adapter<ProductDisplayAd
         });
         if (menudtailsmodel.get(position).getProduct_present().contains("yes")) {
             holder.btn_addTocart.setText("Already In Cart");
-            holder.linear_button.setVisibility(View.GONE);
+            holder.constrant_button.setVisibility(View.GONE);
 
         }
 
@@ -124,11 +125,11 @@ public class ProductDisplayAdapter extends RecyclerView.Adapter<ProductDisplayAd
 
                 if (menudtailsmodel.get(position).getProduct_present().contains("yes")) {
                     holder.btn_addTocart.setText("Already In Cart");
-                    holder.linear_button.setVisibility(View.GONE);
+                    holder.constrant_button.setVisibility(View.GONE);
 
                 }else{
                     amount = Integer.valueOf(menudtailsmodel.get(position).getPrice());
-                    holder.linear_button.setVisibility(View.VISIBLE);
+                    holder.constrant_button.setVisibility(View.VISIBLE);
                     AddToCart(String.valueOf(amount *Integer.valueOf(holder.item_qty_tv.getText().toString())), String.valueOf(holder.item_qty_tv.getText()), menudtailsmodel.get(position).getProduct_id(), holder.btn_addTocart);
                     holder.btn_addTocart.setVisibility(View.GONE);
                     setFragmentTransaction.sendView(position,holder.itemView);
@@ -148,7 +149,7 @@ public class ProductDisplayAdapter extends RecyclerView.Adapter<ProductDisplayAd
         TextView title_txt, sub_title, txt_rupees, item_qty_tv;
         ImageView image_view, minus_img_iv, plus_img_iv;
         Button btn_addTocart;
-        LinearLayout linear_button;
+        ConstraintLayout constrant_button;
 
         public Vholder(@NonNull View itemView) {
             super(itemView);
@@ -161,7 +162,7 @@ public class ProductDisplayAdapter extends RecyclerView.Adapter<ProductDisplayAd
             txt_rupees = itemView.findViewById(R.id.txt_rupees);
             item_qty_tv = itemView.findViewById(R.id.item_qty_tv);
             btn_addTocart = itemView.findViewById(R.id.btn_addTocart);
-            linear_button = itemView.findViewById(R.id.linear_button);
+            constrant_button = itemView.findViewById(R.id.constrant_button);
 
         }
     }

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -34,10 +35,17 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.orderIdTv.setText(orderHistoryModels.get(position).getOrder_id());
-        holder.amountTv.setText(orderHistoryModels.get(position).getPrice());
+        holder.orderIdTv.setText("#"+orderHistoryModels.get(position).getOrder_id());
+        holder.amountTv.setText("\u20A8"+" "+orderHistoryModels.get(position).getPrice());
         holder.dateTv.setText(orderHistoryModels.get(position).getCreated_date());
         holder.statusTv.setText(orderHistoryModels.get(position).getOrder_status());
+
+        holder.amountTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context,orderHistoryModels.get(position).getOrder_status() , Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
 
@@ -53,7 +61,6 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
         TextView amountTv;
         TextView dateTv;
         TextView statusTv;
-        RelativeLayout statusLayoutRl;
         public MyViewHolder(@NonNull View itemView) {
 
             super(itemView);
@@ -61,7 +68,6 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
             amountTv= itemView.findViewById(R.id.amount_tv);
             dateTv= itemView.findViewById(R.id.ordered_date_tv);
             statusTv= itemView.findViewById(R.id.order_status_tv);
-            statusLayoutRl= itemView.findViewById(R.id.order_status_rl);
 
         }
     }

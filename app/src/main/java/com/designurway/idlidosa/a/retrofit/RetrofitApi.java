@@ -118,7 +118,8 @@ public interface RetrofitApi {
             @Field("email") String email,
             @Field("phone") String phone,
             @Field("home_address") String address,
-            @Field("pin_code") String pincode
+            @Field("pin_code") String pincode,
+            @Field("referral_code") String referralCode
     );
 
     @FormUrlEncoded
@@ -147,11 +148,11 @@ public interface RetrofitApi {
     @FormUrlEncoded
     @POST("post_customer_address.php")
     Call<StatusAndMessageModel> postCustomerAddress(
-
             @Field("phone") String phone,
             @Field("building") String building,
             @Field("street") String street,
-            @Field("address_type") String addressType
+            @Field("address_type") String addressType,
+            @Field("pin_code")String pinCode
     );
 
     @GET("get_cart_item.php")

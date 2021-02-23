@@ -87,8 +87,8 @@ public class DisplayProductFragment extends Fragment {
                         @Override
                         public void sendPosition(int position, String id, View view,String present) {
 
-                            action = DisplayProductFragmentDirections.actionDisplayProductFragmentToProductDetailfragment(id,present);
-                            Navigation.findNavController(getView()).navigate(action);
+                          /*  action = DisplayProductFragmentDirections.actionDisplayProductFragmentToProductDetailfragment(id,present);
+                            Navigation.findNavController(getView()).navigate(action);*/
                         }
 
                         @Override

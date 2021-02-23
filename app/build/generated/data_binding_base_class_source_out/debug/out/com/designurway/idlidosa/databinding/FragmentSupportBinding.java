@@ -5,131 +5,56 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import com.designurway.idlidosa.R;
+import de.hdodenhof.circleimageview.CircleImageView;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
 
 public final class FragmentSupportBinding implements ViewBinding {
   @NonNull
-  private final RelativeLayout rootView;
+  private final ConstraintLayout rootView;
 
   @NonNull
-  public final ImageView appLogo;
+  public final TextView aboutCompTitle;
 
   @NonNull
-  public final LinearLayout appNameLl;
+  public final CircleImageView aboutLogo;
 
   @NonNull
-  public final TextView appNameTv;
+  public final ImageView callIcon;
 
   @NonNull
-  public final CardView companyDetailsCv;
+  public final ImageView companyIcon;
 
   @NonNull
-  public final RelativeLayout companyDetailsRl;
-
-  @NonNull
-  public final LinearLayout companyLl;
-
-  @NonNull
-  public final LinearLayout companyLocationLl;
-
-  @NonNull
-  public final ImageView companyLocationLogo;
-
-  @NonNull
-  public final TextView companyLocationTv;
-
-  @NonNull
-  public final ImageView companyLogo;
-
-  @NonNull
-  public final TextView companyNameTv;
-
-  @NonNull
-  public final TextView companyPhNumTv;
-
-  @NonNull
-  public final LinearLayout companyPhoneNumLl;
-
-  @NonNull
-  public final TextView companyTv;
-
-  @NonNull
-  public final LinearLayout licenceLl;
-
-  @NonNull
-  public final ImageView licenceLogo;
-
-  @NonNull
-  public final TextView licenceTv;
-
-  @NonNull
-  public final ImageView phoneLogo;
+  public final ImageView mailIcon;
 
   @NonNull
   public final CardView supportDetailsCv;
 
-  @NonNull
-  public final RelativeLayout supportDetailsRl;
-
-  @NonNull
-  public final LinearLayout versionLl;
-
-  @NonNull
-  public final ImageView versionLogo;
-
-  @NonNull
-  public final TextView versionTv;
-
-  private FragmentSupportBinding(@NonNull RelativeLayout rootView, @NonNull ImageView appLogo,
-      @NonNull LinearLayout appNameLl, @NonNull TextView appNameTv,
-      @NonNull CardView companyDetailsCv, @NonNull RelativeLayout companyDetailsRl,
-      @NonNull LinearLayout companyLl, @NonNull LinearLayout companyLocationLl,
-      @NonNull ImageView companyLocationLogo, @NonNull TextView companyLocationTv,
-      @NonNull ImageView companyLogo, @NonNull TextView companyNameTv,
-      @NonNull TextView companyPhNumTv, @NonNull LinearLayout companyPhoneNumLl,
-      @NonNull TextView companyTv, @NonNull LinearLayout licenceLl, @NonNull ImageView licenceLogo,
-      @NonNull TextView licenceTv, @NonNull ImageView phoneLogo, @NonNull CardView supportDetailsCv,
-      @NonNull RelativeLayout supportDetailsRl, @NonNull LinearLayout versionLl,
-      @NonNull ImageView versionLogo, @NonNull TextView versionTv) {
+  private FragmentSupportBinding(@NonNull ConstraintLayout rootView,
+      @NonNull TextView aboutCompTitle, @NonNull CircleImageView aboutLogo,
+      @NonNull ImageView callIcon, @NonNull ImageView companyIcon, @NonNull ImageView mailIcon,
+      @NonNull CardView supportDetailsCv) {
     this.rootView = rootView;
-    this.appLogo = appLogo;
-    this.appNameLl = appNameLl;
-    this.appNameTv = appNameTv;
-    this.companyDetailsCv = companyDetailsCv;
-    this.companyDetailsRl = companyDetailsRl;
-    this.companyLl = companyLl;
-    this.companyLocationLl = companyLocationLl;
-    this.companyLocationLogo = companyLocationLogo;
-    this.companyLocationTv = companyLocationTv;
-    this.companyLogo = companyLogo;
-    this.companyNameTv = companyNameTv;
-    this.companyPhNumTv = companyPhNumTv;
-    this.companyPhoneNumLl = companyPhoneNumLl;
-    this.companyTv = companyTv;
-    this.licenceLl = licenceLl;
-    this.licenceLogo = licenceLogo;
-    this.licenceTv = licenceTv;
-    this.phoneLogo = phoneLogo;
+    this.aboutCompTitle = aboutCompTitle;
+    this.aboutLogo = aboutLogo;
+    this.callIcon = callIcon;
+    this.companyIcon = companyIcon;
+    this.mailIcon = mailIcon;
     this.supportDetailsCv = supportDetailsCv;
-    this.supportDetailsRl = supportDetailsRl;
-    this.versionLl = versionLl;
-    this.versionLogo = versionLogo;
-    this.versionTv = versionTv;
   }
 
   @Override
   @NonNull
-  public RelativeLayout getRoot() {
+  public ConstraintLayout getRoot() {
     return rootView;
   }
 
@@ -154,111 +79,33 @@ public final class FragmentSupportBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.app_logo;
-      ImageView appLogo = rootView.findViewById(id);
-      if (appLogo == null) {
+      id = R.id.aboutCompTitle;
+      TextView aboutCompTitle = rootView.findViewById(id);
+      if (aboutCompTitle == null) {
         break missingId;
       }
 
-      id = R.id.app_name_ll;
-      LinearLayout appNameLl = rootView.findViewById(id);
-      if (appNameLl == null) {
+      id = R.id.aboutLogo;
+      CircleImageView aboutLogo = rootView.findViewById(id);
+      if (aboutLogo == null) {
         break missingId;
       }
 
-      id = R.id.app_name_tv;
-      TextView appNameTv = rootView.findViewById(id);
-      if (appNameTv == null) {
+      id = R.id.callIcon;
+      ImageView callIcon = rootView.findViewById(id);
+      if (callIcon == null) {
         break missingId;
       }
 
-      id = R.id.company_details_cv;
-      CardView companyDetailsCv = rootView.findViewById(id);
-      if (companyDetailsCv == null) {
+      id = R.id.companyIcon;
+      ImageView companyIcon = rootView.findViewById(id);
+      if (companyIcon == null) {
         break missingId;
       }
 
-      id = R.id.company_details_rl;
-      RelativeLayout companyDetailsRl = rootView.findViewById(id);
-      if (companyDetailsRl == null) {
-        break missingId;
-      }
-
-      id = R.id.company_ll;
-      LinearLayout companyLl = rootView.findViewById(id);
-      if (companyLl == null) {
-        break missingId;
-      }
-
-      id = R.id.company_location_ll;
-      LinearLayout companyLocationLl = rootView.findViewById(id);
-      if (companyLocationLl == null) {
-        break missingId;
-      }
-
-      id = R.id.company_location_logo;
-      ImageView companyLocationLogo = rootView.findViewById(id);
-      if (companyLocationLogo == null) {
-        break missingId;
-      }
-
-      id = R.id.company_location_tv;
-      TextView companyLocationTv = rootView.findViewById(id);
-      if (companyLocationTv == null) {
-        break missingId;
-      }
-
-      id = R.id.company_logo;
-      ImageView companyLogo = rootView.findViewById(id);
-      if (companyLogo == null) {
-        break missingId;
-      }
-
-      id = R.id.company_name_tv;
-      TextView companyNameTv = rootView.findViewById(id);
-      if (companyNameTv == null) {
-        break missingId;
-      }
-
-      id = R.id.company_ph_num_tv;
-      TextView companyPhNumTv = rootView.findViewById(id);
-      if (companyPhNumTv == null) {
-        break missingId;
-      }
-
-      id = R.id.company_phone_num_ll;
-      LinearLayout companyPhoneNumLl = rootView.findViewById(id);
-      if (companyPhoneNumLl == null) {
-        break missingId;
-      }
-
-      id = R.id.company_tv;
-      TextView companyTv = rootView.findViewById(id);
-      if (companyTv == null) {
-        break missingId;
-      }
-
-      id = R.id.licence_ll;
-      LinearLayout licenceLl = rootView.findViewById(id);
-      if (licenceLl == null) {
-        break missingId;
-      }
-
-      id = R.id.licence_logo;
-      ImageView licenceLogo = rootView.findViewById(id);
-      if (licenceLogo == null) {
-        break missingId;
-      }
-
-      id = R.id.licence_tv;
-      TextView licenceTv = rootView.findViewById(id);
-      if (licenceTv == null) {
-        break missingId;
-      }
-
-      id = R.id.phone_logo;
-      ImageView phoneLogo = rootView.findViewById(id);
-      if (phoneLogo == null) {
+      id = R.id.mailIcon;
+      ImageView mailIcon = rootView.findViewById(id);
+      if (mailIcon == null) {
         break missingId;
       }
 
@@ -268,35 +115,8 @@ public final class FragmentSupportBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.support_details_rl;
-      RelativeLayout supportDetailsRl = rootView.findViewById(id);
-      if (supportDetailsRl == null) {
-        break missingId;
-      }
-
-      id = R.id.version_ll;
-      LinearLayout versionLl = rootView.findViewById(id);
-      if (versionLl == null) {
-        break missingId;
-      }
-
-      id = R.id.version_logo;
-      ImageView versionLogo = rootView.findViewById(id);
-      if (versionLogo == null) {
-        break missingId;
-      }
-
-      id = R.id.version_tv;
-      TextView versionTv = rootView.findViewById(id);
-      if (versionTv == null) {
-        break missingId;
-      }
-
-      return new FragmentSupportBinding((RelativeLayout) rootView, appLogo, appNameLl, appNameTv,
-          companyDetailsCv, companyDetailsRl, companyLl, companyLocationLl, companyLocationLogo,
-          companyLocationTv, companyLogo, companyNameTv, companyPhNumTv, companyPhoneNumLl,
-          companyTv, licenceLl, licenceLogo, licenceTv, phoneLogo, supportDetailsCv,
-          supportDetailsRl, versionLl, versionLogo, versionTv);
+      return new FragmentSupportBinding((ConstraintLayout) rootView, aboutCompTitle, aboutLogo,
+          callIcon, companyIcon, mailIcon, supportDetailsCv);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

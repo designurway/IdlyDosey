@@ -21,6 +21,9 @@ public final class LayoutFeaturedItemBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
+  public final TextView menuDescriptionTv;
+
+  @NonNull
   public final ImageView menuImgIv;
 
   @NonNull
@@ -29,13 +32,19 @@ public final class LayoutFeaturedItemBinding implements ViewBinding {
   @NonNull
   public final CardView menuOverallLayoutCv;
 
+  @NonNull
+  public final TextView menuPriceTv;
+
   private LayoutFeaturedItemBinding(@NonNull ConstraintLayout rootView,
-      @NonNull ImageView menuImgIv, @NonNull TextView menuNameTv,
-      @NonNull CardView menuOverallLayoutCv) {
+      @NonNull TextView menuDescriptionTv, @NonNull ImageView menuImgIv,
+      @NonNull TextView menuNameTv, @NonNull CardView menuOverallLayoutCv,
+      @NonNull TextView menuPriceTv) {
     this.rootView = rootView;
+    this.menuDescriptionTv = menuDescriptionTv;
     this.menuImgIv = menuImgIv;
     this.menuNameTv = menuNameTv;
     this.menuOverallLayoutCv = menuOverallLayoutCv;
+    this.menuPriceTv = menuPriceTv;
   }
 
   @Override
@@ -65,6 +74,12 @@ public final class LayoutFeaturedItemBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.menu_description_tv;
+      TextView menuDescriptionTv = rootView.findViewById(id);
+      if (menuDescriptionTv == null) {
+        break missingId;
+      }
+
       id = R.id.menu_img_iv;
       ImageView menuImgIv = rootView.findViewById(id);
       if (menuImgIv == null) {
@@ -83,8 +98,14 @@ public final class LayoutFeaturedItemBinding implements ViewBinding {
         break missingId;
       }
 
-      return new LayoutFeaturedItemBinding((ConstraintLayout) rootView, menuImgIv, menuNameTv,
-          menuOverallLayoutCv);
+      id = R.id.menu_price_tv;
+      TextView menuPriceTv = rootView.findViewById(id);
+      if (menuPriceTv == null) {
+        break missingId;
+      }
+
+      return new LayoutFeaturedItemBinding((ConstraintLayout) rootView, menuDescriptionTv,
+          menuImgIv, menuNameTv, menuOverallLayoutCv, menuPriceTv);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -4,11 +4,12 @@ package com.designurway.idlidosa.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import com.designurway.idlidosa.R;
 import java.lang.NullPointerException;
@@ -17,51 +18,143 @@ import java.lang.String;
 
 public final class FragmentSettingsBinding implements ViewBinding {
   @NonNull
-  private final RelativeLayout rootView;
+  private final ConstraintLayout rootView;
 
   @NonNull
-  public final LinearLayout addressBookLy;
+  public final CardView CardEdit;
 
   @NonNull
-  public final LinearLayout logoutLy;
+  public final CardView CardOffer;
 
   @NonNull
-  public final LinearLayout orderHistoryLy;
+  public final CardView CardOrder;
 
   @NonNull
-  public final LinearLayout referFriendLy;
+  public final CardView CardSupport;
 
   @NonNull
-  public final LinearLayout rewardLy;
+  public final TextView Edit;
 
   @NonNull
-  public final LinearLayout supportLy;
+  public final TextView EditSupport;
 
   @NonNull
-  public final LinearLayout trackOrdersLy;
+  public final TextView Offer;
 
   @NonNull
-  public final TextView versionTv;
+  public final ConstraintLayout consEdtAd;
 
-  private FragmentSettingsBinding(@NonNull RelativeLayout rootView,
-      @NonNull LinearLayout addressBookLy, @NonNull LinearLayout logoutLy,
-      @NonNull LinearLayout orderHistoryLy, @NonNull LinearLayout referFriendLy,
-      @NonNull LinearLayout rewardLy, @NonNull LinearLayout supportLy,
-      @NonNull LinearLayout trackOrdersLy, @NonNull TextView versionTv) {
+  @NonNull
+  public final ConstraintLayout consHistory;
+
+  @NonNull
+  public final ConstraintLayout consRefer;
+
+  @NonNull
+  public final ConstraintLayout consSigout;
+
+  @NonNull
+  public final ConstraintLayout consSupport;
+
+  @NonNull
+  public final ConstraintLayout consTrack;
+
+  @NonNull
+  public final ConstraintLayout constPickReward;
+
+  @NonNull
+  public final ImageView imagArrEdit;
+
+  @NonNull
+  public final ImageView imagArrOrdr;
+
+  @NonNull
+  public final ImageView imagArrRefer;
+
+  @NonNull
+  public final ImageView imagArrReward;
+
+  @NonNull
+  public final ImageView imagArrSignout;
+
+  @NonNull
+  public final ImageView imagArrSupport;
+
+  @NonNull
+  public final ImageView imagArrTrack;
+
+  @NonNull
+  public final ImageView imagEdit;
+
+  @NonNull
+  public final ImageView imagOrder;
+
+  @NonNull
+  public final ImageView imagRefer;
+
+  @NonNull
+  public final ImageView imagReward;
+
+  @NonNull
+  public final ImageView imagSignout;
+
+  @NonNull
+  public final ImageView imagSupport;
+
+  @NonNull
+  public final ImageView imagTrack;
+
+  @NonNull
+  public final TextView orderd;
+
+  private FragmentSettingsBinding(@NonNull ConstraintLayout rootView, @NonNull CardView CardEdit,
+      @NonNull CardView CardOffer, @NonNull CardView CardOrder, @NonNull CardView CardSupport,
+      @NonNull TextView Edit, @NonNull TextView EditSupport, @NonNull TextView Offer,
+      @NonNull ConstraintLayout consEdtAd, @NonNull ConstraintLayout consHistory,
+      @NonNull ConstraintLayout consRefer, @NonNull ConstraintLayout consSigout,
+      @NonNull ConstraintLayout consSupport, @NonNull ConstraintLayout consTrack,
+      @NonNull ConstraintLayout constPickReward, @NonNull ImageView imagArrEdit,
+      @NonNull ImageView imagArrOrdr, @NonNull ImageView imagArrRefer,
+      @NonNull ImageView imagArrReward, @NonNull ImageView imagArrSignout,
+      @NonNull ImageView imagArrSupport, @NonNull ImageView imagArrTrack,
+      @NonNull ImageView imagEdit, @NonNull ImageView imagOrder, @NonNull ImageView imagRefer,
+      @NonNull ImageView imagReward, @NonNull ImageView imagSignout, @NonNull ImageView imagSupport,
+      @NonNull ImageView imagTrack, @NonNull TextView orderd) {
     this.rootView = rootView;
-    this.addressBookLy = addressBookLy;
-    this.logoutLy = logoutLy;
-    this.orderHistoryLy = orderHistoryLy;
-    this.referFriendLy = referFriendLy;
-    this.rewardLy = rewardLy;
-    this.supportLy = supportLy;
-    this.trackOrdersLy = trackOrdersLy;
-    this.versionTv = versionTv;
+    this.CardEdit = CardEdit;
+    this.CardOffer = CardOffer;
+    this.CardOrder = CardOrder;
+    this.CardSupport = CardSupport;
+    this.Edit = Edit;
+    this.EditSupport = EditSupport;
+    this.Offer = Offer;
+    this.consEdtAd = consEdtAd;
+    this.consHistory = consHistory;
+    this.consRefer = consRefer;
+    this.consSigout = consSigout;
+    this.consSupport = consSupport;
+    this.consTrack = consTrack;
+    this.constPickReward = constPickReward;
+    this.imagArrEdit = imagArrEdit;
+    this.imagArrOrdr = imagArrOrdr;
+    this.imagArrRefer = imagArrRefer;
+    this.imagArrReward = imagArrReward;
+    this.imagArrSignout = imagArrSignout;
+    this.imagArrSupport = imagArrSupport;
+    this.imagArrTrack = imagArrTrack;
+    this.imagEdit = imagEdit;
+    this.imagOrder = imagOrder;
+    this.imagRefer = imagRefer;
+    this.imagReward = imagReward;
+    this.imagSignout = imagSignout;
+    this.imagSupport = imagSupport;
+    this.imagTrack = imagTrack;
+    this.orderd = orderd;
   }
 
   @Override
   @NonNull
-  public RelativeLayout getRoot() {
+  public ConstraintLayout getRoot() {
     return rootView;
   }
 
@@ -86,56 +179,185 @@ public final class FragmentSettingsBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.address_book_ly;
-      LinearLayout addressBookLy = rootView.findViewById(id);
-      if (addressBookLy == null) {
+      id = R.id.CardEdit;
+      CardView CardEdit = rootView.findViewById(id);
+      if (CardEdit == null) {
         break missingId;
       }
 
-      id = R.id.logout_ly;
-      LinearLayout logoutLy = rootView.findViewById(id);
-      if (logoutLy == null) {
+      id = R.id.CardOffer;
+      CardView CardOffer = rootView.findViewById(id);
+      if (CardOffer == null) {
         break missingId;
       }
 
-      id = R.id.order_history_ly;
-      LinearLayout orderHistoryLy = rootView.findViewById(id);
-      if (orderHistoryLy == null) {
+      id = R.id.CardOrder;
+      CardView CardOrder = rootView.findViewById(id);
+      if (CardOrder == null) {
         break missingId;
       }
 
-      id = R.id.refer_friend_ly;
-      LinearLayout referFriendLy = rootView.findViewById(id);
-      if (referFriendLy == null) {
+      id = R.id.CardSupport;
+      CardView CardSupport = rootView.findViewById(id);
+      if (CardSupport == null) {
         break missingId;
       }
 
-      id = R.id.reward_ly;
-      LinearLayout rewardLy = rootView.findViewById(id);
-      if (rewardLy == null) {
+      id = R.id.Edit;
+      TextView Edit = rootView.findViewById(id);
+      if (Edit == null) {
         break missingId;
       }
 
-      id = R.id.support_ly;
-      LinearLayout supportLy = rootView.findViewById(id);
-      if (supportLy == null) {
+      id = R.id.EditSupport;
+      TextView EditSupport = rootView.findViewById(id);
+      if (EditSupport == null) {
         break missingId;
       }
 
-      id = R.id.track_orders_ly;
-      LinearLayout trackOrdersLy = rootView.findViewById(id);
-      if (trackOrdersLy == null) {
+      id = R.id.Offer;
+      TextView Offer = rootView.findViewById(id);
+      if (Offer == null) {
         break missingId;
       }
 
-      id = R.id.version_tv;
-      TextView versionTv = rootView.findViewById(id);
-      if (versionTv == null) {
+      id = R.id.consEdtAd;
+      ConstraintLayout consEdtAd = rootView.findViewById(id);
+      if (consEdtAd == null) {
         break missingId;
       }
 
-      return new FragmentSettingsBinding((RelativeLayout) rootView, addressBookLy, logoutLy,
-          orderHistoryLy, referFriendLy, rewardLy, supportLy, trackOrdersLy, versionTv);
+      id = R.id.consHistory;
+      ConstraintLayout consHistory = rootView.findViewById(id);
+      if (consHistory == null) {
+        break missingId;
+      }
+
+      id = R.id.consRefer;
+      ConstraintLayout consRefer = rootView.findViewById(id);
+      if (consRefer == null) {
+        break missingId;
+      }
+
+      id = R.id.consSigout;
+      ConstraintLayout consSigout = rootView.findViewById(id);
+      if (consSigout == null) {
+        break missingId;
+      }
+
+      id = R.id.consSupport;
+      ConstraintLayout consSupport = rootView.findViewById(id);
+      if (consSupport == null) {
+        break missingId;
+      }
+
+      id = R.id.consTrack;
+      ConstraintLayout consTrack = rootView.findViewById(id);
+      if (consTrack == null) {
+        break missingId;
+      }
+
+      id = R.id.constPickReward;
+      ConstraintLayout constPickReward = rootView.findViewById(id);
+      if (constPickReward == null) {
+        break missingId;
+      }
+
+      id = R.id.imagArrEdit;
+      ImageView imagArrEdit = rootView.findViewById(id);
+      if (imagArrEdit == null) {
+        break missingId;
+      }
+
+      id = R.id.imagArrOrdr;
+      ImageView imagArrOrdr = rootView.findViewById(id);
+      if (imagArrOrdr == null) {
+        break missingId;
+      }
+
+      id = R.id.imagArrRefer;
+      ImageView imagArrRefer = rootView.findViewById(id);
+      if (imagArrRefer == null) {
+        break missingId;
+      }
+
+      id = R.id.imagArrReward;
+      ImageView imagArrReward = rootView.findViewById(id);
+      if (imagArrReward == null) {
+        break missingId;
+      }
+
+      id = R.id.imagArrSignout;
+      ImageView imagArrSignout = rootView.findViewById(id);
+      if (imagArrSignout == null) {
+        break missingId;
+      }
+
+      id = R.id.imagArrSupport;
+      ImageView imagArrSupport = rootView.findViewById(id);
+      if (imagArrSupport == null) {
+        break missingId;
+      }
+
+      id = R.id.imagArrTrack;
+      ImageView imagArrTrack = rootView.findViewById(id);
+      if (imagArrTrack == null) {
+        break missingId;
+      }
+
+      id = R.id.imagEdit;
+      ImageView imagEdit = rootView.findViewById(id);
+      if (imagEdit == null) {
+        break missingId;
+      }
+
+      id = R.id.imagOrder;
+      ImageView imagOrder = rootView.findViewById(id);
+      if (imagOrder == null) {
+        break missingId;
+      }
+
+      id = R.id.imagRefer;
+      ImageView imagRefer = rootView.findViewById(id);
+      if (imagRefer == null) {
+        break missingId;
+      }
+
+      id = R.id.imagReward;
+      ImageView imagReward = rootView.findViewById(id);
+      if (imagReward == null) {
+        break missingId;
+      }
+
+      id = R.id.imagSignout;
+      ImageView imagSignout = rootView.findViewById(id);
+      if (imagSignout == null) {
+        break missingId;
+      }
+
+      id = R.id.imagSupport;
+      ImageView imagSupport = rootView.findViewById(id);
+      if (imagSupport == null) {
+        break missingId;
+      }
+
+      id = R.id.imagTrack;
+      ImageView imagTrack = rootView.findViewById(id);
+      if (imagTrack == null) {
+        break missingId;
+      }
+
+      id = R.id.orderd;
+      TextView orderd = rootView.findViewById(id);
+      if (orderd == null) {
+        break missingId;
+      }
+
+      return new FragmentSettingsBinding((ConstraintLayout) rootView, CardEdit, CardOffer,
+          CardOrder, CardSupport, Edit, EditSupport, Offer, consEdtAd, consHistory, consRefer,
+          consSigout, consSupport, consTrack, constPickReward, imagArrEdit, imagArrOrdr,
+          imagArrRefer, imagArrReward, imagArrSignout, imagArrSupport, imagArrTrack, imagEdit,
+          imagOrder, imagRefer, imagReward, imagSignout, imagSupport, imagTrack, orderd);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

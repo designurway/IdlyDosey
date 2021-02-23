@@ -4,7 +4,7 @@ package com.designurway.idlidosa.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -23,35 +23,35 @@ public final class ListOrderHistoryBinding implements ViewBinding {
   public final TextView amountTv;
 
   @NonNull
-  public final TextView orderIdTv;
+  public final ImageView dateIcon;
 
   @NonNull
-  public final RelativeLayout orderStatusRl;
+  public final ImageView dot;
+
+  @NonNull
+  public final TextView orderIdTv;
 
   @NonNull
   public final TextView orderStatusTv;
 
   @NonNull
+  public final TextView orderTxt;
+
+  @NonNull
   public final TextView orderedDateTv;
 
-  @NonNull
-  public final LinearLayout overallLy;
-
-  @NonNull
-  public final TextView rupeesTv;
-
   private ListOrderHistoryBinding(@NonNull RelativeLayout rootView, @NonNull TextView amountTv,
-      @NonNull TextView orderIdTv, @NonNull RelativeLayout orderStatusRl,
-      @NonNull TextView orderStatusTv, @NonNull TextView orderedDateTv,
-      @NonNull LinearLayout overallLy, @NonNull TextView rupeesTv) {
+      @NonNull ImageView dateIcon, @NonNull ImageView dot, @NonNull TextView orderIdTv,
+      @NonNull TextView orderStatusTv, @NonNull TextView orderTxt,
+      @NonNull TextView orderedDateTv) {
     this.rootView = rootView;
     this.amountTv = amountTv;
+    this.dateIcon = dateIcon;
+    this.dot = dot;
     this.orderIdTv = orderIdTv;
-    this.orderStatusRl = orderStatusRl;
     this.orderStatusTv = orderStatusTv;
+    this.orderTxt = orderTxt;
     this.orderedDateTv = orderedDateTv;
-    this.overallLy = overallLy;
-    this.rupeesTv = rupeesTv;
   }
 
   @Override
@@ -87,15 +87,21 @@ public final class ListOrderHistoryBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.order_id_tv;
-      TextView orderIdTv = rootView.findViewById(id);
-      if (orderIdTv == null) {
+      id = R.id.dateIcon;
+      ImageView dateIcon = rootView.findViewById(id);
+      if (dateIcon == null) {
         break missingId;
       }
 
-      id = R.id.order_status_rl;
-      RelativeLayout orderStatusRl = rootView.findViewById(id);
-      if (orderStatusRl == null) {
+      id = R.id.dot;
+      ImageView dot = rootView.findViewById(id);
+      if (dot == null) {
+        break missingId;
+      }
+
+      id = R.id.order_id_tv;
+      TextView orderIdTv = rootView.findViewById(id);
+      if (orderIdTv == null) {
         break missingId;
       }
 
@@ -105,26 +111,20 @@ public final class ListOrderHistoryBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.orderTxt;
+      TextView orderTxt = rootView.findViewById(id);
+      if (orderTxt == null) {
+        break missingId;
+      }
+
       id = R.id.ordered_date_tv;
       TextView orderedDateTv = rootView.findViewById(id);
       if (orderedDateTv == null) {
         break missingId;
       }
 
-      id = R.id.overall_ly;
-      LinearLayout overallLy = rootView.findViewById(id);
-      if (overallLy == null) {
-        break missingId;
-      }
-
-      id = R.id.rupees_tv;
-      TextView rupeesTv = rootView.findViewById(id);
-      if (rupeesTv == null) {
-        break missingId;
-      }
-
-      return new ListOrderHistoryBinding((RelativeLayout) rootView, amountTv, orderIdTv,
-          orderStatusRl, orderStatusTv, orderedDateTv, overallLy, rupeesTv);
+      return new ListOrderHistoryBinding((RelativeLayout) rootView, amountTv, dateIcon, dot,
+          orderIdTv, orderStatusTv, orderTxt, orderedDateTv);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

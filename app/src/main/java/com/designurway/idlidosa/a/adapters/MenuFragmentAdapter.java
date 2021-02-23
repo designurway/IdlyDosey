@@ -43,6 +43,8 @@ public class MenuFragmentAdapter extends RecyclerView.Adapter<MenuFragmentAdapte
     public void onBindViewHolder(@NonNull Vholder holder, int position) {
 
         holder.menuName.setText(modellist.get(position).getProduct_name());
+        holder.menu_description_tv.setText(modellist.get(position).getDescription());
+        holder.menu_price_tv.setText("\u20B9 "+modellist.get(position).getPrice());
         holder.cardLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,7 +54,7 @@ public class MenuFragmentAdapter extends RecyclerView.Adapter<MenuFragmentAdapte
             }
         });
 
-        if (modellist.get(position).getImage().isEmpty() && !modellist.get(position).getImage().isEmpty()){
+        if (!modellist.get(position).getImage().isEmpty() && !modellist.get(position).getImage().isEmpty()){
             Picasso.get().load(modellist.get(position).getImage()).into(holder.menuImage);
         }
 
@@ -65,13 +67,15 @@ public class MenuFragmentAdapter extends RecyclerView.Adapter<MenuFragmentAdapte
 
     public class Vholder extends RecyclerView.ViewHolder {
         ImageView menuImage;
-        TextView menuName;
+        TextView menuName,menu_description_tv,menu_price_tv;
         CardView  cardLayout;
 
         public Vholder(@NonNull View itemView) {
             super(itemView);
             menuImage= itemView.findViewById(R.id.menu_img_iv);
             menuName= itemView.findViewById(R.id.menu_name_tv);
+            menu_price_tv= itemView.findViewById(R.id.menu_price_tv);
+            menu_description_tv= itemView.findViewById(R.id.menu_description_tv);
             cardLayout= itemView.findViewById(R.id.menu_overall_layout_cv);
         }
     }

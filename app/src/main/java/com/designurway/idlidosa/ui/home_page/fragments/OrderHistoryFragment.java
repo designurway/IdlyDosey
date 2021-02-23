@@ -40,9 +40,8 @@ public class OrderHistoryFragment extends Fragment {
     FragmentOrderHistoryBinding binding;
     NavDirections action;
     RecyclerView orderHistoryRv;
-    TextView cartTotalTv;
     ImageView imgSadFace;
-
+    TextView noOrderText;
     OrderHistoryAdapter orderHistoryAdapter;
 
 
@@ -59,7 +58,8 @@ public class OrderHistoryFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         orderHistoryRv = binding.orderHistoryRv;
-        cartTotalTv = binding.cartTotalTv;
+        noOrderText = binding.noOrderText;
+
         imgSadFace = binding.imgSadFace;
 
         getOrderHistory();
@@ -78,12 +78,12 @@ public class OrderHistoryFragment extends Fragment {
                 if (response.isSuccessful()  && response.body().getMessage().contains("Successful")) {
 
                     orderHistoryAdapter = new OrderHistoryAdapter(getorderHistoryModels, getContext());
-                    cartTotalTv.setText(String.valueOf(getorderHistoryModels.size()));
                     orderHistoryRv.setLayoutManager(new LinearLayoutManager(getContext()));
                     orderHistoryRv.setAdapter(orderHistoryAdapter);
 
                 } else {
                     imgSadFace.setVisibility(View.VISIBLE);
+                    noOrderText.setVisibility(View.VISIBLE);
                     orderHistoryRv.setVisibility(View.GONE);
                 }
             }

@@ -59,7 +59,14 @@ public class ViewCartAdapter extends RecyclerView.Adapter
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.itemName.setText(viewCartModels.get(position).getProduct_name());
+
+        if (viewCartModels.get(position).getProduct_name()!=null ){
+            holder.itemName.setText(viewCartModels.get(position).getProduct_name());
+        }else {
+            holder.itemName.setText(viewCartModels.get(position).getMedicine_name());
+        }
+
+
         holder.itemQty.setText(viewCartModels.get(position).getQuantity());
 
         holder.itemPrice.setText(String.valueOf(viewCartModels.get(position).getAmount()));

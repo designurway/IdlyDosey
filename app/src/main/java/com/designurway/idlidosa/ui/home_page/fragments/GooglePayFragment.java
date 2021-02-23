@@ -60,7 +60,7 @@ public class GooglePayFragment extends Fragment {
     GooglePayFragmentArgs args;
 
     ImageView arrowImg;
-    TextView amountEt, upiEt;
+    TextView amountEt, upiEt,txtNumber;
     //    EditText  note, name;
     Button payBtn;
     String TAG = "main";
@@ -94,11 +94,13 @@ public class GooglePayFragment extends Fragment {
         amount = args.getAmount();
         orderId = args.getOrderId();
         address = args.getAddress();
-        arrowImg = binding.arrowImg;
-        amountEt = binding.amountEt;
-        upiEt = binding.upiEt;
-        payBtn = binding.payBtn;
-        personPayImgv = binding.personPayImgv;
+
+        amountEt = binding.txtAmount;
+//        upiEt = binding.upiEt;
+//        payBtn = binding.payBtn;
+        payBtn=binding.payAmount;
+        txtNumber=binding.payAmount;
+
 
         lat=getLocationFromAddress(getActivity(),address);
 
@@ -123,7 +125,7 @@ public class GooglePayFragment extends Fragment {
         payBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                payUsingUpi(PreferenceManager.getCustomerName(), upiEt.getText().toString(),
+                payUsingUpi(PreferenceManager.getCustomerName(), txtNumber.getText().toString(),
                         "IDLY DOSEY", amountEt.getText().toString());
             }
         });
@@ -295,7 +297,7 @@ public class GooglePayFragment extends Fragment {
 //                        Picasso.with(getContext()).load(statusMessageModel.getImage()).into(person_pay_imgv);
                     } else {
 //                        Picasso.with(getContext()).load(statusMessageModel.getImage()).into(person_pay_imgv);
-                        Glide.with(getContext()).load(statusMessageModel.getImage()).into(personPayImgv);
+//                        Glide.with(getContext()).load(statusMessageModel.getImage()).into(personPayImgv);
                     }
                 } else {
                     Toast.makeText(getContext(), "Fail", Toast.LENGTH_SHORT).show();

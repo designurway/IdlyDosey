@@ -1,93 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/refer_rl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
+    android:background="@color/white"
     tools:context=".ui.home_page.fragments.ReferFriendFragment">
 
-
-    <ImageView
-        android:id="@+id/refer_iv"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_centerHorizontal="true" />
+    <TextView
+        android:id="@+id/inviteTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Invite your friends"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:id="@+id/refer_header_tv"
+        android:id="@+id/referTxt"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="Refer friends to get free combo."
+        android:gravity="center"
+        android:textColor="@color/Darkgrey"
+        android:textSize="18sp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        app:layout_constraintStart_toStartOf="@id/inviteTxt"
+        app:layout_constraintEnd_toEndOf="@id/inviteTxt"
+        app:layout_constraintTop_toBottomOf="@id/inviteTxt"/>
+
+    <ImageView
+        android:id="@+id/referImg"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:src="@drawable/refer_frnd"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/referTxt"/>
+
+    <TextView
+        android:id="@+id/referdis"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/refer_iv"
-        android:layout_centerHorizontal="true"
-        android:text="@string/refer_friend"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/header_text_size"
-        android:textStyle="bold" />
-
-    <RelativeLayout
-        android:id="@+id/code_share_rl"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/refer_header_tv"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/white_et_bg"
-        android:padding="10dp">
-
-        <TextView
-            android:id="@+id/code_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ABHY6*778DIHI"
-            android:textColor="@color/colorAccent" />
+        android:text="Just share this code with your friends and ask them to signup and add this code."
+        android:gravity="center"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        android:textColor="@color/Darkgrey"
+        android:textSize="16sp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/referImg"/>
 
 
-        <TextView
-            android:id="@+id/share_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:text="Share"
-            android:textColor="@color/colorAccent" />
+    <androidx.cardview.widget.CardView
+        android:layout_width="250dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="@dimen/dimen_50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/referdis"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:cardCornerRadius="25dp">
 
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/refer_para_rl"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/code_share_rl">
-
-        <TextView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="10dp"
-            android:text="Invite and earn a combos"
-            android:textAlignment="center"
-            android:textColor="@color/colorPrimary" />
+            android:layout_height="match_parent"
+            android:background="@color/LightGrey">
 
+            <TextView
+                android:id="@+id/referalCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VXYDF"
+                android:textSize="20sp"
+                android:layout_marginStart="30dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/shareReferalCode"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Share Code"
+                android:gravity="center"
+                android:paddingStart="@dimen/dimen_15dp"
+                android:paddingEnd="@dimen/dimen_15dp"
+                android:textColor="@color/white"
+                android:background="@color/colorPrimary"
+                android:textSize="18sp"
+                android:layout_marginStart="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <Button
-        android:id="@+id/sign_up_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/curved_edge"
-        android:backgroundTint="@color/colorPrimary"
-        android:fontFamily="@font/averia_sans_libre"
-        android:text="@string/invite"
-        android:textColor="@color/colorAccent"
-        android:textSize="@dimen/sub_header_size"
-        android:textStyle="bold" />
-
-</RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

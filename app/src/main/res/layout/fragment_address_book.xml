@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
-        android:text="Address"
+        android:text="Delivery Address"
         android:textColor="@color/colorPrimary"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -41,6 +41,8 @@
         android:layout_marginTop="20dp"
         android:layout_marginRight="10dp"
         app:cardCornerRadius="5dp"
+        android:elevation="5dp"
+        app:cardUseCompatPadding="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_address">
@@ -49,7 +51,6 @@
             android:id="@+id/linear_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/grey"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -62,7 +63,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/home"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
@@ -72,7 +73,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="@string/address_name"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
@@ -82,7 +83,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="@string/home_address"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/black"
                     android:textSize="15sp" />
 
                 <TextView
@@ -91,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="@string/phone_number"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/black"
                     android:textSize="15sp" />
             </LinearLayout>
 
@@ -107,18 +108,19 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_marginRight="20dp"
-                    android:buttonTint="@color/colorPrimary"
+                    android:gravity="center_vertical"
                     android:src="@drawable/right"
-                    android:gravity="center_vertical" />
+                    app:tint="@color/colorPrimary" />
+
                 <ImageView
                     android:id="@+id/img_edit_home"
                     android:layout_width="@dimen/dimen_20dp"
                     android:layout_height="@dimen/dimen_20dp"
-                    android:background="@drawable/pen"
                     android:layout_alignParentEnd="true"
                     android:layout_marginRight="20dp"
+                    android:background="@drawable/pen"
                     android:visibility="gone"
-                    />
+                    app:tint="@color/colorPrimary"/>
             </RelativeLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -131,6 +133,8 @@
         android:layout_marginTop="20dp"
         android:layout_marginRight="10dp"
         app:cardCornerRadius="5dp"
+        android:elevation="5dp"
+        app:cardUseCompatPadding="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card_home_address">
@@ -139,7 +143,6 @@
             android:id="@+id/Linear_office"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/grey"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -152,7 +155,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/office"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
@@ -162,7 +165,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="@string/address_name"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
@@ -172,7 +175,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="@string/home_address"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/black"
                     android:textSize="15sp" />
 
                 <TextView
@@ -181,7 +184,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="@string/phone_number"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/black"
                     android:textSize="15sp" />
             </LinearLayout>
 
@@ -200,7 +203,8 @@
                     android:src="@drawable/right"
                     android:backgroundTint="@color/colorPrimary"
                     android:buttonTint="@color/colorPrimary"
-                    android:gravity="center_vertical" />
+                    android:gravity="center_vertical"
+                    app:tint="@color/colorPrimary" />
                 <ImageView
                     android:id="@+id/img_edit_office"
                     android:layout_width="@dimen/dimen_20dp"
@@ -209,8 +213,74 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginRight="20dp"
                     android:visibility="gone"
+                    app:tint="@color/colorPrimary"
                     />
             </RelativeLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/currentLocationLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/dimen_60dp"
+        android:layout_marginStart="@dimen/dimen_10dp"
+        android:layout_marginEnd="@dimen/dimen_10dp"
+        app:layout_constraintTop_toBottomOf="@+id/card_ofc_address">
+
+        <ImageView
+            android:id="@+id/icGps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_gps"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/GpsTxt"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/GpsTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:text="Current Location"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/TextOr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OR"
+        app:layout_constraintTop_toBottomOf="@+id/currentLocationLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:textSize="20sp"/>
+    <TextView
+        android:id="@+id/manualLocationAdb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:padding="@dimen/dimen_10dp"
+        android:text="Google search for place"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/currentLocationLayout" />
 </androidx.constraintlayout.widget.ConstraintLayout>

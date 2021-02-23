@@ -5,10 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,50 +19,63 @@ import java.lang.String;
 
 public final class FragmentOtpVerficationBinding implements ViewBinding {
   @NonNull
-  private final RelativeLayout rootView;
+  private final ScrollView rootView;
 
   @NonNull
-  public final ImageView appLogoHere;
+  public final EditText otpEt1;
 
   @NonNull
-  public final ImageView curveBg;
+  public final EditText otpEt2;
 
   @NonNull
-  public final EditText emailEt;
+  public final EditText otpEt3;
 
   @NonNull
-  public final TextView forgotPwdTv;
+  public final EditText otpEt4;
 
   @NonNull
-  public final EditText passwordEt;
+  public final ImageView otpImg;
 
   @NonNull
-  public final CheckBox rememberMeCbx;
+  public final TextView otpNumTxt;
 
   @NonNull
-  public final Button signInBtn;
+  public final TextView rTxt;
 
   @NonNull
-  public final TextView signInTv;
+  public final TextView rensend;
 
-  private FragmentOtpVerficationBinding(@NonNull RelativeLayout rootView,
-      @NonNull ImageView appLogoHere, @NonNull ImageView curveBg, @NonNull EditText emailEt,
-      @NonNull TextView forgotPwdTv, @NonNull EditText passwordEt, @NonNull CheckBox rememberMeCbx,
-      @NonNull Button signInBtn, @NonNull TextView signInTv) {
+  @NonNull
+  public final TextView txt1;
+
+  @NonNull
+  public final Button verifyOtpBtn;
+
+  @NonNull
+  public final TextView vrfyTxt;
+
+  private FragmentOtpVerficationBinding(@NonNull ScrollView rootView, @NonNull EditText otpEt1,
+      @NonNull EditText otpEt2, @NonNull EditText otpEt3, @NonNull EditText otpEt4,
+      @NonNull ImageView otpImg, @NonNull TextView otpNumTxt, @NonNull TextView rTxt,
+      @NonNull TextView rensend, @NonNull TextView txt1, @NonNull Button verifyOtpBtn,
+      @NonNull TextView vrfyTxt) {
     this.rootView = rootView;
-    this.appLogoHere = appLogoHere;
-    this.curveBg = curveBg;
-    this.emailEt = emailEt;
-    this.forgotPwdTv = forgotPwdTv;
-    this.passwordEt = passwordEt;
-    this.rememberMeCbx = rememberMeCbx;
-    this.signInBtn = signInBtn;
-    this.signInTv = signInTv;
+    this.otpEt1 = otpEt1;
+    this.otpEt2 = otpEt2;
+    this.otpEt3 = otpEt3;
+    this.otpEt4 = otpEt4;
+    this.otpImg = otpImg;
+    this.otpNumTxt = otpNumTxt;
+    this.rTxt = rTxt;
+    this.rensend = rensend;
+    this.txt1 = txt1;
+    this.verifyOtpBtn = verifyOtpBtn;
+    this.vrfyTxt = vrfyTxt;
   }
 
   @Override
   @NonNull
-  public RelativeLayout getRoot() {
+  public ScrollView getRoot() {
     return rootView;
   }
 
@@ -88,56 +100,74 @@ public final class FragmentOtpVerficationBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.app_logo_here;
-      ImageView appLogoHere = rootView.findViewById(id);
-      if (appLogoHere == null) {
+      id = R.id.otpEt1;
+      EditText otpEt1 = rootView.findViewById(id);
+      if (otpEt1 == null) {
         break missingId;
       }
 
-      id = R.id.curve_bg;
-      ImageView curveBg = rootView.findViewById(id);
-      if (curveBg == null) {
+      id = R.id.otpEt2;
+      EditText otpEt2 = rootView.findViewById(id);
+      if (otpEt2 == null) {
         break missingId;
       }
 
-      id = R.id.email_et;
-      EditText emailEt = rootView.findViewById(id);
-      if (emailEt == null) {
+      id = R.id.otpEt3;
+      EditText otpEt3 = rootView.findViewById(id);
+      if (otpEt3 == null) {
         break missingId;
       }
 
-      id = R.id.forgot_pwd_tv;
-      TextView forgotPwdTv = rootView.findViewById(id);
-      if (forgotPwdTv == null) {
+      id = R.id.otpEt4;
+      EditText otpEt4 = rootView.findViewById(id);
+      if (otpEt4 == null) {
         break missingId;
       }
 
-      id = R.id.password_et;
-      EditText passwordEt = rootView.findViewById(id);
-      if (passwordEt == null) {
+      id = R.id.otp_img;
+      ImageView otpImg = rootView.findViewById(id);
+      if (otpImg == null) {
         break missingId;
       }
 
-      id = R.id.remember_me_cbx;
-      CheckBox rememberMeCbx = rootView.findViewById(id);
-      if (rememberMeCbx == null) {
+      id = R.id.otpNumTxt;
+      TextView otpNumTxt = rootView.findViewById(id);
+      if (otpNumTxt == null) {
         break missingId;
       }
 
-      id = R.id.sign_in_btn;
-      Button signInBtn = rootView.findViewById(id);
-      if (signInBtn == null) {
+      id = R.id.rTxt;
+      TextView rTxt = rootView.findViewById(id);
+      if (rTxt == null) {
         break missingId;
       }
 
-      id = R.id.sign_in_tv;
-      TextView signInTv = rootView.findViewById(id);
-      if (signInTv == null) {
+      id = R.id.rensend;
+      TextView rensend = rootView.findViewById(id);
+      if (rensend == null) {
         break missingId;
       }
 
-      return new FragmentOtpVerficationBinding((RelativeLayout) rootView, appLogoHere, curveBg,
-          emailEt, forgotPwdTv, passwordEt, rememberMeCbx, signInBtn, signInTv);
+      id = R.id.txt1;
+      TextView txt1 = rootView.findViewById(id);
+      if (txt1 == null) {
+        break missingId;
+      }
+
+      id = R.id.verifyOtpBtn;
+      Button verifyOtpBtn = rootView.findViewById(id);
+      if (verifyOtpBtn == null) {
+        break missingId;
+      }
+
+      id = R.id.vrfy_txt;
+      TextView vrfyTxt = rootView.findViewById(id);
+      if (vrfyTxt == null) {
+        break missingId;
+      }
+
+      return new FragmentOtpVerficationBinding((ScrollView) rootView, otpEt1, otpEt2, otpEt3,
+          otpEt4, otpImg, otpNumTxt, rTxt, rensend, txt1, verifyOtpBtn, vrfyTxt);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

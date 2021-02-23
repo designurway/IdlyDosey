@@ -5,12 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import com.designurway.idlidosa.R;
 import java.lang.NullPointerException;
@@ -19,46 +17,46 @@ import java.lang.String;
 
 public final class FragmentPaymentBinding implements ViewBinding {
   @NonNull
-  private final RelativeLayout rootView;
+  private final ConstraintLayout rootView;
 
   @NonNull
   public final Button btnPayment;
 
   @NonNull
-  public final CardView cardviewAmount;
+  public final TextView delTxt;
 
   @NonNull
-  public final CardView deliveryAddressCv;
+  public final TextView deliveryCharge;
 
   @NonNull
-  public final LinearLayout orderDeliveryLy;
+  public final TextView deliveryTxt;
+
+  @NonNull
+  public final TextView grandTotalTxt;
+
+  @NonNull
+  public final TextView odrDetailTxt;
+
+  @NonNull
+  public final TextView ordIdTxt;
 
   @NonNull
   public final TextView orderId;
 
   @NonNull
-  public final LinearLayout orderIdLy;
+  public final ConstraintLayout orderIdLy;
 
   @NonNull
-  public final LinearLayout orderSubtotalLy;
+  public final TextView procedPayTxt;
 
   @NonNull
-  public final LinearLayout orderTaxLy;
+  public final TextView subTotal;
 
   @NonNull
-  public final LinearLayout orderTotalLy;
+  public final TextView taxCharge;
 
   @NonNull
-  public final TextView rupTv;
-
-  @NonNull
-  public final TextView rupeTv;
-
-  @NonNull
-  public final TextView rupeeTv;
-
-  @NonNull
-  public final TextView rupeesTv;
+  public final TextView taxTxt;
 
   @NonNull
   public final TextView textAddress;
@@ -75,38 +73,42 @@ public final class FragmentPaymentBinding implements ViewBinding {
   @NonNull
   public final TextView txtName;
 
-  private FragmentPaymentBinding(@NonNull RelativeLayout rootView, @NonNull Button btnPayment,
-      @NonNull CardView cardviewAmount, @NonNull CardView deliveryAddressCv,
-      @NonNull LinearLayout orderDeliveryLy, @NonNull TextView orderId,
-      @NonNull LinearLayout orderIdLy, @NonNull LinearLayout orderSubtotalLy,
-      @NonNull LinearLayout orderTaxLy, @NonNull LinearLayout orderTotalLy, @NonNull TextView rupTv,
-      @NonNull TextView rupeTv, @NonNull TextView rupeeTv, @NonNull TextView rupeesTv,
-      @NonNull TextView textAddress, @NonNull TextView textSubtotal, @NonNull TextView totalAmount,
-      @NonNull TextView txtMobile, @NonNull TextView txtName) {
+  @NonNull
+  public final View view1;
+
+  private FragmentPaymentBinding(@NonNull ConstraintLayout rootView, @NonNull Button btnPayment,
+      @NonNull TextView delTxt, @NonNull TextView deliveryCharge, @NonNull TextView deliveryTxt,
+      @NonNull TextView grandTotalTxt, @NonNull TextView odrDetailTxt, @NonNull TextView ordIdTxt,
+      @NonNull TextView orderId, @NonNull ConstraintLayout orderIdLy,
+      @NonNull TextView procedPayTxt, @NonNull TextView subTotal, @NonNull TextView taxCharge,
+      @NonNull TextView taxTxt, @NonNull TextView textAddress, @NonNull TextView textSubtotal,
+      @NonNull TextView totalAmount, @NonNull TextView txtMobile, @NonNull TextView txtName,
+      @NonNull View view1) {
     this.rootView = rootView;
     this.btnPayment = btnPayment;
-    this.cardviewAmount = cardviewAmount;
-    this.deliveryAddressCv = deliveryAddressCv;
-    this.orderDeliveryLy = orderDeliveryLy;
+    this.delTxt = delTxt;
+    this.deliveryCharge = deliveryCharge;
+    this.deliveryTxt = deliveryTxt;
+    this.grandTotalTxt = grandTotalTxt;
+    this.odrDetailTxt = odrDetailTxt;
+    this.ordIdTxt = ordIdTxt;
     this.orderId = orderId;
     this.orderIdLy = orderIdLy;
-    this.orderSubtotalLy = orderSubtotalLy;
-    this.orderTaxLy = orderTaxLy;
-    this.orderTotalLy = orderTotalLy;
-    this.rupTv = rupTv;
-    this.rupeTv = rupeTv;
-    this.rupeeTv = rupeeTv;
-    this.rupeesTv = rupeesTv;
+    this.procedPayTxt = procedPayTxt;
+    this.subTotal = subTotal;
+    this.taxCharge = taxCharge;
+    this.taxTxt = taxTxt;
     this.textAddress = textAddress;
     this.textSubtotal = textSubtotal;
     this.totalAmount = totalAmount;
     this.txtMobile = txtMobile;
     this.txtName = txtName;
+    this.view1 = view1;
   }
 
   @Override
   @NonNull
-  public RelativeLayout getRoot() {
+  public ConstraintLayout getRoot() {
     return rootView;
   }
 
@@ -137,21 +139,39 @@ public final class FragmentPaymentBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.cardview_amount;
-      CardView cardviewAmount = rootView.findViewById(id);
-      if (cardviewAmount == null) {
+      id = R.id.delTxt;
+      TextView delTxt = rootView.findViewById(id);
+      if (delTxt == null) {
         break missingId;
       }
 
-      id = R.id.delivery_address_cv;
-      CardView deliveryAddressCv = rootView.findViewById(id);
-      if (deliveryAddressCv == null) {
+      id = R.id.deliveryCharge;
+      TextView deliveryCharge = rootView.findViewById(id);
+      if (deliveryCharge == null) {
         break missingId;
       }
 
-      id = R.id.order_delivery_ly;
-      LinearLayout orderDeliveryLy = rootView.findViewById(id);
-      if (orderDeliveryLy == null) {
+      id = R.id.deliveryTxt;
+      TextView deliveryTxt = rootView.findViewById(id);
+      if (deliveryTxt == null) {
+        break missingId;
+      }
+
+      id = R.id.grandTotalTxt;
+      TextView grandTotalTxt = rootView.findViewById(id);
+      if (grandTotalTxt == null) {
+        break missingId;
+      }
+
+      id = R.id.odrDetailTxt;
+      TextView odrDetailTxt = rootView.findViewById(id);
+      if (odrDetailTxt == null) {
+        break missingId;
+      }
+
+      id = R.id.ordIdTxt;
+      TextView ordIdTxt = rootView.findViewById(id);
+      if (ordIdTxt == null) {
         break missingId;
       }
 
@@ -162,50 +182,32 @@ public final class FragmentPaymentBinding implements ViewBinding {
       }
 
       id = R.id.order_id_ly;
-      LinearLayout orderIdLy = rootView.findViewById(id);
+      ConstraintLayout orderIdLy = rootView.findViewById(id);
       if (orderIdLy == null) {
         break missingId;
       }
 
-      id = R.id.order_subtotal_ly;
-      LinearLayout orderSubtotalLy = rootView.findViewById(id);
-      if (orderSubtotalLy == null) {
+      id = R.id.procedPayTxt;
+      TextView procedPayTxt = rootView.findViewById(id);
+      if (procedPayTxt == null) {
         break missingId;
       }
 
-      id = R.id.order_tax_ly;
-      LinearLayout orderTaxLy = rootView.findViewById(id);
-      if (orderTaxLy == null) {
+      id = R.id.subTotal;
+      TextView subTotal = rootView.findViewById(id);
+      if (subTotal == null) {
         break missingId;
       }
 
-      id = R.id.order_total_ly;
-      LinearLayout orderTotalLy = rootView.findViewById(id);
-      if (orderTotalLy == null) {
+      id = R.id.taxCharge;
+      TextView taxCharge = rootView.findViewById(id);
+      if (taxCharge == null) {
         break missingId;
       }
 
-      id = R.id.rup_tv;
-      TextView rupTv = rootView.findViewById(id);
-      if (rupTv == null) {
-        break missingId;
-      }
-
-      id = R.id.rupe_tv;
-      TextView rupeTv = rootView.findViewById(id);
-      if (rupeTv == null) {
-        break missingId;
-      }
-
-      id = R.id.rupee_tv;
-      TextView rupeeTv = rootView.findViewById(id);
-      if (rupeeTv == null) {
-        break missingId;
-      }
-
-      id = R.id.rupees_tv;
-      TextView rupeesTv = rootView.findViewById(id);
-      if (rupeesTv == null) {
+      id = R.id.taxTxt;
+      TextView taxTxt = rootView.findViewById(id);
+      if (taxTxt == null) {
         break missingId;
       }
 
@@ -239,10 +241,16 @@ public final class FragmentPaymentBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentPaymentBinding((RelativeLayout) rootView, btnPayment, cardviewAmount,
-          deliveryAddressCv, orderDeliveryLy, orderId, orderIdLy, orderSubtotalLy, orderTaxLy,
-          orderTotalLy, rupTv, rupeTv, rupeeTv, rupeesTv, textAddress, textSubtotal, totalAmount,
-          txtMobile, txtName);
+      id = R.id.view1;
+      View view1 = rootView.findViewById(id);
+      if (view1 == null) {
+        break missingId;
+      }
+
+      return new FragmentPaymentBinding((ConstraintLayout) rootView, btnPayment, delTxt,
+          deliveryCharge, deliveryTxt, grandTotalTxt, odrDetailTxt, ordIdTxt, orderId, orderIdLy,
+          procedPayTxt, subTotal, taxCharge, taxTxt, textAddress, textSubtotal, totalAmount,
+          txtMobile, txtName, view1);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

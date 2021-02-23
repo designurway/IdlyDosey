@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import com.designurway.idlidosa.R;
@@ -22,46 +23,59 @@ public final class FragmentGooglePayBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final TextView amountEt;
+  public final CardView cardView;
 
   @NonNull
-  public final ImageView arrowImg;
+  public final ConstraintLayout constrainCondition;
 
   @NonNull
-  public final ImageView backImgv;
+  public final ConstraintLayout constrainWallet;
+
+  @NonNull
+  public final ImageView imgError;
 
   @NonNull
   public final CircleImageView logPayImgv;
 
   @NonNull
-  public final Button payBtn;
+  public final Button payAmount;
 
   @NonNull
-  public final TextView paymentToEt;
+  public final TextView txtAmount;
 
   @NonNull
-  public final CircleImageView personPayImgv;
+  public final TextView txtCond;
 
   @NonNull
-  public final TextView rupeesTv;
+  public final TextView txtIdly;
 
   @NonNull
-  public final TextView upiEt;
+  public final TextView txtNumber;
 
-  private FragmentGooglePayBinding(@NonNull ConstraintLayout rootView, @NonNull TextView amountEt,
-      @NonNull ImageView arrowImg, @NonNull ImageView backImgv, @NonNull CircleImageView logPayImgv,
-      @NonNull Button payBtn, @NonNull TextView paymentToEt, @NonNull CircleImageView personPayImgv,
-      @NonNull TextView rupeesTv, @NonNull TextView upiEt) {
+  @NonNull
+  public final TextView txtOrder;
+
+  @NonNull
+  public final ImageView wallet;
+
+  private FragmentGooglePayBinding(@NonNull ConstraintLayout rootView, @NonNull CardView cardView,
+      @NonNull ConstraintLayout constrainCondition, @NonNull ConstraintLayout constrainWallet,
+      @NonNull ImageView imgError, @NonNull CircleImageView logPayImgv, @NonNull Button payAmount,
+      @NonNull TextView txtAmount, @NonNull TextView txtCond, @NonNull TextView txtIdly,
+      @NonNull TextView txtNumber, @NonNull TextView txtOrder, @NonNull ImageView wallet) {
     this.rootView = rootView;
-    this.amountEt = amountEt;
-    this.arrowImg = arrowImg;
-    this.backImgv = backImgv;
+    this.cardView = cardView;
+    this.constrainCondition = constrainCondition;
+    this.constrainWallet = constrainWallet;
+    this.imgError = imgError;
     this.logPayImgv = logPayImgv;
-    this.payBtn = payBtn;
-    this.paymentToEt = paymentToEt;
-    this.personPayImgv = personPayImgv;
-    this.rupeesTv = rupeesTv;
-    this.upiEt = upiEt;
+    this.payAmount = payAmount;
+    this.txtAmount = txtAmount;
+    this.txtCond = txtCond;
+    this.txtIdly = txtIdly;
+    this.txtNumber = txtNumber;
+    this.txtOrder = txtOrder;
+    this.wallet = wallet;
   }
 
   @Override
@@ -91,21 +105,27 @@ public final class FragmentGooglePayBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.amount_et;
-      TextView amountEt = rootView.findViewById(id);
-      if (amountEt == null) {
+      id = R.id.cardView;
+      CardView cardView = rootView.findViewById(id);
+      if (cardView == null) {
         break missingId;
       }
 
-      id = R.id.arrow_img;
-      ImageView arrowImg = rootView.findViewById(id);
-      if (arrowImg == null) {
+      id = R.id.constrain_condition;
+      ConstraintLayout constrainCondition = rootView.findViewById(id);
+      if (constrainCondition == null) {
         break missingId;
       }
 
-      id = R.id.back_imgv;
-      ImageView backImgv = rootView.findViewById(id);
-      if (backImgv == null) {
+      id = R.id.constrain_wallet;
+      ConstraintLayout constrainWallet = rootView.findViewById(id);
+      if (constrainWallet == null) {
+        break missingId;
+      }
+
+      id = R.id.imgError;
+      ImageView imgError = rootView.findViewById(id);
+      if (imgError == null) {
         break missingId;
       }
 
@@ -115,38 +135,51 @@ public final class FragmentGooglePayBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.pay_btn;
-      Button payBtn = rootView.findViewById(id);
-      if (payBtn == null) {
+      id = R.id.payAmount;
+      Button payAmount = rootView.findViewById(id);
+      if (payAmount == null) {
         break missingId;
       }
 
-      id = R.id.payment_to_et;
-      TextView paymentToEt = rootView.findViewById(id);
-      if (paymentToEt == null) {
+      id = R.id.txtAmount;
+      TextView txtAmount = rootView.findViewById(id);
+      if (txtAmount == null) {
         break missingId;
       }
 
-      id = R.id.person_pay_imgv;
-      CircleImageView personPayImgv = rootView.findViewById(id);
-      if (personPayImgv == null) {
+      id = R.id.txtCond;
+      TextView txtCond = rootView.findViewById(id);
+      if (txtCond == null) {
         break missingId;
       }
 
-      id = R.id.rupees_tv;
-      TextView rupeesTv = rootView.findViewById(id);
-      if (rupeesTv == null) {
+      id = R.id.txtIdly;
+      TextView txtIdly = rootView.findViewById(id);
+      if (txtIdly == null) {
         break missingId;
       }
 
-      id = R.id.upi_et;
-      TextView upiEt = rootView.findViewById(id);
-      if (upiEt == null) {
+      id = R.id.txtNumber;
+      TextView txtNumber = rootView.findViewById(id);
+      if (txtNumber == null) {
         break missingId;
       }
 
-      return new FragmentGooglePayBinding((ConstraintLayout) rootView, amountEt, arrowImg, backImgv,
-          logPayImgv, payBtn, paymentToEt, personPayImgv, rupeesTv, upiEt);
+      id = R.id.txtOrder;
+      TextView txtOrder = rootView.findViewById(id);
+      if (txtOrder == null) {
+        break missingId;
+      }
+
+      id = R.id.wallet;
+      ImageView wallet = rootView.findViewById(id);
+      if (wallet == null) {
+        break missingId;
+      }
+
+      return new FragmentGooglePayBinding((ConstraintLayout) rootView, cardView, constrainCondition,
+          constrainWallet, imgError, logPayImgv, payAmount, txtAmount, txtCond, txtIdly, txtNumber,
+          txtOrder, wallet);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

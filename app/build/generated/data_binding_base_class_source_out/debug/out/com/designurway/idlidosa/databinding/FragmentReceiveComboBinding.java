@@ -24,9 +24,6 @@ public final class FragmentReceiveComboBinding implements ViewBinding {
   public final RelativeLayout headerRl;
 
   @NonNull
-  public final ImageView imgIv;
-
-  @NonNull
   public final ImageView imgSadFace;
 
   @NonNull
@@ -39,12 +36,11 @@ public final class FragmentReceiveComboBinding implements ViewBinding {
   public final RecyclerView rewardsRv;
 
   private FragmentReceiveComboBinding(@NonNull RelativeLayout rootView,
-      @NonNull RelativeLayout headerRl, @NonNull ImageView imgIv, @NonNull ImageView imgSadFace,
+      @NonNull RelativeLayout headerRl, @NonNull ImageView imgSadFace,
       @NonNull RelativeLayout layoutRl, @NonNull TextView receivedComboTv,
       @NonNull RecyclerView rewardsRv) {
     this.rootView = rootView;
     this.headerRl = headerRl;
-    this.imgIv = imgIv;
     this.imgSadFace = imgSadFace;
     this.layoutRl = layoutRl;
     this.receivedComboTv = receivedComboTv;
@@ -84,12 +80,6 @@ public final class FragmentReceiveComboBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.img_iv;
-      ImageView imgIv = rootView.findViewById(id);
-      if (imgIv == null) {
-        break missingId;
-      }
-
       id = R.id.img_sad_face;
       ImageView imgSadFace = rootView.findViewById(id);
       if (imgSadFace == null) {
@@ -110,7 +100,7 @@ public final class FragmentReceiveComboBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentReceiveComboBinding((RelativeLayout) rootView, headerRl, imgIv, imgSadFace,
+      return new FragmentReceiveComboBinding((RelativeLayout) rootView, headerRl, imgSadFace,
           layoutRl, receivedComboTv, rewardsRv);
     }
     String missingId = rootView.getResources().getResourceName(id);

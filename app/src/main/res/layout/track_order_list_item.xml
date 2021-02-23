@@ -1,103 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content">
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
+        android:elevation="5dp"
         app:cardCornerRadius="5dp"
-        app:cardUseCompatPadding="true"
-        android:layout_marginBottom="10dp"
-        >
+        app:cardUseCompatPadding="true">
 
-        <LinearLayout
-            android:id="@+id/overall_ly"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="4"
-            android:background="@color/grey">
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/dimen_10dp">
 
-            <RelativeLayout
-                android:layout_width="200dp"
+            <TextView
+                android:id="@+id/orderTxt"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="2">
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:text="ORDER"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/orderIdTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:text="#2435866"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/orderTxt"
+                app:layout_constraintTop_toTopOf="parent" />
 
+            <ImageView
+                android:id="@+id/dot"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:layout_marginEnd="5dp"
+                android:src="@drawable/dot"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/Darkgreen" />
 
-                <TextView
-                    android:id="@+id/trackListOrderId"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/order_id"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
-                    android:textStyle="bold"
-                    android:textSize="@dimen/sub_header_size"
-                    android:textColor="@color/colorBlack"
-                    android:layout_marginRight="20dp"/>
+            <TextView
+                android:id="@+id/inProTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="@dimen/dimen_10dp"
+                android:text="In Progress"
+                android:textColor="@color/Darkgrey"
+                android:textSize="15dp"
+                app:layout_constraintBottom_toBottomOf="@id/dot"
+                app:layout_constraintEnd_toStartOf="@id/dot"
+                app:layout_constraintTop_toTopOf="@id/dot" />
 
-                <TextView
-                    android:id="@+id/rupees_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/trackListOrderId"
-                    android:text="@string/rupees"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
-                    android:textSize="@dimen/reg_et_size"
-                    android:textColor="@color/colorPrimary"
-                    android:layout_marginRight="2dp"/>
+            <ImageView
+                android:id="@+id/boxIcon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/box"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/orderTxt"
+                app:tint="@color/colorPrimary" />
 
-                <TextView
-                    android:id="@+id/trackOrderListamount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/trackListOrderId"
-                    android:text="200"
-                    android:layout_toRightOf="@id/rupees_tv"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="10dp"
-                    android:textSize="@dimen/reg_et_size"
-                    android:textColor="@color/colorPrimary"
-                    android:layout_marginRight="20dp"/>
+            <TextView
+                android:id="@+id/orderOnWay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="Order is on its way !"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="@id/boxIcon"
+                app:layout_constraintStart_toEndOf="@id/boxIcon"
+                app:layout_constraintTop_toTopOf="@id/boxIcon" />
 
-
-                <TextView
-                    android:id="@+id/ordered_date_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/rupees_tv"
-                    android:text="2020-12-8"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
-                    android:textSize="@dimen/reg_et_size"
-                    android:textColor="@color/colorPrimary"
-                    android:layout_marginRight="20dp"/>
-
-            </RelativeLayout>
-
+            <TextView
+                android:id="@+id/orderPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dimen_15dp"
+                android:text="$ 10"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="@id/boxIcon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/boxIcon" />
 
             <Button
                 android:id="@+id/trackOrderBtn"
-                android:layout_width="30dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:layout_gravity="center_horizontal|center"
-                android:layout_marginRight="10dp"
-                android:padding="10dp"
+                android:background="@drawable/track_btn_bg"
                 android:text="Track"
-                android:textColor="#fff"
-                android:background="@drawable/blue_curve_bg">
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:layout_marginEnd="@dimen/dimen_10dp"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/orderPrice" />
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
-            </Button>
-
-        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

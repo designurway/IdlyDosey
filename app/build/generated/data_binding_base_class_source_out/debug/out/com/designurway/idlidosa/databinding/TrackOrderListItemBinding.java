@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,34 +21,42 @@ public final class TrackOrderListItemBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final TextView orderedDateTv;
+  public final ImageView boxIcon;
 
   @NonNull
-  public final LinearLayout overallLy;
+  public final ImageView dot;
 
   @NonNull
-  public final TextView rupeesTv;
+  public final TextView inProTxt;
 
   @NonNull
-  public final TextView trackListOrderId;
+  public final TextView orderIdTxt;
+
+  @NonNull
+  public final TextView orderOnWay;
+
+  @NonNull
+  public final TextView orderPrice;
+
+  @NonNull
+  public final TextView orderTxt;
 
   @NonNull
   public final Button trackOrderBtn;
 
-  @NonNull
-  public final TextView trackOrderListamount;
-
-  private TrackOrderListItemBinding(@NonNull ConstraintLayout rootView,
-      @NonNull TextView orderedDateTv, @NonNull LinearLayout overallLy, @NonNull TextView rupeesTv,
-      @NonNull TextView trackListOrderId, @NonNull Button trackOrderBtn,
-      @NonNull TextView trackOrderListamount) {
+  private TrackOrderListItemBinding(@NonNull ConstraintLayout rootView, @NonNull ImageView boxIcon,
+      @NonNull ImageView dot, @NonNull TextView inProTxt, @NonNull TextView orderIdTxt,
+      @NonNull TextView orderOnWay, @NonNull TextView orderPrice, @NonNull TextView orderTxt,
+      @NonNull Button trackOrderBtn) {
     this.rootView = rootView;
-    this.orderedDateTv = orderedDateTv;
-    this.overallLy = overallLy;
-    this.rupeesTv = rupeesTv;
-    this.trackListOrderId = trackListOrderId;
+    this.boxIcon = boxIcon;
+    this.dot = dot;
+    this.inProTxt = inProTxt;
+    this.orderIdTxt = orderIdTxt;
+    this.orderOnWay = orderOnWay;
+    this.orderPrice = orderPrice;
+    this.orderTxt = orderTxt;
     this.trackOrderBtn = trackOrderBtn;
-    this.trackOrderListamount = trackOrderListamount;
   }
 
   @Override
@@ -78,27 +86,45 @@ public final class TrackOrderListItemBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.ordered_date_tv;
-      TextView orderedDateTv = rootView.findViewById(id);
-      if (orderedDateTv == null) {
+      id = R.id.boxIcon;
+      ImageView boxIcon = rootView.findViewById(id);
+      if (boxIcon == null) {
         break missingId;
       }
 
-      id = R.id.overall_ly;
-      LinearLayout overallLy = rootView.findViewById(id);
-      if (overallLy == null) {
+      id = R.id.dot;
+      ImageView dot = rootView.findViewById(id);
+      if (dot == null) {
         break missingId;
       }
 
-      id = R.id.rupees_tv;
-      TextView rupeesTv = rootView.findViewById(id);
-      if (rupeesTv == null) {
+      id = R.id.inProTxt;
+      TextView inProTxt = rootView.findViewById(id);
+      if (inProTxt == null) {
         break missingId;
       }
 
-      id = R.id.trackListOrderId;
-      TextView trackListOrderId = rootView.findViewById(id);
-      if (trackListOrderId == null) {
+      id = R.id.orderIdTxt;
+      TextView orderIdTxt = rootView.findViewById(id);
+      if (orderIdTxt == null) {
+        break missingId;
+      }
+
+      id = R.id.orderOnWay;
+      TextView orderOnWay = rootView.findViewById(id);
+      if (orderOnWay == null) {
+        break missingId;
+      }
+
+      id = R.id.orderPrice;
+      TextView orderPrice = rootView.findViewById(id);
+      if (orderPrice == null) {
+        break missingId;
+      }
+
+      id = R.id.orderTxt;
+      TextView orderTxt = rootView.findViewById(id);
+      if (orderTxt == null) {
         break missingId;
       }
 
@@ -108,14 +134,8 @@ public final class TrackOrderListItemBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.trackOrderListamount;
-      TextView trackOrderListamount = rootView.findViewById(id);
-      if (trackOrderListamount == null) {
-        break missingId;
-      }
-
-      return new TrackOrderListItemBinding((ConstraintLayout) rootView, orderedDateTv, overallLy,
-          rupeesTv, trackListOrderId, trackOrderBtn, trackOrderListamount);
+      return new TrackOrderListItemBinding((ConstraintLayout) rootView, boxIcon, dot, inProTxt,
+          orderIdTxt, orderOnWay, orderPrice, orderTxt, trackOrderBtn);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

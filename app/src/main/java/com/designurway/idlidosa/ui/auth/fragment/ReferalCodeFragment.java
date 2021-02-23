@@ -75,7 +75,7 @@ public class ReferalCodeFragment extends Fragment {
                 }
                 else{
 
-                    action = ReferalCodeFragmentDirections.actionReferalCodeFragmentToRegisterFragment(phone,code);
+                    action = ReferalCodeFragmentDirections.actionReferalCodeFragmentToSelectLocationFragment(phone,code);
                     Navigation.findNavController(getView()).navigate(action);
 
                 }
@@ -85,7 +85,7 @@ public class ReferalCodeFragment extends Fragment {
         skipTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                action = ReferalCodeFragmentDirections.actionReferalCodeFragmentToRegisterFragment(phone,"none");
+                action = ReferalCodeFragmentDirections.actionReferalCodeFragmentToSelectLocationFragment(phone,"none");
                 Navigation.findNavController(getView()).navigate(action);
             }
         });

@@ -1,5 +1,6 @@
 package com.designurway.idlidosa.ui.home_page.fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
@@ -50,6 +52,7 @@ public class HomeFragment extends Fragment {
     RecyclerView recyclerViewBulk,recyclerViewFeatured,recyclerViewCombo;
     Button btnEmergency;
     TextView addressLayout;
+    Context context;
 
 
     private static final String TAG = "FeaturedFragment";
@@ -69,12 +72,15 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
        binding = FragmentHomeBinding.inflate(inflater,container,false);
+
        return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        context = view.getContext();
 
         btnEmergency = binding.btnEmergency;
         addressLayout = binding.addressLayout;
@@ -88,7 +94,7 @@ public class HomeFragment extends Fragment {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             LocalTime time = LocalTime.now();
             int a = time.getHour();
-            btnEmergency.setEnabled(a >= 18 || a <= 5);
+            btnEmergency.setEnabled(a >= 10 || a <= 5);
         }
 
 
@@ -120,7 +126,7 @@ public class HomeFragment extends Fragment {
                     ArrayList<Menumodel> menumodel = response.body().getData();
                     adapter = new MenuFragmentAdapter(menumodel, getContext());
                     recyclerViewBulk.setVisibility(View.VISIBLE);
-                    recyclerViewBulk.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
+                    recyclerViewBulk.setLayoutManager(new GridLayoutManager(getActivity(), 1));
                     recyclerViewBulk.setAdapter(adapter);
                     adapter.sendToFragment(new MenuFragmentAdapter.setFragmentTransaction() {
                         @Override
@@ -136,13 +142,13 @@ public class HomeFragment extends Fragment {
                         }
                     });
                 } else {
-                    Toast.makeText(getContext(), "no data", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "no data", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<MenuDataModel> call, Throwable t) {
-                Toast.makeText(getContext(), "Onfailure" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Onfailure" + t.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -176,8 +182,7 @@ public class HomeFragment extends Fragment {
                             getFragmentManager().beginTransaction().replace(R.id.frame_lt, fragment).addToBackStack(null).commit();*/
                         }
                     });
-                    recyclerViewFeatured.setLayoutManager(new LinearLayoutManager(getContext(),
-                            LinearLayoutManager.HORIZONTAL, false));
+                    recyclerViewFeatured.setLayoutManager(new GridLayoutManager(getActivity(), 2));
                     recyclerViewFeatured.setAdapter(adapter);
                 } else {
 
@@ -219,8 +224,7 @@ public class HomeFragment extends Fragment {
                             Navigation.findNavController(getView()).navigate(action);
                         }
                     });
-                    recyclerViewCombo.setLayoutManager(new LinearLayoutManager(getContext(),
-                            LinearLayoutManager.HORIZONTAL, false));
+                    recyclerViewCombo.setLayoutManager(new GridLayoutManager(getActivity(), 1));
                     recyclerViewCombo.setAdapter(adapter);
                 } else {
 

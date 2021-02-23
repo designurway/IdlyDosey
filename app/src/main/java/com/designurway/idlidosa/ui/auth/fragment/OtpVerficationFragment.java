@@ -7,6 +7,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,17 +16,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.designurway.idlidosa.R;
-import com.designurway.idlidosa.a.activity.ForgotPwdActivity;
-import com.designurway.idlidosa.a.activity.OTPVerificationActivity;
+
 import com.designurway.idlidosa.a.model.LoginModel;
 import com.designurway.idlidosa.a.retrofit.BaseClient;
 import com.designurway.idlidosa.a.retrofit.RetrofitApi;
 import com.designurway.idlidosa.a.utils.AndroidUtils;
 import com.designurway.idlidosa.a.utils.PreferenceManager;
-import com.designurway.idlidosa.a.utils.UtilConstant;
 import com.designurway.idlidosa.databinding.FragmentOtpVerficationBinding;
 import com.designurway.idlidosa.ui.home_page.HomePageActivity;
 
@@ -39,10 +40,11 @@ public class OtpVerficationFragment extends Fragment {
 
 
     FragmentOtpVerficationBinding binding;
-    EditText emailEt, passwordEt;
-    Button signInBtn;
-    CheckBox rememberMeCbx;
+    Button verifyOtpBtn;
     String phone;
+    EditText otpEt1, otpEt2, otpEt3, otpEt4;
+    String otp, otp1, otp2, otp3, otp4;
+    TextView otpNumTxt;
     OtpVerficationFragmentArgs args;
 
     public OtpVerficationFragment() {
@@ -56,6 +58,113 @@ public class OtpVerficationFragment extends Fragment {
 //        return inflater.inflate(R.layout.fragment_otp_verfication, container, false);
 
         binding = FragmentOtpVerficationBinding.inflate(inflater, container, false);
+
+
+        binding.otpEt1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                EditText txt = (EditText) getActivity().getCurrentFocus();
+                if (txt != null && txt.length() > 0) {
+                    View next = txt.focusSearch(View.FOCUS_RIGHT); // or FOCUS_FORWARD
+                    if (next != null)
+                        next.requestFocus();
+                } else {
+                    View next = txt.focusSearch(View.FOCUS_LEFT);
+                    if (next != null)
+                        next.requestFocus();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                otp1 = s.toString();
+            }
+        });
+
+        binding.otpEt2.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                EditText txt = (EditText) getActivity().getCurrentFocus();
+                if (txt != null && txt.length() > 0) {
+                    View next = txt.focusSearch(View.FOCUS_RIGHT); // or FOCUS_FORWARD
+                    if (next != null)
+                        next.requestFocus();
+
+                } else {
+                    View next = txt.focusSearch(View.FOCUS_LEFT);
+                    if (next != null)
+                        next.requestFocus();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                otp2 = s.toString();
+            }
+        });
+        binding.otpEt3.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                EditText txt = (EditText) getActivity().getCurrentFocus();
+                if (txt != null && txt.length() > 0) {
+                    View next = txt.focusSearch(View.FOCUS_RIGHT); // or FOCUS_FORWARD
+                    if (next != null)
+                        next.requestFocus();
+
+                } else {
+                    View next = txt.focusSearch(View.FOCUS_LEFT);
+                    if (next != null)
+                        next.requestFocus();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                otp3 = s.toString();
+            }
+        });
+        binding.otpEt4.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                EditText txt = (EditText) getActivity().getCurrentFocus();
+                if (txt != null && txt.length() > 0) {
+                    View next = txt.focusSearch(View.FOCUS_RIGHT); // or FOCUS_FORWARD
+                    if (next != null)
+                        next.requestFocus();
+
+                } else {
+                    View next = txt.focusSearch(View.FOCUS_LEFT);
+                    if (next != null)
+                        next.requestFocus();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                otp4 = s.toString();
+            }
+        });
+
         return binding.getRoot();
 
     }
@@ -67,46 +176,44 @@ public class OtpVerficationFragment extends Fragment {
         args = OtpVerficationFragmentArgs.fromBundle(getArguments());
         phone = args.getPhone();
 
-        emailEt = binding.emailEt;
-        passwordEt = binding.passwordEt;
-        signInBtn = binding.signInBtn;
-        rememberMeCbx = binding.rememberMeCbx;
+        verifyOtpBtn = binding.verifyOtpBtn;
+        otpEt1 = binding.otpEt1;
+        otpEt2 = binding.otpEt2;
+        otpEt3 = binding.otpEt3;
+        otpNumTxt = binding.otpNumTxt;
 
-        signInBtn.setOnClickListener(new View.OnClickListener() {
+        otpNumTxt.setText("to +91" + phone);
+        verifyOtpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                otp = otp1+otp2+otp3+otp4;
+
                 goToHomeActivity();
             }
         });
-        emailEt.setText(phone);
     }
 
     public void goToHomeActivity() {
 
-
-        String custEmail = emailEt.getText().toString().trim();
-        String custOtp = passwordEt.getText().toString().trim();
-        String custPhone = emailEt.getText().toString().trim();
-        String custPwd = passwordEt.getText().toString().trim();
 
         if (!AndroidUtils.isNetworkAvailable(getContext())) {
             Toast.makeText(getContext().getApplicationContext(),
                     this.getText(R.string.no_internet),
                     Toast.LENGTH_SHORT).show();
         }
-        if (custEmail.isEmpty() && custOtp.isEmpty()) {
+        if (otp.isEmpty()) {
             Toast.makeText(getContext(),
                     this.getText(R.string.fill_credentials),
                     Toast.LENGTH_SHORT).show();
 
         } else {
 
-            loginApp(custPhone, custOtp, custEmail, custPwd);
+            loginApp(phone, otp, "enter email", "password");
         }
     }
 
     public void loginApp(String phone, String otp, String email, String pwd) {
-
 
 
         RetrofitApi retrofitApi = BaseClient.getClient().create(RetrofitApi.class);
@@ -130,24 +237,18 @@ public class OtpVerficationFragment extends Fragment {
                         Toast.makeText(getContext(), getString(R.string.invalid_credentials), Toast.LENGTH_SHORT).show();
                     } else if (response.body().getMessage().contains("success")) {
 
-                        if (rememberMeCbx.isChecked()) {
-                            PreferenceManager.saveCustomerLogin(prefId, prefEmail, prefPassword, prefName,
-                                    prefPhone, prefCode, true);
-                            PreferenceManager.checkUserLoggedIn(true);
 
-                        } else {
+                        PreferenceManager.saveCustomerLogin(prefId, prefEmail, prefPassword, prefName,
+                                prefPhone, prefCode, true);
+                        PreferenceManager.checkUserLoggedIn(true);
 
-                            PreferenceManager.saveCustomerLogin(prefId, prefEmail, prefPassword, prefName, prefPhone, prefCode, false);
-                            PreferenceManager.checkUserLoggedIn(false);
-
-                        }
 
                         Intent intent = new Intent(getContext(), HomePageActivity.class);
                         startActivity(intent);
                         getActivity().finish();
                     }
 
-                }else {
+                } else {
                     Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -156,7 +257,7 @@ public class OtpVerficationFragment extends Fragment {
             @Override
             public void onFailure(Call<LoginModel> call, Throwable t) {
                 Log.d(TAG, "failure" + t.getMessage());
-                Toast.makeText(getContext(), "On Failure "+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "On Failure " + t.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });

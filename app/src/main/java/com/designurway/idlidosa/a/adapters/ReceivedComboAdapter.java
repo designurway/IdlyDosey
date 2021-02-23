@@ -58,7 +58,7 @@ public class ReceivedComboAdapter extends RecyclerView.Adapter<ReceivedComboAdap
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Picasso.get().load(comboModels.get(position).getComboImage()).into(holder.comboImageIv);
         holder.comboTitleTv.setText(comboModels.get(position).getComboName());
-        holder.comboDescriptionTv.setText(comboModels.get(position).getComboDescription());
+//        holder.comboDescriptionTv.setText(comboModels.get(position).getComboDescription());
 
         holder.comboRedeem.setOnClickListener(new View.OnClickListener() {
             @Override

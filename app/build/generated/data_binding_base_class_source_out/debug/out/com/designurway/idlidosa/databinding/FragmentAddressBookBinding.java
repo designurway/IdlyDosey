@@ -22,13 +22,22 @@ public final class FragmentAddressBookBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
+  public final TextView GpsTxt;
+
+  @NonNull
   public final LinearLayout LinearOffice;
+
+  @NonNull
+  public final TextView TextOr;
 
   @NonNull
   public final CardView cardHomeAddress;
 
   @NonNull
   public final CardView cardOfcAddress;
+
+  @NonNull
+  public final ConstraintLayout currentLocationLayout;
 
   @NonNull
   public final TextView homeAddressTv;
@@ -38,6 +47,9 @@ public final class FragmentAddressBookBinding implements ViewBinding {
 
   @NonNull
   public final TextView homePhoneTv;
+
+  @NonNull
+  public final ImageView icGps;
 
   @NonNull
   public final ImageView imgEditHome;
@@ -50,6 +62,9 @@ public final class FragmentAddressBookBinding implements ViewBinding {
 
   @NonNull
   public final LinearLayout linearHome;
+
+  @NonNull
+  public final TextView manualLocationAdb;
 
   @NonNull
   public final TextView nameTv;
@@ -69,25 +84,32 @@ public final class FragmentAddressBookBinding implements ViewBinding {
   @NonNull
   public final TextView textAddress;
 
-  private FragmentAddressBookBinding(@NonNull ConstraintLayout rootView,
-      @NonNull LinearLayout LinearOffice, @NonNull CardView cardHomeAddress,
-      @NonNull CardView cardOfcAddress, @NonNull TextView homeAddressTv, @NonNull ImageView homeChk,
-      @NonNull TextView homePhoneTv, @NonNull ImageView imgEditHome,
-      @NonNull ImageView imgEditOffice, @NonNull ImageView imgSadFace,
-      @NonNull LinearLayout linearHome, @NonNull TextView nameTv, @NonNull TextView ofcPhoneTv,
+  private FragmentAddressBookBinding(@NonNull ConstraintLayout rootView, @NonNull TextView GpsTxt,
+      @NonNull LinearLayout LinearOffice, @NonNull TextView TextOr,
+      @NonNull CardView cardHomeAddress, @NonNull CardView cardOfcAddress,
+      @NonNull ConstraintLayout currentLocationLayout, @NonNull TextView homeAddressTv,
+      @NonNull ImageView homeChk, @NonNull TextView homePhoneTv, @NonNull ImageView icGps,
+      @NonNull ImageView imgEditHome, @NonNull ImageView imgEditOffice,
+      @NonNull ImageView imgSadFace, @NonNull LinearLayout linearHome,
+      @NonNull TextView manualLocationAdb, @NonNull TextView nameTv, @NonNull TextView ofcPhoneTv,
       @NonNull TextView officeAddressTv, @NonNull ImageView officeChk,
       @NonNull TextView officeNameTv, @NonNull TextView textAddress) {
     this.rootView = rootView;
+    this.GpsTxt = GpsTxt;
     this.LinearOffice = LinearOffice;
+    this.TextOr = TextOr;
     this.cardHomeAddress = cardHomeAddress;
     this.cardOfcAddress = cardOfcAddress;
+    this.currentLocationLayout = currentLocationLayout;
     this.homeAddressTv = homeAddressTv;
     this.homeChk = homeChk;
     this.homePhoneTv = homePhoneTv;
+    this.icGps = icGps;
     this.imgEditHome = imgEditHome;
     this.imgEditOffice = imgEditOffice;
     this.imgSadFace = imgSadFace;
     this.linearHome = linearHome;
+    this.manualLocationAdb = manualLocationAdb;
     this.nameTv = nameTv;
     this.ofcPhoneTv = ofcPhoneTv;
     this.officeAddressTv = officeAddressTv;
@@ -123,9 +145,21 @@ public final class FragmentAddressBookBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.GpsTxt;
+      TextView GpsTxt = rootView.findViewById(id);
+      if (GpsTxt == null) {
+        break missingId;
+      }
+
       id = R.id.Linear_office;
       LinearLayout LinearOffice = rootView.findViewById(id);
       if (LinearOffice == null) {
+        break missingId;
+      }
+
+      id = R.id.TextOr;
+      TextView TextOr = rootView.findViewById(id);
+      if (TextOr == null) {
         break missingId;
       }
 
@@ -138,6 +172,12 @@ public final class FragmentAddressBookBinding implements ViewBinding {
       id = R.id.card_ofc_address;
       CardView cardOfcAddress = rootView.findViewById(id);
       if (cardOfcAddress == null) {
+        break missingId;
+      }
+
+      id = R.id.currentLocationLayout;
+      ConstraintLayout currentLocationLayout = rootView.findViewById(id);
+      if (currentLocationLayout == null) {
         break missingId;
       }
 
@@ -156,6 +196,12 @@ public final class FragmentAddressBookBinding implements ViewBinding {
       id = R.id.home_phone_tv;
       TextView homePhoneTv = rootView.findViewById(id);
       if (homePhoneTv == null) {
+        break missingId;
+      }
+
+      id = R.id.icGps;
+      ImageView icGps = rootView.findViewById(id);
+      if (icGps == null) {
         break missingId;
       }
 
@@ -180,6 +226,12 @@ public final class FragmentAddressBookBinding implements ViewBinding {
       id = R.id.linear_home;
       LinearLayout linearHome = rootView.findViewById(id);
       if (linearHome == null) {
+        break missingId;
+      }
+
+      id = R.id.manualLocationAdb;
+      TextView manualLocationAdb = rootView.findViewById(id);
+      if (manualLocationAdb == null) {
         break missingId;
       }
 
@@ -219,10 +271,10 @@ public final class FragmentAddressBookBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentAddressBookBinding((ConstraintLayout) rootView, LinearOffice,
-          cardHomeAddress, cardOfcAddress, homeAddressTv, homeChk, homePhoneTv, imgEditHome,
-          imgEditOffice, imgSadFace, linearHome, nameTv, ofcPhoneTv, officeAddressTv, officeChk,
-          officeNameTv, textAddress);
+      return new FragmentAddressBookBinding((ConstraintLayout) rootView, GpsTxt, LinearOffice,
+          TextOr, cardHomeAddress, cardOfcAddress, currentLocationLayout, homeAddressTv, homeChk,
+          homePhoneTv, icGps, imgEditHome, imgEditOffice, imgSadFace, linearHome, manualLocationAdb,
+          nameTv, ofcPhoneTv, officeAddressTv, officeChk, officeNameTv, textAddress);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

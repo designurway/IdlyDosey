@@ -1,139 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bottom_curve_design"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.home_page.fragments.GooglePayFragment">
 
-    <ImageView
-        android:id="@+id/back_imgv"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginRight="20dp"
-        android:src="@drawable/arrow_back"
-        android:backgroundTint="@color/colorAccent"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
-        android:visibility="invisible"
-        app:tint="@color/colorAccent" />
+        app:cardCornerRadius="@dimen/dimen_4dp"
+        android:layout_marginLeft="@dimen/dimen_20dp"
+        android:layout_marginRight="@dimen/dimen_20dp"
+        android:padding="@dimen/dimen_10dp"
+        android:layout_marginTop="@dimen/dimen_50dp">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/person_pay_imgv"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        app:layout_constraintStart_toEndOf="@+id/back_imgv"
-        app:layout_constraintTop_toBottomOf="@+id/back_imgv"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="30dp"
-        android:layout_weight="2"
-        android:src="@drawable/blue_person" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_10dp">
 
-    <ImageView
-        android:id="@+id/arrow_img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/person_pay_imgv"
-        app:layout_constraintBottom_toBottomOf="@+id/person_pay_imgv"
-        app:layout_constraintTop_toTopOf="@+id/person_pay_imgv"
-        android:layout_marginStart="30dp"
-        android:background="@drawable/arrow_back"
-        android:backgroundTint="@color/white"
-        android:rotation="180"
-        android:layout_gravity="center"
-        android:layout_weight=".5"/>
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/log_pay_imgv"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        app:layout_constraintStart_toEndOf="@+id/arrow_img"
-        app:layout_constraintTop_toTopOf="@+id/person_pay_imgv"
-        android:layout_marginStart="30dp"
-        android:layout_weight="2"
-        android:layout_below="@+id/back_imgv"
-        android:src="@drawable/logo" />
 
-    <TextView
-        android:id="@+id/payment_to_et"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/person_pay_imgv"
-        android:gravity="center_horizontal"
-        android:textColorHint="@color/white"
-        android:hint="Payment to Idly Dosey"
-        android:textSize="@dimen/reg_et_size"
-        android:textStyle="bold"
-        android:textColor="@color/colorPrimary"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp"/>
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/log_pay_imgv"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/gpay"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/upi_et"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/payment_to_et"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:text="9945807271@okbizaxis"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"/>
 
-    <TextView
-        android:id="@+id/rupees_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/upi_et"
-        app:layout_constraintStart_toEndOf="@+id/person_pay_imgv"
-        app:layout_constraintBottom_toTopOf="@+id/pay_btn"
-        android:text="@string/rupess"
-        android:textStyle="bold"
-        android:textAlignment="viewEnd"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:layout_marginRight="5dp"
-        android:layout_toLeftOf="@+id/amount_et"/>
 
-    <TextView
-        android:id="@+id/amount_et"
+            <TextView
+                android:id="@+id/txtAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20"
+                android:textColor="@color/colorPrimary"
+                android:textSize="50sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constrain_wallet"
+                android:layout_marginTop="30dp"/>
+
+            <TextView
+                android:id="@+id/txtIdly"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Idly dosey"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintEnd_toEndOf="@+id/txtAmount"
+                app:layout_constraintStart_toStartOf="@+id/txtAmount"
+                app:layout_constraintTop_toBottomOf="@+id/txtAmount"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:layout_marginBottom="@dimen/dimen_10dp"
+                />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constrain_wallet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/log_pay_imgv"
+                android:layout_margin="@dimen/dimen_20dp"
+                android:background="#DBF3FA"
+                android:padding="@dimen/dimen_10dp">
+
+                <ImageView
+                    android:id="@+id/wallet"
+                    android:layout_width="@dimen/dimen_50dp"
+                    android:layout_height="@dimen/dimen_50dp"
+                    android:background="@drawable/delivery_box"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:backgroundTint="#6a0dad"/>
+
+                <TextView
+                    android:id="@+id/txtOrder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toEndOf="@+id/wallet"
+                    app:layout_constraintTop_toTopOf="@+id/wallet"
+                    app:layout_constraintBottom_toBottomOf="@+id/wallet"
+                    android:text="Paying towrds:"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#6a0dad"/>
+                <TextView
+                    android:id="@+id/txtNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toEndOf="@+id/txtOrder"
+                    app:layout_constraintTop_toTopOf="@+id/wallet"
+                    app:layout_constraintBottom_toBottomOf="@+id/wallet"
+                    android:text="9945807271@okbizaxis"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="#6a0dad"
+                    android:layout_marginTop="10dp"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constrain_condition"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtIdly"
+                android:layout_margin="@dimen/dimen_20dp"
+                android:background="#DBF3FA"
+                android:padding="@dimen/dimen_10dp"
+                >
+
+                <ImageView
+                    android:id="@+id/imgError"
+                    android:layout_width="@dimen/dimen_20dp"
+                    android:layout_height="@dimen/dimen_20dp"
+                    android:background="@drawable/error_outline"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="5dp"
+                    android:backgroundTint="#6a0dad"
+                    />
+
+                <TextView
+                    android:id="@+id/txtCond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="includes tax"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imgError"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#6a0dad"
+                    android:layout_marginLeft="5dp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+    <Button
+        android:id="@+id/payAmount"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/rupees_tv"
-        app:layout_constraintTop_toBottomOf="@+id/upi_et"
-        app:layout_constraintBottom_toTopOf="@+id/pay_btn"
-        android:layout_marginTop="30dp"
-        android:textAlignment="textStart"
-        android:textColorHint="@color/white"
-        android:hint="@string/enter_amount"
-        android:layout_marginLeft="5dp"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        android:textColor="@color/white" />
-
-
-    <Button
-        android:id="@+id/pay_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/curved_edge"
-        android:text="@string/pay"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/amount_et"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/cardView"
+        app:layout_constraintEnd_toEndOf="@+id/cardView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/button_baground"
+        android:text="Send"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

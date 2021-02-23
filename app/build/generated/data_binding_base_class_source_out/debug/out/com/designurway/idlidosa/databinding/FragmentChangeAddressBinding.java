@@ -6,13 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import com.designurway.idlidosa.R;
 import java.lang.NullPointerException;
@@ -21,77 +20,72 @@ import java.lang.String;
 
 public final class FragmentChangeAddressBinding implements ViewBinding {
   @NonNull
-  private final RelativeLayout rootView;
+  private final ConstraintLayout rootView;
 
   @NonNull
-  public final TextView addressDisplayTv;
+  public final EditText EdtCity;
 
   @NonNull
-  public final RelativeLayout addressEntryRl;
+  public final EditText EdtDoorNumber;
 
   @NonNull
-  public final LinearLayout addressLl;
+  public final EditText EdtLandMark;
 
   @NonNull
-  public final Button changeBtn;
+  public final EditText EdtPin;
 
   @NonNull
-  public final EditText flatNoEt;
-
-  @NonNull
-  public final TextView flatNoTv;
-
-  @NonNull
-  public final RadioButton homeRbtn;
-
-  @NonNull
-  public final EditText localityEt;
-
-  @NonNull
-  public final TextView localityTv;
-
-  @NonNull
-  public final TextView locationDisplayTv;
-
-  @NonNull
-  public final TextView newAddressTv;
-
-  @NonNull
-  public final RadioButton othersRbtn;
+  public final EditText EdtStreet;
 
   @NonNull
   public final RadioGroup radioGroup;
 
   @NonNull
+  public final RadioButton rdHome;
+
+  @NonNull
   public final Button saveNContinueBtn;
 
-  private FragmentChangeAddressBinding(@NonNull RelativeLayout rootView,
-      @NonNull TextView addressDisplayTv, @NonNull RelativeLayout addressEntryRl,
-      @NonNull LinearLayout addressLl, @NonNull Button changeBtn, @NonNull EditText flatNoEt,
-      @NonNull TextView flatNoTv, @NonNull RadioButton homeRbtn, @NonNull EditText localityEt,
-      @NonNull TextView localityTv, @NonNull TextView locationDisplayTv,
-      @NonNull TextView newAddressTv, @NonNull RadioButton othersRbtn,
-      @NonNull RadioGroup radioGroup, @NonNull Button saveNContinueBtn) {
+  @NonNull
+  public final TextView txtCity;
+
+  @NonNull
+  public final TextView txtDoorNumber;
+
+  @NonNull
+  public final TextView txtLandMark;
+
+  @NonNull
+  public final TextView txtPin;
+
+  @NonNull
+  public final TextView txtStreet;
+
+  private FragmentChangeAddressBinding(@NonNull ConstraintLayout rootView,
+      @NonNull EditText EdtCity, @NonNull EditText EdtDoorNumber, @NonNull EditText EdtLandMark,
+      @NonNull EditText EdtPin, @NonNull EditText EdtStreet, @NonNull RadioGroup radioGroup,
+      @NonNull RadioButton rdHome, @NonNull Button saveNContinueBtn, @NonNull TextView txtCity,
+      @NonNull TextView txtDoorNumber, @NonNull TextView txtLandMark, @NonNull TextView txtPin,
+      @NonNull TextView txtStreet) {
     this.rootView = rootView;
-    this.addressDisplayTv = addressDisplayTv;
-    this.addressEntryRl = addressEntryRl;
-    this.addressLl = addressLl;
-    this.changeBtn = changeBtn;
-    this.flatNoEt = flatNoEt;
-    this.flatNoTv = flatNoTv;
-    this.homeRbtn = homeRbtn;
-    this.localityEt = localityEt;
-    this.localityTv = localityTv;
-    this.locationDisplayTv = locationDisplayTv;
-    this.newAddressTv = newAddressTv;
-    this.othersRbtn = othersRbtn;
+    this.EdtCity = EdtCity;
+    this.EdtDoorNumber = EdtDoorNumber;
+    this.EdtLandMark = EdtLandMark;
+    this.EdtPin = EdtPin;
+    this.EdtStreet = EdtStreet;
     this.radioGroup = radioGroup;
+    this.rdHome = rdHome;
     this.saveNContinueBtn = saveNContinueBtn;
+    this.txtCity = txtCity;
+    this.txtDoorNumber = txtDoorNumber;
+    this.txtLandMark = txtLandMark;
+    this.txtPin = txtPin;
+    this.txtStreet = txtStreet;
   }
 
   @Override
   @NonNull
-  public RelativeLayout getRoot() {
+  public ConstraintLayout getRoot() {
     return rootView;
   }
 
@@ -116,93 +110,87 @@ public final class FragmentChangeAddressBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.address_display_tv;
-      TextView addressDisplayTv = rootView.findViewById(id);
-      if (addressDisplayTv == null) {
+      id = R.id.EdtCity;
+      EditText EdtCity = rootView.findViewById(id);
+      if (EdtCity == null) {
         break missingId;
       }
 
-      id = R.id.address_entry_rl;
-      RelativeLayout addressEntryRl = rootView.findViewById(id);
-      if (addressEntryRl == null) {
+      id = R.id.EdtDoorNumber;
+      EditText EdtDoorNumber = rootView.findViewById(id);
+      if (EdtDoorNumber == null) {
         break missingId;
       }
 
-      id = R.id.address_ll;
-      LinearLayout addressLl = rootView.findViewById(id);
-      if (addressLl == null) {
+      id = R.id.EdtLandMark;
+      EditText EdtLandMark = rootView.findViewById(id);
+      if (EdtLandMark == null) {
         break missingId;
       }
 
-      id = R.id.change_btn;
-      Button changeBtn = rootView.findViewById(id);
-      if (changeBtn == null) {
+      id = R.id.EdtPin;
+      EditText EdtPin = rootView.findViewById(id);
+      if (EdtPin == null) {
         break missingId;
       }
 
-      id = R.id.flat_no_et;
-      EditText flatNoEt = rootView.findViewById(id);
-      if (flatNoEt == null) {
+      id = R.id.EdtStreet;
+      EditText EdtStreet = rootView.findViewById(id);
+      if (EdtStreet == null) {
         break missingId;
       }
 
-      id = R.id.flat_no_tv;
-      TextView flatNoTv = rootView.findViewById(id);
-      if (flatNoTv == null) {
-        break missingId;
-      }
-
-      id = R.id.home_rbtn;
-      RadioButton homeRbtn = rootView.findViewById(id);
-      if (homeRbtn == null) {
-        break missingId;
-      }
-
-      id = R.id.locality_et;
-      EditText localityEt = rootView.findViewById(id);
-      if (localityEt == null) {
-        break missingId;
-      }
-
-      id = R.id.locality_tv;
-      TextView localityTv = rootView.findViewById(id);
-      if (localityTv == null) {
-        break missingId;
-      }
-
-      id = R.id.location_display_tv;
-      TextView locationDisplayTv = rootView.findViewById(id);
-      if (locationDisplayTv == null) {
-        break missingId;
-      }
-
-      id = R.id.new_address_tv;
-      TextView newAddressTv = rootView.findViewById(id);
-      if (newAddressTv == null) {
-        break missingId;
-      }
-
-      id = R.id.others_rbtn;
-      RadioButton othersRbtn = rootView.findViewById(id);
-      if (othersRbtn == null) {
-        break missingId;
-      }
-
-      id = R.id.radio_group;
+      id = R.id.radioGroup;
       RadioGroup radioGroup = rootView.findViewById(id);
       if (radioGroup == null) {
         break missingId;
       }
 
-      id = R.id.save_n_continue_btn;
+      id = R.id.rdHome;
+      RadioButton rdHome = rootView.findViewById(id);
+      if (rdHome == null) {
+        break missingId;
+      }
+
+      id = R.id.saveNContinueBtn;
       Button saveNContinueBtn = rootView.findViewById(id);
       if (saveNContinueBtn == null) {
         break missingId;
       }
 
-      return new FragmentChangeAddressBinding((RelativeLayout) rootView, addressDisplayTv,
-          addressEntryRl, addressLl, changeBtn, flatNoEt, flatNoTv, homeRbtn, localityEt,
-          localityTv, locationDisplayTv, newAddressTv, othersRbtn, radioGroup, saveNContinueBtn);
+      id = R.id.txtCity;
+      TextView txtCity = rootView.findViewById(id);
+      if (txtCity == null) {
+        break missingId;
+      }
+
+      id = R.id.txtDoorNumber;
+      TextView txtDoorNumber = rootView.findViewById(id);
+      if (txtDoorNumber == null) {
+        break missingId;
+      }
+
+      id = R.id.txtLandMark;
+      TextView txtLandMark = rootView.findViewById(id);
+      if (txtLandMark == null) {
+        break missingId;
+      }
+
+      id = R.id.txtPin;
+      TextView txtPin = rootView.findViewById(id);
+      if (txtPin == null) {
+        break missingId;
+      }
+
+      id = R.id.txtStreet;
+      TextView txtStreet = rootView.findViewById(id);
+      if (txtStreet == null) {
+        break missingId;
+      }
+
+      return new FragmentChangeAddressBinding((ConstraintLayout) rootView, EdtCity, EdtDoorNumber,
+          EdtLandMark, EdtPin, EdtStreet, radioGroup, rdHome, saveNContinueBtn, txtCity,
+          txtDoorNumber, txtLandMark, txtPin, txtStreet);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

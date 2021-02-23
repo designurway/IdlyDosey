@@ -16,41 +16,69 @@ public class SelectLocationFragmentDirections {
   }
 
   @NonNull
-  public static ActionSelectLocationFragmentToProfileFragment actionSelectLocationFragmentToProfileFragment(
-      @NonNull String Address, @NonNull String pincode) {
-    return new ActionSelectLocationFragmentToProfileFragment(Address, pincode);
+  public static ActionSelectLocationFragmentToAuthProfileFragment actionSelectLocationFragmentToAuthProfileFragment(
+      @NonNull String address, @NonNull String pinCode, @NonNull String referralCode,
+      @NonNull String phone) {
+    return new ActionSelectLocationFragmentToAuthProfileFragment(address, pinCode, referralCode, phone);
   }
 
-  public static class ActionSelectLocationFragmentToProfileFragment implements NavDirections {
+  public static class ActionSelectLocationFragmentToAuthProfileFragment implements NavDirections {
     private final HashMap arguments = new HashMap();
 
-    private ActionSelectLocationFragmentToProfileFragment(@NonNull String Address,
-        @NonNull String pincode) {
-      if (Address == null) {
-        throw new IllegalArgumentException("Argument \"Address\" is marked as non-null but was passed a null value.");
+    private ActionSelectLocationFragmentToAuthProfileFragment(@NonNull String address,
+        @NonNull String pinCode, @NonNull String referralCode, @NonNull String phone) {
+      if (address == null) {
+        throw new IllegalArgumentException("Argument \"address\" is marked as non-null but was passed a null value.");
       }
-      this.arguments.put("Address", Address);
-      if (pincode == null) {
-        throw new IllegalArgumentException("Argument \"pincode\" is marked as non-null but was passed a null value.");
+      this.arguments.put("address", address);
+      if (pinCode == null) {
+        throw new IllegalArgumentException("Argument \"pinCode\" is marked as non-null but was passed a null value.");
       }
-      this.arguments.put("pincode", pincode);
+      this.arguments.put("pinCode", pinCode);
+      if (referralCode == null) {
+        throw new IllegalArgumentException("Argument \"referralCode\" is marked as non-null but was passed a null value.");
+      }
+      this.arguments.put("referralCode", referralCode);
+      if (phone == null) {
+        throw new IllegalArgumentException("Argument \"phone\" is marked as non-null but was passed a null value.");
+      }
+      this.arguments.put("phone", phone);
     }
 
     @NonNull
-    public ActionSelectLocationFragmentToProfileFragment setAddress(@NonNull String Address) {
-      if (Address == null) {
-        throw new IllegalArgumentException("Argument \"Address\" is marked as non-null but was passed a null value.");
+    public ActionSelectLocationFragmentToAuthProfileFragment setAddress(@NonNull String address) {
+      if (address == null) {
+        throw new IllegalArgumentException("Argument \"address\" is marked as non-null but was passed a null value.");
       }
-      this.arguments.put("Address", Address);
+      this.arguments.put("address", address);
       return this;
     }
 
     @NonNull
-    public ActionSelectLocationFragmentToProfileFragment setPincode(@NonNull String pincode) {
-      if (pincode == null) {
-        throw new IllegalArgumentException("Argument \"pincode\" is marked as non-null but was passed a null value.");
+    public ActionSelectLocationFragmentToAuthProfileFragment setPinCode(@NonNull String pinCode) {
+      if (pinCode == null) {
+        throw new IllegalArgumentException("Argument \"pinCode\" is marked as non-null but was passed a null value.");
       }
-      this.arguments.put("pincode", pincode);
+      this.arguments.put("pinCode", pinCode);
+      return this;
+    }
+
+    @NonNull
+    public ActionSelectLocationFragmentToAuthProfileFragment setReferralCode(
+        @NonNull String referralCode) {
+      if (referralCode == null) {
+        throw new IllegalArgumentException("Argument \"referralCode\" is marked as non-null but was passed a null value.");
+      }
+      this.arguments.put("referralCode", referralCode);
+      return this;
+    }
+
+    @NonNull
+    public ActionSelectLocationFragmentToAuthProfileFragment setPhone(@NonNull String phone) {
+      if (phone == null) {
+        throw new IllegalArgumentException("Argument \"phone\" is marked as non-null but was passed a null value.");
+      }
+      this.arguments.put("phone", phone);
       return this;
     }
 
@@ -59,32 +87,52 @@ public class SelectLocationFragmentDirections {
     @NonNull
     public Bundle getArguments() {
       Bundle __result = new Bundle();
-      if (arguments.containsKey("Address")) {
-        String Address = (String) arguments.get("Address");
-        __result.putString("Address", Address);
+      if (arguments.containsKey("address")) {
+        String address = (String) arguments.get("address");
+        __result.putString("address", address);
       }
-      if (arguments.containsKey("pincode")) {
-        String pincode = (String) arguments.get("pincode");
-        __result.putString("pincode", pincode);
+      if (arguments.containsKey("pinCode")) {
+        String pinCode = (String) arguments.get("pinCode");
+        __result.putString("pinCode", pinCode);
+      }
+      if (arguments.containsKey("referralCode")) {
+        String referralCode = (String) arguments.get("referralCode");
+        __result.putString("referralCode", referralCode);
+      }
+      if (arguments.containsKey("phone")) {
+        String phone = (String) arguments.get("phone");
+        __result.putString("phone", phone);
       }
       return __result;
     }
 
     @Override
     public int getActionId() {
-      return R.id.action_selectLocationFragment_to_profileFragment;
+      return R.id.action_selectLocationFragment_to_authProfileFragment;
     }
 
     @SuppressWarnings("unchecked")
     @NonNull
     public String getAddress() {
-      return (String) arguments.get("Address");
+      return (String) arguments.get("address");
     }
 
     @SuppressWarnings("unchecked")
     @NonNull
-    public String getPincode() {
-      return (String) arguments.get("pincode");
+    public String getPinCode() {
+      return (String) arguments.get("pinCode");
+    }
+
+    @SuppressWarnings("unchecked")
+    @NonNull
+    public String getReferralCode() {
+      return (String) arguments.get("referralCode");
+    }
+
+    @SuppressWarnings("unchecked")
+    @NonNull
+    public String getPhone() {
+      return (String) arguments.get("phone");
     }
 
     @Override
@@ -95,17 +143,29 @@ public class SelectLocationFragmentDirections {
       if (object == null || getClass() != object.getClass()) {
           return false;
       }
-      ActionSelectLocationFragmentToProfileFragment that = (ActionSelectLocationFragmentToProfileFragment) object;
-      if (arguments.containsKey("Address") != that.arguments.containsKey("Address")) {
+      ActionSelectLocationFragmentToAuthProfileFragment that = (ActionSelectLocationFragmentToAuthProfileFragment) object;
+      if (arguments.containsKey("address") != that.arguments.containsKey("address")) {
         return false;
       }
       if (getAddress() != null ? !getAddress().equals(that.getAddress()) : that.getAddress() != null) {
         return false;
       }
-      if (arguments.containsKey("pincode") != that.arguments.containsKey("pincode")) {
+      if (arguments.containsKey("pinCode") != that.arguments.containsKey("pinCode")) {
         return false;
       }
-      if (getPincode() != null ? !getPincode().equals(that.getPincode()) : that.getPincode() != null) {
+      if (getPinCode() != null ? !getPinCode().equals(that.getPinCode()) : that.getPinCode() != null) {
+        return false;
+      }
+      if (arguments.containsKey("referralCode") != that.arguments.containsKey("referralCode")) {
+        return false;
+      }
+      if (getReferralCode() != null ? !getReferralCode().equals(that.getReferralCode()) : that.getReferralCode() != null) {
+        return false;
+      }
+      if (arguments.containsKey("phone") != that.arguments.containsKey("phone")) {
+        return false;
+      }
+      if (getPhone() != null ? !getPhone().equals(that.getPhone()) : that.getPhone() != null) {
         return false;
       }
       if (getActionId() != that.getActionId()) {
@@ -118,16 +178,20 @@ public class SelectLocationFragmentDirections {
     public int hashCode() {
       int result = 1;
       result = 31 * result + (getAddress() != null ? getAddress().hashCode() : 0);
-      result = 31 * result + (getPincode() != null ? getPincode().hashCode() : 0);
+      result = 31 * result + (getPinCode() != null ? getPinCode().hashCode() : 0);
+      result = 31 * result + (getReferralCode() != null ? getReferralCode().hashCode() : 0);
+      result = 31 * result + (getPhone() != null ? getPhone().hashCode() : 0);
       result = 31 * result + getActionId();
       return result;
     }
 
     @Override
     public String toString() {
-      return "ActionSelectLocationFragmentToProfileFragment(actionId=" + getActionId() + "){"
-          + "Address=" + getAddress()
-          + ", pincode=" + getPincode()
+      return "ActionSelectLocationFragmentToAuthProfileFragment(actionId=" + getActionId() + "){"
+          + "address=" + getAddress()
+          + ", pinCode=" + getPinCode()
+          + ", referralCode=" + getReferralCode()
+          + ", phone=" + getPhone()
           + "}";
     }
   }

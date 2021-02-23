@@ -154,8 +154,7 @@ public class RegisterFragment extends Fragment {
                     Log.d(TAG, "referredname" + name);
                     PreferenceManager.saveCustomerReferred(referredFrom);
 
-                    action = RegisterFragmentDirections.actionRegisterFragmentToSelectLocationFragment();
-                    Navigation.findNavController(getView()).navigate(action);
+
 
 
                     }else {

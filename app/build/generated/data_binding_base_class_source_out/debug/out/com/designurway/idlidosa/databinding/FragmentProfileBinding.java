@@ -5,15 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
+import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
 import com.designurway.idlidosa.R;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 import de.hdodenhof.circleimageview.CircleImageView;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -21,87 +19,68 @@ import java.lang.String;
 
 public final class FragmentProfileBinding implements ViewBinding {
   @NonNull
-  private final RelativeLayout rootView;
+  private final ScrollView rootView;
 
   @NonNull
-  public final TextInputEditText addressFieldEt;
+  public final TextView addressTxt;
 
   @NonNull
-  public final TextInputLayout addressFieldTv;
+  public final TextView emailTxt;
 
   @NonNull
-  public final TextInputEditText emailFieldEt;
+  public final TextView nameTxt;
 
   @NonNull
-  public final TextInputLayout emailFieldTv;
+  public final CircleImageView otpImg;
 
   @NonNull
-  public final CircleImageView ivCamera;
+  public final TextView phoneTxt;
 
   @NonNull
-  public final TextInputEditText nameFieldEt;
+  public final EditText profileAddressEt;
 
   @NonNull
-  public final TextInputLayout nameFieldTv;
+  public final EditText profileEmailEt;
 
   @NonNull
-  public final CircleImageView personPicImgv;
+  public final CircleImageView profileImg;
 
   @NonNull
-  public final TextInputEditText phoneNumFieldEt;
+  public final EditText profileNameEt;
 
   @NonNull
-  public final TextInputLayout phoneNumFieldTv;
+  public final EditText profilePhoneEt;
 
   @NonNull
-  public final FrameLayout pictureFl;
+  public final TextView referaalTxt;
 
   @NonNull
-  public final RelativeLayout profileDetailsRl;
+  public final Button saveProfileBtn;
 
-  @NonNull
-  public final RelativeLayout profilePicRl;
-
-  @NonNull
-  public final TextView profilePicTv;
-
-  @NonNull
-  public final Button saveBtn;
-
-  @NonNull
-  public final RelativeLayout textRl;
-
-  private FragmentProfileBinding(@NonNull RelativeLayout rootView,
-      @NonNull TextInputEditText addressFieldEt, @NonNull TextInputLayout addressFieldTv,
-      @NonNull TextInputEditText emailFieldEt, @NonNull TextInputLayout emailFieldTv,
-      @NonNull CircleImageView ivCamera, @NonNull TextInputEditText nameFieldEt,
-      @NonNull TextInputLayout nameFieldTv, @NonNull CircleImageView personPicImgv,
-      @NonNull TextInputEditText phoneNumFieldEt, @NonNull TextInputLayout phoneNumFieldTv,
-      @NonNull FrameLayout pictureFl, @NonNull RelativeLayout profileDetailsRl,
-      @NonNull RelativeLayout profilePicRl, @NonNull TextView profilePicTv, @NonNull Button saveBtn,
-      @NonNull RelativeLayout textRl) {
+  private FragmentProfileBinding(@NonNull ScrollView rootView, @NonNull TextView addressTxt,
+      @NonNull TextView emailTxt, @NonNull TextView nameTxt, @NonNull CircleImageView otpImg,
+      @NonNull TextView phoneTxt, @NonNull EditText profileAddressEt,
+      @NonNull EditText profileEmailEt, @NonNull CircleImageView profileImg,
+      @NonNull EditText profileNameEt, @NonNull EditText profilePhoneEt,
+      @NonNull TextView referaalTxt, @NonNull Button saveProfileBtn) {
     this.rootView = rootView;
-    this.addressFieldEt = addressFieldEt;
-    this.addressFieldTv = addressFieldTv;
-    this.emailFieldEt = emailFieldEt;
-    this.emailFieldTv = emailFieldTv;
-    this.ivCamera = ivCamera;
-    this.nameFieldEt = nameFieldEt;
-    this.nameFieldTv = nameFieldTv;
-    this.personPicImgv = personPicImgv;
-    this.phoneNumFieldEt = phoneNumFieldEt;
-    this.phoneNumFieldTv = phoneNumFieldTv;
-    this.pictureFl = pictureFl;
-    this.profileDetailsRl = profileDetailsRl;
-    this.profilePicRl = profilePicRl;
-    this.profilePicTv = profilePicTv;
-    this.saveBtn = saveBtn;
-    this.textRl = textRl;
+    this.addressTxt = addressTxt;
+    this.emailTxt = emailTxt;
+    this.nameTxt = nameTxt;
+    this.otpImg = otpImg;
+    this.phoneTxt = phoneTxt;
+    this.profileAddressEt = profileAddressEt;
+    this.profileEmailEt = profileEmailEt;
+    this.profileImg = profileImg;
+    this.profileNameEt = profileNameEt;
+    this.profilePhoneEt = profilePhoneEt;
+    this.referaalTxt = referaalTxt;
+    this.saveProfileBtn = saveProfileBtn;
   }
 
   @Override
   @NonNull
-  public RelativeLayout getRoot() {
+  public ScrollView getRoot() {
     return rootView;
   }
 
@@ -126,106 +105,81 @@ public final class FragmentProfileBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.address_field_et;
-      TextInputEditText addressFieldEt = rootView.findViewById(id);
-      if (addressFieldEt == null) {
+      id = R.id.addressTxt;
+      TextView addressTxt = rootView.findViewById(id);
+      if (addressTxt == null) {
         break missingId;
       }
 
-      id = R.id.address_field_tv;
-      TextInputLayout addressFieldTv = rootView.findViewById(id);
-      if (addressFieldTv == null) {
+      id = R.id.emailTxt;
+      TextView emailTxt = rootView.findViewById(id);
+      if (emailTxt == null) {
         break missingId;
       }
 
-      id = R.id.email_field_et;
-      TextInputEditText emailFieldEt = rootView.findViewById(id);
-      if (emailFieldEt == null) {
+      id = R.id.nameTxt;
+      TextView nameTxt = rootView.findViewById(id);
+      if (nameTxt == null) {
         break missingId;
       }
 
-      id = R.id.email_field_tv;
-      TextInputLayout emailFieldTv = rootView.findViewById(id);
-      if (emailFieldTv == null) {
+      id = R.id.otp_img;
+      CircleImageView otpImg = rootView.findViewById(id);
+      if (otpImg == null) {
         break missingId;
       }
 
-      id = R.id.iv_camera;
-      CircleImageView ivCamera = rootView.findViewById(id);
-      if (ivCamera == null) {
+      id = R.id.phoneTxt;
+      TextView phoneTxt = rootView.findViewById(id);
+      if (phoneTxt == null) {
         break missingId;
       }
 
-      id = R.id.name_field_et;
-      TextInputEditText nameFieldEt = rootView.findViewById(id);
-      if (nameFieldEt == null) {
+      id = R.id.profileAddressEt;
+      EditText profileAddressEt = rootView.findViewById(id);
+      if (profileAddressEt == null) {
         break missingId;
       }
 
-      id = R.id.name_field_tv;
-      TextInputLayout nameFieldTv = rootView.findViewById(id);
-      if (nameFieldTv == null) {
+      id = R.id.profileEmailEt;
+      EditText profileEmailEt = rootView.findViewById(id);
+      if (profileEmailEt == null) {
         break missingId;
       }
 
-      id = R.id.person_pic_imgv;
-      CircleImageView personPicImgv = rootView.findViewById(id);
-      if (personPicImgv == null) {
+      id = R.id.profileImg;
+      CircleImageView profileImg = rootView.findViewById(id);
+      if (profileImg == null) {
         break missingId;
       }
 
-      id = R.id.phone_num_field_et;
-      TextInputEditText phoneNumFieldEt = rootView.findViewById(id);
-      if (phoneNumFieldEt == null) {
+      id = R.id.profileNameEt;
+      EditText profileNameEt = rootView.findViewById(id);
+      if (profileNameEt == null) {
         break missingId;
       }
 
-      id = R.id.phone_num_field_tv;
-      TextInputLayout phoneNumFieldTv = rootView.findViewById(id);
-      if (phoneNumFieldTv == null) {
+      id = R.id.profilePhoneEt;
+      EditText profilePhoneEt = rootView.findViewById(id);
+      if (profilePhoneEt == null) {
         break missingId;
       }
 
-      id = R.id.picture_fl;
-      FrameLayout pictureFl = rootView.findViewById(id);
-      if (pictureFl == null) {
+      id = R.id.referaal_txt;
+      TextView referaalTxt = rootView.findViewById(id);
+      if (referaalTxt == null) {
         break missingId;
       }
 
-      id = R.id.profile_details_rl;
-      RelativeLayout profileDetailsRl = rootView.findViewById(id);
-      if (profileDetailsRl == null) {
+      id = R.id.saveProfileBtn;
+      Button saveProfileBtn = rootView.findViewById(id);
+      if (saveProfileBtn == null) {
         break missingId;
       }
 
-      id = R.id.profile_pic_rl;
-      RelativeLayout profilePicRl = rootView.findViewById(id);
-      if (profilePicRl == null) {
-        break missingId;
-      }
-
-      id = R.id.profile_pic_tv;
-      TextView profilePicTv = rootView.findViewById(id);
-      if (profilePicTv == null) {
-        break missingId;
-      }
-
-      id = R.id.save_btn;
-      Button saveBtn = rootView.findViewById(id);
-      if (saveBtn == null) {
-        break missingId;
-      }
-
-      id = R.id.text_rl;
-      RelativeLayout textRl = rootView.findViewById(id);
-      if (textRl == null) {
-        break missingId;
-      }
-
-      return new FragmentProfileBinding((RelativeLayout) rootView, addressFieldEt, addressFieldTv,
-          emailFieldEt, emailFieldTv, ivCamera, nameFieldEt, nameFieldTv, personPicImgv,
-          phoneNumFieldEt, phoneNumFieldTv, pictureFl, profileDetailsRl, profilePicRl, profilePicTv,
-          saveBtn, textRl);
+      return new FragmentProfileBinding((ScrollView) rootView, addressTxt, emailTxt, nameTxt,
+          otpImg, phoneTxt, profileAddressEt, profileEmailEt, profileImg, profileNameEt,
+          profilePhoneEt, referaalTxt, saveProfileBtn);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

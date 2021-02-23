@@ -16,15 +16,15 @@ public class ReferalCodeFragmentDirections {
   }
 
   @NonNull
-  public static ActionReferalCodeFragmentToRegisterFragment actionReferalCodeFragmentToRegisterFragment(
+  public static ActionReferalCodeFragmentToSelectLocationFragment actionReferalCodeFragmentToSelectLocationFragment(
       @NonNull String phone, @NonNull String referralCode) {
-    return new ActionReferalCodeFragmentToRegisterFragment(phone, referralCode);
+    return new ActionReferalCodeFragmentToSelectLocationFragment(phone, referralCode);
   }
 
-  public static class ActionReferalCodeFragmentToRegisterFragment implements NavDirections {
+  public static class ActionReferalCodeFragmentToSelectLocationFragment implements NavDirections {
     private final HashMap arguments = new HashMap();
 
-    private ActionReferalCodeFragmentToRegisterFragment(@NonNull String phone,
+    private ActionReferalCodeFragmentToSelectLocationFragment(@NonNull String phone,
         @NonNull String referralCode) {
       if (phone == null) {
         throw new IllegalArgumentException("Argument \"phone\" is marked as non-null but was passed a null value.");
@@ -37,7 +37,7 @@ public class ReferalCodeFragmentDirections {
     }
 
     @NonNull
-    public ActionReferalCodeFragmentToRegisterFragment setPhone(@NonNull String phone) {
+    public ActionReferalCodeFragmentToSelectLocationFragment setPhone(@NonNull String phone) {
       if (phone == null) {
         throw new IllegalArgumentException("Argument \"phone\" is marked as non-null but was passed a null value.");
       }
@@ -46,7 +46,7 @@ public class ReferalCodeFragmentDirections {
     }
 
     @NonNull
-    public ActionReferalCodeFragmentToRegisterFragment setReferralCode(
+    public ActionReferalCodeFragmentToSelectLocationFragment setReferralCode(
         @NonNull String referralCode) {
       if (referralCode == null) {
         throw new IllegalArgumentException("Argument \"referralCode\" is marked as non-null but was passed a null value.");
@@ -73,7 +73,7 @@ public class ReferalCodeFragmentDirections {
 
     @Override
     public int getActionId() {
-      return R.id.action_referalCodeFragment_to_registerFragment;
+      return R.id.action_referalCodeFragment_to_selectLocationFragment;
     }
 
     @SuppressWarnings("unchecked")
@@ -96,7 +96,7 @@ public class ReferalCodeFragmentDirections {
       if (object == null || getClass() != object.getClass()) {
           return false;
       }
-      ActionReferalCodeFragmentToRegisterFragment that = (ActionReferalCodeFragmentToRegisterFragment) object;
+      ActionReferalCodeFragmentToSelectLocationFragment that = (ActionReferalCodeFragmentToSelectLocationFragment) object;
       if (arguments.containsKey("phone") != that.arguments.containsKey("phone")) {
         return false;
       }
@@ -126,7 +126,7 @@ public class ReferalCodeFragmentDirections {
 
     @Override
     public String toString() {
-      return "ActionReferalCodeFragmentToRegisterFragment(actionId=" + getActionId() + "){"
+      return "ActionReferalCodeFragmentToSelectLocationFragment(actionId=" + getActionId() + "){"
           + "phone=" + getPhone()
           + ", referralCode=" + getReferralCode()
           + "}";

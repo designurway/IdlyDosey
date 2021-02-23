@@ -10,8 +10,9 @@ public class ViewCartModel {
     private int qnt;
     private int amount;
     private String medicine_image;
+    private String medicine_name;
 
-    public ViewCartModel(String product_name, String image, String product_id, String quantity, String order_id, String price, int qnt, int amount, String medicine_image) {
+    public ViewCartModel(String product_name, String image, String product_id, String quantity, String order_id, String price, int qnt, int amount, String medicine_image, String medicine_name) {
         this.product_name = product_name;
         this.image = image;
         this.product_id = product_id;
@@ -21,6 +22,7 @@ public class ViewCartModel {
         this.qnt = qnt;
         this.amount = amount;
         this.medicine_image = medicine_image;
+        this.medicine_name = medicine_name;
     }
 
     public String getProduct_name() {
@@ -93,5 +95,13 @@ public class ViewCartModel {
 
     public void setMedicine_image(String medicine_image) {
         this.medicine_image = medicine_image;
+    }
+
+    public String getMedicine_name() {
+        return medicine_name;
+    }
+
+    public void setMedicine_name(String medicine_name) {
+        this.medicine_name = medicine_name;
     }
 }

@@ -41,8 +41,8 @@ public class TrackOrderListAdapter extends RecyclerView.Adapter<TrackOrderListAd
     @Override
     public void onBindViewHolder(@NonNull TracOrderList_VH holder, int position) {
         TrackOrderListData data = list.get(position);
-        holder.trackListOrderId.setText(data.getOrder_id());
-        holder.trackOrderListamount.setText(data.getAmount());
+        holder.orderIdTxt.setText("#"+data.getOrder_id());
+        holder.orderPrice.setText("\u20A8"+" "+data.getAmount());
         holder.trackOrderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,15 +58,15 @@ public class TrackOrderListAdapter extends RecyclerView.Adapter<TrackOrderListAd
 
     class TracOrderList_VH extends  RecyclerView.ViewHolder{
 
-        TextView trackListOrderId;
-        TextView trackOrderListamount;
+        TextView orderIdTxt;
+        TextView orderPrice;
        Button trackOrderBtn;
 
         public TracOrderList_VH(@NonNull View itemView) {
             super(itemView);
 
-            trackListOrderId= itemView.findViewById(R.id.trackListOrderId);
-            trackOrderListamount= itemView.findViewById(R.id.trackOrderListamount);
+            orderIdTxt= itemView.findViewById(R.id.orderIdTxt);
+            orderPrice= itemView.findViewById(R.id.orderPrice);
             trackOrderBtn=itemView.findViewById(R.id.trackOrderBtn);
 
         }

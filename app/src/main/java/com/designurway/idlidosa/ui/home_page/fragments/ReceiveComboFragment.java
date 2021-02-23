@@ -63,18 +63,14 @@ public class ReceiveComboFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         rewardsRv = binding.rewardsRv;
-        imgIv = binding.imgIv;
         imgSadFace = binding.imgSadFace;
         headerRl = binding.headerRl;
 
-        showGif(view.findViewById(R.id.layout_rl));
         setComboWonDetails();
     }
 
 
-    private void showGif(View viewById) {
-        Glide.with(this).load(R.raw.reward).into(imgIv);
-    }
+
 
 
     private void setComboWonDetails() {

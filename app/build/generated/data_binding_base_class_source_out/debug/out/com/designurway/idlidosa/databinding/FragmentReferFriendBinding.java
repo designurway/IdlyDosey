@@ -4,12 +4,11 @@ package com.designurway.idlidosa.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import com.designurway.idlidosa.R;
 import java.lang.NullPointerException;
@@ -18,51 +17,46 @@ import java.lang.String;
 
 public final class FragmentReferFriendBinding implements ViewBinding {
   @NonNull
-  private final RelativeLayout rootView;
+  private final ConstraintLayout rootView;
 
   @NonNull
-  public final RelativeLayout codeShareRl;
+  public final TextView inviteTxt;
 
   @NonNull
-  public final TextView codeTv;
+  public final ImageView referImg;
 
   @NonNull
-  public final TextView referHeaderTv;
+  public final ConstraintLayout referRl;
 
   @NonNull
-  public final ImageView referIv;
+  public final TextView referTxt;
 
   @NonNull
-  public final RelativeLayout referParaRl;
+  public final TextView referalCode;
 
   @NonNull
-  public final RelativeLayout referRl;
+  public final TextView referdis;
 
   @NonNull
-  public final TextView shareTv;
+  public final TextView shareReferalCode;
 
-  @NonNull
-  public final Button signUpBtn;
-
-  private FragmentReferFriendBinding(@NonNull RelativeLayout rootView,
-      @NonNull RelativeLayout codeShareRl, @NonNull TextView codeTv,
-      @NonNull TextView referHeaderTv, @NonNull ImageView referIv,
-      @NonNull RelativeLayout referParaRl, @NonNull RelativeLayout referRl,
-      @NonNull TextView shareTv, @NonNull Button signUpBtn) {
+  private FragmentReferFriendBinding(@NonNull ConstraintLayout rootView,
+      @NonNull TextView inviteTxt, @NonNull ImageView referImg, @NonNull ConstraintLayout referRl,
+      @NonNull TextView referTxt, @NonNull TextView referalCode, @NonNull TextView referdis,
+      @NonNull TextView shareReferalCode) {
     this.rootView = rootView;
-    this.codeShareRl = codeShareRl;
-    this.codeTv = codeTv;
-    this.referHeaderTv = referHeaderTv;
-    this.referIv = referIv;
-    this.referParaRl = referParaRl;
+    this.inviteTxt = inviteTxt;
+    this.referImg = referImg;
     this.referRl = referRl;
-    this.shareTv = shareTv;
-    this.signUpBtn = signUpBtn;
+    this.referTxt = referTxt;
+    this.referalCode = referalCode;
+    this.referdis = referdis;
+    this.shareReferalCode = shareReferalCode;
   }
 
   @Override
   @NonNull
-  public RelativeLayout getRoot() {
+  public ConstraintLayout getRoot() {
     return rootView;
   }
 
@@ -87,52 +81,46 @@ public final class FragmentReferFriendBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.code_share_rl;
-      RelativeLayout codeShareRl = rootView.findViewById(id);
-      if (codeShareRl == null) {
+      id = R.id.inviteTxt;
+      TextView inviteTxt = rootView.findViewById(id);
+      if (inviteTxt == null) {
         break missingId;
       }
 
-      id = R.id.code_tv;
-      TextView codeTv = rootView.findViewById(id);
-      if (codeTv == null) {
+      id = R.id.referImg;
+      ImageView referImg = rootView.findViewById(id);
+      if (referImg == null) {
         break missingId;
       }
 
-      id = R.id.refer_header_tv;
-      TextView referHeaderTv = rootView.findViewById(id);
-      if (referHeaderTv == null) {
+      ConstraintLayout referRl = (ConstraintLayout) rootView;
+
+      id = R.id.referTxt;
+      TextView referTxt = rootView.findViewById(id);
+      if (referTxt == null) {
         break missingId;
       }
 
-      id = R.id.refer_iv;
-      ImageView referIv = rootView.findViewById(id);
-      if (referIv == null) {
+      id = R.id.referalCode;
+      TextView referalCode = rootView.findViewById(id);
+      if (referalCode == null) {
         break missingId;
       }
 
-      id = R.id.refer_para_rl;
-      RelativeLayout referParaRl = rootView.findViewById(id);
-      if (referParaRl == null) {
+      id = R.id.referdis;
+      TextView referdis = rootView.findViewById(id);
+      if (referdis == null) {
         break missingId;
       }
 
-      RelativeLayout referRl = (RelativeLayout) rootView;
-
-      id = R.id.share_tv;
-      TextView shareTv = rootView.findViewById(id);
-      if (shareTv == null) {
+      id = R.id.shareReferalCode;
+      TextView shareReferalCode = rootView.findViewById(id);
+      if (shareReferalCode == null) {
         break missingId;
       }
 
-      id = R.id.sign_up_btn;
-      Button signUpBtn = rootView.findViewById(id);
-      if (signUpBtn == null) {
-        break missingId;
-      }
-
-      return new FragmentReferFriendBinding((RelativeLayout) rootView, codeShareRl, codeTv,
-          referHeaderTv, referIv, referParaRl, referRl, shareTv, signUpBtn);
+      return new FragmentReferFriendBinding((ConstraintLayout) rootView, inviteTxt, referImg,
+          referRl, referTxt, referalCode, referdis, shareReferalCode);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

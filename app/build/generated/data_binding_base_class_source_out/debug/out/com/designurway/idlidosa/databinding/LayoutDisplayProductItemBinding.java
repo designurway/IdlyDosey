@@ -6,14 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import com.designurway.idlidosa.R;
-import de.hdodenhof.circleimageview.CircleImageView;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -26,13 +24,16 @@ public final class LayoutDisplayProductItemBinding implements ViewBinding {
   public final Button btnAddTocart;
 
   @NonNull
-  public final CircleImageView imageView;
+  public final ConstraintLayout constrantButton;
+
+  @NonNull
+  public final ImageView imageView;
+
+  @NonNull
+  public final ConstraintLayout imgLayout;
 
   @NonNull
   public final TextView itemQtyTv;
-
-  @NonNull
-  public final LinearLayout linearButton;
 
   @NonNull
   public final ImageView minusImgIv;
@@ -50,15 +51,16 @@ public final class LayoutDisplayProductItemBinding implements ViewBinding {
   public final TextView txtRupees;
 
   private LayoutDisplayProductItemBinding(@NonNull ConstraintLayout rootView,
-      @NonNull Button btnAddTocart, @NonNull CircleImageView imageView, @NonNull TextView itemQtyTv,
-      @NonNull LinearLayout linearButton, @NonNull ImageView minusImgIv,
-      @NonNull ImageView plusImgIv, @NonNull TextView subTitle, @NonNull TextView titleTxt,
-      @NonNull TextView txtRupees) {
+      @NonNull Button btnAddTocart, @NonNull ConstraintLayout constrantButton,
+      @NonNull ImageView imageView, @NonNull ConstraintLayout imgLayout,
+      @NonNull TextView itemQtyTv, @NonNull ImageView minusImgIv, @NonNull ImageView plusImgIv,
+      @NonNull TextView subTitle, @NonNull TextView titleTxt, @NonNull TextView txtRupees) {
     this.rootView = rootView;
     this.btnAddTocart = btnAddTocart;
+    this.constrantButton = constrantButton;
     this.imageView = imageView;
+    this.imgLayout = imgLayout;
     this.itemQtyTv = itemQtyTv;
-    this.linearButton = linearButton;
     this.minusImgIv = minusImgIv;
     this.plusImgIv = plusImgIv;
     this.subTitle = subTitle;
@@ -99,21 +101,27 @@ public final class LayoutDisplayProductItemBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.constrant_button;
+      ConstraintLayout constrantButton = rootView.findViewById(id);
+      if (constrantButton == null) {
+        break missingId;
+      }
+
       id = R.id.image_view;
-      CircleImageView imageView = rootView.findViewById(id);
+      ImageView imageView = rootView.findViewById(id);
       if (imageView == null) {
+        break missingId;
+      }
+
+      id = R.id.imgLayout;
+      ConstraintLayout imgLayout = rootView.findViewById(id);
+      if (imgLayout == null) {
         break missingId;
       }
 
       id = R.id.item_qty_tv;
       TextView itemQtyTv = rootView.findViewById(id);
       if (itemQtyTv == null) {
-        break missingId;
-      }
-
-      id = R.id.linear_button;
-      LinearLayout linearButton = rootView.findViewById(id);
-      if (linearButton == null) {
         break missingId;
       }
 
@@ -148,7 +156,8 @@ public final class LayoutDisplayProductItemBinding implements ViewBinding {
       }
 
       return new LayoutDisplayProductItemBinding((ConstraintLayout) rootView, btnAddTocart,
-          imageView, itemQtyTv, linearButton, minusImgIv, plusImgIv, subTitle, titleTxt, txtRupees);
+          constrantButton, imageView, imgLayout, itemQtyTv, minusImgIv, plusImgIv, subTitle,
+          titleTxt, txtRupees);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

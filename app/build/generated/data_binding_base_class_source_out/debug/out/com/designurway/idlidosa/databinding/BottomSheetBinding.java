@@ -31,18 +31,14 @@ public final class BottomSheetBinding implements ViewBinding {
   @NonNull
   public final ImageView paytmImg;
 
-  @NonNull
-  public final View view;
-
   private BottomSheetBinding(@NonNull LinearLayout rootView, @NonNull Button cancelBtn,
-      @NonNull ImageView googlePayImg, @NonNull LinearLayout paymentLl, @NonNull ImageView paytmImg,
-      @NonNull View view) {
+      @NonNull ImageView googlePayImg, @NonNull LinearLayout paymentLl,
+      @NonNull ImageView paytmImg) {
     this.rootView = rootView;
     this.cancelBtn = cancelBtn;
     this.googlePayImg = googlePayImg;
     this.paymentLl = paymentLl;
     this.paytmImg = paytmImg;
-    this.view = view;
   }
 
   @Override
@@ -96,14 +92,8 @@ public final class BottomSheetBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.view;
-      View view = rootView.findViewById(id);
-      if (view == null) {
-        break missingId;
-      }
-
       return new BottomSheetBinding((LinearLayout) rootView, cancelBtn, googlePayImg, paymentLl,
-          paytmImg, view);
+          paytmImg);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -15,7 +15,7 @@ import java.lang.Override;
 public class ForgotPwdActivity_ViewBinding implements Unbinder {
   private ForgotPwdActivity target;
 
-  private View view7f0a00c4;
+  private View view7f0a00cc;
 
   @UiThread
   public ForgotPwdActivity_ViewBinding(ForgotPwdActivity target) {
@@ -30,7 +30,7 @@ public class ForgotPwdActivity_ViewBinding implements Unbinder {
     target.newPwdEt = Utils.findRequiredViewAsType(source, R.id.new_pwd_et, "field 'newPwdEt'", EditText.class);
     target.confPwdEt = Utils.findRequiredViewAsType(source, R.id.conf_password_et, "field 'confPwdEt'", EditText.class);
     view = Utils.findRequiredView(source, R.id.change_pwd_btn, "method 'changePwd'");
-    view7f0a00c4 = view;
+    view7f0a00cc = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -49,7 +49,7 @@ public class ForgotPwdActivity_ViewBinding implements Unbinder {
     target.newPwdEt = null;
     target.confPwdEt = null;
 
-    view7f0a00c4.setOnClickListener(null);
-    view7f0a00c4 = null;
+    view7f0a00cc.setOnClickListener(null);
+    view7f0a00cc = null;
   }
 }

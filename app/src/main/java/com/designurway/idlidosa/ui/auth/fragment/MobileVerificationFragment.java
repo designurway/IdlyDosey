@@ -81,6 +81,7 @@ public class MobileVerificationFragment extends Fragment {
         getOtpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String phone = phoneEt.getText().toString().trim();
                 if (!AndroidUtils.isNetworkAvailable(getContext())) {
                     Toast.makeText(getContext().getApplicationContext(), getContext().getText(R.string.no_internet), Toast.LENGTH_SHORT).show();
@@ -92,6 +93,7 @@ public class MobileVerificationFragment extends Fragment {
                 if (!AndroidUtils.validMobileNumber(phone)) {
                     Toast.makeText(getContext(), getContext().getText(R.string.valid_phone), Toast.LENGTH_SHORT).show();
                 } else {
+
 
                     verifyPhoneApi(phone);
                 }

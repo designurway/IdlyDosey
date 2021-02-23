@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -33,57 +34,45 @@ public class SettingsFragment extends Fragment {
     NavDirections action;
 
     private static final String TAG ="SettingsFragment" ;
-    LinearLayout orderHistoryLy;
-    LinearLayout addressBookLy;
-
-    LinearLayout trackOrdersLy;
-
-    LinearLayout supportly;
-
-    LinearLayout logoutLy;
-
-    LinearLayout referLy;
-
-    LinearLayout rewardLy;
-
+    ConstraintLayout consHistory,consTrack,constPickReward,consRefer,consEdtAd,consSupport,consSigout;
     String orderId = "none";
 
 
 
-   /* @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    /* @Override
+     public void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
 
-    }
-*/
+     }
+ */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-       binding = FragmentSettingsBinding.inflate(inflater,container,false);
-       return binding.getRoot();
+        binding = FragmentSettingsBinding.inflate(inflater,container,false);
+        return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        orderHistoryLy = binding.orderHistoryLy;
-        addressBookLy = binding.addressBookLy;
-        trackOrdersLy = binding.trackOrdersLy;
-        supportly = binding.supportLy;
-        logoutLy = binding.logoutLy;
-        referLy = binding.referFriendLy;
-        rewardLy = binding.rewardLy;
+        consHistory = binding.consHistory;
+        consTrack = binding.consTrack;
+        constPickReward = binding.constPickReward;
+        consRefer = binding.consRefer;
+        consEdtAd = binding.consEdtAd;
+        consSupport = binding.consSupport;
+        consSigout = binding.consSigout;
 
-        logoutLy.setOnClickListener(new View.OnClickListener() {
+        consSigout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 logout();
             }
         });
 
-        orderHistoryLy.setOnClickListener(new View.OnClickListener() {
+        consHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 action = SettingsFragmentDirections.actionSettingsFragmentToOrderHistoryFragment();
@@ -91,7 +80,7 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-        addressBookLy.setOnClickListener(new View.OnClickListener() {
+        consEdtAd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 action = SettingsFragmentDirections.actionSettingsFragmentToAddressBookFragment("00","setting",orderId);
@@ -99,7 +88,7 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-        trackOrdersLy.setOnClickListener(new View.OnClickListener() {
+        consTrack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 action = SettingsFragmentDirections.actionSettingsFragmentToTrackOrderListFragment();
@@ -107,7 +96,7 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-        supportly.setOnClickListener(new View.OnClickListener() {
+        consSupport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 action = SettingsFragmentDirections.actionSettingsFragmentToSupportFragment();
@@ -115,7 +104,7 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-        rewardLy.setOnClickListener(new View.OnClickListener() {
+        constPickReward.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 action = SettingsFragmentDirections.actionSettingsFragmentToReceiveComboFragment();
@@ -123,7 +112,7 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-        referLy.setOnClickListener(new View.OnClickListener() {
+        consRefer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 action = SettingsFragmentDirections.actionSettingsFragmentToReferFriendFragment();

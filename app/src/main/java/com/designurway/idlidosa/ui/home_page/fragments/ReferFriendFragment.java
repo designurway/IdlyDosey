@@ -32,9 +32,9 @@ public class ReferFriendFragment extends Fragment {
 
     ImageView referIv;
 
-    TextView codeTv;
+    TextView referalCode;
 
-    TextView shareTv;
+    TextView shareReferalCode;
     Button signUpBtn;
 
     @Override
@@ -49,27 +49,14 @@ public class ReferFriendFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        referIv = binding.referIv;
-        codeTv = binding.codeTv;
-        shareTv = binding.shareTv;
-        signUpBtn = binding.signUpBtn;
+        referalCode = binding.referalCode;
+        shareReferalCode = binding.shareReferalCode;
 
-        showGif(view.findViewById(R.id.refer_rl));
-        codeTv.setText(PreferenceManager.getCustomeReferenceCode());
+        referalCode.setText(PreferenceManager.getCustomeReferenceCode());
         Log.d(TAG, "refrererererere" + PreferenceManager.getCustomeReferenceCode());
-        signUpBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent shareIntent = new Intent(Intent.ACTION_SEND);
-                shareIntent.setType("text/plain");
-                shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Referral Code to Idli Dosa" + " " + PreferenceManager.getCustomeReferenceCode());
-                String app_url = "https://play.google.com/store/apps/details?id=com.designurway.idlidosa";
-                shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, app_url);
-                startActivity(Intent.createChooser(shareIntent, "Share via"));
-            }
-        });
 
-        shareTv.setOnClickListener(new View.OnClickListener() {
+
+        shareReferalCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 shareCode();
@@ -78,9 +65,6 @@ public class ReferFriendFragment extends Fragment {
 
     }
 
-    private void showGif(View viewById) {
-        Glide.with(this).load(R.raw.reward).into(referIv);
-    }
 
     public void shareCode() {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);

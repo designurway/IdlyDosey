@@ -5,14 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import com.designurway.idlidosa.R;
-import de.hdodenhof.circleimageview.CircleImageView;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -20,6 +19,9 @@ import java.lang.String;
 public final class ListCartItemsBinding implements ViewBinding {
   @NonNull
   private final ConstraintLayout rootView;
+
+  @NonNull
+  public final CardView imageCard;
 
   @NonNull
   public final ImageView itemDeleteTv;
@@ -34,7 +36,7 @@ public final class ListCartItemsBinding implements ViewBinding {
   public final TextView itemQtyTv;
 
   @NonNull
-  public final LinearLayout linearButton;
+  public final TextView itemRuppeSign;
 
   @NonNull
   public final ImageView minusImgIv;
@@ -43,25 +45,22 @@ public final class ListCartItemsBinding implements ViewBinding {
   public final ImageView plusImgIv;
 
   @NonNull
-  public final CircleImageView prodImgIv;
+  public final ImageView prodImgIv;
 
-  @NonNull
-  public final TextView rupeeIv;
-
-  private ListCartItemsBinding(@NonNull ConstraintLayout rootView, @NonNull ImageView itemDeleteTv,
-      @NonNull TextView itemNameTv, @NonNull TextView itemPriceTv, @NonNull TextView itemQtyTv,
-      @NonNull LinearLayout linearButton, @NonNull ImageView minusImgIv,
-      @NonNull ImageView plusImgIv, @NonNull CircleImageView prodImgIv, @NonNull TextView rupeeIv) {
+  private ListCartItemsBinding(@NonNull ConstraintLayout rootView, @NonNull CardView imageCard,
+      @NonNull ImageView itemDeleteTv, @NonNull TextView itemNameTv, @NonNull TextView itemPriceTv,
+      @NonNull TextView itemQtyTv, @NonNull TextView itemRuppeSign, @NonNull ImageView minusImgIv,
+      @NonNull ImageView plusImgIv, @NonNull ImageView prodImgIv) {
     this.rootView = rootView;
+    this.imageCard = imageCard;
     this.itemDeleteTv = itemDeleteTv;
     this.itemNameTv = itemNameTv;
     this.itemPriceTv = itemPriceTv;
     this.itemQtyTv = itemQtyTv;
-    this.linearButton = linearButton;
+    this.itemRuppeSign = itemRuppeSign;
     this.minusImgIv = minusImgIv;
     this.plusImgIv = plusImgIv;
     this.prodImgIv = prodImgIv;
-    this.rupeeIv = rupeeIv;
   }
 
   @Override
@@ -91,6 +90,12 @@ public final class ListCartItemsBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.imageCard;
+      CardView imageCard = rootView.findViewById(id);
+      if (imageCard == null) {
+        break missingId;
+      }
+
       id = R.id.item_delete_tv;
       ImageView itemDeleteTv = rootView.findViewById(id);
       if (itemDeleteTv == null) {
@@ -115,9 +120,9 @@ public final class ListCartItemsBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.linear_button;
-      LinearLayout linearButton = rootView.findViewById(id);
-      if (linearButton == null) {
+      id = R.id.item_ruppe_sign;
+      TextView itemRuppeSign = rootView.findViewById(id);
+      if (itemRuppeSign == null) {
         break missingId;
       }
 
@@ -134,19 +139,13 @@ public final class ListCartItemsBinding implements ViewBinding {
       }
 
       id = R.id.prod_img_iv;
-      CircleImageView prodImgIv = rootView.findViewById(id);
+      ImageView prodImgIv = rootView.findViewById(id);
       if (prodImgIv == null) {
         break missingId;
       }
 
-      id = R.id.rupee_iv;
-      TextView rupeeIv = rootView.findViewById(id);
-      if (rupeeIv == null) {
-        break missingId;
-      }
-
-      return new ListCartItemsBinding((ConstraintLayout) rootView, itemDeleteTv, itemNameTv,
-          itemPriceTv, itemQtyTv, linearButton, minusImgIv, plusImgIv, prodImgIv, rupeeIv);
+      return new ListCartItemsBinding((ConstraintLayout) rootView, imageCard, itemDeleteTv,
+          itemNameTv, itemPriceTv, itemQtyTv, itemRuppeSign, minusImgIv, plusImgIv, prodImgIv);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
