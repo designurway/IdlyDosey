@@ -58,6 +58,13 @@
     <string name="new_password">New Password</string>
     <string name="confirm_password">Confirm password</string>
 
+
+    <string name="youAreNotUpdatedTitle">Update Available</string>
+    <string name="youAreNotUpdatedMessage">A new version of Idly Dosey is available. Please update to version</string>
+<!--    <string name="youAreNotUpdatedMessage1">\s now</string>-->
+    <string name="youAreNotUpdatedMessage1">.</string>
+    <string name="update">Update</string>
+
     <string name="home">Home</string>
     <string name="address_name">Lathesh</string>
     <string name="home_address">jp nagar,mysore</string>

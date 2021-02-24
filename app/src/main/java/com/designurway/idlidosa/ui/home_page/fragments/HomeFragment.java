@@ -1,10 +1,14 @@
 package com.designurway.idlidosa.ui.home_page.fragments;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +18,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -24,6 +29,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import com.designurway.idlidosa.BuildConfig;
 import com.designurway.idlidosa.R;
 import com.designurway.idlidosa.a.activity.EmergencyActivity;
 import com.designurway.idlidosa.a.adapters.HomeTabAdapter;
@@ -36,14 +42,22 @@ import com.designurway.idlidosa.a.utils.PreferenceManager;
 import com.designurway.idlidosa.databinding.FragmentHomeBinding;
 import com.google.android.material.tabs.TabLayout;
 
+import org.jsoup.Jsoup;
+
+import java.io.IOException;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static com.designurway.idlidosa.BuildConfig.VERSION_NAME;
 
 public class HomeFragment extends Fragment {
 
@@ -53,6 +67,7 @@ public class HomeFragment extends Fragment {
     Button btnEmergency;
     TextView addressLayout;
     Context context;
+    String currentAppVersion,latestAppVersion;
 
 
     private static final String TAG = "FeaturedFragment";
@@ -98,12 +113,29 @@ public class HomeFragment extends Fragment {
         }
 
 
+
+
         btnEmergency.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                action = HomeFragmentDirections.actionHomeFragmentToEmergencyFragment();
-                Navigation.findNavController(getView()).navigate(action);
+
+                try {
+                    latestAppVersion = Jsoup
+                            .connect("https://play.google.com/store/apps/details?id=com.designurway.idlidosa")
+                            .timeout(30000)
+                            .get()
+                            /*.select("div.hAyfc:nth-child(5)>"+"span:nth-child(2) > div:nth-child(1)"+"> span:nth-child(1)")
+                            .first()*/
+                            .ownText();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                Toast.makeText(context, "LAtest Version : "+latestAppVersion, Toast.LENGTH_SHORT).show();
+
+           /*     action = HomeFragmentDirections.actionHomeFragmentToEmergencyFragment();
+                Navigation.findNavController(getView()).navigate(action);*/
 
             }
         });
@@ -241,4 +273,71 @@ public class HomeFragment extends Fragment {
 
     }
 
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        getLatestAppUpdate();
+    }
+
+    private void getLatestAppUpdate() {
+        ExecutorService executorService =  Executors.newSingleThreadExecutor();
+
+        executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                // do In Background
+                try {
+                    latestAppVersion = Jsoup
+                            .connect("https://play.google.com/store/apps/details?id="+context.getPackageName())
+                            .timeout(30000)
+                            .get()
+                            .select("div.hAyfc:nth-child(4)>"+"span:nth-child(2) > div:nth-child(1)"+"> span:nth-child(1)")
+                          .first()
+                            .ownText();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                //postExecute
+                getActivity().runOnUiThread(new Runnable() {
+                    public void run() {
+                        // do onPostExecute stuff
+
+                        //Getting Current Version
+                        currentAppVersion = VERSION_NAME;
+
+                        if (currentAppVersion!=null){
+                            //Version convert to float
+                            float cVersion = Float.parseFloat(currentAppVersion);
+                            float lVersion = Float.parseFloat(latestAppVersion);
+
+                            if (lVersion>cVersion){
+                                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(new ContextThemeWrapper(context,
+                                        R.style.AppTheme));
+
+                                alertDialogBuilder.setTitle(context.getString(R.string.youAreNotUpdatedTitle));
+                                alertDialogBuilder.setMessage(context.getString(R.string.youAreNotUpdatedMessage) + " " + latestAppVersion + context.getString(R.string.youAreNotUpdatedMessage1));
+                                alertDialogBuilder.setCancelable(false);
+                                alertDialogBuilder.setPositiveButton(R.string.update, new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id="+context.getPackageName())));
+                                        dialog.cancel();
+                                    }
+                                });
+                                alertDialogBuilder.show();
+                            }else {
+
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+
 }
+
+

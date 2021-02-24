@@ -292,6 +292,9 @@ com/designurway/idlidosa/ui/home_page/fragments/HomeFragment.java
  com.designurway.idlidosa.ui.home_page.fragments.HomeFragment$3$1
  com.designurway.idlidosa.ui.home_page.fragments.HomeFragment$4
  com.designurway.idlidosa.ui.home_page.fragments.HomeFragment$4$1
+ com.designurway.idlidosa.ui.home_page.fragments.HomeFragment$5
+ com.designurway.idlidosa.ui.home_page.fragments.HomeFragment$5$1
+ com.designurway.idlidosa.ui.home_page.fragments.HomeFragment$5$1$1
 com/designurway/idlidosa/ui/home_page/fragments/PaymentSucessfulFragmentDirections.java
  com.designurway.idlidosa.ui.home_page.fragments.PaymentSucessfulFragmentDirections
 com/designurway/idlidosa/ui/home_page/fragments/ReciveComboAddressFragmentArgs.java

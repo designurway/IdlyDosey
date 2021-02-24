@@ -1,23 +1,23 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\Pankaj\\Android Project\\IdlyDoseyy\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-pa\\values-pa.xml",
+            "outputFile": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-pa\\values-pa.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Datta\\.gradle\\caches\\transforms-2\\files-2.1\\703c2d5f035733ecaf8d5dd24cc1395b\\jetified-play-services-base-17.3.0\\res\\values-pa\\values.xml",
+                    "source": "C:\\Users\\Datta\\.gradle\\caches\\transforms-2\\files-2.1\\c96fb9204d9f232726c2d24a80d407bb\\jetified-play-services-basement-17.5.0\\res\\values-pa\\values.xml",
                     "from": {
-                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
-                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
-                        "startOffsets": "245,350,555,683,790,996,1123,1262,1391,1612,1719,1923,2053,2265,2452,2544,2636",
-                        "endColumns": "104,204,127,106,205,126,138,128,220,106,203,129,211,186,91,91,106",
-                        "endOffsets": "349,554,682,789,995,1122,1261,1390,1611,1718,1922,2052,2264,2451,2543,2635,2742"
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "247",
+                        "endColumns": "209",
+                        "endOffsets": "456"
                     },
                     "to": {
-                        "startLines": "37,38,39,40,41,42,43,44,46,47,48,49,50,51,52,53,54",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "3314,3423,3628,3760,3871,4077,4208,4351,4694,4915,5026,5230,5364,5576,5767,5863,5959",
-                        "endColumns": "108,204,131,110,205,130,142,132,220,110,203,133,211,190,95,95,110",
-                        "endOffsets": "3418,3623,3755,3866,4072,4203,4346,4479,4910,5021,5225,5359,5571,5762,5858,5954,6065"
+                        "startLines": "45",
+                        "startColumns": "4",
+                        "startOffsets": "4484",
+                        "endColumns": "209",
+                        "endOffsets": "4689"
                     }
                 },
                 {
@@ -74,6 +74,23 @@
                     }
                 },
                 {
+                    "source": "C:\\Users\\Datta\\.gradle\\caches\\transforms-2\\files-2.1\\4ff488d6f83fa24399c7f8f8909da103\\jetified-play-services-base-17.5.0\\res\\values-pa\\values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
+                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+                        "startOffsets": "245,350,555,683,790,996,1123,1262,1391,1612,1719,1923,2053,2265,2452,2544,2636",
+                        "endColumns": "104,204,127,106,205,126,138,128,220,106,203,129,211,186,91,91,106",
+                        "endOffsets": "349,554,682,789,995,1122,1261,1390,1611,1718,1922,2052,2264,2451,2543,2635,2742"
+                    },
+                    "to": {
+                        "startLines": "37,38,39,40,41,42,43,44,46,47,48,49,50,51,52,53,54",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "3314,3423,3628,3760,3871,4077,4208,4351,4694,4915,5026,5230,5364,5576,5767,5863,5959",
+                        "endColumns": "108,204,131,110,205,130,142,132,220,110,203,133,211,190,95,95,110",
+                        "endOffsets": "3418,3623,3755,3866,4072,4203,4346,4479,4910,5021,5225,5359,5571,5762,5858,5954,6065"
+                    }
+                },
+                {
                     "source": "C:\\Users\\Datta\\.gradle\\caches\\transforms-2\\files-2.1\\fcafb8fa2d6408638cccc271cebd4f55\\jetified-firebase-messaging-21.0.1\\res\\values-pa\\values.xml",
                     "from": {
                         "startLines": "4",
@@ -122,23 +139,6 @@
                         "startOffsets": "10236,10311,10378,10473,10538,10588,10662,10743",
                         "endColumns": "74,66,94,64,49,73,80,61",
                         "endOffsets": "10306,10373,10468,10533,10583,10657,10738,10800"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Datta\\.gradle\\caches\\transforms-2\\files-2.1\\be990e35f6eb34c8fec49dbb518dd842\\jetified-play-services-basement-17.3.0\\res\\values-pa\\values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "247",
-                        "endColumns": "209",
-                        "endOffsets": "456"
-                    },
-                    "to": {
-                        "startLines": "45",
-                        "startColumns": "4",
-                        "startOffsets": "4484",
-                        "endColumns": "209",
-                        "endOffsets": "4689"
                     }
                 }
             ]

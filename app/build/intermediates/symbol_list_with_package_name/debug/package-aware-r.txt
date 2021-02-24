@@ -3959,6 +3959,7 @@ string title_activity_maps
 string title_location_permission
 string track_orders
 string transaction_id
+string update
 string use_pin
 string username
 string valid_email
@@ -3968,6 +3969,9 @@ string verify_otp
 string version
 string wait_otp
 string waiting_for_otp_label
+string youAreNotUpdatedMessage
+string youAreNotUpdatedMessage1
+string youAreNotUpdatedTitle
 string za12zb
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
