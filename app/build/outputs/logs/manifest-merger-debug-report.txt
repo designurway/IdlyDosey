@@ -252,7 +252,7 @@ MERGED from [com.android.volley:volley:1.1.1] C:\Users\Datta\.gradle\caches\tran
 	android:label
 		ADDED from E:\Pankaj\Android Project\IdlyDosey\app\src\main\AndroidManifest.xml:24:9-41
 	android:hardwareAccelerated
-		ADDED from E:\Pankaj\Android Project\IdlyDosey\app\src\main\AndroidManifest.xml:22:9-43
+		ADDED from E:\Pankaj\Android Project\IdlyDosey\app\src\main\AndroidManifest.xml:22:9-44
 	android:exported
 		ADDED from E:\Pankaj\Android Project\IdlyDosey\app\src\main\AndroidManifest.xml:21:9-33
 	android:roundIcon

@@ -66,8 +66,8 @@
 36        android:exported="false"
 36-->E:\Pankaj\Android Project\IdlyDosey\app\src\main\AndroidManifest.xml:21:9-33
 37        android:extractNativeLibs="false"
-38        android:hardwareAccelerated="true"
-38-->E:\Pankaj\Android Project\IdlyDosey\app\src\main\AndroidManifest.xml:22:9-43
+38        android:hardwareAccelerated="false"
+38-->E:\Pankaj\Android Project\IdlyDosey\app\src\main\AndroidManifest.xml:22:9-44
 39        android:icon="@drawable/logo"
 39-->E:\Pankaj\Android Project\IdlyDosey\app\src\main\AndroidManifest.xml:23:9-38
 40        android:label="@string/app_name"

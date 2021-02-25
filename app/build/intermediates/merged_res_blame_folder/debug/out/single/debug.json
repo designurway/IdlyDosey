@@ -124,12 +124,12 @@
         "source": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\src\\main\\res\\layout\\fragment_track_order_list.xml"
     },
     {
-        "merged": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_logo_here.png.flat",
-        "source": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\src\\main\\res\\drawable-v24\\logo_here.png"
-    },
-    {
         "merged": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_referral_code.xml.flat",
         "source": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\src\\main\\res\\layout\\activity_referral_code.xml"
+    },
+    {
+        "merged": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_logo_here.png.flat",
+        "source": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\src\\main\\res\\drawable-v24\\logo_here.png"
     },
     {
         "merged": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\build\\intermediates\\res\\merged\\debug\\drawable_delete.png.flat",
@@ -232,12 +232,12 @@
         "source": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\src\\main\\res\\raw\\reward.gif"
     },
     {
-        "merged": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_error_outline.xml.flat",
-        "source": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\src\\main\\res\\drawable-v24\\error_outline.xml"
-    },
-    {
         "merged": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\build\\intermediates\\res\\merged\\debug\\drawable_dot.png.flat",
         "source": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\src\\main\\res\\drawable\\dot.png"
+    },
+    {
+        "merged": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_error_outline.xml.flat",
+        "source": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\src\\main\\res\\drawable-v24\\error_outline.xml"
     },
     {
         "merged": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bottom_sheet_edit_bagnd.xml.flat",
@@ -288,12 +288,12 @@
         "source": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_dot.xml.flat",
-        "source": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\src\\main\\res\\drawable\\ic_dot.xml"
-    },
-    {
         "merged": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_network.png.flat",
         "source": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\src\\main\\res\\drawable-v24\\network.png"
+    },
+    {
+        "merged": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_dot.xml.flat",
+        "source": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\src\\main\\res\\drawable\\ic_dot.xml"
     },
     {
         "merged": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_splash_screen.xml.flat",
@@ -676,6 +676,10 @@
         "source": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\src\\main\\res\\layout\\fragment_display_product.xml"
     },
     {
+        "merged": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_paytm.webp.flat",
+        "source": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\src\\main\\res\\drawable-v24\\paytm.webp"
+    },
+    {
         "merged": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bell.png.flat",
         "source": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\src\\main\\res\\drawable\\bell.png"
     },
@@ -766,10 +770,6 @@
     {
         "merged": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_paytm.xml.flat",
         "source": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\src\\main\\res\\layout\\activity_paytm.xml"
-    },
-    {
-        "merged": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_paytm.png.flat",
-        "source": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\src\\main\\res\\drawable-v24\\paytm.png"
     },
     {
         "merged": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\build\\intermediates\\res\\merged\\debug\\drawable_phone_call.png.flat",
