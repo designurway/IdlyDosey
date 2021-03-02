@@ -81,20 +81,13 @@
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       />
-  <TextView
-      android:id="@+id/Txtur"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintStart_toEndOf="@+id/img_location"
-      android:text="your are in:"
-      android:layout_marginBottom="@dimen/dimen_10dp"/>
+
         <TextView
             android:id="@+id/txtAdd"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/Txtur"
+            app:layout_constraintStart_toEndOf="@+id/img_location"
             app:layout_constraintEnd_toEndOf="parent"
             android:text="address"
             android:layout_marginLeft="5dp"

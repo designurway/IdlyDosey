@@ -31,9 +31,11 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.designurway.idlidosa.R;
+import com.designurway.idlidosa.a.activity.RegisterActivity;
 import com.designurway.idlidosa.a.model.ErrorMessageModel;
 import com.designurway.idlidosa.a.model.ProfileDataModel;
 import com.designurway.idlidosa.a.model.ProfileModel;
+import com.designurway.idlidosa.a.model.StatusAndMessageModel;
 import com.designurway.idlidosa.a.retrofit.BaseClient;
 import com.designurway.idlidosa.a.retrofit.RetrofitApi;
 import com.designurway.idlidosa.a.utils.AndroidUtils;
@@ -117,17 +119,40 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                phoneNumFieldEt.setEnabled(false);
+                String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 //                Toast.makeText(getContext(), "Save Bttn", Toast.LENGTH_SHORT).show();
+                name = nameFieldEt.getText().toString().trim();
+                email = emailFieldEt.getText().toString().trim();
+                address = addressFieldEt.getText().toString().trim();
+                phoneNum = phoneNumFieldEt.getText().toString().trim();
+
+                if (name.isEmpty()){
+                    nameFieldEt.setFocusable(true);
+                    nameFieldEt.setError("reqruire");
+                    return;
+                }
+                if (!email.matches(emailPattern) ||email.isEmpty()){
+
+                    emailFieldEt.setFocusable(true);
+                    emailFieldEt.setError("Enter valid email");
+                    return;
+                }
+                  if (address.isEmpty()){
+                      addressFieldEt.setFocusable(true);
+                      addressFieldEt.setError("reqruire");
+                    return;
+                }
+                 if (phoneNum.isEmpty()){
+                     phoneNumFieldEt.setFocusable(true);
+                     phoneNumFieldEt.setError("reqruire");
+                    return;
+                }
 
                 if (bitmap!=null){
                     saveProfileImage(bitmap);
+                    updateProfile(name,email,phoneNum,address);
                 }else {
-
-                    name = nameFieldEt.getText().toString().trim();
-                    email = emailFieldEt.getText().toString().trim();
-                    address = addressFieldEt.getText().toString().trim();
-                    phoneNum = phoneNumFieldEt.getText().toString().trim();
-
                     updateProfile(name,email,phoneNum,address);
                 }
 
@@ -218,9 +243,10 @@ public class ProfileFragment extends Fragment {
                 @Override
                 public void onResponse(Call<ErrorMessageModel> call, Response<ErrorMessageModel> response) {
                     if (response.isSuccessful()) {
+//
+//                        action = ProfileFragmentDirections.actionProfileFragment4ToHomeFragment();
+//                        Navigation.findNavController(getView()).navigate(action);
 
-                        action = ProfileFragmentDirections.actionProfileFragment4ToHomeFragment();
-                        Navigation.findNavController(getView()).navigate(action);
 
                     } else {
                         Toast.makeText(context, "fail", Toast.LENGTH_SHORT).show();
@@ -238,7 +264,7 @@ public class ProfileFragment extends Fragment {
 
     private void updateProfile(String name, String email, String phone, String address) {
         RetrofitApi retrofitApi = BaseClient.getClient().create(RetrofitApi.class);
-        Call<ProfileModel> call = retrofitApi.postProfile(name, email, phone, address,"","");
+        Call<ProfileModel> call = retrofitApi.postProfile(name, email, phone, address,pincode,PreferenceManager.getCustomeReferenceCode());
         call.enqueue(new Callback<ProfileModel>() {
             @Override
             public void onResponse(Call<ProfileModel> call, Response<ProfileModel> response) {
@@ -254,7 +280,7 @@ public class ProfileFragment extends Fragment {
                     Log.d(TAG, "referred" + refCode);
 
                     PreferenceManager.saveCustomer(id, name, email, phone, pwd, code);
-
+                    insertRefCode();
                     action = ProfileFragmentDirections.actionProfileFragment4ToHomeFragment();
                     Navigation.findNavController(getView()).navigate(action);
 
@@ -266,6 +292,31 @@ public class ProfileFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ProfileModel> call, Throwable t) {
+                Log.d(TAG, "onFailure" + t.getMessage());
+
+            }
+        });
+    }
+
+    public void insertRefCode() {
+        RetrofitApi retrofitApi = BaseClient.getClient().create(RetrofitApi.class);
+        Call<StatusAndMessageModel> call = retrofitApi.updateReferralCode(PreferenceManager.getReferred_from(),
+                PreferenceManager.getCustomeReferenceCode());
+        Log.d("referredfrom",PreferenceManager.getReferred_from());
+        call.enqueue(new Callback<StatusAndMessageModel>() {
+            @Override
+            public void onResponse(Call<StatusAndMessageModel> call,
+                                   Response<StatusAndMessageModel> response) {
+                if (response.isSuccessful()) {
+//                    Toast.makeText(RegisterActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getActivity(), "Failed",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<StatusAndMessageModel> call, Throwable t) {
                 Log.d(TAG, "onFailure" + t.getMessage());
 
             }

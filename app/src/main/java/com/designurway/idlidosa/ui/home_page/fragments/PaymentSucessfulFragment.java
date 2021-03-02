@@ -63,7 +63,6 @@ public class PaymentSucessfulFragment extends Fragment {
         transactionID = binding.transactionID;
         paymentSucessBtn = binding.paymentSucessBtn;
 
-        Toast.makeText(getContext(), jsonString, Toast.LENGTH_SHORT).show();
 
         paymentSucessBtn.setOnClickListener(new View.OnClickListener() {
             @Override

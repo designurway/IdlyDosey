@@ -89,6 +89,7 @@ public class AddressBookFragment extends Fragment {
     String homePincode,officePincode , pincode;
     ConstraintLayout currentLocationLayout;
     FusedLocationProviderClient fusedLocationProviderClient;
+    Context context;
 
 
     @Override
@@ -120,7 +121,7 @@ public class AddressBookFragment extends Fragment {
         currentLocationLayout = binding.currentLocationLayout;
         manualLocationAdb = binding.manualLocationAdb;
         TextOr = binding.TextOr;
-
+        context = container.getContext();
 
         args = AddressBookFragmentArgs.fromBundle(getArguments());
         amount = args.getAmount();
@@ -166,7 +167,6 @@ public class AddressBookFragment extends Fragment {
                             Navigation.findNavController(getView()).navigate(action);*/
                         }
 
-                        Toast.makeText(getContext(), "Home Pincode : "+homePincode, Toast.LENGTH_SHORT).show();
 
 
                     }
@@ -192,12 +192,11 @@ public class AddressBookFragment extends Fragment {
 
                        }
 
-                        Toast.makeText(getContext(), "Office Pincode : "+officePincode, Toast.LENGTH_SHORT).show();
 
                     }
                 });
             } else {
-                Toast.makeText(getContext(), "From cart", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "From cart", Toast.LENGTH_SHORT).show();
 
             }
         } else {
@@ -299,13 +298,11 @@ public class AddressBookFragment extends Fragment {
             @Override
             public void onResponse(Call<CheckServiceModel> call, Response<CheckServiceModel> response) {
                 if(response.isSuccessful() && response.body().getMessage().equals("available")){
-                    Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
 
                     action = AddressBookFragmentDirections.actionAddressBookFragmentToPaymentFragment(name,address,amount,phone,"none","none",orderId);
                     Navigation.findNavController(getView()).navigate(action);
 
                 }else{
-                    Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     action = AddressBookFragmentDirections.actionAddressBookFragmentToServiceNotAvailableFragment(address);
                     Navigation.findNavController(getView()).navigate(action);
                 }

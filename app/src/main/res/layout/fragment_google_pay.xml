@@ -30,7 +30,7 @@
                 android:id="@+id/log_pay_imgv"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:background="@drawable/gpay"
+                android:background="@drawable/bhim"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

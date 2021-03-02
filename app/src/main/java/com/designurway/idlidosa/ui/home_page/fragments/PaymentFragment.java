@@ -61,7 +61,6 @@ import retrofit2.Response;
 
 
 public class PaymentFragment extends Fragment {
-
     FragmentPaymentBinding binding;
     NavDirections action;
     PaymentFragmentArgs args;
@@ -72,7 +71,7 @@ public class PaymentFragment extends Fragment {
     private String orderIdString = "";
     private String txnTokenString = "";
     private final Integer ActivityRequestCode = 2;
-    TextView totalAmount, textSubtotal, txtName, txtMobile, textAddress, orderId;
+    TextView totalAmount, textSubtotal, txtName, txtMobile, textAddress, orderId,deliveryCharge,taxCharge;
     Button btnPayment;
     String jsonString;
     PreferenceManager preferenceManager;
@@ -80,6 +79,9 @@ public class PaymentFragment extends Fragment {
     String comboId, productId, OrderID;
     BottomSheetDialog bottomSheetDialog;
     LatLng lat;
+
+
+ double tax,Total,n,price;
 
     public PaymentFragment() {
         // Required empty public constructor
@@ -116,6 +118,9 @@ public class PaymentFragment extends Fragment {
         txtMobile = binding.txtMobile;
         textAddress = binding.textAddress;
         btnPayment = binding.btnPayment;
+        deliveryCharge=binding.deliveryCharge;
+        taxCharge=binding.taxCharge;
+
 
 /*        if (!orderId.equals("none")) {
             btnPayment.setText("Place Order");
@@ -144,6 +149,19 @@ public class PaymentFragment extends Fragment {
             orderId.setText(generateOrderId);
 
         }
+
+        orderId.setText(OrderID);
+//        to calculate the tax
+
+       tax= (n/100)*price;
+
+       Total=Double.valueOf(textSubtotal.getText().toString().trim())+Double.valueOf(tax)+Double.valueOf(taxCharge.getText().toString().trim());
+
+//       set text to grand totoal text field
+
+
+
+
         lat = getLocationFromAddress(getActivity(), address);
 
         Calendar c = Calendar.getInstance();
@@ -359,7 +377,7 @@ public class PaymentFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == ActivityRequestCode && data != null) {
-            Toast.makeText(getActivity(), data.getStringExtra("nativeSdkForMerchantMessage") + data.getStringExtra("response"), Toast.LENGTH_SHORT).show();
+
         }
     }
 
@@ -372,7 +390,8 @@ public class PaymentFragment extends Fragment {
             public void onResponse(Call<GetNotificationResponse> call, Response<GetNotificationResponse> response) {
                 if (response.isSuccessful()) {
                     Log.d("confirmorder", "Nresponsemethod");
-                    Toast.makeText(getContext(), "success", Toast.LENGTH_SHORT).show();
+                    action = PaymentFragmentDirections.actionPaymentFragmentToPaymentSucessfulFragment("none");
+                    Navigation.findNavController(getView()).navigate(action);
                 } else {
 
                 }
@@ -386,11 +405,11 @@ public class PaymentFragment extends Fragment {
         });
     }
 
-    private void postComboWonDetails() {
+    private void postComboWoonDetails() {
         Log.d(TAG, "postCombo");
         String totalAmount = amount;
         RetrofitApi retrofitApi = BaseClient.getClient().create(RetrofitApi.class);
-        Call<ErrorMessageModel> call = retrofitApi.updateComboWonDetails(AndroidUtils.randomName(5),
+        Call<ErrorMessageModel> call = retrofitApi.updateComboWonDetails(OrderID,
                 PreferenceManager.getCustomerId(),
                 totalAmount);
         call.enqueue(new Callback<ErrorMessageModel>() {
@@ -465,7 +484,6 @@ public class PaymentFragment extends Fragment {
 
                     getNotification(order_id);
 
-                    Toast.makeText(getContext(), orderStatusModel.getMessage(), Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getContext(), response.message(), Toast.LENGTH_SHORT).show();
 

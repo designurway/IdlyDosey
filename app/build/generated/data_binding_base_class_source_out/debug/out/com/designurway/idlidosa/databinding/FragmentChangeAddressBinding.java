@@ -44,6 +44,9 @@ public final class FragmentChangeAddressBinding implements ViewBinding {
   public final RadioButton rdHome;
 
   @NonNull
+  public final RadioButton rdOffice;
+
+  @NonNull
   public final Button saveNContinueBtn;
 
   @NonNull
@@ -64,9 +67,9 @@ public final class FragmentChangeAddressBinding implements ViewBinding {
   private FragmentChangeAddressBinding(@NonNull ConstraintLayout rootView,
       @NonNull EditText EdtCity, @NonNull EditText EdtDoorNumber, @NonNull EditText EdtLandMark,
       @NonNull EditText EdtPin, @NonNull EditText EdtStreet, @NonNull RadioGroup radioGroup,
-      @NonNull RadioButton rdHome, @NonNull Button saveNContinueBtn, @NonNull TextView txtCity,
-      @NonNull TextView txtDoorNumber, @NonNull TextView txtLandMark, @NonNull TextView txtPin,
-      @NonNull TextView txtStreet) {
+      @NonNull RadioButton rdHome, @NonNull RadioButton rdOffice, @NonNull Button saveNContinueBtn,
+      @NonNull TextView txtCity, @NonNull TextView txtDoorNumber, @NonNull TextView txtLandMark,
+      @NonNull TextView txtPin, @NonNull TextView txtStreet) {
     this.rootView = rootView;
     this.EdtCity = EdtCity;
     this.EdtDoorNumber = EdtDoorNumber;
@@ -75,6 +78,7 @@ public final class FragmentChangeAddressBinding implements ViewBinding {
     this.EdtStreet = EdtStreet;
     this.radioGroup = radioGroup;
     this.rdHome = rdHome;
+    this.rdOffice = rdOffice;
     this.saveNContinueBtn = saveNContinueBtn;
     this.txtCity = txtCity;
     this.txtDoorNumber = txtDoorNumber;
@@ -152,6 +156,12 @@ public final class FragmentChangeAddressBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.rdOffice;
+      RadioButton rdOffice = rootView.findViewById(id);
+      if (rdOffice == null) {
+        break missingId;
+      }
+
       id = R.id.saveNContinueBtn;
       Button saveNContinueBtn = rootView.findViewById(id);
       if (saveNContinueBtn == null) {
@@ -189,7 +199,7 @@ public final class FragmentChangeAddressBinding implements ViewBinding {
       }
 
       return new FragmentChangeAddressBinding((ConstraintLayout) rootView, EdtCity, EdtDoorNumber,
-          EdtLandMark, EdtPin, EdtStreet, radioGroup, rdHome, saveNContinueBtn, txtCity,
+          EdtLandMark, EdtPin, EdtStreet, radioGroup, rdHome, rdOffice, saveNContinueBtn, txtCity,
           txtDoorNumber, txtLandMark, txtPin, txtStreet);
     }
     String missingId = rootView.getResources().getResourceName(id);

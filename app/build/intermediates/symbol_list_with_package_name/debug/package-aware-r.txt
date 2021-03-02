@@ -2225,6 +2225,7 @@ drawable baseline_remove_red_eye_black_18dp
 drawable bell
 drawable bg_btn_blue
 drawable bg_btn_saved_id
+drawable bhim
 drawable bike_red
 drawable blue_curve_bg
 drawable blue_person
@@ -2342,6 +2343,7 @@ drawable lock
 drawable login_bg
 drawable logo
 drawable logo_here
+drawable logonew
 drawable mail
 drawable man_user
 drawable material_cursor_drawable
@@ -2444,6 +2446,7 @@ drawable track
 drawable track_btn_bg
 drawable unchecked
 drawable up_arrow_show
+drawable upi
 drawable upload
 drawable version
 drawable white_et_bg
@@ -2486,7 +2489,6 @@ id SearchTxt
 id TOP_END
 id TOP_START
 id TextOr
-id Txtur
 id a
 id aboutCompTitle
 id aboutLogo
@@ -3143,6 +3145,7 @@ id radio_group
 id radiogroup_delivery_place
 id ratio
 id rdHome
+id rdOffice
 id rdiobtn_home
 id rdiobtn_office
 id receiveComboFragment

@@ -85,6 +85,8 @@ public class SelectLocationFragment extends Fragment {
         phone = args.getPhone();
         referralCode = args.getReferralCode();
 
+
+
         Places.initialize(getContext().getApplicationContext(), getString(R.string.google_maps_key));
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
@@ -135,6 +137,7 @@ public class SelectLocationFragment extends Fragment {
                 }
 
                 action = SelectLocationFragmentDirections.actionSelectLocationFragmentToAuthProfileFragment(place.getAddress(),pincode,referralCode,phone);
+                Log.d("referelcode",referralCode);
                 Navigation.findNavController(getView()).navigate(action);
             } else if (resultCode == AutocompleteActivity.RESULT_ERROR) {
                 // TODO: Handle the error.
@@ -175,7 +178,7 @@ public class SelectLocationFragment extends Fragment {
                     }
                         action = SelectLocationFragmentDirections.actionSelectLocationFragmentToAuthProfileFragment(addresses.get(0).getAddressLine(0),pincode,referralCode,phone);
                         Navigation.findNavController(getView()).navigate(action);
-                        Toast.makeText(getActivity(), String.valueOf(addresses), Toast.LENGTH_SHORT).show();
+
 
                     } catch (IOException e) {
                         e.printStackTrace();

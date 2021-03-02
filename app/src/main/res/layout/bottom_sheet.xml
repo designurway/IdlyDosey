@@ -27,7 +27,7 @@
             android:layout_weight="2"
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
-            android:src="@drawable/gpay" />
+            android:src="@drawable/bhim" />
 
         <ImageView
             android:id="@+id/paytm_img"

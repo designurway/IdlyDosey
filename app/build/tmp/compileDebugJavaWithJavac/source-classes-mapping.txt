@@ -452,6 +452,7 @@ com/designurway/idlidosa/ui/home_page/fragments/GooglePayFragment.java
  com.designurway.idlidosa.ui.home_page.fragments.GooglePayFragment$4
  com.designurway.idlidosa.ui.home_page.fragments.GooglePayFragment$5
  com.designurway.idlidosa.ui.home_page.fragments.GooglePayFragment$6
+ com.designurway.idlidosa.ui.home_page.fragments.GooglePayFragment$7
 com/designurway/idlidosa/ui/home_page/fragments/OrderHistoryDetailsFragment.java
  com.designurway.idlidosa.ui.home_page.fragments.OrderHistoryDetailsFragment
 com/designurway/idlidosa/a/retrofit/RetrofitApi.java
@@ -490,12 +491,12 @@ com/designurway/idlidosa/model/TrackOrderListData.java
  com.designurway.idlidosa.model.TrackOrderListData
 com/designurway/idlidosa/databinding/LayoutFeaturedItemBinding.java
  com.designurway.idlidosa.databinding.LayoutFeaturedItemBinding
-com/designurway/idlidosa/databinding/ActivitySplashScreenBinding.java
- com.designurway.idlidosa.databinding.ActivitySplashScreenBinding
 com/designurway/idlidosa/ui/home_page/fragments/ChangeAddressFragmentArgs.java
  com.designurway.idlidosa.ui.home_page.fragments.ChangeAddressFragmentArgs
  com.designurway.idlidosa.ui.home_page.fragments.ChangeAddressFragmentArgs$1
  com.designurway.idlidosa.ui.home_page.fragments.ChangeAddressFragmentArgs$Builder
+com/designurway/idlidosa/databinding/ActivitySplashScreenBinding.java
+ com.designurway.idlidosa.databinding.ActivitySplashScreenBinding
 com/designurway/idlidosa/model/DashComboModel.java
  com.designurway.idlidosa.model.DashComboModel
 com/designurway/idlidosa/a/model/GetTotalAmountModel.java
@@ -520,6 +521,7 @@ com/designurway/idlidosa/a/paytmallinonesdk/PaytmActivity.java
  com.designurway.idlidosa.a.paytmallinonesdk.PaytmActivity$4
  com.designurway.idlidosa.a.paytmallinonesdk.PaytmActivity$5
  com.designurway.idlidosa.a.paytmallinonesdk.PaytmActivity$6
+ com.designurway.idlidosa.a.paytmallinonesdk.PaytmActivity$7
 com/designurway/idlidosa/a/model/ComboDetailsDataModel.java
  com.designurway.idlidosa.a.model.ComboDetailsDataModel
 com/designurway/idlidosa/ui/auth/fragment/AuthProfileFragmentArgs.java
@@ -576,6 +578,8 @@ com/designurway/idlidosa/ui/auth/fragment/OtpVerficationFragment.java
  com.designurway.idlidosa.ui.auth.fragment.OtpVerficationFragment$4
  com.designurway.idlidosa.ui.auth.fragment.OtpVerficationFragment$5
  com.designurway.idlidosa.ui.auth.fragment.OtpVerficationFragment$6
+ com.designurway.idlidosa.ui.auth.fragment.OtpVerficationFragment$7
+ com.designurway.idlidosa.ui.auth.fragment.OtpVerficationFragment$8
 com/designurway/idlidosa/databinding/FragmentMobileVerificationBinding.java
  com.designurway.idlidosa.databinding.FragmentMobileVerificationBinding
 com/designurway/idlidosa/databinding/FragmentChangeAddressBinding.java
@@ -717,6 +721,7 @@ com/designurway/idlidosa/ui/home_page/fragments/ProfileFragment.java
  com.designurway.idlidosa.ui.home_page.fragments.ProfileFragment$3
  com.designurway.idlidosa.ui.home_page.fragments.ProfileFragment$4
  com.designurway.idlidosa.ui.home_page.fragments.ProfileFragment$5
+ com.designurway.idlidosa.ui.home_page.fragments.ProfileFragment$6
 com/designurway/idlidosa/databinding/FragmentProfileBinding.java
  com.designurway.idlidosa.databinding.FragmentProfileBinding
 com/designurway/idlidosa/ui/home_page/fragments/GooglePayFragmentArgs.java

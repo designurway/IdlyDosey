@@ -225,7 +225,7 @@
     <fragment
         android:id="@+id/googlePayFragment"
         android:name="com.designurway.idlidosa.ui.home_page.fragments.GooglePayFragment"
-        android:label="Google Pay"
+        android:label="Payment"
         tools:layout="@layout/fragment_google_pay">
         <argument
             android:name="orderId"
@@ -286,8 +286,8 @@
     <fragment
         android:id="@+id/serviceNotAvailableFragment"
         android:name="com.designurway.idlidosa.ui.home_page.fragments.ServiceNotAvailableFragment"
-        android:label="fragment_service_not_available"
-        tools:layout="@layout/fragment_service_not_available" >
+        android:label="Not Available"
+        tools:layout="@layout/fragment_service_not_available">
         <action
             android:id="@+id/action_serviceNotAvailableFragment_to_homeFragment"
             app:destination="@id/homeFragment" />

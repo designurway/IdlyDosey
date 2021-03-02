@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 
 
 public class SharedPrefManager {
+
     static SharedPreferences preferences;
     public static final String PREF_TOTAL_KEY = "pref_total_key";
     public static final String PREF_NAME = "pref_total_key";

@@ -15,7 +15,7 @@ import java.lang.Override;
 public class MobileVerificationActivity_ViewBinding implements Unbinder {
   private MobileVerificationActivity target;
 
-  private View view7f0a014f;
+  private View view7f0a014e;
 
   @UiThread
   public MobileVerificationActivity_ViewBinding(MobileVerificationActivity target) {
@@ -30,7 +30,7 @@ public class MobileVerificationActivity_ViewBinding implements Unbinder {
     View view;
     target.phoneEt = Utils.findRequiredViewAsType(source, R.id.phone_et, "field 'phoneEt'", EditText.class);
     view = Utils.findRequiredView(source, R.id.get_otp_btn, "method 'getOtp'");
-    view7f0a014f = view;
+    view7f0a014e = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -48,7 +48,7 @@ public class MobileVerificationActivity_ViewBinding implements Unbinder {
 
     target.phoneEt = null;
 
-    view7f0a014f.setOnClickListener(null);
-    view7f0a014f = null;
+    view7f0a014e.setOnClickListener(null);
+    view7f0a014e = null;
   }
 }

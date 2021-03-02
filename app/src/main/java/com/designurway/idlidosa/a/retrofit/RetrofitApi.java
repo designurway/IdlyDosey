@@ -119,7 +119,7 @@ public interface RetrofitApi {
             @Field("phone") String phone,
             @Field("home_address") String address,
             @Field("pin_code") String pincode,
-            @Field("referral_code") String referralCode
+                @Field("referral_code") String referralCode
     );
 
     @FormUrlEncoded
@@ -178,7 +178,7 @@ public interface RetrofitApi {
     @GET("check_referral_code.php")
     Call<StatusAndMessageModel> updateReferralCode(
             @Query("referral_code") String referralCode,
-            @Query("referred_to") String referredTo
+            @Query("referred_from") String referredTo
     );
 
     @GET("get_combo_product.php")
@@ -330,5 +330,10 @@ public interface RetrofitApi {
     @GET("check_service.php")
     Call<CheckServiceModel> checkService(
         @Query("pin_code") String pinCode
+    );
+
+    @GET("check_referral.php")
+    Call<StatusAndMessageModel> checkCombo(
+            @Query("referred_from") String referred_from
     );
 }

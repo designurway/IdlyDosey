@@ -256,11 +256,11 @@ MERGED from [com.android.volley:volley:1.1.1] C:\Users\Datta\.gradle\caches\tran
 	android:exported
 		ADDED from E:\Pankaj\Android Project\IdlyDosey\app\src\main\AndroidManifest.xml:21:9-33
 	android:roundIcon
-		ADDED from E:\Pankaj\Android Project\IdlyDosey\app\src\main\AndroidManifest.xml:27:9-43
+		ADDED from E:\Pankaj\Android Project\IdlyDosey\app\src\main\AndroidManifest.xml:27:9-46
 	android:largeHeap
 		ADDED from E:\Pankaj\Android Project\IdlyDosey\app\src\main\AndroidManifest.xml:25:9-33
 	android:icon
-		ADDED from E:\Pankaj\Android Project\IdlyDosey\app\src\main\AndroidManifest.xml:23:9-38
+		ADDED from E:\Pankaj\Android Project\IdlyDosey\app\src\main\AndroidManifest.xml:23:9-41
 	android:allowBackup
 		ADDED from E:\Pankaj\Android Project\IdlyDosey\app\src\main\AndroidManifest.xml:20:9-35
 	android:theme

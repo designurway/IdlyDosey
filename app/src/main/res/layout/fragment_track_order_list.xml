@@ -14,5 +14,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
+    <ImageView
+        android:id="@+id/img_sad_face"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:background="@drawable/no_order_placed"
+        android:visibility="gone"
+        android:layout_marginBottom="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
+    <TextView
+        android:id="@+id/noOrderText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No Order Placed"
+        android:gravity="center"
+        android:visibility="gone"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dimen_22sp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_sad_face"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

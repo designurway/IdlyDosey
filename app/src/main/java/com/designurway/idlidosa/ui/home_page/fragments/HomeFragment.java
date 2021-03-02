@@ -38,6 +38,7 @@ import com.designurway.idlidosa.a.model.MenuDataModel;
 import com.designurway.idlidosa.a.model.Menumodel;
 import com.designurway.idlidosa.a.retrofit.BaseClient;
 import com.designurway.idlidosa.a.retrofit.RetrofitApi;
+import com.designurway.idlidosa.a.utils.AndroidUtils;
 import com.designurway.idlidosa.a.utils.PreferenceManager;
 import com.designurway.idlidosa.databinding.FragmentHomeBinding;
 import com.google.android.material.tabs.TabLayout;
@@ -83,6 +84,12 @@ public class HomeFragment extends Fragment {
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        getLatestAppUpdate();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -109,7 +116,7 @@ public class HomeFragment extends Fragment {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             LocalTime time = LocalTime.now();
             int a = time.getHour();
-            btnEmergency.setEnabled(a >= 10 || a <= 5);
+            btnEmergency.setEnabled(a >= 18 || a <= 5);
         }
 
 
@@ -120,22 +127,9 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
 
 
-                try {
-                    latestAppVersion = Jsoup
-                            .connect("https://play.google.com/store/apps/details?id=com.designurway.idlidosa")
-                            .timeout(30000)
-                            .get()
-                            /*.select("div.hAyfc:nth-child(5)>"+"span:nth-child(2) > div:nth-child(1)"+"> span:nth-child(1)")
-                            .first()*/
-                            .ownText();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
 
-                Toast.makeText(context, "LAtest Version : "+latestAppVersion, Toast.LENGTH_SHORT).show();
-
-           /*     action = HomeFragmentDirections.actionHomeFragmentToEmergencyFragment();
-                Navigation.findNavController(getView()).navigate(action);*/
+                action = HomeFragmentDirections.actionHomeFragmentToEmergencyFragment();
+                Navigation.findNavController(getView()).navigate(action);
 
             }
         });
@@ -143,6 +137,9 @@ public class HomeFragment extends Fragment {
         GetBulkOrder();
         setFeaturedMenu();
         setComboMenu();
+
+
+
 
     }
 
@@ -274,12 +271,6 @@ public class HomeFragment extends Fragment {
     }
 
 
-    @Override
-    public void onResume() {
-        super.onResume();
-
-        getLatestAppUpdate();
-    }
 
     private void getLatestAppUpdate() {
         ExecutorService executorService =  Executors.newSingleThreadExecutor();
@@ -290,7 +281,7 @@ public class HomeFragment extends Fragment {
                 // do In Background
                 try {
                     latestAppVersion = Jsoup
-                            .connect("https://play.google.com/store/apps/details?id="+context.getPackageName())
+                            .connect("https://play.google.com/store/apps/details?id=com.designurway.idlidosa")
                             .timeout(30000)
                             .get()
                             .select("div.hAyfc:nth-child(4)>"+"span:nth-child(2) > div:nth-child(1)"+"> span:nth-child(1)")
@@ -300,39 +291,48 @@ public class HomeFragment extends Fragment {
                     e.printStackTrace();
                 }
 
-                //postExecute
-                getActivity().runOnUiThread(new Runnable() {
-                    public void run() {
-                        // do onPostExecute stuff
+                if (AndroidUtils.isNetworkAvailable(context)) {
 
-                        //Getting Current Version
-                        currentAppVersion = VERSION_NAME;
 
-                        if (currentAppVersion!=null){
-                            //Version convert to float
-                            float cVersion = Float.parseFloat(currentAppVersion);
-                            float lVersion = Float.parseFloat(latestAppVersion);
+                    if (getActivity() != null) {
 
-                            if (lVersion>cVersion){
-                                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(new ContextThemeWrapper(context,
-                                        R.style.AppTheme));
+                        //postExecute
+                        getActivity().runOnUiThread(new Runnable() {
+                            public void run() {
+                                // do onPostExecute stuff
 
-                                alertDialogBuilder.setTitle(context.getString(R.string.youAreNotUpdatedTitle));
-                                alertDialogBuilder.setMessage(context.getString(R.string.youAreNotUpdatedMessage) + " " + latestAppVersion + context.getString(R.string.youAreNotUpdatedMessage1));
-                                alertDialogBuilder.setCancelable(false);
-                                alertDialogBuilder.setPositiveButton(R.string.update, new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id="+context.getPackageName())));
-                                        dialog.cancel();
+                                //Getting Current Version
+                                currentAppVersion = VERSION_NAME;
+
+                                if (currentAppVersion != null) {
+                                    //Version convert to float
+                                    float cVersion = Float.parseFloat(currentAppVersion);
+                                    float lVersion = Float.parseFloat(latestAppVersion);
+
+                                    if (lVersion > cVersion) {
+                                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(new ContextThemeWrapper(context,
+                                                R.style.AppTheme));
+
+                                        alertDialogBuilder.setTitle(context.getString(R.string.youAreNotUpdatedTitle));
+                                        alertDialogBuilder.setMessage(context.getString(R.string.youAreNotUpdatedMessage) + " " + latestAppVersion + context.getString(R.string.youAreNotUpdatedMessage1));
+                                        alertDialogBuilder.setCancelable(false);
+                                        alertDialogBuilder.setPositiveButton(R.string.update, new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + context.getPackageName())));
+                                                dialog.cancel();
+                                            }
+                                        });
+                                        alertDialogBuilder.show();
+                                    } else {
+
                                     }
-                                });
-                                alertDialogBuilder.show();
-                            }else {
-
+                                }
                             }
-                        }
+                        });
                     }
-                });
+                }else{
+                    Log.d(TAG,"No internet");
+                }
             }
         });
     }

@@ -43,13 +43,13 @@ public class ChangeAddressFragment extends Fragment {
     FragmentChangeAddressBinding binding;
     NavDirections action;
     private static final String TAG = "ChangeAddressFragment";
-
+    ChangeAddressFragmentArgs args;
     Button changeBtn;
     Button saveNContinueBtn;
-    EditText flatNoEt,EdtDoorNumber,EdtStreet,EdtLandMark,EdtCity,EdtPin;
+    EditText flatNoEt, EdtDoorNumber, EdtStreet, EdtLandMark, EdtCity, EdtPin;
     RadioGroup radioGroup;
-
-    String checked;
+    RadioButton rdHome,rdOffice;
+    String checked, address;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -64,13 +64,25 @@ public class ChangeAddressFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        EdtDoorNumber=binding.EdtDoorNumber;
-        EdtStreet=binding.EdtStreet;
-        EdtLandMark=binding.EdtLandMark;
-        EdtCity=binding.EdtCity;
-        EdtPin=binding.EdtPin;
+        EdtDoorNumber = binding.EdtDoorNumber;
+        EdtStreet = binding.EdtStreet;
+        EdtLandMark = binding.EdtLandMark;
+        EdtCity = binding.EdtCity;
+        EdtPin = binding.EdtPin;
         saveNContinueBtn = binding.saveNContinueBtn;
         radioGroup = binding.radioGroup;
+        rdHome = binding.rdHome;
+        rdOffice = binding.rdOffice;
+
+        args = ChangeAddressFragmentArgs.fromBundle(getArguments());
+        address = args.getAddress();
+
+
+        if (address.equals("home")) {
+            rdHome.setChecked(true);
+        }else{
+            rdOffice.setChecked(true);
+        }
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @SuppressLint("ResourceType")
@@ -78,8 +90,9 @@ public class ChangeAddressFragment extends Fragment {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 RadioButton rb = group.findViewById(checkedId);
                 if (null != rb && checkedId > -1) {
+
                     checked = String.valueOf(rb.getText()).toLowerCase();
-                    Toast.makeText(getContext(), checked, Toast.LENGTH_SHORT).show();
+
                 }
 
 
@@ -89,6 +102,7 @@ public class ChangeAddressFragment extends Fragment {
         saveNContinueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 postAddress();
             }
         });
@@ -103,22 +117,22 @@ public class ChangeAddressFragment extends Fragment {
         String city = EdtCity.getText().toString().trim();
         String pin = EdtPin.getText().toString().trim();
 
-        if ( Dnumber.isEmpty() && street.isEmpty() && landMark.isEmpty()
-                &&  city.isEmpty() && pin.isEmpty() ) {
+        if (Dnumber.isEmpty() && street.isEmpty() && landMark.isEmpty()
+                && city.isEmpty() && pin.isEmpty()) {
             Toast.makeText(getContext(), this.getString(R.string.fill_credentials),
                     Toast.LENGTH_SHORT).show();
         } else if (!AndroidUtils.isNetworkAvailable(getContext())) {
             Toast.makeText(getContext(), this.getString(R.string.no_internet),
                     Toast.LENGTH_SHORT).show();
         } else {
-            String locality=street+","+landMark+","+city+","+pin;
-            postAddressDetails(Dnumber, locality, checked,pin);
+            String locality = street + "," + landMark + "," + city + "," + pin;
+            postAddressDetails(Dnumber, locality, address, pin);
         }
     }
 
-    private void postAddressDetails(String flatNum, String locality, String checked,String pin) {
+    private void postAddressDetails(String flatNum, String locality, String checked, String pin) {
         RetrofitApi retrofitApi = BaseClient.getClient().create(RetrofitApi.class);
-        Call<StatusAndMessageModel> call = retrofitApi.postCustomerAddress(PreferenceManager.getCustomerPhone(), flatNum, locality, checked,pin);
+        Call<StatusAndMessageModel> call = retrofitApi.postCustomerAddress(PreferenceManager.getCustomerPhone(), flatNum, locality, checked, pin);
         Log.d(TAG, "phone" + PreferenceManager.getCustomerPhone());
         Log.d(TAG, "flatNum" + flatNum);
         Log.d(TAG, "locality" + locality);
@@ -127,7 +141,7 @@ public class ChangeAddressFragment extends Fragment {
             @Override
             public void onResponse(Call<StatusAndMessageModel> call, Response<StatusAndMessageModel> response) {
                 if (response.isSuccessful()) {
-                    action = ChangeAddressFragmentDirections.actionChangeAddressFragmentToAddressBookFragment("00", "setting","none");
+                    action = ChangeAddressFragmentDirections.actionChangeAddressFragmentToAddressBookFragment("00", "setting", "none");
                     Navigation.findNavController(getView()).navigate(action);
                 } else {
 

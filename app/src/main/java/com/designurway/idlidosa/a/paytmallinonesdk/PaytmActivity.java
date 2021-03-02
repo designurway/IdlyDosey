@@ -25,6 +25,7 @@ import com.designurway.idlidosa.a.model.CustomerAddress;
 import com.designurway.idlidosa.a.model.ErrorMessageModel;
 import com.designurway.idlidosa.a.model.GetNotificationResponse;
 import com.designurway.idlidosa.a.model.OrderStatusModel;
+import com.designurway.idlidosa.a.model.StatusAndMessageModel;
 import com.designurway.idlidosa.a.retrofit.BaseClient;
 import com.designurway.idlidosa.a.retrofit.RetrofitApi;
 import com.designurway.idlidosa.a.utils.AndroidUtils;
@@ -59,7 +60,7 @@ public class PaytmActivity extends AppCompatActivity {
     PreferenceManager preferenceManager;
     JSONObject jsonObject;
     private String orderIdString = "";
-    String amount,address;
+    String amount, address;
     TextView paymtAmount;
     Button paytmPay;
     LatLng lat;
@@ -78,7 +79,7 @@ public class PaytmActivity extends AppCompatActivity {
         amount = bundle.getString("amount");
         address = bundle.getString("address");
 
-        lat= getLocationFromAddress(this,address);
+        lat = getLocationFromAddress(this, address);
         paymtAmount.setText(amount);
 
 //        Toast.makeText(this, lat.toString(), Toast.LENGTH_SHORT).show();
@@ -94,13 +95,11 @@ public class PaytmActivity extends AppCompatActivity {
         int randomNum = rand.nextInt((max - min) + 1) + min;
         orderIdString = date + randomNum;
 
-        orderId =  AndroidUtils.randomName(5);
 
         paytmPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getToken();
-//                ConfromOrder();
 
 
             }
@@ -112,7 +111,6 @@ public class PaytmActivity extends AppCompatActivity {
 
     private void getToken() {
 
-        Toast.makeText(this, "Token Method", Toast.LENGTH_SHORT).show();
 
         Log.e(TAG, " get token start");
 //        progressBar.setVisibility(View.VISIBLE);
@@ -148,7 +146,6 @@ public class PaytmActivity extends AppCompatActivity {
     }
 
 
-
     private void startPaytmPayment(String txnToken) {
 
         txnTokenString = txnToken;
@@ -156,55 +153,55 @@ public class PaytmActivity extends AppCompatActivity {
 
         //Log.e(TAG, "order details "+ orderDetails);
 
-        String callBackUrl = host + "theia/paytmCallback?ORDER_ID="+orderIdString;
+        String callBackUrl = host + "theia/paytmCallback?ORDER_ID=" + orderIdString;
         PaytmOrder paytmOrder = new PaytmOrder(orderIdString, midString, txnTokenString, amount, callBackUrl);
-        TransactionManager transactionManager = new TransactionManager(paytmOrder, new PaytmPaymentTransactionCallback(){
+        TransactionManager transactionManager = new TransactionManager(paytmOrder, new PaytmPaymentTransactionCallback() {
             @Override
             public void onTransactionResponse(Bundle bundle) {
-                Toast.makeText(PaytmActivity.this, "onTransactionResponse : "+bundle.toString(), Toast.LENGTH_SHORT).show();
-                Log.d(TAG,"onTransactionResponse : "+bundle.toString());
+                Toast.makeText(PaytmActivity.this, "onTransactionResponse : " + bundle.toString(), Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "onTransactionResponse : " + bundle.toString());
             }
 
             @Override
             public void networkNotAvailable() {
                 Toast.makeText(PaytmActivity.this, "networkNotAvailable : ", Toast.LENGTH_SHORT).show();
-                Log.d(TAG,"networkNotAvailable : ");
+                Log.d(TAG, "networkNotAvailable : ");
             }
 
             @Override
             public void onErrorProceed(String s) {
-                Toast.makeText(PaytmActivity.this, "onErrorProceed : "+s, Toast.LENGTH_SHORT).show();
-                Log.d(TAG,"onErrorProceed : "+s);
+                Toast.makeText(PaytmActivity.this, "onErrorProceed : " + s, Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "onErrorProceed : " + s);
             }
 
             @Override
             public void clientAuthenticationFailed(String s) {
-                Toast.makeText(PaytmActivity.this, "clientAuthenticationFailed : "+s, Toast.LENGTH_SHORT).show();
-                Log.d(TAG,"clientAuthenticationFailed : "+s);
+                Toast.makeText(PaytmActivity.this, "clientAuthenticationFailed : " + s, Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "clientAuthenticationFailed : " + s);
             }
 
             @Override
             public void someUIErrorOccurred(String s) {
-                Toast.makeText(PaytmActivity.this, "someUIErrorOccurred : "+s, Toast.LENGTH_SHORT).show();
-                Log.d(TAG,"someUIErrorOccurred : "+s);
+                Toast.makeText(PaytmActivity.this, "someUIErrorOccurred : " + s, Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "someUIErrorOccurred : " + s);
             }
 
             @Override
             public void onErrorLoadingWebPage(int i, String s, String s1) {
-                Toast.makeText(PaytmActivity.this, "onErrorLoadingWebPage : "+" s "+s +" S1 : "+s1, Toast.LENGTH_SHORT).show();
-                Log.d(TAG,"onErrorLoadingWebPage : "+" s "+s +" S1 : "+s1);
+                Toast.makeText(PaytmActivity.this, "onErrorLoadingWebPage : " + " s " + s + " S1 : " + s1, Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "onErrorLoadingWebPage : " + " s " + s + " S1 : " + s1);
             }
 
             @Override
             public void onBackPressedCancelTransaction() {
                 Toast.makeText(PaytmActivity.this, "onBackPressedCancelTransaction : ", Toast.LENGTH_SHORT).show();
-                Log.d(TAG,"onBackPressedCancelTransaction : ");
+                Log.d(TAG, "onBackPressedCancelTransaction : ");
             }
 
             @Override
             public void onTransactionCancel(String s, Bundle bundle) {
-                Toast.makeText(PaytmActivity.this, "onTransactionCancel : "+" s "+s +" Bundle : "+bundle.toString(), Toast.LENGTH_SHORT).show();
-                Log.d(TAG,"onTransactionCancel : "+s +" Bundle : "+bundle.toString());
+                Toast.makeText(PaytmActivity.this, "onTransactionCancel : " + " s " + s + " Bundle : " + bundle.toString(), Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "onTransactionCancel : " + s + " Bundle : " + bundle.toString());
             }
         });
 
@@ -253,14 +250,14 @@ public class PaytmActivity extends AppCompatActivity {
 
                     Bundle bund = new Bundle();
                     bund.putString("dataa", jsonString);
-                        Log.d("abc","outside try cath");
+                    Log.d("abc", "outside try cath");
                     try {
                         jsonObject = new JSONObject(jsonString);
-                        Log.d("abc","inside try cath");
+                        Log.d("abc", "inside try cath");
                         if (jsonObject.getString("STATUS").equals("TXN_SUCCESS")) {
-                            ConfromOrder();
-                            postComboWonDetails();
-                            Log.d("abc","Sucess .....");
+
+                            chechIsComboPresent();
+                            Log.d("abc", "Sucess .....");
                             Intent intent = new Intent(PaytmActivity.this,
                                     PaymentSucessfulActivity.class);
                             intent.putExtras(bund);
@@ -283,10 +280,11 @@ public class PaytmActivity extends AppCompatActivity {
 
 
     private void postComboWonDetails() {
-        Log.d(TAG, "postCombo");
+
         String totalAmount = amount;
+        String orderid = AndroidUtils.randomName(5);
         RetrofitApi retrofitApi = BaseClient.getClient().create(RetrofitApi.class);
-        Call<ErrorMessageModel> call = retrofitApi.updateComboWonDetails(AndroidUtils.randomName(5),
+        Call<ErrorMessageModel> call = retrofitApi.updateComboWonDetails(orderid,
                 PreferenceManager.getCustomerId(),
                 totalAmount);
         call.enqueue(new Callback<ErrorMessageModel>() {
@@ -298,7 +296,6 @@ public class PaytmActivity extends AppCompatActivity {
 //                    Toast.makeText(getContext(), response.message(), Toast.LENGTH_SHORT).show();
                 }
             }
-
             @Override
             public void onFailure(Call<ErrorMessageModel> call, Throwable t) {
                 Log.d(TAG, "onFailure" + t.getMessage());
@@ -309,33 +306,26 @@ public class PaytmActivity extends AppCompatActivity {
     }
 
     public void ConfromOrder() {
-        Log.d("abc","Confirm Order");
-        Toast.makeText(this, "LatLangg : "+lat, Toast.LENGTH_SHORT).show();
 
-        Log.d("confirmorder", "method");
+
+        orderId = AndroidUtils.randomName(5);
 
         RetrofitApi api = BaseClient.getClient().create(RetrofitApi.class);
-        Log.d("OrderId",orderId);
-        Log.d("OrderId",address);
-        Log.d("OrderId",lat.toString());
+        Log.d("OrderId", orderId);
+        Log.d("OrderId", address);
+        Log.d("OrderId", lat.toString());
 
         if (!address.equals("")) {
             Call<OrderStatusModel>
                     call = api.postOrderDetails(PreferenceManager.getCustomerId(), orderId, amount, address, String.valueOf(lat), String.valueOf(lat.latitude), String.valueOf(lat.longitude));
 
-            Toast.makeText(PaytmActivity.this, PreferenceManager.getCustomerId(), Toast.LENGTH_SHORT).show();
             call.enqueue(new Callback<OrderStatusModel>() {
-
                 @Override
                 public void onResponse(Call<OrderStatusModel> call, Response<OrderStatusModel> response) {
-                    Log.d("confirmorder", "success");
                     if (response.isSuccessful()) {
-                        Log.d("confirmorder", "success");
                         OrderStatusModel orderStatusModel = response.body();
-
                         getNotification(orderId);
-
-                        Toast.makeText(PaytmActivity.this, orderStatusModel.getMessage(), Toast.LENGTH_SHORT).show();
+                        Log.d("OrderId", orderId);
                     } else {
                         Toast.makeText(PaytmActivity.this, response.message(), Toast.LENGTH_SHORT).show();
 
@@ -350,7 +340,7 @@ public class PaytmActivity extends AppCompatActivity {
                 }
             });
 
-        }else {
+        } else {
             Toast.makeText(this, "Address is Empty", Toast.LENGTH_SHORT).show();
         }
     }
@@ -363,8 +353,7 @@ public class PaytmActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<GetNotificationResponse> call, Response<GetNotificationResponse> response) {
                 if (response.isSuccessful()) {
-                    Log.d("confirmorder", "Nresponsemethod");
-                    Toast.makeText(PaytmActivity.this, "success", Toast.LENGTH_SHORT).show();
+
                 } else {
 
                 }
@@ -393,16 +382,44 @@ public class PaytmActivity extends AppCompatActivity {
 
             Address location = address.get(0);
 
-            p1 = new LatLng(location.getLatitude(), location.getLongitude() );
+            p1 = new LatLng(location.getLatitude(), location.getLongitude());
 
         } catch (IOException ex) {
 
             ex.printStackTrace();
         }
 
-       // Toast.makeText(context, "this is"+p1.toString(), Toast.LENGTH_SHORT).show();
-        Log.d("LATLANG" ,"this is"+p1.toString());
+        // Toast.makeText(context, "this is"+p1.toString(), Toast.LENGTH_SHORT).show();
+        Log.d("LATLANG", "this is" + p1.toString());
 
         return p1;
+    }
+
+    public void chechIsComboPresent() {
+
+        com.designurway.idlidosa.a.retrofit.RetrofitApi retrofitApi = com.designurway.idlidosa.a.retrofit.BaseClient.getClient().create(com.designurway.idlidosa.a.retrofit.RetrofitApi.class);
+        Call<StatusAndMessageModel> call = retrofitApi.checkCombo(PreferenceManager.getReferred_from());
+
+        call.enqueue(new Callback<StatusAndMessageModel>() {
+            @Override
+            public void onResponse(Call<StatusAndMessageModel> call, Response<StatusAndMessageModel> response) {
+                if (response.isSuccessful()) {
+
+                    if (response.body().getStatus().equals("1")) {
+                        ConfromOrder();
+                    } else if (response.body().getStatus().equals("2")) {
+                        postComboWonDetails();
+                    } else if (response.body().getStatus().equals("3")) {
+                        ConfromOrder();
+                    }
+                } else {
+                    Toast.makeText(PaytmActivity.this, "something went wrong", Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<StatusAndMessageModel> call, Throwable t) {
+                Toast.makeText(PaytmActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

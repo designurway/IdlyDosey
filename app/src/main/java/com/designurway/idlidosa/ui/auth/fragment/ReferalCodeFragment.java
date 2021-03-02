@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import com.designurway.idlidosa.R;
 import com.designurway.idlidosa.a.activity.ReferralCodeActivity;
 import com.designurway.idlidosa.a.activity.RegisterActivity;
 import com.designurway.idlidosa.a.utils.AndroidUtils;
+import com.designurway.idlidosa.a.utils.PreferenceManager;
 import com.designurway.idlidosa.databinding.FragmentReferalCodeBinding;
 
 
@@ -75,6 +77,8 @@ public class ReferalCodeFragment extends Fragment {
                 }
                 else{
 
+                    PreferenceManager.saveCustomerReferred(code);
+                    Log.d("referrel", "referel"+PreferenceManager.getReferred_from());
                     action = ReferalCodeFragmentDirections.actionReferalCodeFragmentToSelectLocationFragment(phone,code);
                     Navigation.findNavController(getView()).navigate(action);
 
@@ -85,6 +89,7 @@ public class ReferalCodeFragment extends Fragment {
         skipTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 action = ReferalCodeFragmentDirections.actionReferalCodeFragmentToSelectLocationFragment(phone,"none");
                 Navigation.findNavController(getView()).navigate(action);
             }

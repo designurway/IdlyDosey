@@ -117,11 +117,9 @@ public class MobileVerificationFragment extends Fragment {
 
                         getOtpForPhone(phone);
 
-                        Toast.makeText(getContext(), "success", Toast.LENGTH_SHORT).show();
 
                     } else if (response.body().getMessage().contains("mobile number not found")) {
 
-                        Toast.makeText(getContext(), "mobile number not found", Toast.LENGTH_SHORT).show();
                         action = MobileVerificationFragmentDirections.actionMobileVerificationFragment2ToReferalCodeFragment(phone);
                         Navigation.findNavController(getView()).navigate(action);
 

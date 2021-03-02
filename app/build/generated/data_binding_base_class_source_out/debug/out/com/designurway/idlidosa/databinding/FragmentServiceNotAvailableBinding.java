@@ -22,9 +22,6 @@ public final class FragmentServiceNotAvailableBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final TextView Txtur;
-
-  @NonNull
   public final CardView cardViw;
 
   @NonNull
@@ -46,11 +43,10 @@ public final class FragmentServiceNotAvailableBinding implements ViewBinding {
   public final TextView txtOpps;
 
   private FragmentServiceNotAvailableBinding(@NonNull ConstraintLayout rootView,
-      @NonNull TextView Txtur, @NonNull CardView cardViw, @NonNull Button gotToHome,
-      @NonNull ImageView imageView, @NonNull ImageView imgLocation, @NonNull TextView txtAdd,
-      @NonNull TextView txtDescription, @NonNull TextView txtOpps) {
+      @NonNull CardView cardViw, @NonNull Button gotToHome, @NonNull ImageView imageView,
+      @NonNull ImageView imgLocation, @NonNull TextView txtAdd, @NonNull TextView txtDescription,
+      @NonNull TextView txtOpps) {
     this.rootView = rootView;
-    this.Txtur = Txtur;
     this.cardViw = cardViw;
     this.gotToHome = gotToHome;
     this.imageView = imageView;
@@ -87,12 +83,6 @@ public final class FragmentServiceNotAvailableBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.Txtur;
-      TextView Txtur = rootView.findViewById(id);
-      if (Txtur == null) {
-        break missingId;
-      }
-
       id = R.id.cardViw;
       CardView cardViw = rootView.findViewById(id);
       if (cardViw == null) {
@@ -135,8 +125,8 @@ public final class FragmentServiceNotAvailableBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentServiceNotAvailableBinding((ConstraintLayout) rootView, Txtur, cardViw,
-          gotToHome, imageView, imgLocation, txtAdd, txtDescription, txtOpps);
+      return new FragmentServiceNotAvailableBinding((ConstraintLayout) rootView, cardViw, gotToHome,
+          imageView, imgLocation, txtAdd, txtDescription, txtOpps);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

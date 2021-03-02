@@ -11,5 +11,6 @@ public class UtilConstant {
     public static final int CAPTURE_IMAGE = 7;
     public static final String FROM_FEATURED_TO_PRODUCT = "featured";
     public static final int IMAGE_FROM_CAMERA = 101;
+    public static boolean clear=false;
 
 }

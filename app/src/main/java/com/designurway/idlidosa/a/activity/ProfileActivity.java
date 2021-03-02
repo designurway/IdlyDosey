@@ -185,13 +185,13 @@ public class ProfileActivity extends AppCompatActivity {
                     String name = model.getName();
                     String email = model.getEmail();
                     String phone = model.getPhone();
-                    String id = model.getId();
-                    String code = model.getReferralCode();
-                    String pwd = model.getPassword();
-                    String refCode = model.getReferredFrom();
-                    Log.d(TAG, "referred" + refCode);
-
-                    PreferenceManager.saveCustomer(id, name, email, phone, pwd, code);
+//                    String id = model.getId();
+//                    String code = model.getReferralCode();
+//                    String pwd = model.getPassword();
+//                    String refCode = model.getReferredFrom();
+//                    Log.d(TAG, "referred" + refCode);
+//
+//                    PreferenceManager.saveCustomer(id, name, email, phone, pwd, code);
                     /*Intent intent = new Intent(ProfileActivity.this, DashboardActivity.class);
                     startActivity(intent);
                     finish();*/

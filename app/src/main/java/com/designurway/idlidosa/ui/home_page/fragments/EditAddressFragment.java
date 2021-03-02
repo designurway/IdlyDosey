@@ -83,9 +83,7 @@ public class EditAddressFragment extends Fragment {
             @Override
             public void onResponse(Call<StatusAndMessageModel> call, Response<StatusAndMessageModel> response) {
                 if (response.isSuccessful()){
-                    Toast.makeText(getContext(), "success", Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(getContext(), "fail", Toast.LENGTH_SHORT).show();
                 }
             }
 

@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -33,6 +35,8 @@ public class TrackOrderListFragment extends Fragment {
     TrackOrderListAdapter trackOrderListAdapter;
     RecyclerView tackOrderRecycler;
     NavDirections action;
+    ImageView img_sad_face;
+    TextView noOrderText;
 
     public TrackOrderListFragment() {
         // Required empty public constructor
@@ -42,13 +46,14 @@ public class TrackOrderListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_track_order_list, container, false);
-
+        View view = inflater.inflate(R.layout.fragment_track_order_list, container, false);
+        noOrderText=view.findViewById(R.id.noOrderText);
+        img_sad_face=view.findViewById(R.id.img_sad_face);
         tackOrderRecycler = view.findViewById(R.id.tackOrderRecycler);
 
         getOrderList();
 
-        return  view;
+        return view;
     }
 
     private void getOrderList() {
@@ -59,42 +64,43 @@ public class TrackOrderListFragment extends Fragment {
         call.enqueue(new Callback<TrackOrderListModel>() {
             @Override
             public void onResponse(Call<TrackOrderListModel> call, Response<TrackOrderListModel> response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
 
                     TrackOrderListModel trackOrderList = response.body();
                     String status = trackOrderList.getStatus();
 
-                    if (status.equals("1")){
+                    if (status.equals("1")) {
 
                         List<TrackOrderListData> orderListModelsData = trackOrderList.getData();
                         trackOrderListAdapter = new TrackOrderListAdapter(orderListModelsData, getContext());
                         tackOrderRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
                         tackOrderRecycler.setAdapter(trackOrderListAdapter);
-                        
+
                         trackOrderListAdapter.setTrackOrderClickListner(new TrackOrderListAdapter.TrackOrderClickListner() {
                             @Override
                             public void onTrackOrderBtnClicked(int position, View itemView) {
                                 String orderId = trackOrderList.getData().get(position).getOrder_id();
                                 String amount = trackOrderList.getData().get(position).getAmount();
 
-                                action = TrackOrderListFragmentDirections.actionTrackOrderListFragmentToTrackOrderFragment(orderId,amount);
+                                action = TrackOrderListFragmentDirections.actionTrackOrderListFragmentToTrackOrderFragment(orderId, amount);
                                 Navigation.findNavController(getView()).navigate(action);
 
                             }
                         });
-                        
-                    }else {
-                        Toast.makeText(getActivity(), "No Data Found", Toast.LENGTH_SHORT).show();
+
+                    } else {
+                        img_sad_face.setVisibility(View.VISIBLE);
+                        noOrderText.setVisibility(View.VISIBLE);
                     }
 
-                }else {
+                } else {
                     Toast.makeText(getActivity(), "Failed", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<TrackOrderListModel> call, Throwable t) {
-                Toast.makeText(getActivity(), "On Failure "+t.getMessage() , Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "On Failure " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 

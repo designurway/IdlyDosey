@@ -122,7 +122,7 @@ public class PreferenceManager {
 
     }
 
-    public static String getCustomerReferred() {
+    public static String getReferred_from() {
 
         return   customerSharedPreferences.getString(REFERRED_FROM,"ZXCV");
 

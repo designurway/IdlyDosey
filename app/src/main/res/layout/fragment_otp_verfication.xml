@@ -150,7 +150,6 @@
             android:id="@+id/verifyOtpBtn"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_below="@+id/phone_et"
             android:layout_centerHorizontal="true"
             android:layout_margin="50dp"
             android:background="@drawable/blue_curve_bg"

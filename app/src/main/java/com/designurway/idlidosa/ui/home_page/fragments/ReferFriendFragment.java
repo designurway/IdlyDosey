@@ -1,5 +1,6 @@
 package com.designurway.idlidosa.ui.home_page.fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -37,11 +38,14 @@ public class ReferFriendFragment extends Fragment {
     TextView shareReferalCode;
     Button signUpBtn;
 
+    Context context;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         binding = FragmentReferFriendBinding.inflate(inflater,container,false);
+        context = container.getContext();
         return binding.getRoot();
     }
 

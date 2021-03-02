@@ -104,7 +104,10 @@ public class AuthProfileFragment extends Fragment {
         addressEt.setText(address);
         phoneEt.setText(phone);
 
+
+
         setProfileDetails();
+
 
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -174,6 +177,7 @@ public class AuthProfileFragment extends Fragment {
         String address = addressEt.getText().toString().trim();
 
         if (!AndroidUtils.isNetworkAvailable(getContext())) {
+
             Toast.makeText(getContext(), "Check with Your Connection",
                     Toast.LENGTH_SHORT).show();
         }
@@ -212,9 +216,10 @@ public class AuthProfileFragment extends Fragment {
                     String refCode = model.getReferredFrom();
                     Log.d(TAG, "referred" + refCode);
 
-                    insertRefCode();
+                    insertRefCode(refrralCode,code);
 
                     PreferenceManager.saveCustomer(id, name, email, phone, pwd, code);
+
                     Intent intent = new Intent(getContext(), HomePageActivity.class);
                     startActivity(intent);
                     getActivity().finish();
@@ -301,17 +306,18 @@ public class AuthProfileFragment extends Fragment {
         return output;
     }
 
-    public void insertRefCode() {
+    public void insertRefCode(String refRal,String refredFrom) {
         RetrofitApi retrofitApi = BaseClient.getClient().create(RetrofitApi.class);
-        Call<StatusAndMessageModel> call = retrofitApi.updateReferralCode(phone
-                ,
-                refrralCode);
+        Call<StatusAndMessageModel> call = retrofitApi.updateReferralCode(
+                refredFrom,refRal);
+
+
         call.enqueue(new Callback<StatusAndMessageModel>() {
             @Override
             public void onResponse(Call<StatusAndMessageModel> call,
                                    Response<StatusAndMessageModel> response) {
                 if (response.isSuccessful()) {
-//                    Toast.makeText(getContext(), "Success Inserted", Toast.LENGTH_SHORT).show();
+
                 } else {
                     Toast.makeText(getContext(), "Failed",
                             Toast.LENGTH_SHORT).show();

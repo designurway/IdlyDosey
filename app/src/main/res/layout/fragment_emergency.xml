@@ -35,7 +35,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="170dp"
                     android:layout_margin="@dimen/dimen_10dp"
-                    android:layout_below="@+id/upload_image_tv"
                     android:layout_centerHorizontal="true"
                     android:src="@drawable/prescription_poster"></ImageView>
 

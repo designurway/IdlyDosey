@@ -77,7 +77,7 @@ public class ReceiveComboFragment extends Fragment {
         RetrofitApi retrofitApi = BaseClient.getClient().create(RetrofitApi.class);
         Call<ReceivedComboDataModel> call = retrofitApi.getComboWonDetails(PreferenceManager.getCustomeReferenceCode());
         Log.d(TAG, "preference" + PreferenceManager.getCustomeReferenceCode());
-        Log.d(TAG, "referralCode" + PreferenceManager.getCustomerReferred());
+        Log.d(TAG, "referralCode" + PreferenceManager.getReferred_from());
         call.enqueue(new Callback<ReceivedComboDataModel>() {
             @Override
             public void onResponse(Call<ReceivedComboDataModel> call, Response<ReceivedComboDataModel> response) {

@@ -1,8 +1,8 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
 3    package="com.designurway.idlidosa"
-4    android:versionCode="9"
-5    android:versionName="1.8" >
+4    android:versionCode="10"
+5    android:versionName="1.9" >
 6
 7    <uses-sdk
 8        android:minSdkVersion="25"
@@ -68,16 +68,16 @@
 37        android:extractNativeLibs="false"
 38        android:hardwareAccelerated="false"
 38-->E:\Pankaj\Android Project\IdlyDosey\app\src\main\AndroidManifest.xml:22:9-44
-39        android:icon="@drawable/logo"
-39-->E:\Pankaj\Android Project\IdlyDosey\app\src\main\AndroidManifest.xml:23:9-38
+39        android:icon="@drawable/logonew"
+39-->E:\Pankaj\Android Project\IdlyDosey\app\src\main\AndroidManifest.xml:23:9-41
 40        android:label="@string/app_name"
 40-->E:\Pankaj\Android Project\IdlyDosey\app\src\main\AndroidManifest.xml:24:9-41
 41        android:largeHeap="true"
 41-->E:\Pankaj\Android Project\IdlyDosey\app\src\main\AndroidManifest.xml:25:9-33
 42        android:requestLegacyExternalStorage="true"
 42-->E:\Pankaj\Android Project\IdlyDosey\app\src\main\AndroidManifest.xml:26:9-52
-43        android:roundIcon="@drawable/logo"
-43-->E:\Pankaj\Android Project\IdlyDosey\app\src\main\AndroidManifest.xml:27:9-43
+43        android:roundIcon="@drawable/logonew"
+43-->E:\Pankaj\Android Project\IdlyDosey\app\src\main\AndroidManifest.xml:27:9-46
 44        android:supportsRtl="true"
 44-->E:\Pankaj\Android Project\IdlyDosey\app\src\main\AndroidManifest.xml:28:9-35
 45        android:testOnly="true"

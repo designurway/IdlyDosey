@@ -189,7 +189,6 @@ public class EmergencyFragment extends Fragment {
                     if (response.body().getStatus().equals("1")){
                         action = EmergencyFragmentDirections.actionEmergencyFragmentToViewCartItemsFragment2();
                         Navigation.findNavController(getView()).navigate(action);
-                        Toast.makeText(getContext(), "success", Toast.LENGTH_SHORT).show();
                     }else {
                         Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
                     }
@@ -227,7 +226,6 @@ public class EmergencyFragment extends Fragment {
                 if (response.isSuccessful()) {
                     action = EmergencyFragmentDirections.actionEmergencyFragmentToViewCartItemsFragment2();
                     Navigation.findNavController(getView()).navigate(action);
-                    Toast.makeText(getContext(), "Sucess Insert Data", Toast.LENGTH_SHORT).show();
 
                 } else {
                     Toast.makeText(getContext(), "fail", Toast.LENGTH_SHORT).show();

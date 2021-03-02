@@ -64,7 +64,6 @@ public class NotificationFragment extends Fragment {
                         notificationListAdapter = new NotificationListAdapter(notificationListData,getContext());
                         noificationListRecycler.setAdapter(notificationListAdapter);
                     }else {
-                        Toast.makeText(getContext(),notificationListModel.getMessage() , Toast.LENGTH_SHORT).show();
                         img_sad_face.setVisibility(View.VISIBLE);
                     }
                 }else {

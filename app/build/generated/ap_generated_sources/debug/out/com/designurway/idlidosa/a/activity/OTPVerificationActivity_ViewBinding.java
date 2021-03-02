@@ -20,7 +20,7 @@ public class OTPVerificationActivity_ViewBinding implements Unbinder {
 
   private View view7f0a030c;
 
-  private View view7f0a014a;
+  private View view7f0a0149;
 
   @UiThread
   public OTPVerificationActivity_ViewBinding(OTPVerificationActivity target) {
@@ -46,7 +46,7 @@ public class OTPVerificationActivity_ViewBinding implements Unbinder {
     target.rememberMeChk = Utils.findRequiredViewAsType(source, R.id.remember_me_cbx, "field 'rememberMeChk'", CheckBox.class);
     view = Utils.findRequiredView(source, R.id.forgot_pwd_tv, "field 'forgotPwdTv' and method 'goToMobileVerify'");
     target.forgotPwdTv = Utils.castView(view, R.id.forgot_pwd_tv, "field 'forgotPwdTv'", TextView.class);
-    view7f0a014a = view;
+    view7f0a0149 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -70,7 +70,7 @@ public class OTPVerificationActivity_ViewBinding implements Unbinder {
 
     view7f0a030c.setOnClickListener(null);
     view7f0a030c = null;
-    view7f0a014a.setOnClickListener(null);
-    view7f0a014a = null;
+    view7f0a0149.setOnClickListener(null);
+    view7f0a0149 = null;
   }
 }

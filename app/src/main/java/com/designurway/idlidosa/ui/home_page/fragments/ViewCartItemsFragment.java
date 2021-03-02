@@ -1,5 +1,6 @@
 package com.designurway.idlidosa.ui.home_page.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -34,7 +35,10 @@ import com.designurway.idlidosa.a.retrofit.BaseClient;
 import com.designurway.idlidosa.a.retrofit.RetrofitApi;
 import com.designurway.idlidosa.a.utils.AndroidUtils;
 import com.designurway.idlidosa.a.utils.PreferenceManager;
+import com.designurway.idlidosa.a.utils.SharedPrefManager;
+import com.designurway.idlidosa.a.utils.UtilConstant;
 import com.designurway.idlidosa.databinding.FragmentViewCartItemsBinding;
+import com.designurway.idlidosa.ui.home_page.HomePageActivity;
 
 import java.util.ArrayList;
 
@@ -59,12 +63,14 @@ public class ViewCartItemsFragment extends Fragment {
     String orderId = "none";
     ViewCartAdapter viewCartAdapter;
     int Total = 0;
+    Context context;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         binding = FragmentViewCartItemsBinding.inflate(inflater,container,false);
+        context=container.getContext();
         return binding.getRoot();
 
     }
@@ -94,7 +100,8 @@ public class ViewCartItemsFragment extends Fragment {
 
         GetCartItem();
         GetAmount();
-
+        SharedPrefManager.Clear(getActivity());
+        UtilConstant.clear=true;
     }
     public void GetCartItem() {
         GetAmount();
@@ -111,7 +118,7 @@ public class ViewCartItemsFragment extends Fragment {
                     viewCartAdapter = new ViewCartAdapter(getContext(), viewCartModel);
                     cartItemsRv.setLayoutManager(new LinearLayoutManager(getContext()));
 
-                    cartItemsRv.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayout.VERTICAL));
+                    cartItemsRv.addItemDecoration(new DividerItemDecoration(context, LinearLayout.VERTICAL));
                     cartItemsRv.setAdapter(viewCartAdapter);
                     txtNum.setText(String.valueOf(viewCartModel.size()));
                     viewCartAdapter.sendToFragment(new ViewCartAdapter.setFragmentTransaction() {
@@ -133,6 +140,8 @@ public class ViewCartItemsFragment extends Fragment {
                     rupeesTv.setVisibility(View.GONE);
                     rupeesTv.setVisibility(View.GONE);
                     btnCheck.setVisibility(View.GONE);
+                    imgSadFace.setVisibility(View.VISIBLE);
+                    txtNumTxt.setVisibility(View.GONE);
 
                 }
             }
@@ -157,13 +166,13 @@ public class ViewCartItemsFragment extends Fragment {
                 if (response.isSuccessful()) {
                     txtRupee.setText(response.body().getTotal_amount());
                 } else {
-                    Toast.makeText(getContext(), "fail", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "fail", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<GetTotalAmountModel> call, Throwable t) {
-                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 

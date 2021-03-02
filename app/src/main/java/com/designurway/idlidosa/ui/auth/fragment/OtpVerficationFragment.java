@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -22,6 +23,7 @@ import android.widget.Toast;
 import com.designurway.idlidosa.R;
 
 import com.designurway.idlidosa.a.model.LoginModel;
+import com.designurway.idlidosa.a.model.StatusOTPModel;
 import com.designurway.idlidosa.a.retrofit.BaseClient;
 import com.designurway.idlidosa.a.retrofit.RetrofitApi;
 import com.designurway.idlidosa.a.utils.AndroidUtils;
@@ -44,7 +46,7 @@ public class OtpVerficationFragment extends Fragment {
     String phone;
     EditText otpEt1, otpEt2, otpEt3, otpEt4;
     String otp, otp1, otp2, otp3, otp4;
-    TextView otpNumTxt;
+    TextView otpNumTxt,rensend;
     OtpVerficationFragmentArgs args;
 
     public OtpVerficationFragment() {
@@ -181,8 +183,16 @@ public class OtpVerficationFragment extends Fragment {
         otpEt2 = binding.otpEt2;
         otpEt3 = binding.otpEt3;
         otpNumTxt = binding.otpNumTxt;
+        rensend = binding.rensend;
 
         otpNumTxt.setText("to +91" + phone);
+
+        rensend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getOtpForPhone(phone);
+            }
+        });
         verifyOtpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -264,4 +274,26 @@ public class OtpVerficationFragment extends Fragment {
 
 
     }
+
+    private void getOtpForPhone(String phone) {
+        RetrofitApi retrofitApi = BaseClient.getClient().create(RetrofitApi.class);
+        Call<StatusOTPModel> call = retrofitApi.getOtpForPhone(phone);
+        call.enqueue(new Callback<StatusOTPModel>() {
+            @Override
+            public void onResponse(Call<StatusOTPModel> call, Response<StatusOTPModel> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(getContext(), "otp Resent successfully", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    Toast.makeText(getContext(), "failure", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<StatusOTPModel> call, Throwable t) {
+                Log.d(TAG, "onFailure" + t.getMessage());
+            }
+        });
+    }
+
 }

@@ -147,12 +147,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Home"
+                android:enabled="true"
                 android:textColor="@color/black"
                 android:textStyle="bold"/>
             <RadioButton
+                android:id="@+id/rdOffice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Office"
+                android:enabled="true"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 />
