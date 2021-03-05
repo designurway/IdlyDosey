@@ -16,9 +16,9 @@ import java.lang.Override;
 public class ReferralCodeActivity_ViewBinding implements Unbinder {
   private ReferralCodeActivity target;
 
-  private View view7f0a0334;
+  private View view7f0a0342;
 
-  private View view7f0a0312;
+  private View view7f0a0320;
 
   @UiThread
   public ReferralCodeActivity_ViewBinding(ReferralCodeActivity target) {
@@ -32,7 +32,7 @@ public class ReferralCodeActivity_ViewBinding implements Unbinder {
     View view;
     view = Utils.findRequiredView(source, R.id.submit_referral_code_btn, "field 'submitRefer' and method 'submitReferralCode'");
     target.submitRefer = Utils.castView(view, R.id.submit_referral_code_btn, "field 'submitRefer'", Button.class);
-    view7f0a0334 = view;
+    view7f0a0342 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -41,7 +41,7 @@ public class ReferralCodeActivity_ViewBinding implements Unbinder {
     });
     target.referralCodeEt = Utils.findRequiredViewAsType(source, R.id.referral_code_et, "field 'referralCodeEt'", EditText.class);
     view = Utils.findRequiredView(source, R.id.skip_tv, "method 'goToNext'");
-    view7f0a0312 = view;
+    view7f0a0320 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -60,9 +60,9 @@ public class ReferralCodeActivity_ViewBinding implements Unbinder {
     target.submitRefer = null;
     target.referralCodeEt = null;
 
-    view7f0a0334.setOnClickListener(null);
-    view7f0a0334 = null;
-    view7f0a0312.setOnClickListener(null);
-    view7f0a0312 = null;
+    view7f0a0342.setOnClickListener(null);
+    view7f0a0342 = null;
+    view7f0a0320.setOnClickListener(null);
+    view7f0a0320 = null;
   }
 }

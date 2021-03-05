@@ -61,7 +61,7 @@
 
     <string name="youAreNotUpdatedTitle">Update Available</string>
     <string name="youAreNotUpdatedMessage">A new version of Idly Dosey is available. Please update to version</string>
-<!--    <string name="youAreNotUpdatedMessage1">\s now</string>-->
+    <!--    <string name="youAreNotUpdatedMessage1">\s now</string>-->
     <string name="youAreNotUpdatedMessage1">.</string>
     <string name="update">Update</string>
 
@@ -104,7 +104,7 @@
     <string name="take_photo">Take Photo</string>
     <string name="title_location_permission">Grant Permission</string>
     <string name="grand_permission">Kindly grant the permission to ue use your current location</string>
-<!--    <string name="proceed_to_payment">Proceed to Payment</string>-->
+    <!--    <string name="proceed_to_payment">Proceed to Payment</string>-->
     <string name="proceed_to_payment">Proceed to Payment</string>
     <string name="redeem_combo">Redeem your Combo</string>
     <string name="save_and_continue">Save and Continue</string>

@@ -1,58 +1,39 @@
 package com.designurway.idlidosa.model;
 
 public class NotificationListData {
+    private String customer_id;
+    private String order_id;
     private String title;
     private String message;
-    private String image;
+    private String delivery_boy_id;
     private String created_date;
-    private String id;
+    private String notification_status;
 
-    public NotificationListData(String title, String message, String image, String created_date, String id) {
-        this.title = title;
-        this.message = message;
-        this.image = image;
-        this.created_date = created_date;
-        this.id = id;
-    }
-
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
+    public String getNotification_status() {
+        return notification_status;
     }
 
     public String getCreated_date() {
         return created_date;
     }
 
-    public void setCreated_date(String created_date) {
-        this.created_date = created_date;
+    public String getTitle() {
+        return title;
     }
 
-    public String getId() {
-        return id;
+    public String getMessage() {
+        return message;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public String getOrder_id() {
+        return order_id;
+    }
+
+    public String getCustomer_id() {
+        return customer_id;
+    }
+
+    public String getDelivery_boy_id() {
+        return delivery_boy_id;
     }
 }

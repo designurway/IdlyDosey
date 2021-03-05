@@ -30,6 +30,10 @@ import com.designurway.idlidosa.a.utils.AndroidUtils;
 import com.designurway.idlidosa.a.utils.PreferenceManager;
 import com.designurway.idlidosa.databinding.FragmentOtpVerficationBinding;
 import com.designurway.idlidosa.ui.home_page.HomePageActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -45,7 +49,7 @@ public class OtpVerficationFragment extends Fragment {
     Button verifyOtpBtn;
     String phone;
     EditText otpEt1, otpEt2, otpEt3, otpEt4;
-    String otp, otp1, otp2, otp3, otp4;
+    String otp, otp1, otp2, otp3, otp4,token;
     TextView otpNumTxt,rensend;
     OtpVerficationFragmentArgs args;
 
@@ -58,7 +62,20 @@ public class OtpVerficationFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 //        return inflater.inflate(R.layout.fragment_otp_verfication, container, false);
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        if (task.isSuccessful()){
+                            token=task.getResult().getToken();
 
+                            Log.d("token",token);
+                        }else{
+                            Log.d("TAG","failed to generate");
+
+                        }
+                    }
+                });
         binding = FragmentOtpVerficationBinding.inflate(inflater, container, false);
 
 
@@ -227,7 +244,7 @@ public class OtpVerficationFragment extends Fragment {
 
 
         RetrofitApi retrofitApi = BaseClient.getClient().create(RetrofitApi.class);
-        Call<LoginModel> call = retrofitApi.verifyPhoneAndOTP(phone, otp, email, pwd);
+        Call<LoginModel> call = retrofitApi.verifyPhoneAndOTP(phone, otp, email, pwd,token);
         call.enqueue(new Callback<LoginModel>() {
             @Override
             public void onResponse(Call<LoginModel> call, Response<LoginModel> response) {

@@ -100,6 +100,9 @@
         <action
             android:id="@+id/action_addressBookFragment_to_serviceNotAvailableFragment"
             app:destination="@id/serviceNotAvailableFragment" />
+        <action
+            android:id="@+id/action_addressBookFragment_to_locationFragment"
+            app:destination="@id/locationFragment" />
     </fragment>
     <fragment
         android:id="@+id/paymentFragment"
@@ -293,6 +296,31 @@
             app:destination="@id/homeFragment" />
         <argument
             android:name="address"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/notificationListFragment"
+        android:name="com.designurway.idlidosa.ui.home_page.fragments.NotificationListFragment"
+        android:label="NotificationListFragment" /><action android:id="@+id/action_global_notificationListFragment" app:destination="@id/notificationListFragment"/>
+    <fragment
+        android:id="@+id/locationFragment"
+        android:name="com.designurway.idlidosa.ui.home_page.fragments.LocationFragment"
+        android:label="fragment_location"
+        tools:layout="@layout/fragment_location" >
+        <action
+            android:id="@+id/action_locationFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+        <argument
+            android:name="amount"
+            app:argType="string" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="phone"
+            app:argType="string" />
+        <argument
+            android:name="orderId"
             app:argType="string" />
     </fragment>
 </navigation>

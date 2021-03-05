@@ -122,6 +122,11 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
+                  <entry key="action_global_notificationListFragment">
+                    <value>
+                      <LayoutPositions />
+                    </value>
+                  </entry>
                   <entry key="addressBookFragment">
                     <value>
                       <LayoutPositions>
@@ -134,6 +139,11 @@
                         <option name="myPositions">
                           <map>
                             <entry key="action_addressBookFragment_to_changeAddressFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_addressBookFragment_to_locationFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -268,6 +278,39 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="locationFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="893" />
+                            <option name="y" value="88" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_locationFragment_to_paymentFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="notificationListFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="648" />
+                            <option name="y" value="-502" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="orderHistoryFragment">
                     <value>
                       <LayoutPositions>
@@ -285,8 +328,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="988" />
-                            <option name="y" value="122" />
+                            <option name="x" value="1140" />
+                            <option name="y" value="148" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -436,8 +479,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="772" />
-                            <option name="y" value="385" />
+                            <option name="x" value="808" />
+                            <option name="y" value="476" />
                           </Point>
                         </option>
                         <option name="myPositions">

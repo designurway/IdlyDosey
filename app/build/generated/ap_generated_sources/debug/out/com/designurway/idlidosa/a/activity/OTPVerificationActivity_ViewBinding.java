@@ -18,9 +18,9 @@ import java.lang.Override;
 public class OTPVerificationActivity_ViewBinding implements Unbinder {
   private OTPVerificationActivity target;
 
-  private View view7f0a030c;
+  private View view7f0a031a;
 
-  private View view7f0a0149;
+  private View view7f0a014f;
 
   @UiThread
   public OTPVerificationActivity_ViewBinding(OTPVerificationActivity target) {
@@ -36,7 +36,7 @@ public class OTPVerificationActivity_ViewBinding implements Unbinder {
     target.passwordEt = Utils.findRequiredViewAsType(source, R.id.password_et, "field 'passwordEt'", EditText.class);
     view = Utils.findRequiredView(source, R.id.sign_in_btn, "field 'signin' and method 'goToHomeActivity'");
     target.signin = Utils.castView(view, R.id.sign_in_btn, "field 'signin'", Button.class);
-    view7f0a030c = view;
+    view7f0a031a = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -46,7 +46,7 @@ public class OTPVerificationActivity_ViewBinding implements Unbinder {
     target.rememberMeChk = Utils.findRequiredViewAsType(source, R.id.remember_me_cbx, "field 'rememberMeChk'", CheckBox.class);
     view = Utils.findRequiredView(source, R.id.forgot_pwd_tv, "field 'forgotPwdTv' and method 'goToMobileVerify'");
     target.forgotPwdTv = Utils.castView(view, R.id.forgot_pwd_tv, "field 'forgotPwdTv'", TextView.class);
-    view7f0a0149 = view;
+    view7f0a014f = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -68,9 +68,9 @@ public class OTPVerificationActivity_ViewBinding implements Unbinder {
     target.rememberMeChk = null;
     target.forgotPwdTv = null;
 
-    view7f0a030c.setOnClickListener(null);
-    view7f0a030c = null;
-    view7f0a0149.setOnClickListener(null);
-    view7f0a0149 = null;
+    view7f0a031a.setOnClickListener(null);
+    view7f0a031a = null;
+    view7f0a014f.setOnClickListener(null);
+    view7f0a014f = null;
   }
 }

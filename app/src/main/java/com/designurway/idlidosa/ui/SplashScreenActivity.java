@@ -6,12 +6,14 @@ import android.util.Log;
 import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import com.designurway.idlidosa.R;
 import com.designurway.idlidosa.a.activity.MobileVerificationActivity;
 import com.designurway.idlidosa.a.utils.PreferenceManager;
 import com.designurway.idlidosa.ui.auth.AuthActivity;
 import com.designurway.idlidosa.ui.home_page.HomePageActivity;
+import com.designurway.idlidosa.ui.home_page.fragments.NotificationListFragment;
 
 import butterknife.ButterKnife;
 
@@ -20,26 +22,37 @@ public class SplashScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_splash_screen);
-        ButterKnife.bind(this);
 
-        Thread th = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                // TODO Auto-generated method stub
-                try {
-                    Thread.sleep(1000);
-                    launchNextActivity();
+        Intent extra=getIntent();
 
-                } catch (Exception e) {
-                    e.printStackTrace();
+        if (extra.getStringExtra("title") != null){
+            Intent intent=new Intent(SplashScreenActivity.this, HomePageActivity.class);
+            intent.putExtra("Title",extra.getStringExtra("title"));
+            startActivity(intent);
+
+        }else{
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+            setContentView(R.layout.activity_splash_screen);
+            ButterKnife.bind(this);
+
+            Thread th = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    // TODO Auto-generated method stub
+                    try {
+                        Thread.sleep(1000);
+                        launchNextActivity();
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
                 }
+            });
 
-            }
-        });
+            th.start();
+        }
 
-        th.start();
     }
 
 

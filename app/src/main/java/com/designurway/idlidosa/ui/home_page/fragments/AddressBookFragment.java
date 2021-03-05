@@ -221,6 +221,7 @@ public class AddressBookFragment extends Fragment {
             imgEditHome.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     action = AddressBookFragmentDirections.actionAddressBookFragmentToChangeAddressFragment("home");
                     Navigation.findNavController(getView()).navigate(action);
                 }
@@ -237,7 +238,11 @@ public class AddressBookFragment extends Fragment {
         currentLocationLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getCurrentLoc();
+                name = officeNameTv.getText().toString();
+                address = addressTv.getText().toString();
+                phone = ofc_phone_tv.getText().toString();
+                action=AddressBookFragmentDirections.actionAddressBookFragmentToLocationFragment(amount,name,phone,orderId);
+                Navigation.findNavController(v).navigate(action);
             }
         });
 

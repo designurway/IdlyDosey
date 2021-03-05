@@ -91,7 +91,7 @@ public class OTPVerificationActivity extends AppCompatActivity {
     public void loginApp( String phone, String otp,String email,String pwd) {
 
         RetrofitApi retrofitApi = BaseClient.getClient().create(RetrofitApi.class);
-        Call<LoginModel> call = retrofitApi.verifyPhoneAndOTP(phone,otp,email,pwd);
+        Call<LoginModel> call = retrofitApi.verifyPhoneAndOTP(phone,otp,email,pwd,"");
         call.enqueue(new Callback<LoginModel>() {
             @Override
             public void onResponse(Call<LoginModel> call, Response<LoginModel> response) {

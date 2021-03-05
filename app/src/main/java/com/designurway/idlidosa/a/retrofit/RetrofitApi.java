@@ -43,7 +43,8 @@ public interface RetrofitApi {
             @Field("phone") String phone,
             @Field("otp") String otp,
             @Field("email") String email,
-            @Field("password") String password
+            @Field("password") String password,
+            @Field("token") String token
     );
 
     @FormUrlEncoded

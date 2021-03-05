@@ -1,14 +1,15 @@
 package com.designurway.idlidosa.a.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NotificationListModel {
     private String status;
     private String message;
-    private List<NotificationListData> data;
+    private ArrayList<NotificationListData> data;
 
 
-    public NotificationListModel(String status, String message, List<NotificationListData> data) {
+    public NotificationListModel(String status, String message, ArrayList<NotificationListData> data) {
         this.status = status;
         this.message = message;
         this.data = data;
@@ -30,11 +31,11 @@ public class NotificationListModel {
         this.message = message;
     }
 
-    public List<NotificationListData> getData() {
+    public ArrayList<NotificationListData> getData() {
         return data;
     }
 
-    public void setData(List<NotificationListData> data) {
+    public void setData(ArrayList<NotificationListData> data) {
         this.data = data;
     }
 }

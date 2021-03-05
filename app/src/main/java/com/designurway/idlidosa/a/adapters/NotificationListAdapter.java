@@ -4,68 +4,104 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.designurway.idlidosa.R;
-import com.designurway.idlidosa.a.model.NotificationListData;
+import com.designurway.idlidosa.a.model.NotificationListResponseModel;
+import com.designurway.idlidosa.model.NotificationListData;
 
-import java.util.List;
 
-public class NotificationListAdapter extends RecyclerView.Adapter<NotificationListAdapter.Notification_VH> {
+import java.util.ArrayList;
 
-    List<NotificationListData> listData;
+public class NotificationListAdapter extends RecyclerView.Adapter<NotificationListAdapter.MyViewHolder> {
+
+    ArrayList<NotificationListData> notificationModels;
     Context context;
 
-    NotificationClickedListner notificationClickedListner;
+    setOnFragmentTransaction setOnFragmentTransaction;
 
-    public NotificationListAdapter(NotificationClickedListner notificationClickedListner) {
-        this.notificationClickedListner = notificationClickedListner;
+    public NotificationListAdapter(ArrayList<NotificationListData> notificationModels, Context context) {
+        this.notificationModels = notificationModels;
+        this.context = context;
     }
 
-    public NotificationListAdapter(List<NotificationListData> listData, Context context) {
-        this.listData = listData;
-        this.context = context;
+    public void sendToFragment(setOnFragmentTransaction setOnFragmentTransaction) {
+        this.setOnFragmentTransaction = setOnFragmentTransaction;
     }
 
     @NonNull
     @Override
-    public Notification_VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.notification_item_list,parent,false);
-        return new Notification_VH(view);
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_notifications, parent, false);
+
+        return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Notification_VH holder, int position) {
-            NotificationListData data = listData.get(position);
-            holder.notificationListTitle.setText(data.getTitle());
-            holder.notificationListMessage.setText(data.getMessage());
-            holder.notificationListDate.setText(data.getCreated_date());
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+
+        holder.orderIdTv.setText(notificationModels.get(position).getOrder_id());
+        holder.orderStatusTv.setText(notificationModels.get(position).getTitle());
+        holder.orderMessageTv.setText(notificationModels.get(position).getMessage());
+        holder.orderDayTv.setText(notificationModels.get(position).getCreated_date());
+        holder.orderMessageTv.setText(notificationModels.get(position).getMessage());
+        if (notificationModels.get(position).getNotification_status().equals("unread")) {
+            holder.orderStatusTv.setBackgroundColor(holder.orderStatusTv.getResources().getColor(R.color.red));
+        }
+//
+
+
+        holder.ImageDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setOnFragmentTransaction.sendView(position, notificationModels.get(position).getOrder_id(), holder.itemView);
+            }
+        });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                setOnFragmentTransaction.sendPosition(position, notificationModels.get(position).getOrder_id(), holder.itemView);
+            }
+        });
+
     }
 
     @Override
     public int getItemCount() {
-        return listData.size();
+
+        return notificationModels.size();
     }
 
-    class Notification_VH extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView notificationListTitle,notificationListMessage,notificationListDate;
+        TextView orderIdTv;
+        TextView orderStatusTv;
+        TextView orderDayTv;
+        TextView orderMessageTv;
+        ImageView ImageDelete;
 
-        public Notification_VH(@NonNull View itemView) {
+        public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            notificationListTitle = itemView.findViewById(R.id.notificationListTitle);
-            notificationListMessage = itemView.findViewById(R.id.notificationListMessage);
-            notificationListDate = itemView.findViewById(R.id.notificationListDate);
+            orderIdTv = itemView.findViewById(R.id.order_id_tv);
+            orderStatusTv = itemView.findViewById(R.id.order_status_tv);
+            orderDayTv = itemView.findViewById(R.id.day_tv);
+            orderMessageTv = itemView.findViewById(R.id.order_message_tv);
+            ImageDelete = itemView.findViewById(R.id.ImageDelete);
         }
     }
 
+    public interface setOnFragmentTransaction {
 
-    public interface NotificationClickedListner{
+        void sendPosition(int position, String orderId, View view);
 
-        void onNotificationClicked(int postion, View itemView);
+        void sendView(int position, String orderId, View view);
+
     }
+
 }

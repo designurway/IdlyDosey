@@ -4,6 +4,8 @@ package com.designurway.idlidosa.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
@@ -23,13 +25,31 @@ public final class ActivityHomePageBinding implements ViewBinding {
   public final BottomNavigationView bottomView;
 
   @NonNull
-  public final Toolbar homeToolBar;
+  public final ConstraintLayout menuRl;
+
+  @NonNull
+  public final ImageView notificationImgv;
+
+  @NonNull
+  public final Toolbar toolBar;
+
+  @NonNull
+  public final TextView toolbarTitleTv;
+
+  @NonNull
+  public final TextView txtNotifyNo;
 
   private ActivityHomePageBinding(@NonNull ConstraintLayout rootView,
-      @NonNull BottomNavigationView bottomView, @NonNull Toolbar homeToolBar) {
+      @NonNull BottomNavigationView bottomView, @NonNull ConstraintLayout menuRl,
+      @NonNull ImageView notificationImgv, @NonNull Toolbar toolBar,
+      @NonNull TextView toolbarTitleTv, @NonNull TextView txtNotifyNo) {
     this.rootView = rootView;
     this.bottomView = bottomView;
-    this.homeToolBar = homeToolBar;
+    this.menuRl = menuRl;
+    this.notificationImgv = notificationImgv;
+    this.toolBar = toolBar;
+    this.toolbarTitleTv = toolbarTitleTv;
+    this.txtNotifyNo = txtNotifyNo;
   }
 
   @Override
@@ -65,13 +85,38 @@ public final class ActivityHomePageBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.homeToolBar;
-      Toolbar homeToolBar = rootView.findViewById(id);
-      if (homeToolBar == null) {
+      id = R.id.menu_rl;
+      ConstraintLayout menuRl = rootView.findViewById(id);
+      if (menuRl == null) {
         break missingId;
       }
 
-      return new ActivityHomePageBinding((ConstraintLayout) rootView, bottomView, homeToolBar);
+      id = R.id.notification_imgv;
+      ImageView notificationImgv = rootView.findViewById(id);
+      if (notificationImgv == null) {
+        break missingId;
+      }
+
+      id = R.id.tool_bar;
+      Toolbar toolBar = rootView.findViewById(id);
+      if (toolBar == null) {
+        break missingId;
+      }
+
+      id = R.id.toolbar_title_tv;
+      TextView toolbarTitleTv = rootView.findViewById(id);
+      if (toolbarTitleTv == null) {
+        break missingId;
+      }
+
+      id = R.id.txtNotifyNo;
+      TextView txtNotifyNo = rootView.findViewById(id);
+      if (txtNotifyNo == null) {
+        break missingId;
+      }
+
+      return new ActivityHomePageBinding((ConstraintLayout) rootView, bottomView, menuRl,
+          notificationImgv, toolBar, toolbarTitleTv, txtNotifyNo);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

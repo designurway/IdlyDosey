@@ -304,7 +304,7 @@ public class HomeFragment extends Fragment {
                                 //Getting Current Version
                                 currentAppVersion = VERSION_NAME;
 
-                                if (currentAppVersion != null) {
+                                if (currentAppVersion != null && latestAppVersion!=null) {
                                     //Version convert to float
                                     float cVersion = Float.parseFloat(currentAppVersion);
                                     float lVersion = Float.parseFloat(latestAppVersion);

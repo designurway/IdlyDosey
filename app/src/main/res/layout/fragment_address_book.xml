@@ -189,7 +189,7 @@
             </LinearLayout>
 
             <RelativeLayout
-                android:layout_width="match_parent"
+                android:layout_width="395dp"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical">
 
@@ -200,21 +200,21 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_marginRight="20dp"
-                    android:src="@drawable/right"
                     android:backgroundTint="@color/colorPrimary"
                     android:buttonTint="@color/colorPrimary"
                     android:gravity="center_vertical"
+                    android:src="@drawable/right"
                     app:tint="@color/colorPrimary" />
+
                 <ImageView
                     android:id="@+id/img_edit_office"
                     android:layout_width="@dimen/dimen_20dp"
                     android:layout_height="@dimen/dimen_20dp"
-                    android:background="@drawable/pen"
                     android:layout_alignParentEnd="true"
                     android:layout_marginRight="20dp"
+                    android:background="@drawable/pen"
                     android:visibility="gone"
-                    app:tint="@color/colorPrimary"
-                    />
+                    app:tint="@color/colorPrimary" />
             </RelativeLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -249,7 +249,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
-            android:text="Current Location"
+            android:text="Select Location"
             android:textColor="@color/white"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -277,7 +277,7 @@
         android:layout_marginRight="20dp"
         android:gravity="center"
         android:padding="@dimen/dimen_10dp"
-        android:text="Google search for place"
+        android:text="Select manually"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"

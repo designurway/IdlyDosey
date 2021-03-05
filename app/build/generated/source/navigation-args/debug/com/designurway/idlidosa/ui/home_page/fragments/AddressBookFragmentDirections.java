@@ -3,6 +3,7 @@ package com.designurway.idlidosa.ui.home_page.fragments;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.navigation.NavDirections;
+import com.designurway.idlidosa.HomeNavGraphDirections;
 import com.designurway.idlidosa.R;
 import java.lang.IllegalArgumentException;
 import java.lang.Object;
@@ -39,6 +40,18 @@ public class AddressBookFragmentDirections {
   public static ActionAddressBookFragmentToServiceNotAvailableFragment actionAddressBookFragmentToServiceNotAvailableFragment(
       @NonNull String address) {
     return new ActionAddressBookFragmentToServiceNotAvailableFragment(address);
+  }
+
+  @NonNull
+  public static ActionAddressBookFragmentToLocationFragment actionAddressBookFragmentToLocationFragment(
+      @NonNull String amount, @NonNull String name, @NonNull String phone,
+      @NonNull String orderId) {
+    return new ActionAddressBookFragmentToLocationFragment(amount, name, phone, orderId);
+  }
+
+  @NonNull
+  public static NavDirections actionGlobalNotificationListFragment() {
+    return HomeNavGraphDirections.actionGlobalNotificationListFragment();
   }
 
   public static class ActionAddressBookFragmentToPaymentFragment implements NavDirections {
@@ -730,6 +743,179 @@ public class AddressBookFragmentDirections {
     public String toString() {
       return "ActionAddressBookFragmentToServiceNotAvailableFragment(actionId=" + getActionId() + "){"
           + "address=" + getAddress()
+          + "}";
+    }
+  }
+
+  public static class ActionAddressBookFragmentToLocationFragment implements NavDirections {
+    private final HashMap arguments = new HashMap();
+
+    private ActionAddressBookFragmentToLocationFragment(@NonNull String amount,
+        @NonNull String name, @NonNull String phone, @NonNull String orderId) {
+      if (amount == null) {
+        throw new IllegalArgumentException("Argument \"amount\" is marked as non-null but was passed a null value.");
+      }
+      this.arguments.put("amount", amount);
+      if (name == null) {
+        throw new IllegalArgumentException("Argument \"name\" is marked as non-null but was passed a null value.");
+      }
+      this.arguments.put("name", name);
+      if (phone == null) {
+        throw new IllegalArgumentException("Argument \"phone\" is marked as non-null but was passed a null value.");
+      }
+      this.arguments.put("phone", phone);
+      if (orderId == null) {
+        throw new IllegalArgumentException("Argument \"orderId\" is marked as non-null but was passed a null value.");
+      }
+      this.arguments.put("orderId", orderId);
+    }
+
+    @NonNull
+    public ActionAddressBookFragmentToLocationFragment setAmount(@NonNull String amount) {
+      if (amount == null) {
+        throw new IllegalArgumentException("Argument \"amount\" is marked as non-null but was passed a null value.");
+      }
+      this.arguments.put("amount", amount);
+      return this;
+    }
+
+    @NonNull
+    public ActionAddressBookFragmentToLocationFragment setName(@NonNull String name) {
+      if (name == null) {
+        throw new IllegalArgumentException("Argument \"name\" is marked as non-null but was passed a null value.");
+      }
+      this.arguments.put("name", name);
+      return this;
+    }
+
+    @NonNull
+    public ActionAddressBookFragmentToLocationFragment setPhone(@NonNull String phone) {
+      if (phone == null) {
+        throw new IllegalArgumentException("Argument \"phone\" is marked as non-null but was passed a null value.");
+      }
+      this.arguments.put("phone", phone);
+      return this;
+    }
+
+    @NonNull
+    public ActionAddressBookFragmentToLocationFragment setOrderId(@NonNull String orderId) {
+      if (orderId == null) {
+        throw new IllegalArgumentException("Argument \"orderId\" is marked as non-null but was passed a null value.");
+      }
+      this.arguments.put("orderId", orderId);
+      return this;
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    @NonNull
+    public Bundle getArguments() {
+      Bundle __result = new Bundle();
+      if (arguments.containsKey("amount")) {
+        String amount = (String) arguments.get("amount");
+        __result.putString("amount", amount);
+      }
+      if (arguments.containsKey("name")) {
+        String name = (String) arguments.get("name");
+        __result.putString("name", name);
+      }
+      if (arguments.containsKey("phone")) {
+        String phone = (String) arguments.get("phone");
+        __result.putString("phone", phone);
+      }
+      if (arguments.containsKey("orderId")) {
+        String orderId = (String) arguments.get("orderId");
+        __result.putString("orderId", orderId);
+      }
+      return __result;
+    }
+
+    @Override
+    public int getActionId() {
+      return R.id.action_addressBookFragment_to_locationFragment;
+    }
+
+    @SuppressWarnings("unchecked")
+    @NonNull
+    public String getAmount() {
+      return (String) arguments.get("amount");
+    }
+
+    @SuppressWarnings("unchecked")
+    @NonNull
+    public String getName() {
+      return (String) arguments.get("name");
+    }
+
+    @SuppressWarnings("unchecked")
+    @NonNull
+    public String getPhone() {
+      return (String) arguments.get("phone");
+    }
+
+    @SuppressWarnings("unchecked")
+    @NonNull
+    public String getOrderId() {
+      return (String) arguments.get("orderId");
+    }
+
+    @Override
+    public boolean equals(Object object) {
+      if (this == object) {
+          return true;
+      }
+      if (object == null || getClass() != object.getClass()) {
+          return false;
+      }
+      ActionAddressBookFragmentToLocationFragment that = (ActionAddressBookFragmentToLocationFragment) object;
+      if (arguments.containsKey("amount") != that.arguments.containsKey("amount")) {
+        return false;
+      }
+      if (getAmount() != null ? !getAmount().equals(that.getAmount()) : that.getAmount() != null) {
+        return false;
+      }
+      if (arguments.containsKey("name") != that.arguments.containsKey("name")) {
+        return false;
+      }
+      if (getName() != null ? !getName().equals(that.getName()) : that.getName() != null) {
+        return false;
+      }
+      if (arguments.containsKey("phone") != that.arguments.containsKey("phone")) {
+        return false;
+      }
+      if (getPhone() != null ? !getPhone().equals(that.getPhone()) : that.getPhone() != null) {
+        return false;
+      }
+      if (arguments.containsKey("orderId") != that.arguments.containsKey("orderId")) {
+        return false;
+      }
+      if (getOrderId() != null ? !getOrderId().equals(that.getOrderId()) : that.getOrderId() != null) {
+        return false;
+      }
+      if (getActionId() != that.getActionId()) {
+        return false;
+      }
+      return true;
+    }
+
+    @Override
+    public int hashCode() {
+      int result = 1;
+      result = 31 * result + (getAmount() != null ? getAmount().hashCode() : 0);
+      result = 31 * result + (getName() != null ? getName().hashCode() : 0);
+      result = 31 * result + (getPhone() != null ? getPhone().hashCode() : 0);
+      result = 31 * result + (getOrderId() != null ? getOrderId().hashCode() : 0);
+      result = 31 * result + getActionId();
+      return result;
+    }
+
+    @Override
+    public String toString() {
+      return "ActionAddressBookFragmentToLocationFragment(actionId=" + getActionId() + "){"
+          + "amount=" + getAmount()
+          + ", name=" + getName()
+          + ", phone=" + getPhone()
+          + ", orderId=" + getOrderId()
           + "}";
     }
   }

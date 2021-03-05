@@ -3,6 +3,7 @@ package com.designurway.idlidosa.ui.home_page.fragments;
 import androidx.annotation.NonNull;
 import androidx.navigation.ActionOnlyNavDirections;
 import androidx.navigation.NavDirections;
+import com.designurway.idlidosa.HomeNavGraphDirections;
 import com.designurway.idlidosa.R;
 
 public class PaymentSucessfulFragmentDirections {
@@ -12,5 +13,10 @@ public class PaymentSucessfulFragmentDirections {
   @NonNull
   public static NavDirections actionPaymentSucessfulFragmentToHomeFragment() {
     return new ActionOnlyNavDirections(R.id.action_paymentSucessfulFragment_to_homeFragment);
+  }
+
+  @NonNull
+  public static NavDirections actionGlobalNotificationListFragment() {
+    return HomeNavGraphDirections.actionGlobalNotificationListFragment();
   }
 }

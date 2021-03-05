@@ -4,18 +4,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.home_page.fragments.NotificationFragment">
+   >
     <ImageView
         android:id="@+id/img_sad_face"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:background="@drawable/sad_face"
+        android:background="@drawable/no_order_placed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:visibility="gone"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:backgroundTint="@color/grey"/>
+        app:layout_constraintBottom_toBottomOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/noificationListRecycler"
         android:layout_width="match_parent"

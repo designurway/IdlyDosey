@@ -3,6 +3,7 @@ package com.designurway.idlidosa.ui.home_page.fragments;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.navigation.NavDirections;
+import com.designurway.idlidosa.HomeNavGraphDirections;
 import com.designurway.idlidosa.R;
 import java.lang.IllegalArgumentException;
 import java.lang.Object;
@@ -27,6 +28,11 @@ public class ReciveComboAddressFragmentDirections {
       @NonNull String name, @NonNull String address, @NonNull String amount, @NonNull String phone,
       @NonNull String comboId, @NonNull String productId, @NonNull String orderId) {
     return new ActionReciveComboAddressFragmentToPaytmActivity(name, address, amount, phone, comboId, productId, orderId);
+  }
+
+  @NonNull
+  public static NavDirections actionGlobalNotificationListFragment() {
+    return HomeNavGraphDirections.actionGlobalNotificationListFragment();
   }
 
   public static class ActionReciveComboAddressFragmentToPaymentFragment implements NavDirections {

@@ -346,6 +346,7 @@ public class PaytmActivity extends AppCompatActivity {
     }
 
     public void getNotification(String order_id) {
+
         Log.d("confirmorder", "Nmethod");
         RetrofitApi api = BaseClient.getClient().create(RetrofitApi.class);
         Call<GetNotificationResponse> call = api.getNotification(order_id, "new order");

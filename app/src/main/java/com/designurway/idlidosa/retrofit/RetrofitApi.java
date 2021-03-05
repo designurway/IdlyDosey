@@ -1,7 +1,6 @@
 package com.designurway.idlidosa.retrofit;
 
 
-
 import com.designurway.idlidosa.model.AddressModel;
 import com.designurway.idlidosa.model.DashComboDataModel;
 import com.designurway.idlidosa.model.ErrorMessageModel;
@@ -55,7 +54,7 @@ public interface RetrofitApi {
 
     @GET("varify_customer_phone.php")
     Call<ErrorMessageModel> verifyCustomerPhone(
-    @Query("phone") String phone);
+            @Query("phone") String phone);
 
     @GET("get_customer_otp.php")
     Call<StatusOTPModel> getOtpForPhone(
@@ -185,8 +184,8 @@ public interface RetrofitApi {
     );
 
     @GET("get_combo_product.php")
-   Call<MenuDetailsDataModel> setComboDetails(
-           @Query("combo_id") String comboId
+    Call<MenuDetailsDataModel> setComboDetails(
+            @Query("combo_id") String comboId
     );
 
 
@@ -197,14 +196,14 @@ public interface RetrofitApi {
     );
 
     @GET("delete_cart_item.php")
-    Call<ErrorMessageModel>deleteCartItem(
+    Call<ErrorMessageModel> deleteCartItem(
             @Query("customer_id") String customerId,
             @Query("order_id") String orderId,
             @Query("product_id") String productId
     );
 
     @GET("get_bulk_order_details.php")
-    Call<MenuDataModel>GetDashboard(
+    Call<MenuDataModel> GetDashboard(
             @Query("product_type") String title,
             @Query("customer_id") String customer_id
     );
@@ -301,7 +300,7 @@ public interface RetrofitApi {
     );
 
     @FormUrlEncoded
-        @POST("edit_address.php")
+    @POST("edit_address.php")
     Call<StatusAndMessageModel> EditAddress(
 
             @Field("customer_id") String customer_id,
@@ -321,5 +320,33 @@ public interface RetrofitApi {
     Call<StatusMessageModel> image(
             @Query("phone") String phone
     );
+
+
+    @GET("fetch_customer_notifications.php")
+    Call<NotificationListModel> getNotificationforCustomer(
+            @Query("customer_id") String customer_id
+    );
+
+    @GET("count_unread_notifications.php")
+    Call<StatusAndMessageModel> getNotificationCount(
+            @Query("customer_id") String customer_id
+    );
+
+    @FormUrlEncoded
+    @POST("update_unread_notification.php")
+    Call<StatusAndMessageModel> updateUnreadRead(
+            @Field("order_id") String order_id
+
+    );
+
+     @FormUrlEncoded
+    @POST("delete_notification.php")
+    Call<StatusAndMessageModel> deleteNotification(
+            @Field("order_id") String order_id,
+            @Field("customer_id") String customer_id
+
+    );
+
+
 
 }

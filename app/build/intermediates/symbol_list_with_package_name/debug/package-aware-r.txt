@@ -2252,6 +2252,7 @@ drawable catering
 drawable check_mark
 drawable checked
 drawable checkmark_selected
+drawable circle
 drawable clock
 drawable close
 drawable combo_basic
@@ -2293,10 +2294,12 @@ drawable design_snackbar_background
 drawable dot
 drawable down_arrow_hide
 drawable drop_shadow
+drawable edittext_bg
 drawable email
 drawable email_img
 drawable emg_poster
 drawable error_outline
+drawable flash
 drawable gift
 drawable google_pay
 drawable googleg_disabled_color_18
@@ -2345,7 +2348,9 @@ drawable logo
 drawable logo_here
 drawable logonew
 drawable mail
+drawable man
 drawable man_user
+drawable map_pin
 drawable material_cursor_drawable
 drawable material_ic_calendar_black_24dp
 drawable material_ic_clear_black_24dp
@@ -2475,6 +2480,7 @@ id EdtStreet
 id FPCSText
 id FUNCTION
 id GpsTxt
+id ImageDelete
 id Linear_office
 id LocationCardViwe
 id META
@@ -2528,6 +2534,7 @@ id accessibility_custom_action_8
 id accessibility_custom_action_9
 id action0
 id action_addressBookFragment_to_changeAddressFragment
+id action_addressBookFragment_to_locationFragment
 id action_addressBookFragment_to_paymentFragment
 id action_addressBookFragment_to_paytmActivity
 id action_addressBookFragment_to_serviceNotAvailableFragment
@@ -2544,10 +2551,12 @@ id action_context_bar
 id action_displayProductFragment_to_productDetailfragment
 id action_divider
 id action_emergencyFragment_to_viewCartItemsFragment2
+id action_global_notificationListFragment
 id action_googlePayFragment_to_paymentSucessfulFragment
 id action_homeFragment_to_displayProductFragment
 id action_homeFragment_to_emergencyFragment
 id action_image
+id action_locationFragment_to_paymentFragment
 id action_menu_divider
 id action_menu_presenter
 id action_mobileVerificationFragment2_to_otpVerficationFragment
@@ -2643,6 +2652,7 @@ id cancel_action
 id cancel_btn
 id cancel_button
 id cardView
+id cardView2
 id cardViw
 id card_detail
 id card_home_address
@@ -2713,6 +2723,7 @@ id dark
 id dataBinding
 id dateIcon
 id date_picker_actions
+id day_tv
 id decelerate
 id decelerateAndComplete
 id decor_content_parent
@@ -2802,6 +2813,7 @@ id gotToHome
 id grandTotalTxt
 id graph
 id graph_wrap
+id grey_view
 id group_divider
 id grouping
 id groups
@@ -2814,7 +2826,6 @@ id home
 id homeAsUp
 id homeFragment
 id homeNavHostFragment
-id homeToolBar
 id home_address_tv
 id home_chk
 id home_nav_graph
@@ -2825,6 +2836,7 @@ id hybrid
 id icGps
 id icon
 id icon_group
+id icon_iv
 id icon_only
 id ifRoom
 id ignore
@@ -2926,6 +2938,7 @@ id ll_nb_login
 id ll_nb_root_container
 id ll_nb_user_id_Selector
 id locality_et
+id locationFragment
 id log_pay_imgv
 id logo_cv
 id lottie_layer_name
@@ -3020,9 +3033,11 @@ id noificationListRecycler
 id none
 id normal
 id notificationListDate
+id notificationListFragment
 id notificationListMessage
 id notificationListTitle
 id notification_background
+id notification_imgv
 id notification_main_column
 id notification_main_column_container
 id notify_image
@@ -3049,6 +3064,7 @@ id order_delivery_ly
 id order_history_rv
 id order_id_ly
 id order_id_tv
+id order_message_tv
 id order_status_tv
 id order_subtotal_ly
 id order_tax_ly
@@ -3133,6 +3149,7 @@ id profileFragment4
 id profileImg
 id profileNameEt
 id profilePhoneEt
+id profile_cv
 id profile_details_rl
 id profile_pic_rl
 id progress_bar
@@ -3223,9 +3240,11 @@ id search_mag_icon
 id search_plate
 id search_src_text
 id search_voice_btn
+id selectLocBtn
 id selectLocationFragment
 id select_dialog_listview
 id selected
+id selectedLocation
 id selection_type
 id send_m_order
 id serviceNotAvailableFragment
@@ -3382,6 +3401,7 @@ id txtDescription
 id txtDoorNumber
 id txtIdly
 id txtLandMark
+id txtNotifyNo
 id txtNumber
 id txtOpps
 id txtOrder
@@ -3418,6 +3438,7 @@ id upload_img_cv
 id upload_img_rl
 id upload_imgv
 id upload_rl
+id urLoc
 id useLogo
 id user_name_et
 id user_name_tv
@@ -3550,8 +3571,9 @@ layout fragment_emr
 layout fragment_featured
 layout fragment_google_pay
 layout fragment_home
+layout fragment_location
 layout fragment_mobile_verification
-layout fragment_notification
+layout fragment_notification_list
 layout fragment_order_history
 layout fragment_order_history_details
 layout fragment_otp_verfication
@@ -3578,6 +3600,7 @@ layout layout_otp_helper
 layout layout_product_item
 layout layout_toolbar
 layout list_cart_items
+layout list_notifications
 layout list_order_history
 layout list_prescription
 layout list_received_combo

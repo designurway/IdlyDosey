@@ -4,6 +4,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.navigation.ActionOnlyNavDirections;
 import androidx.navigation.NavDirections;
+import com.designurway.idlidosa.HomeNavGraphDirections;
 import com.designurway.idlidosa.R;
 import java.lang.IllegalArgumentException;
 import java.lang.Object;
@@ -45,6 +46,11 @@ public class SettingsFragmentDirections {
   @NonNull
   public static NavDirections actionSettingsFragmentToTrackOrderListFragment() {
     return new ActionOnlyNavDirections(R.id.action_settingsFragment_to_trackOrderListFragment);
+  }
+
+  @NonNull
+  public static NavDirections actionGlobalNotificationListFragment() {
+    return HomeNavGraphDirections.actionGlobalNotificationListFragment();
   }
 
   public static class ActionSettingsFragmentToAddressBookFragment implements NavDirections {

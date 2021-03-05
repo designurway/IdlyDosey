@@ -85,7 +85,6 @@ dependencies {
     implementation "androidx.navigation:navigation-ui:2.3.3"
     implementation 'com.pusher:pusher-java-client:2.2.1'
     implementation 'com.google.android.libraries.places:places:2.4.0'
-
     implementation 'org.jsoup:jsoup:1.13.1'
 
 

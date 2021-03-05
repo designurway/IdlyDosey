@@ -3,6 +3,7 @@ package com.designurway.idlidosa.ui.home_page.fragments;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.navigation.NavDirections;
+import com.designurway.idlidosa.HomeNavGraphDirections;
 import com.designurway.idlidosa.R;
 import java.lang.IllegalArgumentException;
 import java.lang.Object;
@@ -19,6 +20,11 @@ public class DisplayProductFragmentDirections {
   public static ActionDisplayProductFragmentToProductDetailfragment actionDisplayProductFragmentToProductDetailfragment(
       @NonNull String productId, @NonNull String present) {
     return new ActionDisplayProductFragmentToProductDetailfragment(productId, present);
+  }
+
+  @NonNull
+  public static NavDirections actionGlobalNotificationListFragment() {
+    return HomeNavGraphDirections.actionGlobalNotificationListFragment();
   }
 
   public static class ActionDisplayProductFragmentToProductDetailfragment implements NavDirections {

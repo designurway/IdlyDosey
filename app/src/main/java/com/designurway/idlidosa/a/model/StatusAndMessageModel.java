@@ -4,6 +4,11 @@ public class StatusAndMessageModel {
     private String status;
     private String message;
     private String order_id;
+    private String unread;
+
+    public String getUnread() {
+        return unread;
+    }
 
     public String getStatus() {
         return status;
