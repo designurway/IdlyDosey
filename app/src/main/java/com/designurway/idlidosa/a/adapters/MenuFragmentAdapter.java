@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -45,6 +46,8 @@ public class MenuFragmentAdapter extends RecyclerView.Adapter<MenuFragmentAdapte
         holder.menuName.setText(modellist.get(position).getProduct_name());
         holder.menu_description_tv.setText(modellist.get(position).getDescription());
         holder.menu_price_tv.setText("\u20B9 "+modellist.get(position).getPrice());
+
+        setFragmentTransaction.sendView(position,holder.itemView);
         holder.cardLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,6 +72,7 @@ public class MenuFragmentAdapter extends RecyclerView.Adapter<MenuFragmentAdapte
         ImageView menuImage;
         TextView menuName,menu_description_tv,menu_price_tv;
         CardView  cardLayout;
+        ProgressBar progress_bulk;
 
         public Vholder(@NonNull View itemView) {
             super(itemView);
@@ -77,10 +81,12 @@ public class MenuFragmentAdapter extends RecyclerView.Adapter<MenuFragmentAdapte
             menu_price_tv= itemView.findViewById(R.id.menu_price_tv);
             menu_description_tv= itemView.findViewById(R.id.menu_description_tv);
             cardLayout= itemView.findViewById(R.id.menu_overall_layout_cv);
+            progress_bulk= itemView.findViewById(R.id.progress_bulk);
         }
     }
 
     public interface setFragmentTransaction {
         void sendPosition(int position,String id);
+        void sendView(int position,View view);
     }
 }

@@ -1,5 +1,6 @@
 package com.designurway.idlidosa.ui.auth.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -28,6 +29,7 @@ import com.designurway.idlidosa.a.retrofit.BaseClient;
 import com.designurway.idlidosa.a.retrofit.RetrofitApi;
 import com.designurway.idlidosa.a.utils.AndroidUtils;
 import com.designurway.idlidosa.a.utils.PreferenceManager;
+
 import com.designurway.idlidosa.databinding.FragmentOtpVerficationBinding;
 import com.designurway.idlidosa.ui.home_page.HomePageActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -49,9 +51,10 @@ public class OtpVerficationFragment extends Fragment {
     Button verifyOtpBtn;
     String phone;
     EditText otpEt1, otpEt2, otpEt3, otpEt4;
-    String otp, otp1, otp2, otp3, otp4,token;
-    TextView otpNumTxt,rensend;
+    String otp, otp1, otp2, otp3, otp4, token;
+    TextView otpNumTxt, rensend;
     OtpVerficationFragmentArgs args;
+    Context context;
 
     public OtpVerficationFragment() {
         // Required empty public constructor
@@ -60,18 +63,20 @@ public class OtpVerficationFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        context = container.getContext();
         // Inflate the layout for this fragment
 //        return inflater.inflate(R.layout.fragment_otp_verfication, container, false);
         FirebaseInstanceId.getInstance().getInstanceId()
                 .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
                     @Override
                     public void onComplete(@NonNull Task<InstanceIdResult> task) {
-                        if (task.isSuccessful()){
-                            token=task.getResult().getToken();
+                        if (task.isSuccessful()) {
+                            token = task.getResult().getToken();
 
-                            Log.d("token",token);
-                        }else{
-                            Log.d("TAG","failed to generate");
+                            Log.d("token", token);
+                        } else {
+                            Log.d("TAG", "failed to generate");
 
                         }
                     }
@@ -214,7 +219,7 @@ public class OtpVerficationFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                otp = otp1+otp2+otp3+otp4;
+                otp = otp1 + otp2 + otp3 + otp4;
 
                 goToHomeActivity();
             }
@@ -224,7 +229,7 @@ public class OtpVerficationFragment extends Fragment {
     public void goToHomeActivity() {
 
 
-        if (!AndroidUtils.isNetworkAvailable(getContext())) {
+        if (!AndroidUtils.isNetworkAvailable(context)) {
             Toast.makeText(getContext().getApplicationContext(),
                     this.getText(R.string.no_internet),
                     Toast.LENGTH_SHORT).show();
@@ -244,7 +249,7 @@ public class OtpVerficationFragment extends Fragment {
 
 
         RetrofitApi retrofitApi = BaseClient.getClient().create(RetrofitApi.class);
-        Call<LoginModel> call = retrofitApi.verifyPhoneAndOTP(phone, otp, email, pwd,token);
+        Call<LoginModel> call = retrofitApi.verifyPhoneAndOTP(phone, otp, email, pwd, token);
         call.enqueue(new Callback<LoginModel>() {
             @Override
             public void onResponse(Call<LoginModel> call, Response<LoginModel> response) {
@@ -313,4 +318,12 @@ public class OtpVerficationFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (context == null) {
+            context = getContext().getApplicationContext();
+        }
+
+    }
 }

@@ -114,8 +114,11 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback,Goo
         selectLocBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                action=LocationFragmentDirections.actionLocationFragmentToPaymentFragment(name,address,amount,phone,"none","none",OrderID);
-                Navigation.findNavController(v).navigate(action);
+
+                    action=LocationFragmentDirections.actionLocationFragmentToPaymentFragment(name,address,amount,phone,"none","none",OrderID);
+                    Navigation.findNavController(v).navigate(action);
+
+
             }
         });
 
@@ -148,7 +151,7 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback,Goo
 
     private void getCurrentLoc() {
 
-        Toast.makeText(context, "getCurrentLoc", Toast.LENGTH_SHORT).show();
+
 
         if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(),
@@ -173,7 +176,8 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback,Goo
 
                     CustomerLocation = new LatLng(location.getLatitude(),location.getLongitude());
                     googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(CustomerLocation, 16));
-                    Toast.makeText(context, " Location : "+CustomerLocation, Toast.LENGTH_SHORT).show();
+
+
                     Geocoder geocoder = new Geocoder(getActivity(), Locale.getDefault());
                     try {
                         List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
@@ -207,7 +211,7 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback,Goo
 
 
         getAddress ( context, latitude, longitude );
-        Toast.makeText(context , String.valueOf(longitude) + "this is long", Toast.LENGTH_SHORT).show();
+
     }
 
     // Getting Addtress from Latitude and Longitude

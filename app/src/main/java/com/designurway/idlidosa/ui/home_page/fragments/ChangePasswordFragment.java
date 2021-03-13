@@ -1,5 +1,6 @@
 package com.designurway.idlidosa.ui.home_page.fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -38,12 +39,14 @@ public class ChangePasswordFragment extends Fragment {
 
     @BindView(R.id.confirm_pwd_et)
     EditText confirmPwdEt;
+    Context context;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_change_password, container, false);
         ButterKnife.bind(this, view);
+        context=container.getContext();
         return view;
     }
     
@@ -53,7 +56,7 @@ public class ChangePasswordFragment extends Fragment {
         String newPwd=newPwdEt.getText().toString().trim();
         String confirmPwd=confirmPwdEt.getText().toString().trim();
 
-        if (!AndroidUtils.isNetworkAvailable(getContext())){
+        if (!AndroidUtils.isNetworkAvailable(context)){
             Toast.makeText(getContext(), this.getString(R.string.no_internet), Toast.LENGTH_SHORT).show();
         }
 
@@ -95,4 +98,14 @@ else {
             }
         });
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if (context==null){
+            context=getActivity().getApplicationContext();
+        }
+        }
+
 }

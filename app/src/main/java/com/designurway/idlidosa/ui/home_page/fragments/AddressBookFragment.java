@@ -25,6 +25,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -70,26 +71,28 @@ public class AddressBookFragment extends Fragment {
     AddressBookFragmentArgs args;
     NavDirections action;
     private static int AUTOCOMPLETE_REQUEST_CODE = 1;
-    String amount,FromSetting,orderId;
+    String amount, FromSetting, orderId;
     private static final String TAG = "AddressFragment";
     ImageView checkBox;
     ImageView homeChk;
-    TextView nameTv,addressTv,homePhoneTv,ofcNameTv;
-    TextView ofcAddressTv,ofcPhoneTv;
+    TextView nameTv, addressTv, homePhoneTv, ofcNameTv;
+    TextView ofcAddressTv, ofcPhoneTv;
     ImageView imgSadFace;
     CardView cardHomeAddress;
     CardView cardOfcAddress;
-    String name,address,phone;
+    String name, address, phone;
     ImageView imgEditHome;
     ImageView imgEditOffice;
     LinearLayout linearHome;
     LinearLayout LinearOffice;
     ImageView officeChk;
-    TextView officeNameTv, officeAddressTv, ofc_phone_tv,manualLocationAdb,TextOr;
-    String homePincode,officePincode , pincode;
+    TextView officeNameTv, officeAddressTv, ofc_phone_tv, manualLocationAdb, TextOr;
+    String homePincode, officePincode, pincode;
     ConstraintLayout currentLocationLayout;
     FusedLocationProviderClient fusedLocationProviderClient;
     Context context;
+    ConstraintLayout  constraintItem;
+    ProgressBar progressAddress;
 
 
     @Override
@@ -98,9 +101,11 @@ public class AddressBookFragment extends Fragment {
 
 
         // Inflate the layout for this fragment
-        binding= FragmentAddressBookBinding.inflate(inflater,container,false);
+        binding = FragmentAddressBookBinding.inflate(inflater, container, false);
 
         officeChk = binding.officeChk;
+        progressAddress = binding.progressAddress;
+        constraintItem = binding.constraintItem;
         officeNameTv = binding.officeNameTv;
         officeAddressTv = binding.officeAddressTv;
         ofc_phone_tv = binding.ofcPhoneTv;
@@ -111,7 +116,7 @@ public class AddressBookFragment extends Fragment {
         ofcNameTv = binding.officeNameTv;
         ofcAddressTv = binding.officeAddressTv;
         ofcPhoneTv = binding.ofcPhoneTv;
-        imgSadFace= binding.imgSadFace;
+        imgSadFace = binding.imgSadFace;
         cardHomeAddress = binding.cardHomeAddress;
         cardOfcAddress = binding.cardOfcAddress;
         imgEditHome = binding.imgEditHome;
@@ -126,7 +131,7 @@ public class AddressBookFragment extends Fragment {
         args = AddressBookFragmentArgs.fromBundle(getArguments());
         amount = args.getAmount();
         FromSetting = args.getFromSetting();
-        orderId= args.getOrderId();
+        orderId = args.getOrderId();
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
 
@@ -134,7 +139,7 @@ public class AddressBookFragment extends Fragment {
         Bundle bundle = getArguments();
 
         Geocoder coder = new Geocoder(getActivity());
-        List<Address> Homeaddress=null;
+        List<Address> Homeaddress = null;
 
         try {
             Homeaddress = coder.getFromLocationName(addressTv.getText().toString(), 5);
@@ -151,11 +156,10 @@ public class AddressBookFragment extends Fragment {
                     public void onClick(View v) {
 
 
-
-                        if (addressTv.getText().toString().isEmpty()){
+                        if (addressTv.getText().toString().isEmpty()) {
                             Toast.makeText(getContext(), "add missing address", Toast.LENGTH_SHORT).show();
                             return;
-                        }else{
+                        } else {
 
                             name = officeNameTv.getText().toString();
                             address = addressTv.getText().toString();
@@ -168,7 +172,6 @@ public class AddressBookFragment extends Fragment {
                         }
 
 
-
                     }
                 });
 
@@ -177,20 +180,19 @@ public class AddressBookFragment extends Fragment {
                     public void onClick(View v) {
 
 
+                        if (officeAddressTv.getText().toString().isEmpty()) {
+                            Toast.makeText(getContext(), "add missing address", Toast.LENGTH_SHORT).show();
+                            return;
+                        } else {
 
-                       if ( officeAddressTv.getText().toString().isEmpty()){
-                           Toast.makeText(getContext(), "add missing address", Toast.LENGTH_SHORT).show();
-                           return;
-                       }else{
+                            name = nameTv.getText().toString();
+                            address = officeAddressTv.getText().toString();
+                            phone = homePhoneTv.getText().toString();
 
-                           name = nameTv.getText().toString();
-                           address = officeAddressTv.getText().toString();
-                           phone = homePhoneTv.getText().toString();
-
-                           checkService(officePincode);
+                            checkService(officePincode);
 
 
-                       }
+                        }
 
 
                     }
@@ -214,16 +216,20 @@ public class AddressBookFragment extends Fragment {
                 public void onClick(View v) {
 
 
-                    action = AddressBookFragmentDirections.actionAddressBookFragmentToChangeAddressFragment("office");
-                    Navigation.findNavController(getView()).navigate(action);
+                        action = AddressBookFragmentDirections.actionAddressBookFragmentToChangeAddressFragment("office");
+                        Navigation.findNavController(getView()).navigate(action);
+
+
                 }
             });
             imgEditHome.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
-                    action = AddressBookFragmentDirections.actionAddressBookFragmentToChangeAddressFragment("home");
-                    Navigation.findNavController(getView()).navigate(action);
+                        action = AddressBookFragmentDirections.actionAddressBookFragmentToChangeAddressFragment("home");
+                        Navigation.findNavController(getView()).navigate(action);
+
+
                 }
             });
         }
@@ -241,8 +247,13 @@ public class AddressBookFragment extends Fragment {
                 name = officeNameTv.getText().toString();
                 address = addressTv.getText().toString();
                 phone = ofc_phone_tv.getText().toString();
-                action=AddressBookFragmentDirections.actionAddressBookFragmentToLocationFragment(amount,name,phone,orderId);
-                Navigation.findNavController(v).navigate(action);
+
+
+                    action = AddressBookFragmentDirections.actionAddressBookFragmentToLocationFragment(amount, name, phone, orderId);
+                    Navigation.findNavController(v).navigate(action);
+
+
+
             }
         });
 
@@ -267,18 +278,21 @@ public class AddressBookFragment extends Fragment {
             @Override
             public void onResponse(Call<AddressModel> call, Response<AddressModel> response) {
                 if (response.isSuccessful()) {
+
+                    constraintItem.setVisibility(View.VISIBLE);
+                    progressAddress.setVisibility(View.INVISIBLE);
                     nameTv.setText(response.body().getName());
                     addressTv.setText(response.body().getHomeAddress());
                     homePhoneTv.setText(response.body().getPhone());
-
                     homePincode = response.body().getPin_code();
                     officePincode = response.body().getOffice_pin_code();
-
                     ofcNameTv.setText(response.body().getName());
                     ofcAddressTv.setText(response.body().getOtherAddress());
                     ofcPhoneTv.setText(response.body().getPhone());
 
                 } else {
+                    constraintItem.setVisibility(View.VISIBLE);
+                    progressAddress.setVisibility(View.INVISIBLE);
                     imgSadFace.setVisibility(View.VISIBLE);
                     cardHomeAddress.setVisibility(View.GONE);
                     cardOfcAddress.setVisibility(View.GONE);
@@ -289,27 +303,34 @@ public class AddressBookFragment extends Fragment {
             @Override
             public void onFailure(Call<AddressModel> call, Throwable t) {
                 Log.d(TAG, "onFailure" + t.getMessage());
-
+                constraintItem.setVisibility(View.VISIBLE);
+                progressAddress.setVisibility(View.INVISIBLE);
             }
         });
     }
 
 
-    public void checkService( String pinCode){
+    public void checkService(String pinCode) {
 
         RetrofitApi retrofitApi = BaseClient.getClient().create(RetrofitApi.class);
         Call<CheckServiceModel> call = retrofitApi.checkService(pinCode);
         call.enqueue(new Callback<CheckServiceModel>() {
             @Override
             public void onResponse(Call<CheckServiceModel> call, Response<CheckServiceModel> response) {
-                if(response.isSuccessful() && response.body().getMessage().equals("available")){
+                if (response.isSuccessful() && response.body().getMessage().equals("available")) {
 
-                    action = AddressBookFragmentDirections.actionAddressBookFragmentToPaymentFragment(name,address,amount,phone,"none","none",orderId);
-                    Navigation.findNavController(getView()).navigate(action);
 
-                }else{
-                    action = AddressBookFragmentDirections.actionAddressBookFragmentToServiceNotAvailableFragment(address);
-                    Navigation.findNavController(getView()).navigate(action);
+                        action = AddressBookFragmentDirections.actionAddressBookFragmentToPaymentFragment(name, address, amount, phone, "none", "none", orderId);
+                        Navigation.findNavController(getView()).navigate(action);
+
+
+
+                } else {
+
+                        action = AddressBookFragmentDirections.actionAddressBookFragmentToServiceNotAvailableFragment(address);
+                        Navigation.findNavController(getView()).navigate(action);
+
+
                 }
             }
 
@@ -322,14 +343,14 @@ public class AddressBookFragment extends Fragment {
     }
 
 
-    public void checkAddressEmpty(){
+    public void checkAddressEmpty() {
 
-        if (ofcAddressTv.getText().toString().isEmpty()){
+        if (ofcAddressTv.getText().toString().isEmpty()) {
             Toast.makeText(getContext(), "please add missing address", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        if (addressTv.getText().toString().isEmpty()){
+        if (addressTv.getText().toString().isEmpty()) {
             Toast.makeText(getContext(), "please add missing address", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -355,10 +376,10 @@ public class AddressBookFragment extends Fragment {
                     Geocoder geocoder = new Geocoder(getActivity(), Locale.getDefault());
                     try {
                         List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
-                        String pincode=null;
-                        if ( addresses != null && addresses.size ( ) > 0 ) {
-                            pincode = addresses.get ( 0 ).getPostalCode ( );
-                            Log.d("pincode","current address"+pincode);
+                        String pincode = null;
+                        if (addresses != null && addresses.size() > 0) {
+                            pincode = addresses.get(0).getPostalCode();
+                            Log.d("pincode", "current address" + pincode);
                         }
                        /* action = SelectLocationFragmentDirections.actionSelectLocationFragmentToAuthProfileFragment(addresses.get(0).getAddressLine(0),pincode,referralCode,phone);
                         Navigation.findNavController(getView()).navigate(action);
@@ -382,22 +403,22 @@ public class AddressBookFragment extends Fragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @org.jetbrains.annotations.Nullable Intent data) {
-        List<Address> addresses=null;
+        List<Address> addresses = null;
         if (requestCode == AUTOCOMPLETE_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
 
                 Place place = Autocomplete.getPlaceFromIntent(data);
 
-                LatLng latLng= place.getLatLng();
+                LatLng latLng = place.getLatLng();
 
 
                 try {
-                    Geocoder geocoder = new Geocoder ( getActivity(), Locale.getDefault ( ) );
-                     addresses = geocoder.getFromLocation ( place.getLatLng().latitude, place.getLatLng().longitude, 1 );
+                    Geocoder geocoder = new Geocoder(getActivity(), Locale.getDefault());
+                    addresses = geocoder.getFromLocation(place.getLatLng().latitude, place.getLatLng().longitude, 1);
 
-                    if ( addresses != null && addresses.size ( ) > 0 ) {
-                        pincode = addresses.get ( 0 ).getPostalCode ( );
-                        Log.d("pincode",pincode);
+                    if (addresses != null && addresses.size() > 0) {
+                        pincode = addresses.get(0).getPostalCode();
+                        Log.d("pincode", pincode);
                     }
                 } catch (IOException e) {
                     e.printStackTrace();

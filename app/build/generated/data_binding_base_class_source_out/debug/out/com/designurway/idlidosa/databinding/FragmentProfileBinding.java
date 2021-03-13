@@ -6,10 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import com.designurway.idlidosa.R;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -20,6 +22,9 @@ import java.lang.String;
 public final class FragmentProfileBinding implements ViewBinding {
   @NonNull
   private final ScrollView rootView;
+
+  @NonNull
+  public final ConstraintLayout CostraintProfile;
 
   @NonNull
   public final TextView addressTxt;
@@ -52,18 +57,24 @@ public final class FragmentProfileBinding implements ViewBinding {
   public final EditText profilePhoneEt;
 
   @NonNull
+  public final ProgressBar progressProfile;
+
+  @NonNull
   public final TextView referaalTxt;
 
   @NonNull
   public final Button saveProfileBtn;
 
-  private FragmentProfileBinding(@NonNull ScrollView rootView, @NonNull TextView addressTxt,
+  private FragmentProfileBinding(@NonNull ScrollView rootView,
+      @NonNull ConstraintLayout CostraintProfile, @NonNull TextView addressTxt,
       @NonNull TextView emailTxt, @NonNull TextView nameTxt, @NonNull CircleImageView otpImg,
       @NonNull TextView phoneTxt, @NonNull EditText profileAddressEt,
       @NonNull EditText profileEmailEt, @NonNull CircleImageView profileImg,
       @NonNull EditText profileNameEt, @NonNull EditText profilePhoneEt,
-      @NonNull TextView referaalTxt, @NonNull Button saveProfileBtn) {
+      @NonNull ProgressBar progressProfile, @NonNull TextView referaalTxt,
+      @NonNull Button saveProfileBtn) {
     this.rootView = rootView;
+    this.CostraintProfile = CostraintProfile;
     this.addressTxt = addressTxt;
     this.emailTxt = emailTxt;
     this.nameTxt = nameTxt;
@@ -74,6 +85,7 @@ public final class FragmentProfileBinding implements ViewBinding {
     this.profileImg = profileImg;
     this.profileNameEt = profileNameEt;
     this.profilePhoneEt = profilePhoneEt;
+    this.progressProfile = progressProfile;
     this.referaalTxt = referaalTxt;
     this.saveProfileBtn = saveProfileBtn;
   }
@@ -105,6 +117,12 @@ public final class FragmentProfileBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.CostraintProfile;
+      ConstraintLayout CostraintProfile = rootView.findViewById(id);
+      if (CostraintProfile == null) {
+        break missingId;
+      }
+
       id = R.id.addressTxt;
       TextView addressTxt = rootView.findViewById(id);
       if (addressTxt == null) {
@@ -165,6 +183,12 @@ public final class FragmentProfileBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.progressProfile;
+      ProgressBar progressProfile = rootView.findViewById(id);
+      if (progressProfile == null) {
+        break missingId;
+      }
+
       id = R.id.referaal_txt;
       TextView referaalTxt = rootView.findViewById(id);
       if (referaalTxt == null) {
@@ -177,9 +201,9 @@ public final class FragmentProfileBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentProfileBinding((ScrollView) rootView, addressTxt, emailTxt, nameTxt,
-          otpImg, phoneTxt, profileAddressEt, profileEmailEt, profileImg, profileNameEt,
-          profilePhoneEt, referaalTxt, saveProfileBtn);
+      return new FragmentProfileBinding((ScrollView) rootView, CostraintProfile, addressTxt,
+          emailTxt, nameTxt, otpImg, phoneTxt, profileAddressEt, profileEmailEt, profileImg,
+          profileNameEt, profilePhoneEt, progressProfile, referaalTxt, saveProfileBtn);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

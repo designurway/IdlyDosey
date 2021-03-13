@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,16 +36,20 @@ public final class LayoutFeaturedItemBinding implements ViewBinding {
   @NonNull
   public final TextView menuPriceTv;
 
+  @NonNull
+  public final ProgressBar progressBulk;
+
   private LayoutFeaturedItemBinding(@NonNull ConstraintLayout rootView,
       @NonNull TextView menuDescriptionTv, @NonNull ImageView menuImgIv,
       @NonNull TextView menuNameTv, @NonNull CardView menuOverallLayoutCv,
-      @NonNull TextView menuPriceTv) {
+      @NonNull TextView menuPriceTv, @NonNull ProgressBar progressBulk) {
     this.rootView = rootView;
     this.menuDescriptionTv = menuDescriptionTv;
     this.menuImgIv = menuImgIv;
     this.menuNameTv = menuNameTv;
     this.menuOverallLayoutCv = menuOverallLayoutCv;
     this.menuPriceTv = menuPriceTv;
+    this.progressBulk = progressBulk;
   }
 
   @Override
@@ -104,8 +109,14 @@ public final class LayoutFeaturedItemBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.progress_bulk;
+      ProgressBar progressBulk = rootView.findViewById(id);
+      if (progressBulk == null) {
+        break missingId;
+      }
+
       return new LayoutFeaturedItemBinding((ConstraintLayout) rootView, menuDescriptionTv,
-          menuImgIv, menuNameTv, menuOverallLayoutCv, menuPriceTv);
+          menuImgIv, menuNameTv, menuOverallLayoutCv, menuPriceTv, progressBulk);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

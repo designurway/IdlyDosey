@@ -83,6 +83,11 @@ public class FeaturedFragment extends Fragment {
                             fragment.setArguments(bundle);
                             getFragmentManager().beginTransaction().replace(R.id.frame_lt, fragment).addToBackStack(null).commit();
                         }
+
+                        @Override
+                        public void sendView(int position, View view) {
+
+                        }
                     });
                     recycler_featurefragment.setLayoutManager(new LinearLayoutManager(getContext(),
                             LinearLayoutManager.HORIZONTAL, false));

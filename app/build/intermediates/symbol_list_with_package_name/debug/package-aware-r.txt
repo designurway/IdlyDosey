@@ -2344,7 +2344,6 @@ drawable location
 drawable location_img
 drawable lock
 drawable login_bg
-drawable logo
 drawable logo_here
 drawable logonew
 drawable mail
@@ -2451,6 +2450,7 @@ drawable track
 drawable track_btn_bg
 drawable unchecked
 drawable up_arrow_show
+drawable update_arrows
 drawable upi
 drawable upload
 drawable version
@@ -2470,6 +2470,8 @@ id CardEdit
 id CardOffer
 id CardOrder
 id CardSupport
+id CardUpdate
+id CostraintProfile
 id Edit
 id EditSupport
 id EdtCity
@@ -2495,7 +2497,6 @@ id SearchTxt
 id TOP_END
 id TOP_START
 id TextOr
-id a
 id aboutCompTitle
 id aboutLogo
 id accelerate
@@ -2703,10 +2704,15 @@ id consRefer
 id consSigout
 id consSupport
 id consTrack
+id consUpdate
 id constPickReward
 id constrain_condition
 id constrain_wallet
+id constraintItem
+id constraintProgrss
+id constraintRecycler
 id constrant_button
+id constriant
 id container
 id content
 id contentPanel
@@ -2848,6 +2854,7 @@ id imagArrReward
 id imagArrSignout
 id imagArrSupport
 id imagArrTrack
+id imagArrUpdate
 id imagEdit
 id imagOrder
 id imagRefer
@@ -2855,6 +2862,7 @@ id imagReward
 id imagSignout
 id imagSupport
 id imagTrack
+id imagUpdate
 id image
 id imageCard
 id imageView
@@ -3037,7 +3045,6 @@ id notificationListFragment
 id notificationListMessage
 id notificationListTitle
 id notification_background
-id notification_imgv
 id notification_main_column
 id notification_main_column_container
 id notify_image
@@ -3152,7 +3159,13 @@ id profilePhoneEt
 id profile_cv
 id profile_details_rl
 id profile_pic_rl
+id progress
+id progressAddress
+id progressCart
+id progressDisplay
+id progressProfile
 id progress_bar
+id progress_bulk
 id progress_circular
 id progress_horizontal
 id rTxt
@@ -3401,7 +3414,6 @@ id txtDescription
 id txtDoorNumber
 id txtIdly
 id txtLandMark
-id txtNotifyNo
 id txtNumber
 id txtOpps
 id txtOrder
@@ -3567,7 +3579,6 @@ layout fragment_combo
 layout fragment_display_product
 layout fragment_edit_address
 layout fragment_emergency
-layout fragment_emr
 layout fragment_featured
 layout fragment_google_pay
 layout fragment_home

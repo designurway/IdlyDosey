@@ -2,6 +2,7 @@ package com.designurway.idlidosa.ui.home_page.fragments;
 
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import com.designurway.idlidosa.R;
@@ -69,6 +71,14 @@ RelativeLayout no_data_ly;
                             DisplayProductFragment fragment = new DisplayProductFragment();
                             fragment.setArguments(bundle);
                             getFragmentManager().beginTransaction().replace(R.id.frame_lt, fragment).addToBackStack(null).commit();
+                        }
+
+                        @Override
+                        public void sendView(int position, View view) {
+                            ProgressBar progressBar=view.findViewById(R.id.progress_bulk);
+                            CardView card=view.findViewById(R.id.menu_overall_layout_cv);
+                            progressBar.setVisibility(View.INVISIBLE);
+                            card.setVisibility(View.VISIBLE);
                         }
                     });
                     recycler_combo_fragment.setLayoutManager(new LinearLayoutManager(getContext(),

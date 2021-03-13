@@ -36,7 +36,7 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.orderIdTv.setText("#"+orderHistoryModels.get(position).getOrder_id());
-        holder.amountTv.setText("\u20A8"+" "+orderHistoryModels.get(position).getPrice());
+        holder.amountTv.setText("₹"+orderHistoryModels.get(position).getPrice());
         holder.dateTv.setText(orderHistoryModels.get(position).getCreated_date());
         holder.statusTv.setText(orderHistoryModels.get(position).getOrder_status());
 

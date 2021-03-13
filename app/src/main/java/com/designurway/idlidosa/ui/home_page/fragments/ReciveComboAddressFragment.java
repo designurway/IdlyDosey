@@ -114,8 +114,11 @@ public class ReciveComboAddressFragment extends Fragment {
                     name = officeNameTv.getText().toString();
                     address = addressTv.getText().toString();
                     phone = ofc_phone_tv.getText().toString();
-                    action = ReciveComboAddressFragmentDirections.actionReciveComboAddressFragmentToPaymentFragment(name,address,"0",phone,comboId,productId,orderId);
-                    Navigation.findNavController(getView()).navigate(action);
+
+                        action = ReciveComboAddressFragmentDirections.actionReciveComboAddressFragmentToPaymentFragment(name,address,"0",phone,comboId,productId,orderId);
+                        Navigation.findNavController(getView()).navigate(action);
+
+
                 }
 
 
@@ -142,8 +145,11 @@ public class ReciveComboAddressFragment extends Fragment {
                     name = nameTv.getText().toString();
                     address = officeAddressTv.getText().toString();
                     phone = homePhoneTv.getText().toString();
-                    action = ReciveComboAddressFragmentDirections.actionReciveComboAddressFragmentToPaymentFragment(name,address,"0",phone,comboId,productId,orderId);
-                    Navigation.findNavController(getView()).navigate(action);
+
+                        action = ReciveComboAddressFragmentDirections.actionReciveComboAddressFragmentToPaymentFragment(name,address,"0",phone,comboId,productId,orderId);
+                        Navigation.findNavController(getView()).navigate(action);
+
+
                 }
 
 

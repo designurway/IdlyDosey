@@ -2,6 +2,7 @@ package com.designurway.idlidosa.ui.auth.fragment;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -52,6 +53,8 @@ public class MobileVerificationFragment extends Fragment {
     EditText phoneEt;
     Button getOtpBtn;
     TextView sign_in_tv;
+    Context context;
+    View view;
 
     public MobileVerificationFragment() {
         // Required empty public constructor
@@ -64,12 +67,23 @@ public class MobileVerificationFragment extends Fragment {
         // Inflate the layout for this fragment
 //        return inflater.inflate(R.layout.fragment_mobile_verification, container, false);
         binding = FragmentMobileVerificationBinding.inflate(inflater, container, false);
+        context = container.getContext();
+        this.view = container.getRootView();
+        Log.d("Context", context.toString());
         return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        if (context == null) {
+            context = view.getContext();
+        }
+
+        if (view == null) {
+            this.view = view;
+        }
 
         phoneEt = binding.phoneEt;
         getOtpBtn = binding.getOtpBtn;
@@ -83,7 +97,7 @@ public class MobileVerificationFragment extends Fragment {
             public void onClick(View v) {
 
                 String phone = phoneEt.getText().toString().trim();
-                if (!AndroidUtils.isNetworkAvailable(getContext())) {
+                if (!AndroidUtils.isNetworkAvailable(context)) {
                     Toast.makeText(getContext().getApplicationContext(), getContext().getText(R.string.no_internet), Toast.LENGTH_SHORT).show();
                 }
                 if (phone.isEmpty()) {
@@ -93,8 +107,6 @@ public class MobileVerificationFragment extends Fragment {
                 if (!AndroidUtils.validMobileNumber(phone)) {
                     Toast.makeText(getContext(), getContext().getText(R.string.valid_phone), Toast.LENGTH_SHORT).show();
                 } else {
-
-
                     verifyPhoneApi(phone);
                 }
             }
@@ -117,11 +129,12 @@ public class MobileVerificationFragment extends Fragment {
 
                         getOtpForPhone(phone);
 
-
                     } else if (response.body().getMessage().contains("mobile number not found")) {
 
-                        action = MobileVerificationFragmentDirections.actionMobileVerificationFragment2ToReferalCodeFragment(phone);
-                        Navigation.findNavController(getView()).navigate(action);
+                             action = MobileVerificationFragmentDirections.actionMobileVerificationFragment2ToReferalCodeFragment(phone);
+                             Navigation.findNavController(getView()).navigate(action);
+
+
 
                     }
 
@@ -140,15 +153,19 @@ public class MobileVerificationFragment extends Fragment {
     }
 
     private void getOtpForPhone(String phone) {
+
         RetrofitApi retrofitApi = BaseClient.getClient().create(RetrofitApi.class);
         Call<StatusOTPModel> call = retrofitApi.getOtpForPhone(phone);
         call.enqueue(new Callback<StatusOTPModel>() {
             @Override
             public void onResponse(Call<StatusOTPModel> call, Response<StatusOTPModel> response) {
+                Toast.makeText(getContext(), response.message()+" "+response.message(), Toast.LENGTH_SHORT).show();
                 if (response.isSuccessful()) {
+
                     Toast.makeText(getContext(), "otp sent success", Toast.LENGTH_SHORT).show();
-                    action = MobileVerificationFragmentDirections.actionMobileVerificationFragment2ToOtpVerficationFragment(phone);
-                    Navigation.findNavController(getView()).navigate(action);
+
+                        action = MobileVerificationFragmentDirections.actionMobileVerificationFragment2ToOtpVerficationFragment(phone);
+                        Navigation.findNavController(getView()).navigate(action);
 
                 } else {
                     Toast.makeText(getContext(), "failure", Toast.LENGTH_SHORT).show();
@@ -222,13 +239,13 @@ public class MobileVerificationFragment extends Fragment {
 
     private void storagePermisiom() {
 
-        if ( askForPermission(Manifest.permission.READ_EXTERNAL_STORAGE, 2) |
-             askForPermission(Manifest.permission.ACCESS_FINE_LOCATION, 2) |
-             askForPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, 2) |
-             askForPermission(Manifest.permission.READ_PHONE_STATE, 2)
+        if (askForPermission(Manifest.permission.READ_EXTERNAL_STORAGE, 2) |
+                askForPermission(Manifest.permission.ACCESS_FINE_LOCATION, 2) |
+                askForPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, 2) |
+                askForPermission(Manifest.permission.READ_PHONE_STATE, 2)
         ) {
             permission();
-        } else  {
+        } else {
 
             displayPermission(Manifest.permission.READ_EXTERNAL_STORAGE, 2);
             displayPermission(Manifest.permission.ACCESS_FINE_LOCATION, 2);
@@ -265,4 +282,11 @@ public class MobileVerificationFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onResume() {
+
+        super.onResume();
+        if (context == null)
+            context = getContext().getApplicationContext();
+    }
 }

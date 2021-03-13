@@ -72,7 +72,7 @@ public class ReceivedComboAdapter extends RecyclerView.Adapter<ReceivedComboAdap
     }
 
     private void postItems(String ProdId,String ComboId) {
-        String orderId=AndroidUtils.randomName(5);
+        String orderId=AndroidUtils.randomName(10);
         RetrofitApi retrofitApi= BaseClient.getClient().create(RetrofitApi.class);
         Call<ErrorMessageModel> call=retrofitApi.postComboWonDetails(PreferenceManager.getCustomerId(),
                 orderId,

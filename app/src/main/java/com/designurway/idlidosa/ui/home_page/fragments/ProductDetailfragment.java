@@ -219,7 +219,7 @@ public class ProductDetailfragment extends Fragment {
         int count= SharedPrefManager.loadFrompref(getContext());
         count++;
         SharedPrefManager.SaveTotalKey(getContext(),count);
-        String order_id= AndroidUtils.randomName(5);
+        String order_id= AndroidUtils.randomName(10);
         orderid=order_id;
         RetrofitApi api = BaseClient.getClient().create(RetrofitApi.class);
 //        Log.d("customer_id","customer_id"+PreferenceManager.getCustomerId());

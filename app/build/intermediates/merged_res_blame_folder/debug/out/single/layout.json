@@ -124,12 +124,12 @@
         "source": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\src\\main\\res\\layout\\activity_emergency.xml"
     },
     {
-        "merged": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_track_order_list.xml",
-        "source": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\src\\main\\res\\layout\\fragment_track_order_list.xml"
-    },
-    {
         "merged": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_recive_combo_address.xml",
         "source": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\src\\main\\res\\layout\\fragment_recive_combo_address.xml"
+    },
+    {
+        "merged": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_track_order_list.xml",
+        "source": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\src\\main\\res\\layout\\fragment_track_order_list.xml"
     },
     {
         "merged": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_order_history_details.xml",
@@ -146,10 +146,6 @@
     {
         "merged": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_profile.xml",
         "source": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\src\\main\\res\\layout\\activity_profile.xml"
-    },
-    {
-        "merged": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_emr.xml",
-        "source": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\src\\main\\res\\layout\\fragment_emr.xml"
     },
     {
         "merged": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_otp_verfication.xml",
@@ -176,16 +172,16 @@
         "source": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\src\\main\\res\\layout\\fragment_mobile_verification.xml"
     },
     {
+        "merged": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_location.xml",
+        "source": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\src\\main\\res\\layout\\fragment_location.xml"
+    },
+    {
         "merged": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_dashboard.xml",
         "source": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\src\\main\\res\\layout\\activity_dashboard.xml"
     },
     {
         "merged": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_add_new_address.xml",
         "source": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\src\\main\\res\\layout\\fragment_add_new_address.xml"
-    },
-    {
-        "merged": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_location.xml",
-        "source": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\src\\main\\res\\layout\\fragment_location.xml"
     },
     {
         "merged": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_home_page.xml",
@@ -206,10 +202,6 @@
     {
         "merged": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_splash_screen.xml",
         "source": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\src\\main\\res\\layout\\activity_splash_screen.xml"
-    },
-    {
-        "merged": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_notification.xml",
-        "source": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\src\\main\\res\\layout\\fragment_notification.xml"
     },
     {
         "merged": "E:\\Pankaj\\Android Project\\IdlyDosey\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_profile.xml",

@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class BaseClient {
 
-    final static String BaseUrl = "http://idlydosey.com/API/";
+    final static String BaseUrl = "https://idlydosey.com/API/";
     public  static Retrofit retrofgitEndPoint = null;
 
 

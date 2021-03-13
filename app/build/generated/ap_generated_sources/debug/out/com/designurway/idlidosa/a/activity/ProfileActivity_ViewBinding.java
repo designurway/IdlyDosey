@@ -18,7 +18,7 @@ import java.lang.Override;
 public class ProfileActivity_ViewBinding implements Unbinder {
   private ProfileActivity target;
 
-  private View view7f0a02f5;
+  private View view7f0a0302;
 
   @UiThread
   public ProfileActivity_ViewBinding(ProfileActivity target) {
@@ -38,7 +38,7 @@ public class ProfileActivity_ViewBinding implements Unbinder {
     target.titleTv = Utils.findRequiredViewAsType(source, R.id.toolbar_title_tv, "field 'titleTv'", TextView.class);
     target.iv_camera = Utils.findRequiredViewAsType(source, R.id.iv_camera, "field 'iv_camera'", ImageView.class);
     view = Utils.findRequiredView(source, R.id.save_btn, "method 'saveProfileDetails'");
-    view7f0a02f5 = view;
+    view7f0a0302 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -62,7 +62,7 @@ public class ProfileActivity_ViewBinding implements Unbinder {
     target.titleTv = null;
     target.iv_camera = null;
 
-    view7f0a02f5.setOnClickListener(null);
-    view7f0a02f5 = null;
+    view7f0a0302.setOnClickListener(null);
+    view7f0a0302 = null;
   }
 }

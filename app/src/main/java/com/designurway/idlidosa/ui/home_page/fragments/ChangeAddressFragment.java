@@ -1,6 +1,7 @@
 package com.designurway.idlidosa.ui.home_page.fragments;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -50,12 +51,13 @@ public class ChangeAddressFragment extends Fragment {
     RadioGroup radioGroup;
     RadioButton rdHome,rdOffice;
     String checked, address;
-
+  Context context;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         binding = FragmentChangeAddressBinding.inflate(inflater, container, false);
+        context=container.getContext();
         return binding.getRoot();
     }
 
@@ -121,7 +123,7 @@ public class ChangeAddressFragment extends Fragment {
                 && city.isEmpty() && pin.isEmpty()) {
             Toast.makeText(getContext(), this.getString(R.string.fill_credentials),
                     Toast.LENGTH_SHORT).show();
-        } else if (!AndroidUtils.isNetworkAvailable(getContext())) {
+        } else if (!AndroidUtils.isNetworkAvailable(context)) {
             Toast.makeText(getContext(), this.getString(R.string.no_internet),
                     Toast.LENGTH_SHORT).show();
         } else {
@@ -141,8 +143,11 @@ public class ChangeAddressFragment extends Fragment {
             @Override
             public void onResponse(Call<StatusAndMessageModel> call, Response<StatusAndMessageModel> response) {
                 if (response.isSuccessful()) {
-                    action = ChangeAddressFragmentDirections.actionChangeAddressFragmentToAddressBookFragment("00", "setting", "none");
-                    Navigation.findNavController(getView()).navigate(action);
+
+                        action = ChangeAddressFragmentDirections.actionChangeAddressFragmentToAddressBookFragment("00", "setting", "none");
+                        Navigation.findNavController(getView()).navigate(action);
+
+
                 } else {
 
                     Log.d(TAG, "no Data");
@@ -155,6 +160,16 @@ public class ChangeAddressFragment extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if (context == null) {
+            context=getActivity().getApplicationContext();
+        }
+
     }
 
 }

@@ -60,7 +60,7 @@ public class AndroidUtils {
     }
 
     public static String randomName(int length) {
-        String passworwdSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        String passworwdSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         char[] password = new char[length];
         for (int i = 0; i < length; i++) {
             int random = (int) (Math.random() * passworwdSet.length());

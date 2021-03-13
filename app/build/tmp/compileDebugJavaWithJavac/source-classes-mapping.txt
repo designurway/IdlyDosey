@@ -66,6 +66,9 @@ com/designurway/idlidosa/ui/home_page/fragments/SettingsFragment.java
  com.designurway.idlidosa.ui.home_page.fragments.SettingsFragment$5
  com.designurway.idlidosa.ui.home_page.fragments.SettingsFragment$6
  com.designurway.idlidosa.ui.home_page.fragments.SettingsFragment$7
+ com.designurway.idlidosa.ui.home_page.fragments.SettingsFragment$8
+ com.designurway.idlidosa.ui.home_page.fragments.SettingsFragment$8$1
+ com.designurway.idlidosa.ui.home_page.fragments.SettingsFragment$8$1$1
 com/designurway/idlidosa/a/adapters/OrderHistoryAdapter.java
  com.designurway.idlidosa.a.adapters.OrderHistoryAdapter
  com.designurway.idlidosa.a.adapters.OrderHistoryAdapter$1
@@ -157,6 +160,8 @@ com/designurway/idlidosa/a/model/NotificationListData.java
  com.designurway.idlidosa.a.model.NotificationListData
 com/designurway/idlidosa/model/PaymentSucessfulModel.java
  com.designurway.idlidosa.model.PaymentSucessfulModel
+com/designurway/idlidosa/a/utils/CheckInternetConnection.java
+ com.designurway.idlidosa.a.utils.CheckInternetConnection
 com/designurway/idlidosa/databinding/FragmentRegisterBinding.java
  com.designurway.idlidosa.databinding.FragmentRegisterBinding
 com/designurway/idlidosa/a/paytmallinonesdk/PaytmActivityDirections.java
@@ -174,7 +179,6 @@ com/designurway/idlidosa/a/adapters/ViewCartAdapter.java
  com.designurway.idlidosa.a.adapters.ViewCartAdapter$3
  com.designurway.idlidosa.a.adapters.ViewCartAdapter$4
  com.designurway.idlidosa.a.adapters.ViewCartAdapter$5
- com.designurway.idlidosa.a.adapters.ViewCartAdapter$6
  com.designurway.idlidosa.a.adapters.ViewCartAdapter$MyViewHolder
  com.designurway.idlidosa.a.adapters.ViewCartAdapter$setFragmentTransaction
 com/designurway/idlidosa/ui/SplashScreenActivity.java
@@ -236,8 +240,6 @@ com/designurway/idlidosa/ui/home_page/fragments/PaymentFragmentArgs.java
  com.designurway.idlidosa.ui.home_page.fragments.PaymentFragmentArgs$Builder
 com/designurway/idlidosa/databinding/LayoutProductItemBinding.java
  com.designurway.idlidosa.databinding.LayoutProductItemBinding
-com/designurway/idlidosa/databinding/FragmentEmrBinding.java
- com.designurway.idlidosa.databinding.FragmentEmrBinding
 com/designurway/idlidosa/a/adapters/PraductRrecyclerAdaprter.java
  com.designurway.idlidosa.a.adapters.PraductRrecyclerAdaprter
  com.designurway.idlidosa.a.adapters.PraductRrecyclerAdaprter$vholder
@@ -321,9 +323,6 @@ com/designurway/idlidosa/ui/home_page/fragments/HomeFragment.java
  com.designurway.idlidosa.ui.home_page.fragments.HomeFragment$3$1
  com.designurway.idlidosa.ui.home_page.fragments.HomeFragment$4
  com.designurway.idlidosa.ui.home_page.fragments.HomeFragment$4$1
- com.designurway.idlidosa.ui.home_page.fragments.HomeFragment$5
- com.designurway.idlidosa.ui.home_page.fragments.HomeFragment$5$1
- com.designurway.idlidosa.ui.home_page.fragments.HomeFragment$5$1$1
 com/designurway/idlidosa/ui/home_page/fragments/PaymentSucessfulFragmentDirections.java
  com.designurway.idlidosa.ui.home_page.fragments.PaymentSucessfulFragmentDirections
 com/designurway/idlidosa/ui/home_page/fragments/ReciveComboAddressFragmentArgs.java
@@ -347,7 +346,6 @@ com/designurway/idlidosa/databinding/FragmentChangePasswordBinding.java
 com/designurway/idlidosa/ui/home_page/HomePageActivity.java
  com.designurway.idlidosa.ui.home_page.HomePageActivity
  com.designurway.idlidosa.ui.home_page.HomePageActivity$1
- com.designurway.idlidosa.ui.home_page.HomePageActivity$2
 com/designurway/idlidosa/a/retrofit/BaseClient.java
  com.designurway.idlidosa.a.retrofit.BaseClient
 com/designurway/idlidosa/databinding/FragmentTrackOrderBinding.java
@@ -435,6 +433,7 @@ com/designurway/idlidosa/ui/home_page/fragments/ViewCartItemsFragment.java
  com.designurway.idlidosa.ui.home_page.fragments.ViewCartItemsFragment$2
  com.designurway.idlidosa.ui.home_page.fragments.ViewCartItemsFragment$2$1
  com.designurway.idlidosa.ui.home_page.fragments.ViewCartItemsFragment$3
+ com.designurway.idlidosa.ui.home_page.fragments.ViewCartItemsFragment$4
 com/designurway/idlidosa/a/model/ProfileDataModel.java
  com.designurway.idlidosa.a.model.ProfileDataModel
 com/designurway/idlidosa/model/PaymentData.java
@@ -596,9 +595,6 @@ com/designurway/idlidosa/a/adapters/NotificationListAdapter.java
  com.designurway.idlidosa.a.adapters.NotificationListAdapter$setOnFragmentTransaction
 com/designurway/idlidosa/a/paytmallinonesdk/ServiceInterface.java
  com.designurway.idlidosa.a.paytmallinonesdk.ServiceInterface
-com/designurway/idlidosa/ui/home_page/fragments/EmrFragment.java
- com.designurway.idlidosa.ui.home_page.fragments.EmrFragment
- com.designurway.idlidosa.ui.home_page.fragments.EmrFragment$1
 com/designurway/idlidosa/databinding/FragmentViewCartItemsBinding.java
  com.designurway.idlidosa.databinding.FragmentViewCartItemsBinding
 com/designurway/idlidosa/model/PaymentModel.java

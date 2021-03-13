@@ -200,7 +200,7 @@ public class ProductDisplayAdapter extends RecyclerView.Adapter<ProductDisplayAd
         int count = SharedPrefManager.loadFrompref(context);
         count++;
         SharedPrefManager.SaveTotalKey(context, count);
-        String order_id = AndroidUtils.randomName(5);
+        String order_id = AndroidUtils.randomName(10);
         Log.d("order_id", order_id);
         orderid = order_id;
         RetrofitApi api = BaseClient.getClient().create(RetrofitApi.class);
@@ -217,7 +217,7 @@ public class ProductDisplayAdapter extends RecyclerView.Adapter<ProductDisplayAd
             public void onResponse(Call<StatusAndMessageModel> call, Response<StatusAndMessageModel> response) {
                 if (response.isSuccessful() && response.body().getMessage().contains("Inserted")) {
 //                    we will get the order id in this api
-                    Toast.makeText(context, "From productDisplay", Toast.LENGTH_SHORT).show();
+
                     Log.d("order_id", "orderid");
 
                 } else if (response.body().getMessage().contains("Already in cart")) {

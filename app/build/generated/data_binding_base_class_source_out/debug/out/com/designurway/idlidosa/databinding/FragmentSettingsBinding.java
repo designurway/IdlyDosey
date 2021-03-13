@@ -33,6 +33,9 @@ public final class FragmentSettingsBinding implements ViewBinding {
   public final CardView CardSupport;
 
   @NonNull
+  public final CardView CardUpdate;
+
+  @NonNull
   public final TextView Edit;
 
   @NonNull
@@ -60,6 +63,9 @@ public final class FragmentSettingsBinding implements ViewBinding {
   public final ConstraintLayout consTrack;
 
   @NonNull
+  public final ConstraintLayout consUpdate;
+
+  @NonNull
   public final ConstraintLayout constPickReward;
 
   @NonNull
@@ -84,6 +90,9 @@ public final class FragmentSettingsBinding implements ViewBinding {
   public final ImageView imagArrTrack;
 
   @NonNull
+  public final ImageView imagArrUpdate;
+
+  @NonNull
   public final ImageView imagEdit;
 
   @NonNull
@@ -105,26 +114,32 @@ public final class FragmentSettingsBinding implements ViewBinding {
   public final ImageView imagTrack;
 
   @NonNull
+  public final ImageView imagUpdate;
+
+  @NonNull
   public final TextView orderd;
 
   private FragmentSettingsBinding(@NonNull ConstraintLayout rootView, @NonNull CardView CardEdit,
       @NonNull CardView CardOffer, @NonNull CardView CardOrder, @NonNull CardView CardSupport,
-      @NonNull TextView Edit, @NonNull TextView EditSupport, @NonNull TextView Offer,
-      @NonNull ConstraintLayout consEdtAd, @NonNull ConstraintLayout consHistory,
-      @NonNull ConstraintLayout consRefer, @NonNull ConstraintLayout consSigout,
-      @NonNull ConstraintLayout consSupport, @NonNull ConstraintLayout consTrack,
+      @NonNull CardView CardUpdate, @NonNull TextView Edit, @NonNull TextView EditSupport,
+      @NonNull TextView Offer, @NonNull ConstraintLayout consEdtAd,
+      @NonNull ConstraintLayout consHistory, @NonNull ConstraintLayout consRefer,
+      @NonNull ConstraintLayout consSigout, @NonNull ConstraintLayout consSupport,
+      @NonNull ConstraintLayout consTrack, @NonNull ConstraintLayout consUpdate,
       @NonNull ConstraintLayout constPickReward, @NonNull ImageView imagArrEdit,
       @NonNull ImageView imagArrOrdr, @NonNull ImageView imagArrRefer,
       @NonNull ImageView imagArrReward, @NonNull ImageView imagArrSignout,
       @NonNull ImageView imagArrSupport, @NonNull ImageView imagArrTrack,
-      @NonNull ImageView imagEdit, @NonNull ImageView imagOrder, @NonNull ImageView imagRefer,
-      @NonNull ImageView imagReward, @NonNull ImageView imagSignout, @NonNull ImageView imagSupport,
-      @NonNull ImageView imagTrack, @NonNull TextView orderd) {
+      @NonNull ImageView imagArrUpdate, @NonNull ImageView imagEdit, @NonNull ImageView imagOrder,
+      @NonNull ImageView imagRefer, @NonNull ImageView imagReward, @NonNull ImageView imagSignout,
+      @NonNull ImageView imagSupport, @NonNull ImageView imagTrack, @NonNull ImageView imagUpdate,
+      @NonNull TextView orderd) {
     this.rootView = rootView;
     this.CardEdit = CardEdit;
     this.CardOffer = CardOffer;
     this.CardOrder = CardOrder;
     this.CardSupport = CardSupport;
+    this.CardUpdate = CardUpdate;
     this.Edit = Edit;
     this.EditSupport = EditSupport;
     this.Offer = Offer;
@@ -134,6 +149,7 @@ public final class FragmentSettingsBinding implements ViewBinding {
     this.consSigout = consSigout;
     this.consSupport = consSupport;
     this.consTrack = consTrack;
+    this.consUpdate = consUpdate;
     this.constPickReward = constPickReward;
     this.imagArrEdit = imagArrEdit;
     this.imagArrOrdr = imagArrOrdr;
@@ -142,6 +158,7 @@ public final class FragmentSettingsBinding implements ViewBinding {
     this.imagArrSignout = imagArrSignout;
     this.imagArrSupport = imagArrSupport;
     this.imagArrTrack = imagArrTrack;
+    this.imagArrUpdate = imagArrUpdate;
     this.imagEdit = imagEdit;
     this.imagOrder = imagOrder;
     this.imagRefer = imagRefer;
@@ -149,6 +166,7 @@ public final class FragmentSettingsBinding implements ViewBinding {
     this.imagSignout = imagSignout;
     this.imagSupport = imagSupport;
     this.imagTrack = imagTrack;
+    this.imagUpdate = imagUpdate;
     this.orderd = orderd;
   }
 
@@ -200,6 +218,12 @@ public final class FragmentSettingsBinding implements ViewBinding {
       id = R.id.CardSupport;
       CardView CardSupport = rootView.findViewById(id);
       if (CardSupport == null) {
+        break missingId;
+      }
+
+      id = R.id.CardUpdate;
+      CardView CardUpdate = rootView.findViewById(id);
+      if (CardUpdate == null) {
         break missingId;
       }
 
@@ -257,6 +281,12 @@ public final class FragmentSettingsBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.consUpdate;
+      ConstraintLayout consUpdate = rootView.findViewById(id);
+      if (consUpdate == null) {
+        break missingId;
+      }
+
       id = R.id.constPickReward;
       ConstraintLayout constPickReward = rootView.findViewById(id);
       if (constPickReward == null) {
@@ -305,6 +335,12 @@ public final class FragmentSettingsBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.imagArrUpdate;
+      ImageView imagArrUpdate = rootView.findViewById(id);
+      if (imagArrUpdate == null) {
+        break missingId;
+      }
+
       id = R.id.imagEdit;
       ImageView imagEdit = rootView.findViewById(id);
       if (imagEdit == null) {
@@ -347,6 +383,12 @@ public final class FragmentSettingsBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.imagUpdate;
+      ImageView imagUpdate = rootView.findViewById(id);
+      if (imagUpdate == null) {
+        break missingId;
+      }
+
       id = R.id.orderd;
       TextView orderd = rootView.findViewById(id);
       if (orderd == null) {
@@ -354,10 +396,11 @@ public final class FragmentSettingsBinding implements ViewBinding {
       }
 
       return new FragmentSettingsBinding((ConstraintLayout) rootView, CardEdit, CardOffer,
-          CardOrder, CardSupport, Edit, EditSupport, Offer, consEdtAd, consHistory, consRefer,
-          consSigout, consSupport, consTrack, constPickReward, imagArrEdit, imagArrOrdr,
-          imagArrRefer, imagArrReward, imagArrSignout, imagArrSupport, imagArrTrack, imagEdit,
-          imagOrder, imagRefer, imagReward, imagSignout, imagSupport, imagTrack, orderd);
+          CardOrder, CardSupport, CardUpdate, Edit, EditSupport, Offer, consEdtAd, consHistory,
+          consRefer, consSigout, consSupport, consTrack, consUpdate, constPickReward, imagArrEdit,
+          imagArrOrdr, imagArrRefer, imagArrReward, imagArrSignout, imagArrSupport, imagArrTrack,
+          imagArrUpdate, imagEdit, imagOrder, imagRefer, imagReward, imagSignout, imagSupport,
+          imagTrack, imagUpdate, orderd);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

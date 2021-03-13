@@ -28,7 +28,7 @@
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:layout_marginTop="30dp"
-                android:src="@drawable/logo"
+                android:src="@drawable/logonew"
                 app:civ_border_color="@color/white"
                 app:civ_border_width="@dimen/dimen_3dp"
                 app:layout_constraintStart_toStartOf="parent"

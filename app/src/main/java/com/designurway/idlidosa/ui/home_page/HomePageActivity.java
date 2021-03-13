@@ -9,16 +9,23 @@ import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.designurway.idlidosa.R;
+import com.designurway.idlidosa.a.adapters.ViewCartAdapter;
+import com.designurway.idlidosa.a.model.ViewCartModel;
+import com.designurway.idlidosa.a.model.ViewCartModelResponse;
 import com.designurway.idlidosa.a.utils.PreferenceManager;
 import com.designurway.idlidosa.a.utils.SharedPrefManager;
 import com.designurway.idlidosa.a.utils.UtilConstant;
@@ -29,6 +36,8 @@ import com.designurway.idlidosa.retrofit.RetrofitApi;
 import com.designurway.idlidosa.ui.home_page.fragments.HomeFragmentDirections;
 import com.designurway.idlidosa.ui.home_page.fragments.NotificationListFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -45,7 +54,7 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
     NavigationUI navigationUI;
     AppBarConfiguration appBarConfiguration;
     ImageView ImgBell;
-    TextView txtNotifyNo;
+    TextView txtNotifyNo,toolbar_title_tv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,9 +63,10 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
         setContentView(binding.getRoot());
 
         bottomView = binding.bottomView;
-        txtNotifyNo=binding.txtNotifyNo;
+//        txtNotifyNo=binding.txtNotifyNo;
         tool_bar=binding.toolBar;
-        ImgBell=binding.notificationImgv;
+//        ImgBell=binding.notificationImgv;
+//        toolbar_title_tv = binding.toolbarTitleTv;
         setSupportActionBar(tool_bar);
 
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.homeNavHostFragment);
@@ -90,24 +100,30 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
         NavigationUI.setupWithNavController(bottomView, navController);
 
 
+        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+//            toolbar_title_tv.setText(controller.getCurrentDestination().getLabel());
+
+        });
+
+
         int count = SharedPrefManager.loadFrompref(HomePageActivity.this);
 
         if (count > 0)
             bottomView.getOrCreateBadge(R.id.viewCartItemsFragment).setNumber(SharedPrefManager.loadFrompref(HomePageActivity.this));
 
-        ImgBell.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                NavDirections directions = HomeFragmentDirections.actionGlobalNotificationListFragment();
-               navController.navigate(directions);
-                txtNotifyNo.setVisibility(View.GONE);
-            }
-        });
+//        ImgBell.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                NavDirections directions = HomeFragmentDirections.actionGlobalNotificationListFragment();
+//               navController.navigate(directions);
+//                txtNotifyNo.setVisibility(View.GONE);
+//            }
+//        });
         getNotificationCount();
 
     }
-
+/*
     @Override
     public boolean onSupportNavigateUp() {
         // for navDrawer
@@ -115,20 +131,20 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
         return NavigationUI.navigateUp(navController, appBarConfiguration) || super.onSupportNavigateUp();
         //for bottom navigation only
 //        return navController.navigateUp() || super.onSupportNavigateUp();
-    }
+    }*/
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if (key.equals(PREF_TOTAL_KEY)) {
-            bottomView.getOrCreateBadge(R.id.viewCartItemsFragment).setNumber(SharedPrefManager.loadFrompref(HomePageActivity.this));
-            int count = SharedPrefManager.loadFrompref(HomePageActivity.this);
 
-            if (count < 0) {
+            int count=SharedPrefManager.loadFrompref(HomePageActivity.this);
+
+            if (count>0){
+                bottomView.getOrCreateBadge(R.id.viewCartItemsFragment).setNumber(count);
+            }else {
                 bottomView.removeBadge(R.id.viewCartItemsFragment);
             }
-
         }
-
 
     }
 
@@ -152,9 +168,9 @@ public void getNotificationCount(){
         public void onResponse(Call<StatusAndMessageModel> call, Response<StatusAndMessageModel> response) {
             if (response.isSuccessful()){
                if (!response.body().getUnread().equals("0")){
-                   txtNotifyNo.setText(response.body().getUnread());
+//                   txtNotifyNo.setText(response.body().getUnread());
                }else {
-                   txtNotifyNo.setVisibility(View.GONE);
+//                   txtNotifyNo.setVisibility(View.GONE);
                }
 
             }else{
@@ -168,5 +184,6 @@ public void getNotificationCount(){
         }
     });
 }
+
 
 }

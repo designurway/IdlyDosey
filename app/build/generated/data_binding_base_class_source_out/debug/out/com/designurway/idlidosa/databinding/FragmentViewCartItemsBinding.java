@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -29,7 +30,13 @@ public final class FragmentViewCartItemsBinding implements ViewBinding {
   public final RecyclerView cartItemsRv;
 
   @NonNull
+  public final ConstraintLayout constraintRecycler;
+
+  @NonNull
   public final ImageView imgSadFace;
+
+  @NonNull
+  public final ProgressBar progressCart;
 
   @NonNull
   public final RelativeLayout relativeRecycler;
@@ -50,14 +57,17 @@ public final class FragmentViewCartItemsBinding implements ViewBinding {
   public final TextView txtRupee;
 
   private FragmentViewCartItemsBinding(@NonNull ConstraintLayout rootView, @NonNull Button btnCheck,
-      @NonNull RecyclerView cartItemsRv, @NonNull ImageView imgSadFace,
+      @NonNull RecyclerView cartItemsRv, @NonNull ConstraintLayout constraintRecycler,
+      @NonNull ImageView imgSadFace, @NonNull ProgressBar progressCart,
       @NonNull RelativeLayout relativeRecycler, @NonNull TextView rupeesTv,
       @NonNull TextView textSubTotal, @NonNull TextView txtNum, @NonNull TextView txtNumTxt,
       @NonNull TextView txtRupee) {
     this.rootView = rootView;
     this.btnCheck = btnCheck;
     this.cartItemsRv = cartItemsRv;
+    this.constraintRecycler = constraintRecycler;
     this.imgSadFace = imgSadFace;
+    this.progressCart = progressCart;
     this.relativeRecycler = relativeRecycler;
     this.rupeesTv = rupeesTv;
     this.textSubTotal = textSubTotal;
@@ -105,9 +115,21 @@ public final class FragmentViewCartItemsBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.constraintRecycler;
+      ConstraintLayout constraintRecycler = rootView.findViewById(id);
+      if (constraintRecycler == null) {
+        break missingId;
+      }
+
       id = R.id.img_sad_face;
       ImageView imgSadFace = rootView.findViewById(id);
       if (imgSadFace == null) {
+        break missingId;
+      }
+
+      id = R.id.progressCart;
+      ProgressBar progressCart = rootView.findViewById(id);
+      if (progressCart == null) {
         break missingId;
       }
 
@@ -148,7 +170,8 @@ public final class FragmentViewCartItemsBinding implements ViewBinding {
       }
 
       return new FragmentViewCartItemsBinding((ConstraintLayout) rootView, btnCheck, cartItemsRv,
-          imgSadFace, relativeRecycler, rupeesTv, textSubTotal, txtNum, txtNumTxt, txtRupee);
+          constraintRecycler, imgSadFace, progressCart, relativeRecycler, rupeesTv, textSubTotal,
+          txtNum, txtNumTxt, txtRupee);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

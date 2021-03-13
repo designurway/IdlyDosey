@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
@@ -71,7 +72,7 @@ public class PaymentFragment extends Fragment {
     private String orderIdString = "";
     private String txnTokenString = "";
     private final Integer ActivityRequestCode = 2;
-    TextView totalAmount, textSubtotal, txtName, txtMobile, textAddress, orderId,deliveryCharge,taxCharge;
+    TextView totalAmount, textSubtotal, txtName, txtMobile, textAddress, orderId, deliveryCharge, taxCharge;
     Button btnPayment;
     String jsonString;
     PreferenceManager preferenceManager;
@@ -79,9 +80,9 @@ public class PaymentFragment extends Fragment {
     String comboId, productId, OrderID;
     BottomSheetDialog bottomSheetDialog;
     LatLng lat;
+    String generateOrderId;
 
-
- double tax,Total,n,price;
+    double tax, Total, n, price;
 
     public PaymentFragment() {
         // Required empty public constructor
@@ -118,8 +119,8 @@ public class PaymentFragment extends Fragment {
         txtMobile = binding.txtMobile;
         textAddress = binding.textAddress;
         btnPayment = binding.btnPayment;
-        deliveryCharge=binding.deliveryCharge;
-        taxCharge=binding.taxCharge;
+        deliveryCharge = binding.deliveryCharge;
+        taxCharge = binding.taxCharge;
 
 
 /*        if (!orderId.equals("none")) {
@@ -140,26 +141,24 @@ public class PaymentFragment extends Fragment {
 
 
         if (!comboId.equals("none")) {
-            String generateOrderId = AndroidUtils.randomName(5);
+            generateOrderId = AndroidUtils.randomName(10);
 
             btnPayment.setText("Redeem Combo");
 
             textAddress.setText(address);
             txtMobile.setText(phone);
             orderId.setText(generateOrderId);
-
+            Toast.makeText(getActivity(), "comboId"+comboId+" productId"+productId, Toast.LENGTH_SHORT).show();
         }
 
-        orderId.setText(OrderID);
+//        orderId.setText(OrderID);
 //        to calculate the tax
 
-       tax= (n/100)*price;
+        tax = (n / 100) * price;
 
-       Total=Double.valueOf(textSubtotal.getText().toString().trim())+Double.valueOf(tax)+Double.valueOf(taxCharge.getText().toString().trim());
+        Total = Double.valueOf(textSubtotal.getText().toString().trim()) + Double.valueOf(tax) + Double.valueOf(taxCharge.getText().toString().trim());
 
 //       set text to grand totoal text field
-
-
 
 
         lat = getLocationFromAddress(getActivity(), address);
@@ -183,6 +182,7 @@ public class PaymentFragment extends Fragment {
                     String Oid = orderId.getText().toString().trim();
                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                     if (!comboId.equals("none")) {
+
                         builder.setMessage("Are you sure you want to redeem your combo?");
                     } else {
                         builder.setMessage("Are you sure you want to place the order");
@@ -192,14 +192,18 @@ public class PaymentFragment extends Fragment {
                         public void onClick(DialogInterface dialog, int which) {
 
                             if (!comboId.equals("none")) {
+
                                 postItems(comboId, productId, Oid);
+                                Toast.makeText(getContext(), "pro"+productId+" "+"Oid"+Oid, Toast.LENGTH_SHORT).show();
                             } else {
                                 ConfromOrder();
                             }
 
 
-                            action = PaymentFragmentDirections.actionPaymentFragmentToPaymentSucessfulFragment("none");
-                            Navigation.findNavController(getView()).navigate(action);
+                                action = PaymentFragmentDirections.actionPaymentFragmentToPaymentSucessfulFragment("none");
+                                Navigation.findNavController(getView()).navigate(action);
+
+
 
                         }
                     }).setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -226,9 +230,12 @@ public class PaymentFragment extends Fragment {
                     google_pay_img.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            String OrderId = AndroidUtils.randomName(5);
-                            action = PaymentFragmentDirections.actionPaymentFragmentToGooglePayFragment(OrderId, amount,address);
-                            Navigation.findNavController(getView()).navigate(action);
+                            String OrderId = AndroidUtils.randomName(10);
+
+                                action = PaymentFragmentDirections.actionPaymentFragmentToGooglePayFragment(OrderId, amount, address);
+                                Navigation.findNavController(getView()).navigate(action);
+
+
                             bottomSheetDialog.dismiss();
 
                         }
@@ -390,8 +397,15 @@ public class PaymentFragment extends Fragment {
             public void onResponse(Call<GetNotificationResponse> call, Response<GetNotificationResponse> response) {
                 if (response.isSuccessful()) {
                     Log.d("confirmorder", "Nresponsemethod");
-                    action = PaymentFragmentDirections.actionPaymentFragmentToPaymentSucessfulFragment("none");
-                    Navigation.findNavController(getView()).navigate(action);
+
+                        FragmentManager fmger=getParentFragmentManager();
+                        PaymentSucessfulFragment paymentSucessfulFragment=new PaymentSucessfulFragment();
+                        fmger.beginTransaction().replace(R.id.homeNavHostFragment,paymentSucessfulFragment)
+                                .addToBackStack(null).commit();
+//                        action = PaymentFragmentDirections.actionPaymentFragmentToPaymentSucessfulFragment("none");
+//                        Navigation.findNavController(getView()).navigate(action);
+
+
                 } else {
 
                 }
@@ -433,6 +447,8 @@ public class PaymentFragment extends Fragment {
 
     private void postItems(String ComboId, String productId, String Oid) {
         String addressTv = textAddress.getText().toString().trim();
+        /*REDEM THE COMBO IF CUSTMOR ID PRDUCT ID AND ID (COMBO ID )MATCHES IN DATA BASE
+        * */
         com.designurway.idlidosa.retrofit.RetrofitApi retrofitApi = com.designurway.idlidosa.retrofit.BaseClient.getClient().create(com.designurway.idlidosa.retrofit.RetrofitApi.class);
         Call<com.designurway.idlidosa.model.ErrorMessageModel> call = retrofitApi.postComboWonDetails(PreferenceManager.getCustomerId(),
                 Oid,
@@ -467,7 +483,7 @@ public class PaymentFragment extends Fragment {
 
     public void ConfromOrder() {
         Log.d("confirmorder", "method");
-        String order_id = AndroidUtils.randomName(5);
+        String order_id = AndroidUtils.randomName(10);
         RetrofitApi api = BaseClient.getClient().create(RetrofitApi.class);
 
         Call<OrderStatusModel>

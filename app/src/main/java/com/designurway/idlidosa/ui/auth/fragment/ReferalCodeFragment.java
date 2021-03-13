@@ -1,5 +1,6 @@
 package com.designurway.idlidosa.ui.auth.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -37,7 +38,7 @@ public class ReferalCodeFragment extends Fragment {
     Button submitReferralCodeBtn;
     TextView skipTv;
 
-
+    Context context;
 
     public ReferalCodeFragment() {
         // Required empty public constructor
@@ -49,7 +50,8 @@ public class ReferalCodeFragment extends Fragment {
         // Inflate the layout for this fragment
 //        return inflater.inflate(R.layout.fragment_referal_code, container, false);
 
-        binding = FragmentReferalCodeBinding.inflate(inflater,container,false);
+        binding = FragmentReferalCodeBinding.inflate(inflater, container, false);
+        context = container.getContext();
         return binding.getRoot();
     }
 
@@ -68,19 +70,20 @@ public class ReferalCodeFragment extends Fragment {
         submitReferralCodeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String code=referralCodeEt.getText().toString().trim();
-                if (code.isEmpty()){
+                String code = referralCodeEt.getText().toString().trim();
+                if (code.isEmpty()) {
                     Toast.makeText(getContext(), getContext().getString(R.string.fill_credentials), Toast.LENGTH_SHORT).show();
-                }
-                else if(!AndroidUtils.isNetworkAvailable(getContext())){
+                } else if (!AndroidUtils.isNetworkAvailable(getContext())) {
                     Toast.makeText(getContext(), getContext().getString(R.string.no_internet), Toast.LENGTH_SHORT).show();
-                }
-                else{
+                } else {
 
                     PreferenceManager.saveCustomerReferred(code);
-                    Log.d("referrel", "referel"+PreferenceManager.getReferred_from());
-                    action = ReferalCodeFragmentDirections.actionReferalCodeFragmentToSelectLocationFragment(phone,code);
-                    Navigation.findNavController(getView()).navigate(action);
+                    Log.d("referrel", "referel" + PreferenceManager.getReferred_from());
+
+                        action = ReferalCodeFragmentDirections.actionReferalCodeFragmentToSelectLocationFragment(phone, code);
+                        Navigation.findNavController(getView()).navigate(action);
+
+
 
                 }
             }
@@ -89,11 +92,24 @@ public class ReferalCodeFragment extends Fragment {
         skipTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (action == null) {
+                    action = ReferalCodeFragmentDirections.actionReferalCodeFragmentToSelectLocationFragment(phone, "none");
+                    Navigation.findNavController(getView()).navigate(action);
+                }
 
-                action = ReferalCodeFragmentDirections.actionReferalCodeFragmentToSelectLocationFragment(phone,"none");
-                Navigation.findNavController(getView()).navigate(action);
             }
         });
 
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if (context == null) {
+            context = getActivity().getApplicationContext();
+        }
+
+    }
+
 }

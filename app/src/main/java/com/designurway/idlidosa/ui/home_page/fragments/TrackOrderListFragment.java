@@ -47,8 +47,8 @@ public class TrackOrderListFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_track_order_list, container, false);
-        noOrderText=view.findViewById(R.id.noOrderText);
-        img_sad_face=view.findViewById(R.id.img_sad_face);
+        noOrderText = view.findViewById(R.id.noOrderText);
+        img_sad_face = view.findViewById(R.id.img_sad_face);
         tackOrderRecycler = view.findViewById(R.id.tackOrderRecycler);
 
         getOrderList();
@@ -82,8 +82,8 @@ public class TrackOrderListFragment extends Fragment {
                                 String orderId = trackOrderList.getData().get(position).getOrder_id();
                                 String amount = trackOrderList.getData().get(position).getAmount();
 
-                                action = TrackOrderListFragmentDirections.actionTrackOrderListFragmentToTrackOrderFragment(orderId, amount);
-                                Navigation.findNavController(getView()).navigate(action);
+                                    action = TrackOrderListFragmentDirections.actionTrackOrderListFragmentToTrackOrderFragment(orderId, amount);
+                                    Navigation.findNavController(getView()).navigate(action);
 
                             }
                         });

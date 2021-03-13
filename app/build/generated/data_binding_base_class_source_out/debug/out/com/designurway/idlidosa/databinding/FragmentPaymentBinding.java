@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,7 +18,7 @@ import java.lang.String;
 
 public final class FragmentPaymentBinding implements ViewBinding {
   @NonNull
-  private final ConstraintLayout rootView;
+  private final ScrollView rootView;
 
   @NonNull
   public final Button btnPayment;
@@ -76,7 +77,7 @@ public final class FragmentPaymentBinding implements ViewBinding {
   @NonNull
   public final View view1;
 
-  private FragmentPaymentBinding(@NonNull ConstraintLayout rootView, @NonNull Button btnPayment,
+  private FragmentPaymentBinding(@NonNull ScrollView rootView, @NonNull Button btnPayment,
       @NonNull TextView delTxt, @NonNull TextView deliveryCharge, @NonNull TextView deliveryTxt,
       @NonNull TextView grandTotalTxt, @NonNull TextView odrDetailTxt, @NonNull TextView ordIdTxt,
       @NonNull TextView orderId, @NonNull ConstraintLayout orderIdLy,
@@ -108,7 +109,7 @@ public final class FragmentPaymentBinding implements ViewBinding {
 
   @Override
   @NonNull
-  public ConstraintLayout getRoot() {
+  public ScrollView getRoot() {
     return rootView;
   }
 
@@ -247,10 +248,10 @@ public final class FragmentPaymentBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentPaymentBinding((ConstraintLayout) rootView, btnPayment, delTxt,
-          deliveryCharge, deliveryTxt, grandTotalTxt, odrDetailTxt, ordIdTxt, orderId, orderIdLy,
-          procedPayTxt, subTotal, taxCharge, taxTxt, textAddress, textSubtotal, totalAmount,
-          txtMobile, txtName, view1);
+      return new FragmentPaymentBinding((ScrollView) rootView, btnPayment, delTxt, deliveryCharge,
+          deliveryTxt, grandTotalTxt, odrDetailTxt, ordIdTxt, orderId, orderIdLy, procedPayTxt,
+          subTotal, taxCharge, taxTxt, textAddress, textSubtotal, totalAmount, txtMobile, txtName,
+          view1);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

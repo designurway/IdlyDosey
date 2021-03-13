@@ -74,7 +74,7 @@ public class ReferFriendFragment extends Fragment {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
         shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Referral Code to Idli Dosa" + " " + PreferenceManager.getCustomeReferenceCode());
-        String app_url = "https://play.google.com/store/apps/details?id=com.designurway.idlidosa";
+        String app_url = "Referral Code to Idli Dosa" + " " + PreferenceManager.getCustomeReferenceCode()+"\n"+"https://play.google.com/store/apps/details?id=com.designurway.idlidosa";
         shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, app_url);
         startActivity(Intent.createChooser(shareIntent, "Share via"));
     }

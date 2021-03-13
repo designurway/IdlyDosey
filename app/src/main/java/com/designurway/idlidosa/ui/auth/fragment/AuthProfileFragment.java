@@ -1,5 +1,6 @@
 package com.designurway.idlidosa.ui.auth.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -70,6 +71,7 @@ public class AuthProfileFragment extends Fragment {
     String phone,address,pincode,refrralCode;
     AuthProfileFragmentArgs args;
     String refCode;
+   Context context;
 
     public AuthProfileFragment() {
         // Required empty public constructor
@@ -81,6 +83,7 @@ public class AuthProfileFragment extends Fragment {
         // Inflate the layout for this fragment
 //        return inflater.inflate(R.layout.fragment_profile, container, false);
         binding = FragmentProfileAuthBinding.inflate(inflater,container,false);
+        context=container.getContext();
         return  binding.getRoot();
     }
 
@@ -176,23 +179,48 @@ public class AuthProfileFragment extends Fragment {
         String phone = phoneEt.getText().toString().trim();
         String address = addressEt.getText().toString().trim();
 
-        if (!AndroidUtils.isNetworkAvailable(getContext())) {
+        if (!AndroidUtils.isNetworkAvailable(context)) {
 
             Toast.makeText(getContext(), "Check with Your Connection",
                     Toast.LENGTH_SHORT).show();
         }
-        if (name.isEmpty() || email.isEmpty() || phone.isEmpty() || address.isEmpty()) {
-            Toast.makeText(getContext(), "Enter All Fields", Toast.LENGTH_SHORT).show();
-            return;
-        } else {
-            updateProfile(name, email, phone, address);
+        phoneEt.setEnabled(false);
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+//                Toast.makeText(getContext(), "Save Bttn", Toast.LENGTH_SHORT).show();
+//        name = userNameTv.getText().toString().trim();
+//        email = emailEt.getText().toString().trim();
+//        address = addressEt.getText().toString().trim();
+//        phoneNum = phoneEt.getText().toString().trim();
 
-            if (bitmap != null) {
-                saveProfileImage(bitmap);
-            } else {
-                Log.d("TAG", "Empty");
-            }
+        if (name.isEmpty()){
+            userNameTv.setFocusable(true);
+            userNameTv.setError("reqruire");
+            return;
         }
+        if (!email.matches(emailPattern) ||email.isEmpty()){
+
+            emailEt.setFocusable(true);
+            emailEt.setError("Enter valid email");
+            return;
+        }
+        if (address.isEmpty()){
+            addressEt.setFocusable(true);
+            addressEt.setError("reqruire");
+            return;
+        }
+        if (phone.isEmpty()){
+            phoneEt.setFocusable(true);
+            phoneEt.setError("reqruire");
+            return;
+        }
+
+        if (bitmap!=null){
+            saveProfileImage(bitmap);
+            updateProfile(name,email,phone,address);
+        }else {
+            updateProfile(name,email,phone,address);
+        }
+
 
     }
 
@@ -331,6 +359,15 @@ public class AuthProfileFragment extends Fragment {
 
             }
         });
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if (context==null){
+            context=getActivity().getApplicationContext();
+        }
+
     }
 
 

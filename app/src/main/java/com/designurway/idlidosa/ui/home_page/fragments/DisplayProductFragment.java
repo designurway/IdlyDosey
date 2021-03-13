@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.designurway.idlidosa.R;
@@ -45,6 +46,7 @@ public class DisplayProductFragment extends Fragment {
     DisplayProductFragmentArgs args;
     FragmentDisplayProductBinding binding;
     NavDirections action;
+    ProgressBar progressDisplay;
 
     public DisplayProductFragment() {
 
@@ -68,6 +70,7 @@ public class DisplayProductFragment extends Fragment {
         itemType = args.getItemType();
 
         recyclerDisplayProduct = binding.recyclerDisplayProduct;
+        progressDisplay = binding.progressDisplay;
         recyclerDisplayProduct.setLayoutManager(new GridLayoutManager(getContext(), 2));
         GetOrder();
     }
@@ -81,7 +84,8 @@ public class DisplayProductFragment extends Fragment {
                 MenuDataModel menuDetailsModels=response.body();
                 ArrayList<Menumodel> menumodel = response.body().getData();
                 if (response.isSuccessful() && menuDetailsModels.getStatus().contains("1")){
-
+                    recyclerDisplayProduct.setVisibility(View.VISIBLE);
+                    progressDisplay.setVisibility(View.INVISIBLE);
                     adapter = new ProductDisplayAdapter(menumodel, getContext());
                     adapter.sendToFragment(new ProductDisplayAdapter.setFragmentTransaction() {
                         @Override
@@ -100,6 +104,7 @@ public class DisplayProductFragment extends Fragment {
                     recyclerDisplayProduct.setAdapter(adapter);
 
                 } else {
+                    progressDisplay.setVisibility(View.INVISIBLE);
                     Toast.makeText(getContext(), "No data", Toast.LENGTH_SHORT).show();
                 }
             }

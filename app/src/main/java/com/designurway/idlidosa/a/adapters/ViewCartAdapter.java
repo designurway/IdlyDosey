@@ -87,11 +87,11 @@ public class ViewCartAdapter extends RecyclerView.Adapter
         holder.prodDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deleteFromCart(viewCartModels.get(position).getOrder_id(), viewCartModels.get(position).getProduct_id());
-                Log.d("cartAdapter", "prod" + viewCartModels.get(position).getProduct_id());
-                viewCartModels.remove(position);
+//                deleteFromCart(viewCartModels.get(position).getOrder_id(), viewCartModels.get(position).getProduct_id());
+//                Log.d("cartAdapter", "prod" + viewCartModels.get(position).getProduct_id());
+//                viewCartModels.remove(position);
 
-//                setFragmentTransaction.sendPosition(position,  GetAmount(5));
+                setFragmentTransaction.sendPosition(viewCartModels.get(position).getProduct_id(),viewCartModels.get(position).getOrder_id(),holder.itemView);
                 notifyDataSetChanged();
             }
         });
@@ -101,6 +101,7 @@ public class ViewCartAdapter extends RecyclerView.Adapter
 
                 int amt = 0;
                 int num = Integer.valueOf(viewCartModels.get(position).getQuantity());
+
                 num++;
                 holder.itemQty.setText(String.valueOf(num));
                 viewCartModels.get(position).setQuantity(String.valueOf(num));
@@ -125,16 +126,19 @@ public class ViewCartAdapter extends RecyclerView.Adapter
 
                 int amt = 0;
                 int num = Integer.valueOf(viewCartModels.get(position).getQuantity());
-                num--;
-                holder.itemQty.setText(String.valueOf(num));
-                viewCartModels.get(position).setQuantity(String.valueOf(num));
-                amount = Integer.valueOf(viewCartModels.get(position).getPrice());
-                amt = Integer.valueOf(holder.itemPrice.getText().toString());
+                if (num>1){
+                    num--;
+                    holder.itemQty.setText(String.valueOf(num));
+                    viewCartModels.get(position).setQuantity(String.valueOf(num));
+                    amount = Integer.valueOf(viewCartModels.get(position).getPrice());
+                    amt = Integer.valueOf(holder.itemPrice.getText().toString());
 
-                holder.itemQty.setText(String.valueOf(num));
-                postCartQuantity(String.valueOf(num), viewCartModels.get(position).getProduct_id(),
-                        viewCartModels.get(position).getOrder_id(), String.valueOf(amount * num));
-                holder.itemPrice.setText(String.valueOf(amount * num));
+                    holder.itemQty.setText(String.valueOf(num));
+                    postCartQuantity(String.valueOf(num), viewCartModels.get(position).getProduct_id(),
+                            viewCartModels.get(position).getOrder_id(), String.valueOf(amount * num));
+                    holder.itemPrice.setText(String.valueOf(amount * num));
+                }
+
 
 //                setFragmentTransaction.sendPosition(position,  GetAmount(5));
 
@@ -147,30 +151,7 @@ public class ViewCartAdapter extends RecyclerView.Adapter
 
     }
 
-    private void deleteFromCart(String order_id, String product_id) {
-        RetrofitApi retrofitApi = BaseClient.getClient().create(RetrofitApi.class);
-        Call<ErrorMessageModel> call = retrofitApi.deleteCartItem(PreferenceManager.getCustomerId(), order_id, product_id);
-        Log.d("cartAdapter", "order_id" + order_id);
-        Log.d("cartAdapter", "prod_id" + product_id);
-        call.enqueue(new Callback<ErrorMessageModel>() {
-            @Override
-            public void onResponse(Call<ErrorMessageModel> call, Response<ErrorMessageModel> response) {
-                if (response.isSuccessful()) {
-                    Toast.makeText(context, "Deleted", Toast.LENGTH_SHORT).show();
-                    GetAmount();
-                } else {
-                    Toast.makeText(context, "failed to delete", Toast.LENGTH_SHORT).show();
-                }
 
-            }
-
-            @Override
-            public void onFailure(Call<ErrorMessageModel> call, Throwable t) {
-                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
-
-            }
-        });
-    }
 
     @Override
     public int getItemCount() {
@@ -213,6 +194,8 @@ public class ViewCartAdapter extends RecyclerView.Adapter
             public void onResponse(Call<ErrorMessageModel> call, Response<ErrorMessageModel> response) {
                 if (response.isSuccessful()) {
                     GetAmount();
+
+
                 } else {
                     Toast.makeText(context, "fail", Toast.LENGTH_SHORT).show();
                 }
@@ -229,7 +212,8 @@ public class ViewCartAdapter extends RecyclerView.Adapter
 
 
     public interface setFragmentTransaction {
-        void sendPosition(String id);
+        void sendPosition(String id,String OrderId,View view);
+        void sendAmount(int amount);
     }
 
     public int GetAmount() {
@@ -245,9 +229,8 @@ public class ViewCartAdapter extends RecyclerView.Adapter
                     if (response.body().getTotal_amount()!=null){
                         if (Integer.valueOf(response.body().getTotal_amount())>0){
                             amt = Integer.valueOf(response.body().getTotal_amount());
-
-                            setFragmentTransaction.sendPosition(response.body().getTotal_amount());
-
+//                            Toast.makeText(context, "Total"+amt, Toast.LENGTH_SHORT).show();
+                            setFragmentTransaction.sendAmount(amt);
                         }else{
                             amt=0;
                         }

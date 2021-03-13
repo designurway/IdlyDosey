@@ -91,8 +91,8 @@ public class EmergencyActivity extends AppCompatActivity {
 
         RetrofitApi api = BaseClient.getClient().create(RetrofitApi.class);
 
-        Call<StatusAndMessageModel> call = api.PostMedicineImage(PreferenceManager.getCustomerId(), AndroidUtils.randomName(5),
-                AndroidUtils.randomName(5), ImageInString);
+        Call<StatusAndMessageModel> call = api.PostMedicineImage(PreferenceManager.getCustomerId(), AndroidUtils.randomName(10),
+                AndroidUtils.randomName(10), ImageInString);
 
         call.enqueue(new Callback<StatusAndMessageModel>() {
             @Override
@@ -138,7 +138,7 @@ public class EmergencyActivity extends AppCompatActivity {
     public void InsertToDatabase(String quantity, String medicine_name) {
 
         RetrofitApi api = BaseClient.getClient().create(RetrofitApi.class);
-        Call<StatusAndMessageModel> call = api.PostMedicineOrder(AndroidUtils.randomName(5), PreferenceManager.getCustomerId(),
+        Call<StatusAndMessageModel> call = api.PostMedicineOrder(AndroidUtils.randomName(10), PreferenceManager.getCustomerId(),
                 quantity, medicine_name);
 
         call.enqueue(new Callback<StatusAndMessageModel>() {

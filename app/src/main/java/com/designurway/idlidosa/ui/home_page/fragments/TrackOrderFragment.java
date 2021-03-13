@@ -240,7 +240,6 @@ public class TrackOrderFragment extends Fragment implements OnMapReadyCallback {
         if (CustomerLocation != null) {
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(CustomerLocation, 16));
         } else {
-            Toast.makeText(getContext(), "Customer location is null", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -313,7 +312,6 @@ public class TrackOrderFragment extends Fragment implements OnMapReadyCallback {
                         text_delivered.setVisibility(View.VISIBLE);
                         text_delivered.setTextColor(getResources().getColor(R.color.darkGreen));
                     } else {
-                        Toast.makeText(getContext(), "Place an order", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Toast.makeText(getContext(), "fail", Toast.LENGTH_SHORT).show();

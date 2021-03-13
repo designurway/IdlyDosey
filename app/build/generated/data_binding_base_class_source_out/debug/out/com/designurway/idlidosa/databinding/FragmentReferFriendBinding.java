@@ -20,6 +20,9 @@ public final class FragmentReferFriendBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
+  public final ConstraintLayout constriant;
+
+  @NonNull
   public final TextView inviteTxt;
 
   @NonNull
@@ -41,10 +44,12 @@ public final class FragmentReferFriendBinding implements ViewBinding {
   public final TextView shareReferalCode;
 
   private FragmentReferFriendBinding(@NonNull ConstraintLayout rootView,
-      @NonNull TextView inviteTxt, @NonNull ImageView referImg, @NonNull ConstraintLayout referRl,
-      @NonNull TextView referTxt, @NonNull TextView referalCode, @NonNull TextView referdis,
+      @NonNull ConstraintLayout constriant, @NonNull TextView inviteTxt,
+      @NonNull ImageView referImg, @NonNull ConstraintLayout referRl, @NonNull TextView referTxt,
+      @NonNull TextView referalCode, @NonNull TextView referdis,
       @NonNull TextView shareReferalCode) {
     this.rootView = rootView;
+    this.constriant = constriant;
     this.inviteTxt = inviteTxt;
     this.referImg = referImg;
     this.referRl = referRl;
@@ -81,6 +86,12 @@ public final class FragmentReferFriendBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.constriant;
+      ConstraintLayout constriant = rootView.findViewById(id);
+      if (constriant == null) {
+        break missingId;
+      }
+
       id = R.id.inviteTxt;
       TextView inviteTxt = rootView.findViewById(id);
       if (inviteTxt == null) {
@@ -119,8 +130,8 @@ public final class FragmentReferFriendBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentReferFriendBinding((ConstraintLayout) rootView, inviteTxt, referImg,
-          referRl, referTxt, referalCode, referdis, shareReferalCode);
+      return new FragmentReferFriendBinding((ConstraintLayout) rootView, constriant, inviteTxt,
+          referImg, referRl, referTxt, referalCode, referdis, shareReferalCode);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

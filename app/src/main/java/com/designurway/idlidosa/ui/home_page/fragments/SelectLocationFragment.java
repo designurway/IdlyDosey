@@ -136,9 +136,10 @@ public class SelectLocationFragment extends Fragment {
                     e.printStackTrace();
                 }
 
-                action = SelectLocationFragmentDirections.actionSelectLocationFragmentToAuthProfileFragment(place.getAddress(),pincode,referralCode,phone);
-                Log.d("referelcode",referralCode);
-                Navigation.findNavController(getView()).navigate(action);
+                   action = SelectLocationFragmentDirections.actionSelectLocationFragmentToAuthProfileFragment(place.getAddress(),pincode,referralCode,phone);
+                   Navigation.findNavController(getView()).navigate(action);
+
+
             } else if (resultCode == AutocompleteActivity.RESULT_ERROR) {
                 // TODO: Handle the error.
                 Status status = Autocomplete.getStatusFromIntent(data);
@@ -176,8 +177,10 @@ public class SelectLocationFragment extends Fragment {
                        pincode = addresses.get ( 0 ).getPostalCode ( );
                         Log.d("pincode",pincode);
                     }
-                        action = SelectLocationFragmentDirections.actionSelectLocationFragmentToAuthProfileFragment(addresses.get(0).getAddressLine(0),pincode,referralCode,phone);
-                        Navigation.findNavController(getView()).navigate(action);
+
+                         action = SelectLocationFragmentDirections.actionSelectLocationFragmentToAuthProfileFragment(addresses.get(0).getAddressLine(0),pincode,referralCode,phone);
+                         Navigation.findNavController(getView()).navigate(action);
+
 
 
                     } catch (IOException e) {

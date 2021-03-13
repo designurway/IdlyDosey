@@ -33,17 +33,19 @@
         android:layout_marginTop="@dimen/dimen_20dp"
         app:layout_constraintStart_toStartOf="@id/inviteTxt"
         app:layout_constraintEnd_toEndOf="@id/inviteTxt"
-        app:layout_constraintTop_toBottomOf="@id/inviteTxt"/>
+        app:layout_constraintTop_toBottomOf="@id/inviteTxt"
+        app:layout_constraintBottom_toTopOf="@+id/referImg"/>
 
     <ImageView
         android:id="@+id/referImg"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="0dp"
         android:src="@drawable/refer_frnd"
         android:layout_marginTop="40dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/referTxt"/>
+        app:layout_constraintTop_toBottomOf="@id/referTxt"
+        app:layout_constraintBottom_toTopOf="@+id/referdis"/>
 
     <TextView
         android:id="@+id/referdis"
@@ -68,12 +70,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/referdis"
         app:layout_constraintEnd_toEndOf="parent"
-        app:cardCornerRadius="25dp">
+        app:cardCornerRadius="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="@dimen/dimen_10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constriant"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/LightGrey">
+            android:background="@color/LightGrey"
+            >
 
             <TextView
                 android:id="@+id/referalCode"

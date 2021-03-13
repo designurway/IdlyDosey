@@ -13,6 +13,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -28,6 +29,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.designurway.idlidosa.R;
@@ -77,6 +79,8 @@ public class ProfileFragment extends Fragment {
     Uri imageUri;
     Bitmap bitmap;
     String email,phoneNum,address,name,pincode;
+    ProgressBar progressProfile;
+    ConstraintLayout CostraintProfile;
 
 
     @Override
@@ -100,6 +104,8 @@ public class ProfileFragment extends Fragment {
         personPicImgv = binding.profileImg;
         ivCamera = binding.otpImg;
         saveBtn = binding.saveProfileBtn;
+        progressProfile = binding.progressProfile;
+        CostraintProfile = binding.CostraintProfile;
 
         phoneNumFieldEt.setText(PreferenceManager.getCustomerPhone());
 
@@ -155,20 +161,21 @@ public class ProfileFragment extends Fragment {
                 }else {
                     updateProfile(name,email,phoneNum,address);
                 }
-
-
             }
         });
 
     }
 
     private void setProfileDetails() {
+
         RetrofitApi retrofitApi = BaseClient.getClient().create(RetrofitApi.class);
         Call<ProfileDataModel> call = retrofitApi.getProfileDetails(PreferenceManager.getCustomerPhone());
         call.enqueue(new Callback<ProfileDataModel>() {
             @Override
             public void onResponse(Call<ProfileDataModel> call, Response<ProfileDataModel> response) {
                 if (response.isSuccessful()) {
+                    progressProfile.setVisibility(View.INVISIBLE);
+                    CostraintProfile.setVisibility(View.VISIBLE);
                     ProfileDataModel dataModel = response.body();
                     ProfileModel model = dataModel.getData();
                      email = model.getEmail();
@@ -184,10 +191,13 @@ public class ProfileFragment extends Fragment {
                     if (model.getProfileImage().isEmpty()) {
 //                        Picasso.with(getContext()).load("http://192.168.4.168/API/idli_dosa/profile/user_profile.png").into(profileImageCiv);
                     } else {
+                        progressProfile.setVisibility(View.INVISIBLE);
+                        CostraintProfile.setVisibility(View.VISIBLE);
                         Picasso.get().load(model.getProfileImage()).into(personPicImgv);
                     }
                 } else {
-
+                    progressProfile.setVisibility(View.INVISIBLE);
+                    CostraintProfile.setVisibility(View.VISIBLE);
                     Toast.makeText(getContext(), "no data", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -238,7 +248,8 @@ public class ProfileFragment extends Fragment {
         if (!imageInString.isEmpty()) {
             RetrofitApi retrofitApi = BaseClient.getClient().create(RetrofitApi.class);
             Call<ErrorMessageModel> call = retrofitApi.postImage(PreferenceManager.getCustomerPhone(),
-                    file.getName(), imageInString);
+                    AndroidUtils.randomName(6), imageInString);
+
             call.enqueue(new Callback<ErrorMessageModel>() {
                 @Override
                 public void onResponse(Call<ErrorMessageModel> call, Response<ErrorMessageModel> response) {
@@ -281,8 +292,11 @@ public class ProfileFragment extends Fragment {
 
                     PreferenceManager.saveCustomer(id, name, email, phone, pwd, code);
                     insertRefCode();
-                    action = ProfileFragmentDirections.actionProfileFragment4ToHomeFragment();
-                    Navigation.findNavController(getView()).navigate(action);
+
+                        action = ProfileFragmentDirections.actionProfileFragment4ToHomeFragment();
+                        Navigation.findNavController(getView()).navigate(action);
+
+
 
                 } else {
 

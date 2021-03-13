@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -39,6 +40,9 @@ public final class FragmentHomeBinding implements ViewBinding {
   public final LinearLayout linearSos;
 
   @NonNull
+  public final ProgressBar progress;
+
+  @NonNull
   public final RecyclerView recyclerViewBulk;
 
   @NonNull
@@ -61,16 +65,17 @@ public final class FragmentHomeBinding implements ViewBinding {
 
   private FragmentHomeBinding(@NonNull ConstraintLayout rootView, @NonNull TextView addressLayout,
       @NonNull Button btnEmergency, @NonNull ImageView img1, @NonNull LinearLayout linearOffer,
-      @NonNull LinearLayout linearSos, @NonNull RecyclerView recyclerViewBulk,
-      @NonNull RecyclerView recyclerViewCombo, @NonNull RecyclerView recyclerViewFeatured,
-      @NonNull NestedScrollView scrollViewDashboard, @NonNull TextView textBulk,
-      @NonNull TextView textCombo, @NonNull TextView textFeatured) {
+      @NonNull LinearLayout linearSos, @NonNull ProgressBar progress,
+      @NonNull RecyclerView recyclerViewBulk, @NonNull RecyclerView recyclerViewCombo,
+      @NonNull RecyclerView recyclerViewFeatured, @NonNull NestedScrollView scrollViewDashboard,
+      @NonNull TextView textBulk, @NonNull TextView textCombo, @NonNull TextView textFeatured) {
     this.rootView = rootView;
     this.addressLayout = addressLayout;
     this.btnEmergency = btnEmergency;
     this.img1 = img1;
     this.linearOffer = linearOffer;
     this.linearSos = linearSos;
+    this.progress = progress;
     this.recyclerViewBulk = recyclerViewBulk;
     this.recyclerViewCombo = recyclerViewCombo;
     this.recyclerViewFeatured = recyclerViewFeatured;
@@ -137,6 +142,12 @@ public final class FragmentHomeBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.progress;
+      ProgressBar progress = rootView.findViewById(id);
+      if (progress == null) {
+        break missingId;
+      }
+
       id = R.id.recycler_view_bulk;
       RecyclerView recyclerViewBulk = rootView.findViewById(id);
       if (recyclerViewBulk == null) {
@@ -180,8 +191,8 @@ public final class FragmentHomeBinding implements ViewBinding {
       }
 
       return new FragmentHomeBinding((ConstraintLayout) rootView, addressLayout, btnEmergency, img1,
-          linearOffer, linearSos, recyclerViewBulk, recyclerViewCombo, recyclerViewFeatured,
-          scrollViewDashboard, textBulk, textCombo, textFeatured);
+          linearOffer, linearSos, progress, recyclerViewBulk, recyclerViewCombo,
+          recyclerViewFeatured, scrollViewDashboard, textBulk, textCombo, textFeatured);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

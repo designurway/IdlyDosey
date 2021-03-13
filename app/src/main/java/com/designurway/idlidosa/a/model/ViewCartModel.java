@@ -11,6 +11,11 @@ public class ViewCartModel {
     private int amount;
     private String medicine_image;
     private String medicine_name;
+    private String  order_qty;
+
+    public String getOrder_qty() {
+        return order_qty;
+    }
 
     public ViewCartModel(String product_name, String image, String product_id, String quantity, String order_id, String price, int qnt, int amount, String medicine_image, String medicine_name) {
         this.product_name = product_name;

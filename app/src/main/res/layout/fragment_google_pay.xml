@@ -156,7 +156,7 @@
         app:layout_constraintEnd_toEndOf="@+id/cardView"
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="@drawable/button_baground"
-        android:text="Send"
+        android:text="Pay"
         android:textAllCaps="false"
         android:textColor="@color/white"
         />

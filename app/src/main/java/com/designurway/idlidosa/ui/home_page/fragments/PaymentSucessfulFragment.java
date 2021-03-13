@@ -57,8 +57,13 @@ public class PaymentSucessfulFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        args = PaymentSucessfulFragmentArgs.fromBundle(getArguments());
-        jsonString = args.getJsonString();
+        if (getArguments()!=null){
+
+            args = PaymentSucessfulFragmentArgs.fromBundle(getArguments());
+            jsonString = args.getJsonString();
+
+        }
+
 
         transactionID = binding.transactionID;
         paymentSucessBtn = binding.paymentSucessBtn;
@@ -69,8 +74,10 @@ public class PaymentSucessfulFragment extends Fragment {
             public void onClick(View v) {
 
 
-                action = PaymentSucessfulFragmentDirections.actionPaymentSucessfulFragmentToHomeFragment();
-                Navigation.findNavController(getView()).navigate(action);
+             action = PaymentSucessfulFragmentDirections.actionPaymentSucessfulFragmentToHomeFragment();
+             Navigation.findNavController(getView()).navigate(action);
+
+
             }
         });
 

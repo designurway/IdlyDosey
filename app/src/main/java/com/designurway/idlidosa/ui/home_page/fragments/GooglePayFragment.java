@@ -2,6 +2,7 @@ package com.designurway.idlidosa.ui.home_page.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.location.Address;
 import android.location.Geocoder;
 import android.net.ConnectivityManager;
@@ -12,8 +13,10 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -33,6 +36,7 @@ import com.designurway.idlidosa.a.model.StatusAndMessageModel;
 import com.designurway.idlidosa.a.paytmallinonesdk.PaytmActivity;
 import com.designurway.idlidosa.a.utils.AndroidUtils;
 import com.designurway.idlidosa.a.utils.PreferenceManager;
+import com.designurway.idlidosa.a.utils.SharedPrefManager;
 import com.designurway.idlidosa.databinding.FragmentGooglePayBinding;
 import com.designurway.idlidosa.model.PaymentModel;
 import com.designurway.idlidosa.model.StatusMessageModel;
@@ -71,6 +75,7 @@ public class GooglePayFragment extends Fragment {
     String address;
     LatLng lat;
     NavDirections action;
+    View view;
 
     public GooglePayFragment() {
         // Required empty public constructor
@@ -91,6 +96,10 @@ public class GooglePayFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        if (view == null) {
+            this.view = view;
+        }
 
         args = GooglePayFragmentArgs.fromBundle(getArguments());
         amount = args.getAmount();
@@ -129,6 +138,8 @@ public class GooglePayFragment extends Fragment {
             public void onClick(View v) {
                 payUsingUpi(PreferenceManager.getCustomerName(), txtNumber.getText().toString(),
                         "IDLY DOSEY", amountEt.getText().toString());
+
+//                ConfromOrder();
 
 
             }
@@ -230,8 +241,8 @@ public class GooglePayFragment extends Fragment {
                 chechIsComboPresent();
 //                postComboWonDetails();
 
-                NavDirections navDirections = GooglePayFragmentDirections.actionGooglePayFragmentToPaymentSucessfulFragment(str);
-                Navigation.findNavController(getView()).navigate(navDirections);
+//                NavDirections navDirections = GooglePayFragmentDirections.actionGooglePayFragmentToPaymentSucessfulFragment(str);
+//                Navigation.findNavController(getView()).navigate(navDirections);
 
                 //Code to handle successful transaction here.
                 Toast.makeText(getContext(), "order placed.", Toast.LENGTH_SHORT).show();
@@ -273,7 +284,6 @@ public class GooglePayFragment extends Fragment {
             @Override
             public void onResponse(Call<PaymentModel> call, Response<PaymentModel> response) {
                 if (response.isSuccessful()) {
-
 
                     amountEt.setText(amount);
                 } else {
@@ -320,7 +330,7 @@ public class GooglePayFragment extends Fragment {
 
     public void ConfromOrder() {
         Log.d("orderId", orderId);
-        String orderid = AndroidUtils.randomName(5);
+        String orderid = AndroidUtils.randomName(10);
         com.designurway.idlidosa.a.retrofit.RetrofitApi api = com.designurway.idlidosa.a.retrofit.BaseClient.getClient().create(com.designurway.idlidosa.a.retrofit.RetrofitApi.class);
       /*  Log.d("OrderId", orderId);
         Log.d("OrderId", address);
@@ -339,7 +349,10 @@ public class GooglePayFragment extends Fragment {
                         Log.d("confirmorder", "success");
                         OrderStatusModel orderStatusModel = response.body();
                         Log.d("orderId", orderId);
-                        getNotification(args.getOrderId());
+
+                        getNotification(response.body().getOrder_id());
+
+
                     } else {
                         Toast.makeText(getActivity(), response.message(), Toast.LENGTH_SHORT).show();
 
@@ -360,18 +373,21 @@ public class GooglePayFragment extends Fragment {
     }
 
     public void getNotification(String orderId) {
-        Log.d("orderId", orderId);
-        Log.d("confirmorder", "Nmethod");
+
+
         com.designurway.idlidosa.a.retrofit.RetrofitApi api = com.designurway.idlidosa.a.retrofit.BaseClient.getClient().create(com.designurway.idlidosa.a.retrofit.RetrofitApi.class);
-        Call<GetNotificationResponse> call = api.getNotification(args.getOrderId(), "new order");
+        Call<GetNotificationResponse> call = api.getNotification(orderId, "new order");
         call.enqueue(new Callback<GetNotificationResponse>() {
             @Override
             public void onResponse(Call<GetNotificationResponse> call, Response<GetNotificationResponse> response) {
                 if (response.isSuccessful()) {
 
+//                        action = GooglePayFragmentDirections.actionGooglePayFragmentToPaymentSucessfulFragment("none")
                     action = GooglePayFragmentDirections.actionGooglePayFragmentToPaymentSucessfulFragment("none");
                     Navigation.findNavController(getView()).navigate(action);
 
+                    SharedPrefManager.Clear(getContext());
+                    SharedPrefManager.SaveTotalKey(getContext(), 0);
                 } else {
 
 
@@ -389,7 +405,7 @@ public class GooglePayFragment extends Fragment {
     private void postComboWonDetails() {
         Log.d(TAG, "postCombo");
         String totalAmount = amount;
-        String orderid = AndroidUtils.randomName(5);
+        String orderid = AndroidUtils.randomName(10);
         com.designurway.idlidosa.a.retrofit.RetrofitApi retrofitApi = com.designurway.idlidosa.a.retrofit.BaseClient.getClient().create(com.designurway.idlidosa.a.retrofit.RetrofitApi.class);
         Call<ErrorMessageModel> call = retrofitApi.updateComboWonDetails(orderid,
                 PreferenceManager.getCustomerId(),
@@ -401,7 +417,8 @@ public class GooglePayFragment extends Fragment {
 //                    goToNext(new DashBoardFragment());
 
 //                    getNotification(orderid);
-//                    ConfromOrder(orderId);
+//                    ConfromO
+//                    rder(orderId);
                 } else {
 //                    Toast.makeText(getContext(), response.message(), Toast.LENGTH_SHORT).show();
 //                    ConfromOrder(orderId);

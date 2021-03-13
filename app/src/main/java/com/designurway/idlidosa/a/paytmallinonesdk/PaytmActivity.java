@@ -30,6 +30,7 @@ import com.designurway.idlidosa.a.retrofit.BaseClient;
 import com.designurway.idlidosa.a.retrofit.RetrofitApi;
 import com.designurway.idlidosa.a.utils.AndroidUtils;
 import com.designurway.idlidosa.a.utils.PreferenceManager;
+import com.designurway.idlidosa.a.utils.SharedPrefManager;
 import com.designurway.idlidosa.ui.home_page.fragments.PaymentFragmentArgs;
 import com.google.android.gms.maps.model.LatLng;
 import com.paytm.pgsdk.PaytmOrder;
@@ -282,7 +283,7 @@ public class PaytmActivity extends AppCompatActivity {
     private void postComboWonDetails() {
 
         String totalAmount = amount;
-        String orderid = AndroidUtils.randomName(5);
+        String orderid = AndroidUtils.randomName(10);
         RetrofitApi retrofitApi = BaseClient.getClient().create(RetrofitApi.class);
         Call<ErrorMessageModel> call = retrofitApi.updateComboWonDetails(orderid,
                 PreferenceManager.getCustomerId(),
@@ -308,7 +309,7 @@ public class PaytmActivity extends AppCompatActivity {
     public void ConfromOrder() {
 
 
-        orderId = AndroidUtils.randomName(5);
+        orderId = AndroidUtils.randomName(10);
 
         RetrofitApi api = BaseClient.getClient().create(RetrofitApi.class);
         Log.d("OrderId", orderId);
@@ -324,7 +325,7 @@ public class PaytmActivity extends AppCompatActivity {
                 public void onResponse(Call<OrderStatusModel> call, Response<OrderStatusModel> response) {
                     if (response.isSuccessful()) {
                         OrderStatusModel orderStatusModel = response.body();
-                        getNotification(orderId);
+                        getNotification(orderStatusModel.getOrder_id());
                         Log.d("OrderId", orderId);
                     } else {
                         Toast.makeText(PaytmActivity.this, response.message(), Toast.LENGTH_SHORT).show();
@@ -348,13 +349,14 @@ public class PaytmActivity extends AppCompatActivity {
     public void getNotification(String order_id) {
 
         Log.d("confirmorder", "Nmethod");
+
         RetrofitApi api = BaseClient.getClient().create(RetrofitApi.class);
         Call<GetNotificationResponse> call = api.getNotification(order_id, "new order");
         call.enqueue(new Callback<GetNotificationResponse>() {
             @Override
             public void onResponse(Call<GetNotificationResponse> call, Response<GetNotificationResponse> response) {
                 if (response.isSuccessful()) {
-
+                    SharedPrefManager.SaveTotalKey(PaytmActivity.this,0);
                 } else {
 
                 }

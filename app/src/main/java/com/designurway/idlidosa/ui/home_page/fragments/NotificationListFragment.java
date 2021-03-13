@@ -76,6 +76,7 @@ public class NotificationListFragment extends Fragment {
                     notificationAdapter.sendToFragment(new NotificationListAdapter.setOnFragmentTransaction() {
                         @Override
                         public void sendPosition(int position, String orderId, View view) {
+
                             updateUnreadRead(orderId);
                             getNotificationList();
                         }
@@ -85,6 +86,7 @@ public class NotificationListFragment extends Fragment {
 
                             deleteNotification(orderId);
                             getNotificationList();
+                            Toast.makeText(getActivity(), "clicked", Toast.LENGTH_SHORT).show();
                             notificationAdapter.notifyDataSetChanged();
                         }
 
@@ -108,6 +110,7 @@ public class NotificationListFragment extends Fragment {
     }
 
     public void updateUnreadRead(String OrderId) {
+
         RetrofitApi api = com.designurway.idlidosa.retrofit.BaseClient.getClient().create(RetrofitApi.class);
         Call<StatusAndMessageModel> call = api.updateUnreadRead(OrderId);
         call.enqueue(new Callback<StatusAndMessageModel>() {
@@ -116,9 +119,8 @@ public class NotificationListFragment extends Fragment {
                 if (response.isSuccessful() && response.body().getStatus().equals("1")) {
                     getNotificationList();
                 } else {
-//                    img_sad_face.setVisibility(View.VISIBLE);
-//                    notification_rv.setVisibility(View.GONE);
-                    Toast.makeText(getActivity(), "fail", Toast.LENGTH_SHORT).show();
+
+
                 }
             }
 
@@ -141,7 +143,7 @@ public class NotificationListFragment extends Fragment {
                     getNotificationList();
 
                 } else {
-                    Toast.makeText(getActivity(), " Delete fail", Toast.LENGTH_SHORT).show();
+
                 }
             }
 

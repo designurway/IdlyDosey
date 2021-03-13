@@ -178,8 +178,8 @@ public class EmergencyFragment extends Fragment {
         RetrofitApi api = BaseClient.getClient().create(RetrofitApi.class);
 
         Call<StatusAndMessageModel> call = api.PostMedicineImage(PreferenceManager.getCustomerId(),
-                AndroidUtils.randomName(5),
-                AndroidUtils.randomName(5), ImageInString);
+                AndroidUtils.randomName(10),
+                AndroidUtils.randomName(10), ImageInString);
 
         call.enqueue(new Callback<StatusAndMessageModel>() {
             @Override
@@ -187,8 +187,12 @@ public class EmergencyFragment extends Fragment {
                                    Response<StatusAndMessageModel> response) {
                 if (response.isSuccessful()) {
                     if (response.body().getStatus().equals("1")){
-                        action = EmergencyFragmentDirections.actionEmergencyFragmentToViewCartItemsFragment2();
-                        Navigation.findNavController(getView()).navigate(action);
+                        if(action==null){
+
+                            action = EmergencyFragmentDirections.actionEmergencyFragmentToViewCartItemsFragment2();
+                            Navigation.findNavController(getView()).navigate(action);
+                        }
+
                     }else {
                         Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
                     }
@@ -210,7 +214,7 @@ public class EmergencyFragment extends Fragment {
 
     public void InsertToDatabase() {
 
-        String order_id = AndroidUtils.randomName(5);
+        String order_id = AndroidUtils.randomName(10);
         String cust_id = PreferenceManager.getCustomerId();
         final int random = new Random().nextInt((99 - 1) + 1) + 1;
 
@@ -224,8 +228,11 @@ public class EmergencyFragment extends Fragment {
             @Override
             public void onResponse(Call<StatusAndMessageModel> call, Response<StatusAndMessageModel> response) {
                 if (response.isSuccessful()) {
-                    action = EmergencyFragmentDirections.actionEmergencyFragmentToViewCartItemsFragment2();
-                    Navigation.findNavController(getView()).navigate(action);
+
+                        action = EmergencyFragmentDirections.actionEmergencyFragmentToViewCartItemsFragment2();
+                        Navigation.findNavController(getView()).navigate(action);
+
+
 
                 } else {
                     Toast.makeText(getContext(), "fail", Toast.LENGTH_SHORT).show();

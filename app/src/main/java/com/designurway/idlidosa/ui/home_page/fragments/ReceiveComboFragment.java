@@ -91,8 +91,11 @@ public class ReceiveComboFragment extends Fragment {
                     receivedComboAdapter.sendToFragment(new ReceivedComboAdapter.setFragmentTransaction() {
                         @Override
                         public void sendPosition(int position, String comboId, String productid) {
-                            actions = ReceiveComboFragmentDirections.actionReceiveComboFragmentToReciveComboAddressFragment(comboId, productid);
-                            Navigation.findNavController(getView()).navigate(actions);
+
+                                actions = ReceiveComboFragmentDirections.actionReceiveComboFragmentToReciveComboAddressFragment(comboId, productid);
+                                Navigation.findNavController(getView()).navigate(actions);
+
+
                         }
                     });
                 } else {

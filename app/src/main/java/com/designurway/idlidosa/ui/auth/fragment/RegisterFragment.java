@@ -1,6 +1,7 @@
 package com.designurway.idlidosa.ui.auth.fragment;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 
@@ -51,7 +52,7 @@ public class RegisterFragment extends Fragment {
     NavDirections action;
     RegisterFragmentArgs args;
 
-
+    Context context;
     public RegisterFragment() {
         // Required empty public constructor
     }
@@ -64,6 +65,8 @@ public class RegisterFragment extends Fragment {
 //        return inflater.inflate(R.layout.fragment_register, container, false);
 
         binding = FragmentRegisterBinding.inflate(inflater,container,false);
+
+        context=container.getContext();
         View view =  binding.getRoot();
 
         args = RegisterFragmentArgs.fromBundle(getArguments());
@@ -98,7 +101,7 @@ public class RegisterFragment extends Fragment {
 
 //        Toast.makeText(this, refCode, Toast.LENGTH_SHORT).show();
 
-                if (!AndroidUtils.isNetworkAvailable(getContext())) {
+                if (!AndroidUtils.isNetworkAvailable(context)) {
 
                     Toast.makeText(getContext(), getString(R.string.no_internet), Toast.LENGTH_SHORT).show();
 
@@ -268,6 +271,16 @@ public class RegisterFragment extends Fragment {
                             Manifest.permission.READ_PHONE_STATE}, 2);
 
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if (context==null){
+            context=getActivity().getApplicationContext();
+        }
+
     }
 
 }

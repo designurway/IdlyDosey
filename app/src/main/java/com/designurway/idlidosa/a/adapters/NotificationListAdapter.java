@@ -45,12 +45,13 @@ public class NotificationListAdapter extends RecyclerView.Adapter<NotificationLi
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         holder.orderIdTv.setText(notificationModels.get(position).getOrder_id());
-        holder.orderStatusTv.setText(notificationModels.get(position).getTitle());
+
         holder.orderMessageTv.setText(notificationModels.get(position).getMessage());
         holder.orderDayTv.setText(notificationModels.get(position).getCreated_date());
         holder.orderMessageTv.setText(notificationModels.get(position).getMessage());
         if (notificationModels.get(position).getNotification_status().equals("unread")) {
             holder.orderStatusTv.setBackgroundColor(holder.orderStatusTv.getResources().getColor(R.color.red));
+            holder.orderStatusTv.setText("unread");
         }
 //
 
