@@ -125,7 +125,7 @@ public class HomeFragment extends Fragment {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             LocalTime time = LocalTime.now();
             int a = time.getHour();
-            btnEmergency.setEnabled(a >= 17 || a <= 5);
+            btnEmergency.setEnabled(a > 9 || a <= 10);
         }
 
 

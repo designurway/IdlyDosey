@@ -79,7 +79,8 @@ public class ViewCartAdapter extends RecyclerView.Adapter
             Picasso.get().load(viewCartModels.get(position).getMedicine_image()).into(holder.prodImage);
             holder.itemName.setText("Medicine");
         }else {
-            Toast.makeText(context, "No Image", Toast.LENGTH_SHORT).show();
+
+            Picasso.get().load(R.drawable.medicine).into(holder.prodImage);
         }
 
         orderId = viewCartModels.get(position).getOrder_id();

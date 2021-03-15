@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home_nav_graph"
+    android:label="Notification"
     app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.designurway.idlidosa.ui.home_page.fragments.HomeFragment"
         android:label="Home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_displayProductFragment"
             app:destination="@id/displayProductFragment" />
@@ -21,7 +22,7 @@
         android:id="@+id/settingsFragment"
         android:name="com.designurway.idlidosa.ui.home_page.fragments.SettingsFragment"
         android:label="Setting"
-        tools:layout="@layout/fragment_settings" >
+        tools:layout="@layout/fragment_settings">
         <action
             android:id="@+id/action_settingsFragment_to_orderHistoryFragment"
             app:destination="@id/orderHistoryFragment" />
@@ -45,7 +46,7 @@
         android:id="@+id/viewCartItemsFragment"
         android:name="com.designurway.idlidosa.ui.home_page.fragments.ViewCartItemsFragment"
         android:label="Cart"
-        tools:layout="@layout/fragment_view_cart_items" >
+        tools:layout="@layout/fragment_view_cart_items">
         <action
             android:id="@+id/action_viewCartItemsFragment_to_addressBookFragment"
             app:destination="@id/addressBookFragment" />
@@ -145,7 +146,9 @@
         tools:layout="@layout/fragment_payment_sucessful">
         <action
             android:id="@+id/action_paymentSucessfulFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
         <argument
             android:name="JsonString"
             app:argType="string" />
@@ -255,7 +258,7 @@
     <activity
         android:id="@+id/paytmActivity"
         android:name="com.designurway.idlidosa.a.paytmallinonesdk.PaytmActivity"
-        android:label="PaytmActivity" >
+        android:label="PaytmActivity">
         <argument
             android:name="name"
             app:argType="string" />
@@ -271,7 +274,8 @@
         <argument
             android:name="comboId"
             app:argType="string" />
-        <argument android:name="productId"
+        <argument
+            android:name="productId"
             app:argType="string" />
         <argument
             android:name="orderId"
@@ -301,12 +305,15 @@
     <fragment
         android:id="@+id/notificationListFragment"
         android:name="com.designurway.idlidosa.ui.home_page.fragments.NotificationListFragment"
-        android:label="NotificationListFragment" /><action android:id="@+id/action_global_notificationListFragment" app:destination="@id/notificationListFragment"/>
+        android:label="Notificatin" />
+    <action
+        android:id="@+id/action_global_notificationListFragment"
+        app:destination="@id/notificationListFragment" />
     <fragment
         android:id="@+id/locationFragment"
         android:name="com.designurway.idlidosa.ui.home_page.fragments.LocationFragment"
         android:label="fragment_location"
-        tools:layout="@layout/fragment_location" >
+        tools:layout="@layout/fragment_location">
         <action
             android:id="@+id/action_locationFragment_to_paymentFragment"
             app:destination="@id/paymentFragment" />

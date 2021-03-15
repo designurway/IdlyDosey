@@ -15,7 +15,7 @@ import java.lang.Override;
 public class RegisterActivity_ViewBinding implements Unbinder {
   private RegisterActivity target;
 
-  private View view7f0a0329;
+  private View view7f0a032b;
 
   @UiThread
   public RegisterActivity_ViewBinding(RegisterActivity target) {
@@ -32,7 +32,7 @@ public class RegisterActivity_ViewBinding implements Unbinder {
     target.pwdEt = Utils.findRequiredViewAsType(source, R.id.password_et, "field 'pwdEt'", EditText.class);
     target.confirmPwdEt = Utils.findRequiredViewAsType(source, R.id.c_password_et, "field 'confirmPwdEt'", EditText.class);
     view = Utils.findRequiredView(source, R.id.sign_up_btn, "method 'customerRegister'");
-    view7f0a0329 = view;
+    view7f0a032b = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -53,7 +53,7 @@ public class RegisterActivity_ViewBinding implements Unbinder {
     target.pwdEt = null;
     target.confirmPwdEt = null;
 
-    view7f0a0329.setOnClickListener(null);
-    view7f0a0329 = null;
+    view7f0a032b.setOnClickListener(null);
+    view7f0a032b = null;
   }
 }

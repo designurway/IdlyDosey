@@ -136,10 +136,10 @@ public class GooglePayFragment extends Fragment {
         payBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                payUsingUpi(PreferenceManager.getCustomerName(), txtNumber.getText().toString(),
-                        "IDLY DOSEY", amountEt.getText().toString());
+            /*    payUsingUpi(PreferenceManager.getCustomerName(), txtNumber.getText().toString(),
+                        "IDLY DOSEY", amountEt.getText().toString());*/
 
-//                ConfromOrder();
+                ConfromOrder();
 
 
             }
@@ -338,7 +338,8 @@ public class GooglePayFragment extends Fragment {
 
         if (!address.equals("")) {
             Call<OrderStatusModel>
-                    call = api.postOrderDetails(PreferenceManager.getCustomerId(), args.getOrderId(), amount, address, String.valueOf(lat), String.valueOf(lat.latitude), String.valueOf(lat.longitude));
+                    call = api.postOrderDetails(PreferenceManager.getCustomerId(), args.getOrderId(), amount,
+                    address, String.valueOf(lat), String.valueOf(lat.latitude), String.valueOf(lat.longitude));
 
             call.enqueue(new Callback<OrderStatusModel>() {
 
@@ -348,7 +349,7 @@ public class GooglePayFragment extends Fragment {
                     if (response.isSuccessful()) {
                         Log.d("confirmorder", "success");
                         OrderStatusModel orderStatusModel = response.body();
-                        Log.d("orderId", orderId);
+                        Log.d("orderId", orderStatusModel.getOrder_id());
 
                         getNotification(response.body().getOrder_id());
 
@@ -389,6 +390,7 @@ public class GooglePayFragment extends Fragment {
                     SharedPrefManager.Clear(getContext());
                     SharedPrefManager.SaveTotalKey(getContext(), 0);
                 } else {
+
 
 
                 }

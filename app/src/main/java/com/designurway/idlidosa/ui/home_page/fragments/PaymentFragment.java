@@ -498,7 +498,7 @@ public class PaymentFragment extends Fragment {
                     Log.d("confirmorder", "success");
                     OrderStatusModel orderStatusModel = response.body();
 
-                    getNotification(order_id);
+                    getNotification(response.body().getOrder_id());
 
                 } else {
                     Toast.makeText(getContext(), response.message(), Toast.LENGTH_SHORT).show();

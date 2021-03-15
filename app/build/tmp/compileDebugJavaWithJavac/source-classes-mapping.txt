@@ -346,6 +346,7 @@ com/designurway/idlidosa/databinding/FragmentChangePasswordBinding.java
 com/designurway/idlidosa/ui/home_page/HomePageActivity.java
  com.designurway.idlidosa.ui.home_page.HomePageActivity
  com.designurway.idlidosa.ui.home_page.HomePageActivity$1
+ com.designurway.idlidosa.ui.home_page.HomePageActivity$2
 com/designurway/idlidosa/a/retrofit/BaseClient.java
  com.designurway.idlidosa.a.retrofit.BaseClient
 com/designurway/idlidosa/databinding/FragmentTrackOrderBinding.java
@@ -461,6 +462,8 @@ com/designurway/idlidosa/a/activity/PaymentSucessfulActivity.java
  com.designurway.idlidosa.a.activity.PaymentSucessfulActivity
  com.designurway.idlidosa.a.activity.PaymentSucessfulActivity$1
  com.designurway.idlidosa.a.activity.PaymentSucessfulActivity$2
+com/designurway/idlidosa/databinding/NotificationBadgeBinding.java
+ com.designurway.idlidosa.databinding.NotificationBadgeBinding
 com/designurway/idlidosa/ui/DirectionsJSONParser.java
  com.designurway.idlidosa.ui.DirectionsJSONParser
 com/designurway/idlidosa/ui/home_page/fragments/FeaturedFragment.java

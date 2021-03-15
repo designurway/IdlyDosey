@@ -15,60 +15,68 @@
         app:titleTextColor="@color/colorAccent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="end">
 
-<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        <RelativeLayout-->
 <!--            android:id="@+id/menu_rl"-->
-<!--            android:layout_width="match_parent"-->
+<!--            android:layout_width="wrap_content"-->
 <!--            android:layout_height="match_parent"-->
-<!--            android:visibility="gone">-->
+<!--            android:gravity="end"-->
+<!--            -->
 
-<!--            <TextView-->
-<!--                android:id="@+id/toolbar_title_tv"-->
-<!--                android:layout_width="wrap_content"-->
+<!--            >-->
+
+<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                android:layout_width="match_parent"-->
 <!--                android:layout_height="wrap_content"-->
-<!--                android:text="Home"-->
-<!--                android:textColor="@color/colorAccent"-->
-<!--                android:layout_marginTop="5dp"-->
-<!--                android:fontFamily="@font/averia_sans_libre"-->
-<!--                android:textSize="@dimen/header_text_size"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                />-->
+<!--                >-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/toolbar_title_tv"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="jkh"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:fontFamily="@font/averia_sans_libre"-->
+<!--                    android:textSize="@dimen/header_text_size"-->
+
+<!--                    />-->
 
 
-<!--            <ImageView-->
-<!--                android:id="@+id/notification_imgv"-->
-<!--                android:layout_width="30dp"-->
-<!--                android:layout_height="30dp"-->
-<!--                android:layout_marginEnd="20dp"-->
-<!--                android:layout_alignParentEnd="true"-->
-<!--                android:background="@drawable/bell"-->
-<!--                android:backgroundTint="@color/colorAccent"-->
-<!--                android:visibility="visible"-->
-<!--                android:layout_marginTop="5dp"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"/>-->
+<!--                <ImageView-->
+<!--                    android:id="@+id/notification_imgv"-->
+<!--                    android:layout_width="30dp"-->
+<!--                    android:layout_height="30dp"-->
+<!--                    android:layout_marginEnd="20dp"-->
+<!--                    android:layout_alignParentEnd="true"-->
+<!--                    android:background="@drawable/bell"-->
+<!--                    android:backgroundTint="@color/colorAccent"-->
+<!--                    android:visibility="visible"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent" />-->
 
 
-<!--            <TextView-->
-<!--                android:id="@+id/txtNotifyNo"-->
-<!--                android:layout_width="16dp"-->
-<!--                android:layout_height="16dp"-->
-<!--                android:text="1"-->
-<!--                android:gravity="center_vertical"-->
-<!--                android:paddingStart="5dp"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textSize="12sp"-->
-<!--                android:translationX="-12dp"-->
-<!--                android:background="@drawable/circle"-->
-<!--                app:layout_constraintTop_toTopOf="@id/notification_imgv"-->
-<!--                app:layout_constraintStart_toEndOf="@id/notification_imgv"/>-->
+<!--                <TextView-->
+<!--                    android:id="@+id/txtNotifyNo"-->
+<!--                    android:layout_width="16dp"-->
+<!--                    android:layout_height="16dp"-->
+<!--                    android:text="1"-->
+<!--                    android:gravity="center_vertical"-->
+<!--                    android:paddingStart="5dp"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textSize="12sp"-->
+<!--                    android:translationX="-12dp"-->
+<!--                    android:background="@drawable/circle"-->
+<!--                    app:layout_constraintTop_toTopOf="@id/notification_imgv"-->
+<!--                    app:layout_constraintStart_toEndOf="@id/notification_imgv" />-->
 
 
+<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
 
-
-<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+<!--        </RelativeLayout>-->
     </androidx.appcompat.widget.Toolbar>
 
 
@@ -82,19 +90,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tool_bar"
-        app:layout_constraintBottom_toTopOf="@id/bottom_view"/>
+        app:layout_constraintBottom_toTopOf="@id/bottom_view" />
 
-  <!--  <fragment
-        android:id="@+id/homeNavHostFragment"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/home_nav_graph"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tool_bar"
-        app:layout_constraintBottom_toTopOf="@id/bottom_view"/>-->
+    <!--  <fragment
+          android:id="@+id/homeNavHostFragment"
+          android:name="androidx.navigation.fragment.NavHostFragment"
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          app:defaultNavHost="true"
+          app:navGraph="@navigation/home_nav_graph"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/tool_bar"
+          app:layout_constraintBottom_toTopOf="@id/bottom_view"/>-->
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_view"

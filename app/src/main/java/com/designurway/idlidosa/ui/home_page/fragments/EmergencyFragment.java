@@ -187,11 +187,11 @@ public class EmergencyFragment extends Fragment {
                                    Response<StatusAndMessageModel> response) {
                 if (response.isSuccessful()) {
                     if (response.body().getStatus().equals("1")){
-                        if(action==null){
+
 
                             action = EmergencyFragmentDirections.actionEmergencyFragmentToViewCartItemsFragment2();
                             Navigation.findNavController(getView()).navigate(action);
-                        }
+
 
                     }else {
                         Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();

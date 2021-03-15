@@ -2221,6 +2221,7 @@ drawable arrow_back
 drawable assist_background
 drawable avd_hide_password
 drawable avd_show_password
+drawable badge
 drawable baseline_remove_red_eye_black_18dp
 drawable bell
 drawable bg_btn_blue
@@ -2628,6 +2629,7 @@ id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
 id automatic
+id badgeCounter
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -2873,6 +2875,7 @@ id image_line2
 id image_next
 id image_view
 id img1
+id imgBell
 id imgError
 id imgLayout
 id img_compt
@@ -3660,6 +3663,7 @@ layout mtrl_picker_text_input_date_range
 layout netbanking
 layout notification_action
 layout notification_action_tombstone
+layout notification_badge
 layout notification_item_list
 layout notification_media_action
 layout notification_media_cancel_action
@@ -3704,8 +3708,11 @@ layout text_view_with_theme_line_height
 layout text_view_without_line_height
 layout track_order_list_item
 menu bottom_navigation_list
+menu main_menu
 mipmap ic_launcher
+mipmap ic_launcher_foreground
 mipmap ic_launcher_round
+mipmap logonew
 navigation auth_nav_graph
 navigation home_nav_graph
 plurals mtrl_badge_content_description
